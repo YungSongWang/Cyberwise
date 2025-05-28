@@ -21,11 +21,33 @@
     <input type="text" id="identifier" data-lang="usernamePlaceholder" placeholder="Username or Email">
     <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
     <button onclick="login()" data-lang="signInBtn">Sign In</button>
-    <button class="link-button" onclick="location.href='register.html'" data-lang="signUpLink">Don't have an account? Sign Up</button>
+    <button class="link-button" onclick="goToRegister()" data-lang="signUpLink">Don't have an account? Sign Up</button>
+    
+    <!-- 添加手动跳转按钮 -->
+    <div style="margin-top: 20px;">
+      <button type="button" onclick="goToDashboard()" style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; display: none;" id="manualJumpBtn">
+        手动跳转到Dashboard
+      </button>
+    </div>
   </div>
 
   <script src="../static/js/firebase-init.js"></script>
   <script src="../static/js/language.js"></script>
   <script src="../static/js/login.js"></script>
+  
+  <script>
+    // 添加导航函数
+    function goToRegister() {
+      window.location.href = window.location.origin + '/templates/register.html';
+    }
+    
+    // 登录成功后显示手动跳转按钮
+    function showManualJumpButton() {
+      const btn = document.getElementById('manualJumpBtn');
+      if (btn) {
+        btn.style.display = 'block';
+      }
+    }
+  </script>
 </body>
 </html> 

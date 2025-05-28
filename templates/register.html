@@ -22,11 +22,18 @@
     <input type="email" id="email" data-lang="emailPlaceholder" placeholder="Email">
     <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
     <button class="button-pink" onclick="register()" data-lang="registerBtn">Register</button>
-    <button class="link-button" onclick="location.href='login.html'" data-lang="signInLink">Already have an account? Sign In</button>
+    <button class="link-button" onclick="goToLogin()" data-lang="signInLink">Already have an account? Sign In</button>
   </div>
 
   <script src="../static/js/firebase-init.js"></script>
   <script src="../static/js/language.js"></script>
   <script src="../static/js/register.js"></script>
+  
+  <script>
+    // 添加导航函数
+    function goToLogin() {
+      window.location.href = window.location.origin + '/templates/login.html';
+    }
+  </script>
 </body>
 </html> 

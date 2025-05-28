@@ -1,0 +1,13 @@
+# 允许直接访问具体的HTML文件
+/templates/login.html    /templates/login.html    200
+/templates/register.html /templates/register.html 200
+/templates/dashboard.html /templates/dashboard.html 200
+
+# 静态资源文件
+/static/*  /static/:splat  200
+
+# 根路径重定向到登录页
+/  /templates/login.html  200
+
+# 其他所有路径重定向到登录页（这应该是最后一条规则）
+/*    /templates/login.html   200 

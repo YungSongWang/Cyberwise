@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberWise Debug</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .reset-btn {
+            background: #28a745;
+        }
+        .reset-btn:hover {
+            background: #218838;
+        }
+        .result {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 CyberWise 调试工具</h1>
+    
+    <div class="debug-section">
+        <h2>1. Firebase 连接测试</h2>
+        <button onclick="testFirebaseConnection()">测试 Firebase 连接</button>
+        <div id="firebase-result" class="result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>2. 查看所有用户</h2>
+        <button onclick="listAllUsers()">列出所有注册用户</button>
+        <div id="users-result" class="result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>3. 测试登录</h2>
+        <input type="text" id="test-email" placeholder="输入邮箱">
+        <input type="password" id="test-password" placeholder="输入密码">
+        <button onclick="testLogin()">测试登录</button>
+        <div id="login-result" class="result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>4. 密码重置</h2>
+        <input type="email" id="reset-email" placeholder="输入要重置密码的邮箱">
+        <button class="reset-btn" onclick="resetPassword()">发送密码重置邮件</button>
+        <div id="reset-result" class="result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>5. 修复用户数据</h2>
+        <input type="text" id="fix-username" placeholder="用户名">
+        <input type="email" id="fix-email" placeholder="邮箱">
+        <button onclick="fixUserData()">修复用户数据到Firestore</button>
+        <div id="fix-result" class="result"></div>
+    </div>
+
+    <div class="debug-section">
+        <h2>6. 创建测试用户</h2>
+        <input type="text" id="new-username" placeholder="用户名">
+        <input type="email" id="new-email" placeholder="邮箱">
+        <input type="password" id="new-password" placeholder="密码">
+        <button onclick="createTestUser()">创建测试用户</button>
+        <div id="create-result" class="result"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="static/js/firebase-init.js"></script>
+
+    <script>
+        function log(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+            console.log(message);
+        }
+
+        function testFirebaseConnection() {
+            try {
+                log('firebase-result', '正在测试 Firebase 连接...');
+                
+                const app = firebase.app();
+                const auth = firebase.auth();
+                const firestore = firebase.firestore();
+                
+                const result = `✅ Firebase 连接成功！
+应用名称: ${app.name}
+项目ID: ${app.options.projectId}
+认证域: ${app.options.authDomain}
+Auth 状态: ${auth ? '已初始化' : '未初始化'}
+Firestore 状态: ${firestore ? '已初始化' : '未初始化'}`;
+                
+                log('firebase-result', result);
+            } catch (error) {
+                log('firebase-result', `❌ Firebase 连接失败: ${error.message}`);
+            }
+        }
+
+        async function listAllUsers() {
+            try {
+                log('users-result', '正在获取用户列表...');
+                
+                const usersSnapshot = await db.collection("users").get();
+                const usernamesSnapshot = await db.collection("usernames").get();
+                
+                let result = `📊 数据库统计:
+用户文档数量: ${usersSnapshot.size}
+用户名映射数量: ${usernamesSnapshot.size}
+
+用户列表:
+`;
+                
+                usersSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    result += `- ${data.username} (${data.email}) - 创建于: ${data.createdAt ? data.createdAt.toDate().toLocaleString() : '未知'}\n`;
+                });
+                
+                result += `\n用户名映射:
+`;
+                usernamesSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    result += `- ${doc.id} -> ${data.email}\n`;
+                });
+                
+                log('users-result', result);
+            } catch (error) {
+                log('users-result', `❌ 获取用户列表失败: ${error.message}`);
+            }
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('test-email').value;
+            const password = document.getElementById('test-password').value;
+            
+            if (!email || !password) {
+                log('login-result', '❌ 请输入邮箱和密码');
+                return;
+            }
+            
+            try {
+                log('login-result', '正在尝试登录...');
+                
+                const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                
+                const result = `✅ 登录成功！
+用户ID: ${user.uid}
+邮箱: ${user.email}
+显示名称: ${user.displayName || '未设置'}
+邮箱验证: ${user.emailVerified ? '已验证' : '未验证'}
+创建时间: ${user.metadata.creationTime}
+最后登录: ${user.metadata.lastSignInTime}`;
+                
+                log('login-result', result);
+                
+                // 登出以便继续测试
+                await firebase.auth().signOut();
+            } catch (error) {
+                const result = `❌ 登录失败
+错误代码: ${error.code}
+错误信息: ${error.message}
+
+常见解决方案:
+- 检查邮箱和密码是否正确
+- 确认账户是否已注册
+- 检查网络连接`;
+                
+                log('login-result', result);
+            }
+        }
+
+        async function resetPassword() {
+            const email = document.getElementById('reset-email').value;
+            
+            if (!email) {
+                log('reset-result', '❌ 请输入邮箱地址');
+                return;
+            }
+            
+            try {
+                log('reset-result', '正在发送密码重置邮件...');
+                
+                await firebase.auth().sendPasswordResetEmail(email);
+                
+                const result = `✅ 密码重置邮件已发送！
+邮箱: ${email}
+
+请检查您的邮箱（包括垃圾邮件文件夹），
+点击邮件中的链接重置密码。`;
+                
+                log('reset-result', result);
+            } catch (error) {
+                let errorMessage = '';
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = '未找到此邮箱对应的账户';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = '邮箱格式无效';
+                        break;
+                    default:
+                        errorMessage = error.message;
+                }
+                log('reset-result', `❌ 发送失败: ${errorMessage}`);
+            }
+        }
+
+        async function fixUserData() {
+            const username = document.getElementById('fix-username').value;
+            const email = document.getElementById('fix-email').value;
+            
+            if (!username || !email) {
+                log('fix-result', '❌ 请输入用户名和邮箱');
+                return;
+            }
+            
+            try {
+                log('fix-result', '正在修复用户数据...');
+                
+                // 假设用户ID，实际应该从Firebase Auth获取
+                const fakeUserId = 'user_' + Date.now();
+                
+                // 创建用户文档
+                await db.collection("users").doc(fakeUserId).set({
+                    username: username,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    notesCount: 0
+                });
+                
+                // 创建用户名映射
+                await db.collection("usernames").doc(username).set({
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    userId: fakeUserId
+                });
+                
+                const result = `✅ 用户数据修复成功！
+用户名: ${username}
+邮箱: ${email}
+用户ID: ${fakeUserId}
+
+现在可以尝试登录了。`;
+                
+                log('fix-result', result);
+            } catch (error) {
+                log('fix-result', `❌ 修复失败: ${error.message}`);
+            }
+        }
+
+        async function createTestUser() {
+            const username = document.getElementById('new-username').value;
+            const email = document.getElementById('new-email').value;
+            const password = document.getElementById('new-password').value;
+            
+            if (!username || !email || !password) {
+                log('create-result', '❌ 请填写所有字段');
+                return;
+            }
+            
+            try {
+                log('create-result', '正在创建测试用户...');
+                
+                // 创建用户账户
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                
+                // 更新显示名称
+                await user.updateProfile({ displayName: username });
+                
+                // 保存到数据库
+                await db.collection("users").doc(user.uid).set({
+                    username: username,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    notesCount: 0
+                });
+                
+                await db.collection("usernames").doc(username).set({
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    userId: user.uid
+                });
+                
+                const result = `✅ 测试用户创建成功！
+用户ID: ${user.uid}
+用户名: ${username}
+邮箱: ${email}
+密码: ${password}
+
+现在可以使用这个账户测试登录功能。`;
+                
+                log('create-result', result);
+                
+                // 登出
+                await firebase.auth().signOut();
+            } catch (error) {
+                log('create-result', `❌ 创建用户失败: ${error.code} - ${error.message}`);
+            }
+        }
+
+        // 页面加载时自动测试连接
+        window.onload = function() {
+            testFirebaseConnection();
+        };
+    </script>
+</body>
+</html> 

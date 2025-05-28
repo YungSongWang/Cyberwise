@@ -9,7 +9,7 @@ firebase.auth().onAuthStateChanged(user => {
         loadUserData();
     } else {
         alert(getText('notLoggedIn'));
-        window.location.href = "login.html";
+        window.location.href = window.location.origin + "/templates/login.html";
     }
 });
 
@@ -238,7 +238,7 @@ function logout() {
     if (confirm(getText('confirmLogout'))) {
         firebase.auth().signOut().then(() => {
             alert(getText('loggedOut'));
-            window.location.href = "login.html";
+            window.location.href = window.location.origin + "/templates/login.html";
         }).catch(error => {
             console.error("Logout error:", error);
         });

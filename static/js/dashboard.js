@@ -241,12 +241,23 @@ function logout() {
             window.location.href = window.location.origin + "/templates/login.html";
         }).catch(error => {
             console.error("Logout error:", error);
+            alert("Logout failed. Please try again.");
         });
     }
+}
+
+// 导航到知识库页面
+function goToKnowledgeBase() {
+    window.location.href = window.location.origin + '/templates/knowledge_base.html';
 }
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function () {
     // 默认显示开始页面
     showSection('start');
+
+    // 初始化语言
+    if (typeof initLanguage === 'function') {
+        initLanguage();
+    }
 }); 

@@ -43,6 +43,7 @@
       <div class="menu-item" onclick="showSection('start')"><i class="ri-time-line"></i><span data-lang="menuStart">Start</span></div>
       <div class="menu-item ai" onclick="showSection('ai')"><i class="ri-magic-line"></i><span data-lang="menuAI">AI Writing</span></div>
       <div class="menu-item" onclick="showSection('notes')"><i class="ri-quill-pen-line"></i><span data-lang="menuNotes">Notes</span></div>
+      <div class="menu-item" onclick="goToKnowledgeBase()"><i class="ri-book-open-line"></i><span data-lang="knowledgeBase">Knowledge Base</span></div>
       <div class="menu-item" onclick="showSection('favorites')"><i class="ri-star-line"></i><span data-lang="menuFavorites">Favorites</span></div>
       <div class="menu-item" onclick="showSection('community')"><i class="ri-group-line"></i><span data-lang="menuCommunity">Community</span></div>
     </div>
@@ -59,6 +60,7 @@
         <h3 data-lang="quickActions">Quick Actions:</h3>
         <button onclick="createNewDocument()" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="createNewDoc">Create New Document</button>
         <button onclick="showSection('notes')" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="viewNotes">View Notes</button>
+        <button onclick="goToKnowledgeBase()" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">🔍 浏览知识库</button>
       </div>
     </div>
 

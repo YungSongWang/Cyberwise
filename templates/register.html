@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>CyberWise Register</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -20,8 +21,20 @@
     <h1 data-lang="createAccount">Create Account</h1>
     <input type="text" id="username" data-lang="usernamePlaceholder2" placeholder="Username">
     <input type="email" id="email" data-lang="emailPlaceholder" placeholder="Email">
-    <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
-    <button class="button-pink" onclick="register()" data-lang="registerBtn">Register</button>
+    
+    <!-- 密码输入框容器 -->
+    <div class="password-container">
+      <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
+      <i class="ri-eye-off-line password-toggle" onclick="togglePasswordVisibility('password', this)"></i>
+    </div>
+    
+    <!-- 确认密码输入框容器 -->
+    <div class="password-container">
+      <input type="password" id="confirmPassword" data-lang="confirmPasswordPlaceholder" placeholder="Confirm Password">
+      <i class="ri-eye-off-line password-toggle" onclick="togglePasswordVisibility('confirmPassword', this)"></i>
+    </div>
+    
+    <button onclick="register()" data-lang="registerBtn">Register</button>
     <button class="link-button" onclick="goToLogin()" data-lang="signInLink">Already have an account? Sign In</button>
   </div>
 
@@ -33,6 +46,19 @@
     // 添加导航函数
     function goToLogin() {
       window.location.href = window.location.origin + '/templates/login.html';
+    }
+    
+    // 切换密码可见性（通用函数）
+    function togglePasswordVisibility(inputId, iconElement) {
+      const passwordInput = document.getElementById(inputId);
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        iconElement.className = 'ri-eye-line password-toggle';
+      } else {
+        passwordInput.type = 'password';
+        iconElement.className = 'ri-eye-off-line password-toggle';
+      }
     }
   </script>
 </body>

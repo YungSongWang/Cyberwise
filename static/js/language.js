@@ -3,7 +3,7 @@ const languages = {
     en: {
         // 登录页面
         title: "CyberWise",
-        usernamePlaceholder: "Username or Email",
+        usernamePlaceholder: "Email",
         passwordPlaceholder: "Password",
         signInBtn: "Sign In",
         signUpLink: "Don't have an account? Sign Up",
@@ -12,8 +12,11 @@ const languages = {
         createAccount: "Create Account",
         usernamePlaceholder2: "Username",
         emailPlaceholder: "Email",
+        confirmPasswordPlaceholder: "Confirm Password",
         registerBtn: "Register",
         signInLink: "Already have an account? Sign In",
+        registerSuccessful: "Registration successful! Welcome to CyberWise!",
+        passwordMismatch: "Password mismatch",
 
         // Dashboard
         welcomeTitle: "Welcome to CyberWise Knowledge Base!",
@@ -75,17 +78,20 @@ const languages = {
     zh: {
         // 登录页面
         title: "CyberWise",
-        usernamePlaceholder: "用户名或邮箱",
+        usernamePlaceholder: "邮箱",
         passwordPlaceholder: "密码",
         signInBtn: "登录",
-        signUpLink: "没有账号？立即注册",
+        signUpLink: "没有账户？立即注册",
 
         // 注册页面
         createAccount: "创建账号",
         usernamePlaceholder2: "用户名",
         emailPlaceholder: "邮箱",
+        confirmPasswordPlaceholder: "确认密码",
         registerBtn: "注册",
         signInLink: "已有账号？立即登录",
+        registerSuccessful: "注册成功！",
+        passwordMismatch: "密码不匹配",
 
         // Dashboard
         welcomeTitle: "欢迎使用 CyberWise 知识库！",

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>CyberWise Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -18,8 +19,14 @@
 
   <div class="center-container">
     <h1 data-lang="title">CyberWise</h1>
-    <input type="text" id="identifier" data-lang="usernamePlaceholder" placeholder="Username or Email">
-    <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
+    <input type="text" id="identifier" data-lang="usernamePlaceholder" placeholder="Email">
+    
+    <!-- 密码输入框容器 -->
+    <div class="password-container">
+      <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
+      <i class="ri-eye-off-line password-toggle" id="togglePassword" onclick="togglePasswordVisibility()"></i>
+    </div>
+    
     <button onclick="login()" data-lang="signInBtn">Sign In</button>
     <button class="link-button" onclick="goToRegister()" data-lang="signUpLink">Don't have an account? Sign Up</button>
     
@@ -46,6 +53,20 @@
       const btn = document.getElementById('manualJumpBtn');
       if (btn) {
         btn.style.display = 'block';
+      }
+    }
+    
+    // 切换密码可见性
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('togglePassword');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'ri-eye-line password-toggle';
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'ri-eye-off-line password-toggle';
       }
     }
   </script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CyberWise Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body data-page="register">
+  <!-- 右上角工具栏 -->
+  <div class="top-toolbar">
+    <button id="language-btn" class="toolbar-btn" onclick="toggleLanguage()">中文</button>
+  </div>
+
+  <div class="center-container">
+    <h1 data-lang="createAccount">Create Account</h1>
+    <input type="text" id="username" data-lang="usernamePlaceholder2" placeholder="Username">
+    <input type="email" id="email" data-lang="emailPlaceholder" placeholder="Email">
+    <input type="password" id="password" data-lang="passwordPlaceholder" placeholder="Password">
+    <button class="button-pink" onclick="register()" data-lang="registerBtn">Register</button>
+    <button class="link-button" onclick="location.href='login.html'" data-lang="signInLink">Already have an account? Sign In</button>
+  </div>
+
+  <script src="../static/js/firebase-init.js"></script>
+  <script src="../static/js/language.js"></script>
+  <script src="../static/js/register.js"></script>
+</body>
+</html> 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CyberWise Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <style>
+    body {
+      display: flex;
+      height: 100vh;
+      margin: 0;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+  </style>
+</head>
+<body data-page="dashboard">
+
+  <!-- 右上角工具栏 -->
+  <div class="top-toolbar">
+    <button id="language-btn" class="toolbar-btn" onclick="toggleLanguage()">中文</button>
+    <button class="toolbar-btn logout-btn" onclick="logout()">
+      <i class="ri-logout-box-line"></i> <span data-lang="logout">Logout</span>
+    </button>
+  </div>
+
+  <div class="sidebar">
+    <div class="logo"><i class="ri-shield-user-line"></i>CyberWise</div>
+    <div class="user-info" id="userEmail">Loading user info...</div>
+
+    <div class="search-box">
+      <i class="ri-search-line"></i>
+      <input type="text" data-lang="searchPlaceholder" placeholder="Search Knowledge Base">
+      <i class="ri-add-line" style="cursor: pointer;" onclick="createNewDocument()"></i>
+    </div>
+
+    <div class="menu">
+      <div class="menu-item" onclick="showSection('start')"><i class="ri-time-line"></i><span data-lang="menuStart">Start</span></div>
+      <div class="menu-item ai" onclick="showSection('ai')"><i class="ri-magic-line"></i><span data-lang="menuAI">AI Writing</span></div>
+      <div class="menu-item" onclick="showSection('notes')"><i class="ri-quill-pen-line"></i><span data-lang="menuNotes">Notes</span></div>
+      <div class="menu-item" onclick="showSection('favorites')"><i class="ri-star-line"></i><span data-lang="menuFavorites">Favorites</span></div>
+      <div class="menu-item" onclick="showSection('community')"><i class="ri-group-line"></i><span data-lang="menuCommunity">Community</span></div>
+    </div>
+
+    <div class="menu-expand"><i class="ri-arrow-down-s-line"></i><span data-lang="knowledgeBase">Knowledge Base</span></div>
+    <div class="logout" onclick="logout()"><i class="ri-logout-box-line"></i> <span data-lang="logOut">Log Out</span></div>
+  </div>
+
+  <div class="main">
+    <div id="start-section">
+      <h1 data-lang="welcomeTitle">Welcome to CyberWise Knowledge Base!</h1>
+      <p data-lang="welcomeDesc">Your personal knowledge management system. Use the sidebar to navigate between different sections.</p>
+      <div style="margin-top: 30px;">
+        <h3 data-lang="quickActions">Quick Actions:</h3>
+        <button onclick="createNewDocument()" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="createNewDoc">Create New Document</button>
+        <button onclick="showSection('notes')" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="viewNotes">View Notes</button>
+      </div>
+    </div>
+
+    <div id="ai-section" style="display: none;">
+      <h1 data-lang="aiTitle">AI Writing Assistant</h1>
+      <p data-lang="aiDesc">Use AI to help with your writing and knowledge creation.</p>
+      <textarea data-lang="aiPlaceholder" placeholder="Enter your prompt here..." style="width: 100%; height: 200px; margin: 20px 0; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: none;"></textarea>
+      <button onclick="generateAIContent()" style="width: auto; padding: 10px 20px;" data-lang="generateBtn">Generate Content</button>
+    </div>
+
+    <div id="notes-section" style="display: none;">
+      <h1 data-lang="notesTitle">My Notes</h1>
+      <p data-lang="notesDesc">Manage your personal notes and documents.</p>
+      <div id="notes-list" style="margin-top: 20px;">
+        <!-- Notes will be loaded here -->
+      </div>
+    </div>
+
+    <div id="favorites-section" style="display: none;">
+      <h1 data-lang="favoritesTitle">Favorites</h1>
+      <p data-lang="favoritesDesc">Your starred documents and important references.</p>
+    </div>
+
+    <div id="community-section" style="display: none;">
+      <h1 data-lang="communityTitle">Community</h1>
+      <p data-lang="communityDesc">Share knowledge and collaborate with others.</p>
+    </div>
+  </div>
+
+  <script src="../static/js/firebase-init.js"></script>
+  <script src="../static/js/language.js"></script>
+  <script src="../static/js/dashboard.js"></script>
+</body>
+</html> 

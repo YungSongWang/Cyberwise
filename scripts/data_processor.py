@@ -60,20 +60,35 @@ class DatasetProcessor:
             return
         
         print("\n=== 处理数据为CyberWise格式 ===")
+        print("使用列索引映射:")
+        print("- Title: 第3列 (索引2)")
+        print("- Question: E列 (索引4)")
+        print("- Human answer: F列 (索引5)")
+        print("- AI answer: G列 (索引6)")
+        print("- Category: H列 (索引7)")
+        print("- Subcategory: I列 (索引8)")
         
         processed_count = 0
         for index, row in self.df.iterrows():
             try:
+                # 使用列索引访问数据
+                title = str(row.iloc[2]) if pd.notna(row.iloc[2]) else f"Question {index + 1}"
+                question = str(row.iloc[4]) if pd.notna(row.iloc[4]) else ''
+                human_answer = str(row.iloc[5]) if pd.notna(row.iloc[5]) else ''
+                ai_answer = str(row.iloc[6]) if pd.notna(row.iloc[6]) else ''
+                category = str(row.iloc[7]) if pd.notna(row.iloc[7]) else 'Uncategorized'
+                subcategory = str(row.iloc[8]) if pd.notna(row.iloc[8]) else ''
+                
                 # 提取基本信息
                 record = {
-                    "id": f"dataset_{index}",
-                    "index": int(row.get('Index', index)) if pd.notna(row.get('Index')) else index,
-                    "title": str(row.get('question', '')) if pd.notna(row.get('question')) else f"Question {index}",
-                    "question": str(row.get('question', '')) if pd.notna(row.get('question')) else '',
-                    "human_answer": str(row.get('human_answer', '')) if pd.notna(row.get('human_answer')) else '',
-                    "ai_answer": str(row.get('AI_answer', '')) if pd.notna(row.get('AI_answer')) else '',
-                    "category": str(row.get('category', 'Uncategorized')) if pd.notna(row.get('category')) else 'Uncategorized',
-                    "subcategory": str(row.get('subcategory', '')) if pd.notna(row.get('subcategory')) else '',
+                    "id": f"q_{index + 1}",
+                    "index": index + 1,
+                    "title": title,
+                    "question": question,
+                    "human_answer": human_answer,
+                    "ai_answer": ai_answer,
+                    "category": category,
+                    "subcategory": subcategory,
                     "created_at": datetime.now().isoformat(),
                     "source": "dataset_385_questions",
                     "type": "qa_pair"
@@ -82,11 +97,21 @@ class DatasetProcessor:
                 self.processed_data.append(record)
                 processed_count += 1
                 
+                # 显示前几条记录用于验证
+                if processed_count <= 3:
+                    print(f"\n第 {processed_count} 条记录预览:")
+                    print(f"  Title: {title[:50]}...")
+                    print(f"  Question: {question[:50]}...")
+                    print(f"  Human Answer: {human_answer[:50]}...")
+                    print(f"  AI Answer: {ai_answer[:50]}...")
+                    print(f"  Category: {category}")
+                    print(f"  Subcategory: {subcategory}")
+                
             except Exception as e:
-                print(f"处理第 {index} 行时出错: {e}")
+                print(f"处理第 {index + 1} 行时出错: {e}")
                 continue
         
-        print(f"成功处理 {processed_count} 条记录")
+        print(f"\n成功处理 {processed_count} 条记录")
         return self.processed_data
     
     def save_as_json(self, output_file):

@@ -72,18 +72,7 @@
         <h3 data-lang="quickActions">Quick Actions:</h3>
         <button onclick="createNewDocument()" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="createNewDoc">Create New Document</button>
         <button onclick="showSection('notes')" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="viewNotes">View Notes</button>
-        <button onclick="
-          console.log('Browse Knowledge Base clicked - inline!'); 
-          try {
-            console.log('测试按钮跳转...');
-            window.location.href = '/templates/knowledge_base.html';
-          } catch(e) {
-            console.error('测试按钮跳转失败:', e);
-            // 移除弹窗，只记录错误
-            // alert('跳转失败: ' + e.message);
-          }
-        " style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">🔍 浏览知识库 (内联JS)</button>
-        <a href="/templates/knowledge_base.html" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #ff6b6b, #ff8e53); color: white; text-decoration: none; border-radius: 8px; display: inline-block;">📚 知识库 (直接链接)</a>
+        <button onclick="window.location.href='/templates/knowledge_base.html'" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff); color: white; border: none; border-radius: 8px; cursor: pointer;" data-lang="browseKnowledgeBase">🔍 Browse Knowledge Base</button>
       </div>
     </div>
 

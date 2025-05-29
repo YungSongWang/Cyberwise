@@ -24,6 +24,7 @@ const languages = {
         quickActions: "Quick Actions:",
         createNewDoc: "Create New Document",
         viewNotes: "View Notes",
+        browseKnowledgeBase: "🔍 Browse Knowledge Base",
 
         // 侧边栏
         searchPlaceholder: "Search Knowledge Base",
@@ -112,6 +113,7 @@ const languages = {
         quickActions: "快速操作：",
         createNewDoc: "创建新文档",
         viewNotes: "查看笔记",
+        browseKnowledgeBase: "🔍 浏览知识库",
 
         // 侧边栏
         searchPlaceholder: "搜索知识库",

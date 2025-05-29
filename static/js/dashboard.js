@@ -453,16 +453,191 @@ async function loadCommunity() {
     console.log("Loading community...");
 }
 
+// 显示AI写作模态框
+function showAIWritingModal() {
+    const modal = document.getElementById('aiWritingModal');
+    if (modal) {
+        modal.style.display = 'block';
+        // 清空输入框
+        document.getElementById('aiPrompt').value = '';
+        document.getElementById('aiTitle').value = '';
+        document.getElementById('aiContent').value = '';
+        // 隐藏保存按钮
+        document.getElementById('saveAIBtn').style.display = 'none';
+        // 聚焦到提示输入框
+        setTimeout(() => {
+            document.getElementById('aiPrompt').focus();
+        }, 100);
+    }
+}
+
+// 关闭AI写作模态框
+function closeAIWritingModal() {
+    const modal = document.getElementById('aiWritingModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
 // AI内容生成
 function generateAIContent() {
-    const prompt = document.querySelector('#ai-section textarea').value;
+    const prompt = document.getElementById('aiPrompt').value.trim();
+    const titleField = document.getElementById('aiTitle');
+    const contentField = document.getElementById('aiContent');
+    const saveBtn = document.getElementById('saveAIBtn');
+
     if (!prompt) {
-        console.log("No prompt entered");
+        alert('请输入写作提示');
         return;
     }
 
-    // 暂时不执行任何操作，避免弹窗
-    console.log("AI content generation requested with prompt:", prompt);
+    // 模拟AI生成内容（替换为实际的AI API调用）
+    const generatedContent = generateMockAIContent(prompt);
+
+    // 自动生成标题（基于提示的前几个词）
+    const autoTitle = generateAutoTitle(prompt);
+
+    // 填充生成的内容
+    titleField.value = autoTitle;
+    contentField.value = generatedContent;
+
+    // 显示保存按钮
+    saveBtn.style.display = 'inline-block';
+
+    console.log("AI content generated successfully");
+}
+
+// 保存AI生成的文档
+function saveAIDocument() {
+    const title = document.getElementById('aiTitle').value.trim();
+    const content = document.getElementById('aiContent').value.trim();
+
+    if (!title) {
+        alert('请输入文档标题');
+        return;
+    }
+
+    if (!content) {
+        alert('没有内容可保存');
+        return;
+    }
+
+    // 关闭模态框
+    closeAIWritingModal();
+
+    // 创建笔记
+    createNote(title, content);
+
+    // 显示在AI结果区域
+    displayAIResult(title, content);
+}
+
+// 显示AI生成结果
+function displayAIResult(title, content) {
+    const resultsContainer = document.getElementById('ai-results');
+    const resultHTML = `
+        <div style="background: rgba(0, 234, 255, 0.1); border: 1px solid rgba(0, 234, 255, 0.3); border-radius: 12px; padding: 20px; margin-top: 20px;">
+            <h3 style="color: #00eaff; margin-top: 0;">最新AI生成内容</h3>
+            <h4 style="color: white; margin: 10px 0;">${title}</h4>
+            <p style="color: #ccc; line-height: 1.6; margin-bottom: 15px;">${content.length > 200 ? content.substring(0, 200) + '...' : content}</p>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="showSection('notes')" style="background: linear-gradient(45deg, #00eaff, #a100ff); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">查看所有笔记</button>
+                <button onclick="showAIWritingModal()" style="background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 16px; border-radius: 6px; cursor: pointer;">继续AI写作</button>
+            </div>
+        </div>
+    `;
+    resultsContainer.innerHTML = resultHTML;
+}
+
+// 模拟AI内容生成（实际使用时可替换为真实的AI API）
+function generateMockAIContent(prompt) {
+    const templates = {
+        '文章': `# ${prompt}相关文章
+
+这是一篇关于"${prompt}"的详细文章。
+
+## 引言
+在当今快速发展的世界中，${prompt}变得越来越重要。本文将深入探讨这个话题的各个方面。
+
+## 主要内容
+1. **定义与概念**: ${prompt}的基本概念和定义
+2. **重要性**: 为什么${prompt}在现代社会中如此重要
+3. **应用场景**: ${prompt}的实际应用和案例
+4. **未来展望**: ${prompt}的发展趋势和前景
+
+## 结论
+综上所述，${prompt}是一个值得深入研究和关注的重要话题。通过持续学习和实践，我们可以更好地理解和应用相关知识。`,
+
+        '总结': `# ${prompt} - 要点总结
+
+## 核心要点
+- 关键概念：${prompt}的基本定义
+- 主要特征：${prompt}的显著特点
+- 应用价值：${prompt}的实际意义
+
+## 详细分析
+${prompt}作为一个重要概念，具有以下特点：
+1. 实用性强，适用于多种场景
+2. 理论基础扎实，有科学依据
+3. 发展前景广阔，值得深入研究
+
+## 行动建议
+- 深入学习${prompt}的相关理论
+- 实践应用${prompt}的方法技巧
+- 持续关注${prompt}的最新发展`,
+
+        '教程': `# ${prompt} 实用教程
+
+## 准备工作
+在开始学习${prompt}之前，你需要：
+- 基本的理论知识
+- 必要的工具和资源
+- 充足的时间和耐心
+
+## 步骤指南
+
+### 第一步：理解基础
+首先要全面了解${prompt}的基本概念和原理。
+
+### 第二步：实践操作
+通过实际操作来加深对${prompt}的理解。
+
+### 第三步：进阶应用
+掌握${prompt}的高级应用技巧。
+
+## 注意事项
+- 循序渐进，不要急于求成
+- 多加练习，熟能生巧
+- 保持学习，持续改进
+
+## 总结
+通过本教程，你应该已经掌握了${prompt}的基本知识和应用方法。`
+    };
+
+    // 根据提示内容选择合适的模板
+    let selectedTemplate = templates['文章']; // 默认模板
+
+    if (prompt.includes('总结') || prompt.includes('要点') || prompt.includes('概要')) {
+        selectedTemplate = templates['总结'];
+    } else if (prompt.includes('教程') || prompt.includes('如何') || prompt.includes('怎么') || prompt.includes('步骤')) {
+        selectedTemplate = templates['教程'];
+    }
+
+    return selectedTemplate;
+}
+
+// 自动生成标题
+function generateAutoTitle(prompt) {
+    const words = prompt.split(' ').slice(0, 3).join(' ');
+    const titles = [
+        `关于${words}的思考`,
+        `${words}详解`,
+        `${words}实用指南`,
+        `${words}深度分析`,
+        `${words}应用研究`
+    ];
+
+    return titles[Math.floor(Math.random() * titles.length)];
 }
 
 // 登出功能

@@ -80,8 +80,12 @@
     <div id="ai-section" style="display: none;">
       <h1 data-lang="aiTitle">AI Writing Assistant</h1>
       <p data-lang="aiDesc">Use AI to help with your writing and knowledge creation.</p>
-      <textarea data-lang="aiPlaceholder" placeholder="Enter your prompt here..." style="width: 100%; height: 200px; margin: 20px 0; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: none;"></textarea>
-      <button onclick="generateAIContent()" style="width: auto; padding: 10px 20px;" data-lang="generateBtn">Generate Content</button>
+      <div style="margin-top: 30px;">
+        <button onclick="showAIWritingModal()" style="width: auto; padding: 15px 30px; background: linear-gradient(45deg, #00eaff, #a100ff); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer;" data-lang="generateBtn">✨ Start AI Writing</button>
+      </div>
+      <div id="ai-results" style="margin-top: 30px;">
+        <!-- AI生成的内容会显示在这里 -->
+      </div>
     </div>
 
     <div id="notes-section" style="display: none;">
@@ -123,6 +127,35 @@
       <div class="modal-footer">
         <button class="btn-secondary" onclick="closeCreateDocModal()" data-lang="cancelBtn">Cancel</button>
         <button class="btn-primary" onclick="saveNewDocument()" data-lang="saveBtn">Save Document</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI写作模态框 -->
+  <div id="aiWritingModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 data-lang="aiWritingTitle">AI Writing Assistant</h2>
+        <span class="close" onclick="closeAIWritingModal()">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="aiPrompt" data-lang="aiPromptLabel">Writing Prompt:</label>
+          <textarea id="aiPrompt" data-lang="aiPromptPlaceholder" placeholder="Enter your writing prompt here..." rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="aiTitle" data-lang="documentTitle">Document Title:</label>
+          <input type="text" id="aiTitle" data-lang="titlePlaceholder" placeholder="Enter document title..." />
+        </div>
+        <div class="form-group">
+          <label for="aiContent" data-lang="documentContent">Generated Content:</label>
+          <textarea id="aiContent" data-lang="contentPlaceholder" placeholder="AI generated content will appear here..." rows="10" readonly></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeAIWritingModal()" data-lang="cancelBtn">Cancel</button>
+        <button class="btn-primary" onclick="generateAIContent()" data-lang="generateBtn">Generate Content</button>
+        <button class="btn-primary" onclick="saveAIDocument()" data-lang="saveBtn" style="display: none;" id="saveAIBtn">Save to Notes</button>
       </div>
     </div>
   </div>

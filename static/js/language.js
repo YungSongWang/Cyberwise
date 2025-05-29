@@ -81,7 +81,12 @@ const languages = {
         titlePlaceholder: "Enter document title...",
         contentPlaceholder: "Enter document content...",
         cancelBtn: "Cancel",
-        saveBtn: "Save Document"
+        saveBtn: "Save Document",
+
+        // AI Writing 模态框
+        aiWritingTitle: "AI Writing Assistant",
+        aiPromptLabel: "Writing Prompt",
+        aiPromptPlaceholder: "Enter your writing prompt here..."
     },
     zh: {
         // 登录页面
@@ -164,7 +169,12 @@ const languages = {
         titlePlaceholder: "输入文档标题...",
         contentPlaceholder: "输入文档内容...",
         cancelBtn: "取消",
-        saveBtn: "保存文档"
+        saveBtn: "保存文档",
+
+        // AI Writing 模态框
+        aiWritingTitle: "AI 写作助手",
+        aiPromptLabel: "写作提示",
+        aiPromptPlaceholder: "在此输入您的写作提示..."
     }
 };
 

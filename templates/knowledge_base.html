@@ -370,12 +370,12 @@
         <!-- 侧边栏 -->
         <div class="sidebar">
             <div class="logo">
-                <i class="ri-brain-line" style="margin-right: 8px;"></i>
+                <i class="ri-shield-user-line" ></i>
                 <span>CyberWise</span>
             </div>
             
             <div class="user-info">
-                <div>欢迎回来！</div>
+                
                 <div id="user-email"></div>
             </div>
             
@@ -386,17 +386,17 @@
             
             <div class="menu">
                 <div class="menu-item" onclick="goToDashboard()">
-                    <i class="ri-dashboard-line"></i>
+                    <i class="ri-time-line"></i>
                     <span>Start</span>
                 </div>
                 
                 <div class="menu-item" onclick="goToAI()">
-                    <i class="ri-robot-line"></i>
+                    <i class="ri-magic-line"></i>
                     <span>AI Writing</span>
                 </div>
                 
                 <div class="menu-item" onclick="goToNotes()">
-                    <i class="ri-file-text-line"></i>
+                    <i class="ri-quill-pen-line"></i>
                     <span>Notes</span>
                 </div>
                 
@@ -406,17 +406,18 @@
                 </div>
                 
                 <div class="menu-item" onclick="goToFavorites()">
-                    <i class="ri-heart-line"></i>
+                    <i class="ri-star-line"></i>
                     <span>Favorites</span>
                 </div>
                 
                 <div class="menu-item" onclick="goToCommunity()">
-                    <i class="ri-team-line"></i>
+                    <i class="ri-group-line"></i>
                     <span>Community</span>
                 </div>
             </div>
             
             <div class="menu-expand">
+                <i class="ri-arrow-down-s-line"></i>
                 <span>Knowledge Base</span>
             </div>
             
@@ -863,7 +864,7 @@
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 console.log('用户已登录:', user);
-                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('user-email').textContent = `👤 ${user.displayName || user.email}`;
             } else {
                 console.log('用户未登录，重定向到登录页面');
                 alert('请先登录');

@@ -73,7 +73,15 @@ const languages = {
 
         // 工具栏
         language: "Language",
-        logout: "Logout"
+        logout: "Logout",
+
+        // 创建文档模态框
+        documentTitle: "Document Title",
+        documentContent: "Document Content",
+        titlePlaceholder: "Enter document title...",
+        contentPlaceholder: "Enter document content...",
+        cancelBtn: "Cancel",
+        saveBtn: "Save Document"
     },
     zh: {
         // 登录页面
@@ -148,7 +156,15 @@ const languages = {
 
         // 工具栏
         language: "语言",
-        logout: "退出"
+        logout: "退出",
+
+        // 创建文档模态框
+        documentTitle: "文档标题",
+        documentContent: "文档内容",
+        titlePlaceholder: "输入文档标题...",
+        contentPlaceholder: "输入文档内容...",
+        cancelBtn: "取消",
+        saveBtn: "保存文档"
     }
 };
 

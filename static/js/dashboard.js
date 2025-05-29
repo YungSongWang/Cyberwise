@@ -168,10 +168,48 @@ function showSection(sectionName) {
 
 // 创建新文档
 function createNewDocument() {
-    const title = prompt("Enter document title:");
-    if (title) {
-        createNote(title, "");
+    // 显示模态框而不是使用prompt
+    showCreateDocModal();
+}
+
+// 显示创建文档模态框
+function showCreateDocModal() {
+    const modal = document.getElementById('createDocModal');
+    if (modal) {
+        modal.style.display = 'block';
+        // 清空输入框
+        document.getElementById('docTitle').value = '';
+        document.getElementById('docContent').value = '';
+        // 聚焦到标题输入框
+        setTimeout(() => {
+            document.getElementById('docTitle').focus();
+        }, 100);
     }
+}
+
+// 关闭创建文档模态框
+function closeCreateDocModal() {
+    const modal = document.getElementById('createDocModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// 保存新文档
+function saveNewDocument() {
+    const title = document.getElementById('docTitle').value.trim();
+    const content = document.getElementById('docContent').value.trim();
+
+    if (!title) {
+        alert('请输入文档标题');
+        return;
+    }
+
+    // 关闭模态框
+    closeCreateDocModal();
+
+    // 创建笔记
+    createNote(title, content);
 }
 
 // 创建笔记
@@ -182,27 +220,90 @@ async function createNote(title, content) {
             content: content,
             userId: currentUser.uid,
             username: currentUser.displayName || currentUser.email,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
             isFavorite: false
         };
 
-        await db.collection("notes").add(noteData);
-
-        // 尝试更新用户笔记计数，如果失败也不影响笔记创建
-        try {
-            await db.collection("users").doc(currentUser.uid).update({
-                notesCount: firebase.firestore.FieldValue.increment(1)
-            });
-        } catch (updateError) {
-            console.warn("Failed to update notes count:", updateError);
-        }
+        // 只保存到本地存储
+        saveNoteToLocal(noteData);
 
         alert("✅ " + getText('noteCreated'));
         loadNotes();
     } catch (error) {
         console.error("Error creating note:", error);
         alert("❌ Failed to create note: " + error.message);
+    }
+}
+
+// 保存笔记到本地存储
+function saveNoteToLocal(noteData) {
+    try {
+        // 获取现有的本地笔记
+        const localNotes = getLocalNotes();
+
+        // 创建本地笔记对象
+        const localNote = {
+            id: 'local_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+            title: noteData.title,
+            content: noteData.content,
+            userId: noteData.userId,
+            username: noteData.username,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            isFavorite: noteData.isFavorite || false,
+            isLocal: true, // 标记为本地笔记
+            synced: false // 标记为未同步
+        };
+
+        // 添加到本地笔记列表
+        localNotes.push(localNote);
+
+        // 保存到localStorage
+        localStorage.setItem('cyberwise_local_notes', JSON.stringify(localNotes));
+
+        console.log("笔记已保存到本地存储");
+    } catch (error) {
+        console.error("保存到本地存储失败:", error);
+    }
+}
+
+// 获取本地笔记
+function getLocalNotes() {
+    try {
+        const notes = localStorage.getItem('cyberwise_local_notes');
+        return notes ? JSON.parse(notes) : [];
+    } catch (error) {
+        console.error("读取本地笔记失败:", error);
+        return [];
+    }
+}
+
+// 删除本地笔记
+function deleteLocalNote(noteId) {
+    try {
+        const localNotes = getLocalNotes();
+        const filteredNotes = localNotes.filter(note => note.id !== noteId);
+        localStorage.setItem('cyberwise_local_notes', JSON.stringify(filteredNotes));
+        console.log("本地笔记已删除");
+    } catch (error) {
+        console.error("删除本地笔记失败:", error);
+    }
+}
+
+// 更新本地笔记收藏状态
+function updateLocalNoteFavorite(noteId, isFavorite) {
+    try {
+        const localNotes = getLocalNotes();
+        const noteIndex = localNotes.findIndex(note => note.id === noteId);
+        if (noteIndex !== -1) {
+            localNotes[noteIndex].isFavorite = isFavorite;
+            localNotes[noteIndex].updatedAt = new Date().toISOString();
+            localStorage.setItem('cyberwise_local_notes', JSON.stringify(localNotes));
+            console.log("本地笔记收藏状态已更新");
+        }
+    } catch (error) {
+        console.error("更新本地笔记失败:", error);
     }
 }
 
@@ -214,36 +315,64 @@ async function loadNotes() {
 
         notesContainer.innerHTML = '<p>' + getText('loadingNotes') + '</p>';
 
-        const notesSnapshot = await db.collection("notes")
-            .where("userId", "==", currentUser.uid)
-            .orderBy("updatedAt", "desc")
-            .get();
+        // 只获取本地笔记
+        const localNotes = getLocalNotes().filter(note => note.userId === currentUser.uid);
 
-        if (notesSnapshot.empty) {
+        if (localNotes.length === 0) {
             notesContainer.innerHTML = '<p>' + getText('noNotes') + '</p>';
             return;
         }
 
+        // 按更新时间排序
+        localNotes.sort((a, b) => {
+            const dateA = new Date(a.updatedAt);
+            const dateB = new Date(b.updatedAt);
+            return dateB - dateA;
+        });
+
         let notesHTML = '';
-        notesSnapshot.forEach(doc => {
-            const note = doc.data();
-            const date = note.updatedAt ? note.updatedAt.toDate().toLocaleDateString() : 'Unknown';
+        localNotes.forEach(note => {
+            const date = new Date(note.updatedAt).toLocaleDateString();
+
+            // 创建内容预览（最多显示100个字符）
+            const contentPreview = note.content ?
+                (note.content.length > 100 ? note.content.substring(0, 100) + '...' : note.content) :
+                '暂无内容';
 
             notesHTML += `
-        <div class="note-item" style="background: rgba(255,255,255,0.05); padding: 15px; margin: 10px 0; border-radius: 8px; cursor: pointer;" onclick="editNote('${doc.id}')">
-          <h4 style="margin: 0 0 10px 0; color: #00eaff;">${note.title}</h4>
-          <p style="margin: 0; color: #ccc; font-size: 14px;">${getText('lastUpdated')} ${date}</p>
-          <div style="margin-top: 10px;">
-            <button onclick="event.stopPropagation(); deleteNote('${doc.id}')" style="background: #ff6b6b; padding: 5px 10px; font-size: 12px; width: auto;">${getText('deleteBtn')}</button>
-            <button onclick="event.stopPropagation(); toggleFavorite('${doc.id}', ${note.isFavorite})" style="background: ${note.isFavorite ? '#ffd700' : '#666'}; padding: 5px 10px; font-size: 12px; width: auto; margin-left: 10px;">
-              ${note.isFavorite ? '★' : '☆'}
-            </button>
+        <div class="note-item" style="background: rgba(255,255,255,0.05); padding: 20px; margin: 15px 0; border-radius: 12px; cursor: pointer; border: 1px solid rgba(0, 234, 255, 0.1); transition: all 0.3s ease;" onclick="editNote('${note.id}', true)">
+          <h4 style="margin: 0 0 10px 0; color: #00eaff; font-size: 18px; font-weight: 600;">${note.title}</h4>
+          <p style="margin: 0 0 15px 0; color: #ccc; font-size: 14px; line-height: 1.5;">${contentPreview}</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+            <span style="color: #888; font-size: 12px;">${getText('lastUpdated')} ${date}</span>
+            <div style="display: flex; gap: 10px;">
+              <button onclick="event.stopPropagation(); toggleFavorite('${note.id}', ${note.isFavorite}, true)" style="background: ${note.isFavorite ? '#ffd700' : 'rgba(255,255,255,0.1)'}; color: ${note.isFavorite ? '#000' : '#fff'}; padding: 6px 12px; font-size: 12px; width: auto; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">
+                ${note.isFavorite ? '★ 已收藏' : '☆ 收藏'}
+              </button>
+              <button onclick="event.stopPropagation(); deleteNote('${note.id}', true)" style="background: #ff6b6b; color: white; padding: 6px 12px; font-size: 12px; width: auto; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">${getText('deleteBtn')}</button>
+            </div>
           </div>
         </div>
       `;
         });
 
         notesContainer.innerHTML = notesHTML;
+
+        // 添加悬停效果
+        document.querySelectorAll('.note-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 25px rgba(0, 234, 255, 0.15)';
+                this.style.borderColor = 'rgba(0, 234, 255, 0.3)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+                this.style.borderColor = 'rgba(0, 234, 255, 0.1)';
+            });
+        });
+
     } catch (error) {
         console.error("Error loading notes:", error);
         const notesContainer = document.getElementById('notes-list');
@@ -254,28 +383,36 @@ async function loadNotes() {
 }
 
 // 编辑笔记
-function editNote(noteId) {
+function editNote(noteId, isLocal) {
     // 暂时不执行任何操作，避免弹窗
-    console.log('Edit note clicked for ID:', noteId);
+    console.log('Edit note clicked for ID:', noteId, 'isLocal:', isLocal);
 }
 
 // 删除笔记
-async function deleteNote(noteId) {
+async function deleteNote(noteId, isLocal = false) {
     if (confirm(getText('confirmDelete'))) {
         try {
-            await db.collection("notes").doc(noteId).delete();
+            if (isLocal) {
+                // 删除本地笔记
+                deleteLocalNote(noteId);
+                alert("✅ " + getText('noteDeleted'));
+                loadNotes();
+            } else {
+                // 删除Firebase笔记
+                await db.collection("notes").doc(noteId).delete();
 
-            // 尝试更新用户笔记计数，如果失败也不影响笔记删除
-            try {
-                await db.collection("users").doc(currentUser.uid).update({
-                    notesCount: firebase.firestore.FieldValue.increment(-1)
-                });
-            } catch (updateError) {
-                console.warn("Failed to update notes count:", updateError);
+                // 尝试更新用户笔记计数，如果失败也不影响笔记删除
+                try {
+                    await db.collection("users").doc(currentUser.uid).update({
+                        notesCount: firebase.firestore.FieldValue.increment(-1)
+                    });
+                } catch (updateError) {
+                    console.warn("Failed to update notes count:", updateError);
+                }
+
+                alert("✅ " + getText('noteDeleted'));
+                loadNotes();
             }
-
-            alert("✅ " + getText('noteDeleted'));
-            loadNotes();
         } catch (error) {
             console.error("Error deleting note:", error);
             alert("❌ Failed to delete note: " + error.message);
@@ -284,14 +421,20 @@ async function deleteNote(noteId) {
 }
 
 // 切换收藏状态
-async function toggleFavorite(noteId, currentStatus) {
+async function toggleFavorite(noteId, currentStatus, isLocal = false) {
     try {
-        await db.collection("notes").doc(noteId).update({
-            isFavorite: !currentStatus,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        });
-
-        loadNotes();
+        if (isLocal) {
+            // 更新本地笔记收藏状态
+            updateLocalNoteFavorite(noteId, !currentStatus);
+            loadNotes();
+        } else {
+            // 更新Firebase笔记收藏状态
+            await db.collection("notes").doc(noteId).update({
+                isFavorite: !currentStatus,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            loadNotes();
+        }
     } catch (error) {
         console.error("Error toggling favorite:", error);
         alert("❌ Failed to update favorite status.");
@@ -424,6 +567,96 @@ function goToKnowledgeBase() {
     }
 }
 
+// 同步本地笔记到Firebase
+async function syncLocalNotesToFirebase() {
+    try {
+        const localNotes = getLocalNotes().filter(note =>
+            note.userId === currentUser.uid && !note.synced
+        );
+
+        if (localNotes.length === 0) {
+            console.log("没有需要同步的本地笔记");
+            return;
+        }
+
+        console.log(`开始同步 ${localNotes.length} 个本地笔记到Firebase`);
+
+        let syncedCount = 0;
+        for (const localNote of localNotes) {
+            try {
+                // 准备Firebase数据
+                const firebaseData = {
+                    title: localNote.title,
+                    content: localNote.content,
+                    userId: localNote.userId,
+                    username: localNote.username,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    isFavorite: localNote.isFavorite
+                };
+
+                // 保存到Firebase
+                await db.collection("notes").add(firebaseData);
+
+                // 标记为已同步
+                const allLocalNotes = getLocalNotes();
+                const noteIndex = allLocalNotes.findIndex(note => note.id === localNote.id);
+                if (noteIndex !== -1) {
+                    allLocalNotes[noteIndex].synced = true;
+                    localStorage.setItem('cyberwise_local_notes', JSON.stringify(allLocalNotes));
+                }
+
+                syncedCount++;
+                console.log(`笔记 "${localNote.title}" 同步成功`);
+
+            } catch (error) {
+                console.error(`同步笔记 "${localNote.title}" 失败:`, error);
+            }
+        }
+
+        if (syncedCount > 0) {
+            alert(`✅ 成功同步 ${syncedCount} 个本地笔记到云端`);
+            loadNotes(); // 重新加载笔记列表
+        }
+
+    } catch (error) {
+        console.error("同步本地笔记失败:", error);
+    }
+}
+
+// 清理已同步的本地笔记
+function cleanupSyncedLocalNotes() {
+    try {
+        const localNotes = getLocalNotes();
+        const unsyncedNotes = localNotes.filter(note => !note.synced);
+        localStorage.setItem('cyberwise_local_notes', JSON.stringify(unsyncedNotes));
+        console.log("已清理同步完成的本地笔记");
+    } catch (error) {
+        console.error("清理本地笔记失败:", error);
+    }
+}
+
+// 检查网络状态并自动同步
+function checkNetworkAndSync() {
+    if (navigator.onLine) {
+        console.log("网络已连接，尝试同步本地笔记");
+        syncLocalNotesToFirebase();
+    }
+}
+
+// 添加网络状态监听
+window.addEventListener('online', checkNetworkAndSync);
+
+// 获取本地笔记统计信息
+function getLocalNotesStats() {
+    const localNotes = getLocalNotes().filter(note => note.userId === currentUser.uid);
+    const unsyncedCount = localNotes.filter(note => !note.synced).length;
+    return {
+        total: localNotes.length,
+        unsynced: unsyncedCount
+    };
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Dashboard页面加载完成');
@@ -508,6 +741,37 @@ function initializeDashboard() {
     if (typeof initLanguage === 'function') {
         initLanguage();
     }
+
+    // 添加模态框外部点击关闭功能
+    const modal = document.getElementById('createDocModal');
+    if (modal) {
+        modal.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                closeCreateDocModal();
+            }
+        });
+    }
+
+    // 添加ESC键关闭模态框功能
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            const modal = document.getElementById('createDocModal');
+            if (modal && modal.style.display === 'block') {
+                closeCreateDocModal();
+            }
+        }
+    });
+
+    // 检查并同步本地笔记
+    setTimeout(() => {
+        checkNetworkAndSync();
+
+        // 显示本地笔记统计信息
+        const stats = getLocalNotesStats();
+        if (stats.unsynced > 0) {
+            console.log(`发现 ${stats.unsynced} 个未同步的本地笔记`);
+        }
+    }, 2000); // 延迟2秒执行，确保用户认证完成
 
     console.log('Dashboard初始化完成');
 } 

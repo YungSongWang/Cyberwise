@@ -4,130 +4,853 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberWise - 知识库</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <style>
+        * {
+            font-family: inherit;
+        }
+        
+        /* 知识库容器 */
+        .kb-container {
+            display: flex;
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        /* 侧边栏固定宽度 */
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            background-color: #1e1e1e;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        /* 主内容区域 */
+        .kb-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+            height: 100vh;
+            overflow: hidden;
+            max-width: calc(100vw - 260px);
+            width: calc(100vw - 260px);
+        }
+        
+        /* 上方搜索面板 */
+        .kb-search-panel {
+            height: 200px;
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .kb-search-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #00eaff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .kb-search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+        }
+        
+        .kb-search-row {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+        }
+        
+        .kb-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .kb-input-group.keyword {
+            flex: 2;
+        }
+        
+        .kb-input-group.category {
+            flex: 1;
+        }
+        
+        .kb-input-group.actions {
+            flex: 0 0 auto;
+        }
+        
+        .kb-input-group label {
+            font-size: 13px;
+            color: #ccc;
+            font-weight: 500;
+            height: 18px;
+            line-height: 18px;
+            margin-bottom: 2px;
+        }
+        
+        .kb-input, .kb-select {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            height: 40px;
+            box-sizing: border-box;
+        }
+        
+        .kb-input:focus, .kb-select:focus {
+            outline: none;
+            border-color: #00eaff;
+            box-shadow: 0 0 0 2px rgba(0, 234, 255, 0.2);
+        }
+        
+        .kb-input::placeholder {
+            color: #888;
+        }
+        
+        .kb-select {
+            cursor: pointer;
+        }
+        
+        .kb-select option {
+            background: #1e1e1e;
+            color: white;
+        }
+        
+        .kb-btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 40px;
+            box-sizing: border-box;
+        }
+        
+        .kb-btn-primary {
+            background: linear-gradient(45deg, #00eaff, #a100ff);
+            color: white;
+        }
+        
+        .kb-btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+        }
+        
+        .kb-btn-secondary {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+        
+        .kb-btn-secondary:hover {
+            background: rgba(255, 107, 107, 0.3);
+        }
+        
+        .kb-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* 下方结果框 - 占用剩余空间 */
+        .kb-results-panel {
+            flex: 1;
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            min-height: 0;
+        }
+        
+        .kb-results-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+            background: rgba(0, 234, 255, 0.05);
+            flex-shrink: 0;
+        }
+        
+        .kb-results-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00eaff;
+            margin-bottom: 5px;
+        }
+        
+        .kb-results-subtitle {
+            font-size: 13px;
+            color: #ccc;
+        }
+        
+        .kb-results-content {
+            flex: 1;
+            padding: 20px 25px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 234, 255, 0.5) rgba(255, 255, 255, 0.1);
+        }
+        
+        .kb-results-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .kb-results-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        .kb-results-content::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #00eaff, #a100ff);
+            border-radius: 4px;
+        }
+        
+        /* 欢迎消息 */
+        .kb-welcome {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+        
+        .kb-welcome-icon {
+            font-size: 48px;
+            color: #00eaff;
+            margin-bottom: 15px;
+        }
+        
+        .kb-welcome h3 {
+            font-size: 20px;
+            color: #00eaff;
+            margin-bottom: 10px;
+        }
+        
+        .kb-welcome p {
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .kb-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .kb-stat-item {
+            background: rgba(0, 234, 255, 0.1);
+            border: 1px solid rgba(0, 234, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .kb-stat-number {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #00eaff;
+            margin-bottom: 4px;
+        }
+        
+        .kb-stat-label {
+            font-size: 11px;
+            color: #ccc;
+        }
+        
+        /* 加载状态 */
+        .kb-loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        
+        .kb-loading-icon {
+            font-size: 48px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+            color: #00eaff;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .kb-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                order: 2;
+            }
+            
+            .kb-main {
+                width: 100%;
+                max-width: 100%;
+                order: 1;
+                height: auto;
+                min-height: 60vh;
+            }
+            
+            .kb-search-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .kb-input-group.keyword,
+            .kb-input-group.category {
+                flex: 1;
+            }
+            
+            .kb-actions {
+                flex-direction: column;
+            }
+            
+            .kb-search-panel {
+                height: auto;
+                padding: 20px;
+            }
+            
+            .kb-results-panel {
+                min-height: 400px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .kb-main {
+                max-width: calc(100vw - 260px);
+                width: calc(100vw - 260px);
+            }
+        }
+    </style>
 </head>
 
-<body style="margin: 0; display: flex; height: 100vh; background-color: #0f0f0f;" data-page="knowledge">
+<body>
+    <div class="kb-container">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="logo">
+                <i class="ri-brain-line" style="margin-right: 8px;"></i>
+                <span>CyberWise</span>
+            </div>
+            
+            <div class="user-info">
+                <div>欢迎回来！</div>
+                <div id="user-email"></div>
+            </div>
+            
+            <div class="search-box">
+                <i class="ri-search-line" style="margin-right: 8px; color: #888;"></i>
+                <input type="text" placeholder="Search Knowledge Base">
+            </div>
+            
+            <div class="menu">
+                <div class="menu-item" onclick="goToDashboard()">
+                    <i class="ri-dashboard-line"></i>
+                    <span>Start</span>
+                </div>
+                
+                <div class="menu-item" onclick="goToAI()">
+                    <i class="ri-robot-line"></i>
+                    <span>AI Writing</span>
+                </div>
+                
+                <div class="menu-item" onclick="goToNotes()">
+                    <i class="ri-file-text-line"></i>
+                    <span>Notes</span>
+                </div>
+                
+                <div class="menu-item" style="background-color: #2c2c2c; color: #00eaff;">
+                    <i class="ri-book-open-line"></i>
+                    <span>Knowledge Base</span>
+                </div>
+                
+                <div class="menu-item" onclick="goToFavorites()">
+                    <i class="ri-heart-line"></i>
+                    <span>Favorites</span>
+                </div>
+                
+                <div class="menu-item" onclick="goToCommunity()">
+                    <i class="ri-team-line"></i>
+                    <span>Community</span>
+                </div>
+            </div>
+            
+            <div class="menu-expand">
+                <span>Knowledge Base</span>
+            </div>
+            
+            <div class="logout" onclick="logout()">
+                <i class="ri-logout-box-line"></i>
+                <span>Log Out</span>
+            </div>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="kb-main">
+            <!-- 上方搜索面板 -->
+            <div class="kb-search-panel">
+                <div class="kb-search-title">
+                    <i class="ri-search-line"></i>
+                    知识库搜索
+                </div>
+                
+                <div class="kb-search-form">
+                    <div class="kb-search-row">
+                        <div class="kb-input-group keyword">
+                            <label for="kb-keyword">关键词搜索</label>
+                            <input type="text" id="kb-keyword" class="kb-input" placeholder="输入关键词搜索问题...">
+                        </div>
+                        
+                        <div class="kb-input-group category">
+                            <label for="kb-category">主分类</label>
+                            <select id="kb-category" class="kb-select">
+                                <option value="">所有分类</option>
+                            </select>
+                        </div>
+                        
+                        <div class="kb-input-group category">
+                            <label for="kb-subcategory">子分类</label>
+                            <select id="kb-subcategory" class="kb-select">
+                                <option value="">所有子分类</option>
+                            </select>
+                        </div>
+                        
+                        <div class="kb-input-group actions">
+                            <label>&nbsp;</label>
+                            <div class="kb-actions">
+                                <button class="kb-btn kb-btn-primary" onclick="performSearch()">
+                                    <i class="ri-search-line"></i>
+                                    搜索
+                                </button>
+                                <button class="kb-btn kb-btn-secondary" onclick="resetSearch()">
+                                    <i class="ri-refresh-line"></i>
+                                    重置
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 下方结果面板 -->
+            <div class="kb-results-panel">
+                <div class="kb-results-header">
+                    <div class="kb-results-title" id="results-title">搜索结果</div>
+                    <div class="kb-results-subtitle" id="results-subtitle">请使用上方搜索框开始搜索</div>
+                </div>
+                
+                <div class="kb-results-content" id="results-content">
+                    <!-- 初始欢迎界面 -->
+                    <div class="kb-welcome">
+                        <div class="kb-welcome-icon">
+                            <i class="ri-book-open-line"></i>
+                        </div>
+                        <h3>欢迎使用知识库 🎓</h3>
+                        <p>这里包含了丰富的技术问题和解决方案，使用上方搜索功能开始探索吧！</p>
+                        <div class="kb-stats-grid">
+                            <div class="kb-stat-item">
+                                <span class="kb-stat-number">385</span>
+                                <span class="kb-stat-label">问题总数</span>
+                            </div>
+                            <div class="kb-stat-item">
+                                <span class="kb-stat-number">8</span>
+                                <span class="kb-stat-label">主要分类</span>
+                            </div>
+                            <div class="kb-stat-item">
+                                <span class="kb-stat-number">20</span>
+                                <span class="kb-stat-label">子分类</span>
+                            </div>
+                            <div class="kb-stat-item">
+                                <span class="kb-stat-number">326</span>
+                                <span class="kb-stat-label">AI答案</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 右上角工具栏 -->
     <div class="top-toolbar">
         <button id="language-btn" class="toolbar-btn" onclick="toggleLanguage()">中文</button>
         <button class="toolbar-btn logout-btn" onclick="logout()">
-            <i class="ri-logout-box-line"></i> <span data-lang="logout">Logout</span>
+            <i class="ri-logout-box-line"></i> <span>Logout</span>
         </button>
-    </div>
-
-    <!-- 侧边栏 -->
-    <div class="sidebar">
-        <div class="logo">
-            <i class="ri-brain-line" style="margin-right: 8px;"></i>
-            <span data-lang="title">CyberWise</span>
-        </div>
-        
-        <div class="user-info">
-            <div>欢迎回来！</div>
-            <div id="user-email"></div>
-        </div>
-        
-        <div class="search-box">
-            <i class="ri-search-line" style="margin-right: 8px; color: #888;"></i>
-            <input type="text" data-lang="searchPlaceholder" placeholder="Search Knowledge Base">
-        </div>
-        
-        <div class="menu">
-            <div class="menu-item" onclick="goToDashboard()">
-                <i class="ri-dashboard-line"></i>
-                <span data-lang="menuStart">Start</span>
-            </div>
-            
-            <div class="menu-item" onclick="goToAI()">
-                <i class="ri-robot-line"></i>
-                <span data-lang="menuAI">AI Writing</span>
-            </div>
-            
-            <div class="menu-item" onclick="goToNotes()">
-                <i class="ri-file-text-line"></i>
-                <span data-lang="menuNotes">Notes</span>
-            </div>
-            
-            <div class="menu-item" style="background-color: #2c2c2c; color: #00eaff;">
-                <i class="ri-book-open-line"></i>
-                <span data-lang="knowledgeBase">Knowledge Base</span>
-            </div>
-            
-            <div class="menu-item" onclick="goToFavorites()">
-                <i class="ri-heart-line"></i>
-                <span data-lang="menuFavorites">Favorites</span>
-            </div>
-            
-            <div class="menu-item" onclick="goToCommunity()">
-                <i class="ri-team-line"></i>
-                <span data-lang="menuCommunity">Community</span>
-            </div>
-        </div>
-        
-        <div class="menu-expand">
-            <span data-lang="knowledgeBase">Knowledge Base</span>
-        </div>
-        
-        <div class="logout" onclick="logout()">
-            <i class="ri-logout-box-line"></i>
-            <span data-lang="logOut">Log Out</span>
-        </div>
-    </div>
-    
-    <!-- 主要内容区域 -->
-    <div class="main">
-        <div id="knowledge-search-container">
-            <!-- 知识库搜索界面将在这里动态生成 -->
-            <div style="text-align: center; padding: 60px 20px; color: #888;">
-                <i class="ri-loader-4-line" style="font-size: 48px; animation: spin 1s linear infinite;"></i>
-                <h3>正在加载知识库...</h3>
-                <p>请稍候，正在初始化数据...</p>
-            </div>
-        </div>
     </div>
 
     <!-- 脚本文件 -->
     <script src="../static/js/firebase-init.js"></script>
     <script src="../static/js/language.js"></script>
-    <script src="../static/js/knowledge_base.js"></script>
     
     <script>
+        // 知识库数据
+        let knowledgeData = {
+            questions: [],
+            stats: {},
+            isLoaded: false
+        };
+
         // 页面导航函数
         function goToDashboard() {
             window.location.href = window.location.origin + '/templates/dashboard.html';
         }
         
         function goToAI() {
-            // TODO: 创建AI页面
-            alert('AI Writing功能即将上线！');
+            window.location.href = window.location.origin + '/templates/dashboard.html#ai';
         }
         
         function goToNotes() {
-            // TODO: 创建笔记页面
-            alert('Notes功能即将上线！');
+            window.location.href = window.location.origin + '/templates/dashboard.html#notes';
         }
         
         function goToFavorites() {
-            // TODO: 创建收藏页面
-            alert('Favorites功能即将上线！');
+            window.location.href = window.location.origin + '/templates/dashboard.html#favorites';
         }
         
         function goToCommunity() {
-            // TODO: 创建社区页面
-            alert('Community功能即将上线！');
+            window.location.href = window.location.origin + '/templates/dashboard.html#community';
         }
-        
+
+        // 初始化页面
+        async function initKnowledgeBase() {
+            console.log('正在初始化知识库...');
+            
+            // 显示加载状态
+            showLoading();
+            
+            try {
+                // 加载数据
+                await loadKnowledgeData();
+                
+                // 初始化搜索控件
+                initializeControls();
+                
+                // 显示欢迎界面
+                showWelcome();
+                
+                console.log('知识库初始化完成');
+            } catch (error) {
+                console.error('知识库初始化失败:', error);
+                showError('加载知识库数据失败，请刷新页面重试');
+            }
+        }
+
+        // 加载知识库数据
+        async function loadKnowledgeData() {
+            try {
+                const [questionsResponse, statsResponse] = await Promise.all([
+                    fetch('/static/data/questions_dataset.json'),
+                    fetch('/static/data/dataset_stats.json')
+                ]);
+
+                if (!questionsResponse.ok || !statsResponse.ok) {
+                    throw new Error('无法加载数据文件');
+                }
+
+                knowledgeData.questions = await questionsResponse.json();
+                knowledgeData.stats = await statsResponse.json();
+                knowledgeData.isLoaded = true;
+                
+                console.log(`加载了 ${knowledgeData.questions.length} 个问题`);
+            } catch (error) {
+                console.error('加载数据失败:', error);
+                throw error;
+            }
+        }
+
+        // 初始化搜索控件
+        function initializeControls() {
+            const categorySelect = document.getElementById('kb-category');
+            const subcategorySelect = document.getElementById('kb-subcategory');
+            
+            // 填充分类选项
+            knowledgeData.stats.categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                categorySelect.appendChild(option);
+            });
+            
+            // 填充子分类选项
+            knowledgeData.stats.subcategories.forEach(subcategory => {
+                const option = document.createElement('option');
+                option.value = subcategory;
+                option.textContent = subcategory;
+                subcategorySelect.appendChild(option);
+            });
+            
+            // 绑定回车搜索
+            document.getElementById('kb-keyword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        // 显示加载状态
+        function showLoading() {
+            const content = document.getElementById('results-content');
+            content.innerHTML = `
+                <div class="kb-loading">
+                    <div class="kb-loading-icon">
+                        <i class="ri-loader-4-line"></i>
+                    </div>
+                    <h3>正在加载知识库...</h3>
+                    <p>请稍候，正在初始化数据...</p>
+                </div>
+            `;
+        }
+
+        // 显示欢迎界面
+        function showWelcome() {
+            const content = document.getElementById('results-content');
+            content.innerHTML = `
+                <div class="kb-welcome">
+                    <div class="kb-welcome-icon">
+                        <i class="ri-book-open-line"></i>
+                    </div>
+                    <h3>欢迎使用知识库 🎓</h3>
+                    <p>这里包含了 ${knowledgeData.stats.total_questions} 个技术问题和解决方案，使用上方搜索功能开始探索吧！</p>
+                    <div class="kb-stats-grid">
+                        <div class="kb-stat-item">
+                            <span class="kb-stat-number">${knowledgeData.stats.total_questions}</span>
+                            <span class="kb-stat-label">问题总数</span>
+                        </div>
+                        <div class="kb-stat-item">
+                            <span class="kb-stat-number">${knowledgeData.stats.categories.length}</span>
+                            <span class="kb-stat-label">主要分类</span>
+                        </div>
+                        <div class="kb-stat-item">
+                            <span class="kb-stat-number">${knowledgeData.stats.subcategories.length}</span>
+                            <span class="kb-stat-label">子分类</span>
+                        </div>
+                        <div class="kb-stat-item">
+                            <span class="kb-stat-number">${knowledgeData.questions.filter(q => q.ai_answer).length}</span>
+                            <span class="kb-stat-label">AI答案</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('results-title').textContent = '搜索结果';
+            document.getElementById('results-subtitle').textContent = '请使用上方搜索框开始搜索';
+        }
+
+        // 显示错误信息
+        function showError(message) {
+            const content = document.getElementById('results-content');
+            content.innerHTML = `
+                <div class="kb-loading">
+                    <div style="font-size: 48px; color: #ff6b6b; margin-bottom: 20px;">
+                        <i class="ri-error-warning-line"></i>
+                    </div>
+                    <h3>加载失败</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+        // 执行搜索
+        function performSearch() {
+            if (!knowledgeData.isLoaded) {
+                console.log('数据还未加载完成');
+                return;
+            }
+            
+            const keyword = document.getElementById('kb-keyword').value.trim();
+            const category = document.getElementById('kb-category').value;
+            const subcategory = document.getElementById('kb-subcategory').value;
+            
+            console.log('搜索参数:', { keyword, category, subcategory });
+            
+            let results = knowledgeData.questions;
+            
+            // 关键词搜索
+            if (keyword) {
+                const searchTerms = keyword.toLowerCase().split(' ');
+                results = results.filter(item => {
+                    const searchText = `${item.title} ${item.question} ${item.human_answer} ${item.ai_answer}`.toLowerCase();
+                    return searchTerms.some(term => searchText.includes(term));
+                });
+            }
+            
+            // 分类筛选
+            if (category) {
+                results = results.filter(item => item.category === category);
+            }
+            
+            if (subcategory) {
+                results = results.filter(item => item.subcategory === subcategory);
+            }
+            
+            displayResults(results, keyword);
+        }
+
+        // 显示搜索结果
+        function displayResults(results, keyword) {
+            const content = document.getElementById('results-content');
+            const title = document.getElementById('results-title');
+            const subtitle = document.getElementById('results-subtitle');
+            
+            title.textContent = `搜索结果 (${results.length} 个)`;
+            subtitle.textContent = keyword ? `关键词: "${keyword}"` : '按条件筛选的结果';
+            
+            if (results.length === 0) {
+                content.innerHTML = `
+                    <div class="kb-loading">
+                        <div style="font-size: 48px; color: #888; margin-bottom: 20px;">
+                            <i class="ri-search-line"></i>
+                        </div>
+                        <h3>未找到相关结果</h3>
+                        <p>请尝试其他关键词或调整筛选条件</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let resultsHTML = '';
+            results.forEach(item => {
+                resultsHTML += createResultCard(item);
+            });
+            
+            content.innerHTML = resultsHTML;
+            content.scrollTop = 0;
+        }
+
+        // 创建结果卡片
+        function createResultCard(item) {
+            return `
+                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(0,234,255,0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; transition: all 0.3s ease; width: 100%; box-sizing: border-box;" onmouseover="this.style.borderColor='rgba(0,234,255,0.5)'" onmouseout="this.style.borderColor='rgba(0,234,255,0.2)'">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;">
+                            <span style="background: linear-gradient(45deg, #00eaff, #a100ff); color: white; padding: 4px 8px; border-radius: 20px; font-size: 12px; font-weight: bold; flex-shrink: 0;">#${item.index}</span>
+                            <h4 style="margin: 0; color: white; font-size: 18px; line-height: 1.4; font-weight: 600; word-wrap: break-word; overflow-wrap: break-word;">${item.title}</h4>
+                        </div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap; flex-shrink: 0;">
+                            <span style="background: rgba(0, 234, 255, 0.2); color: #00eaff; padding: 4px 10px; border-radius: 15px; font-size: 12px; border: 1px solid rgba(0, 234, 255, 0.3); white-space: nowrap;">${item.category}</span>
+                            ${item.subcategory ? `<span style="background: rgba(161, 0, 255, 0.2); color: #a100ff; padding: 4px 10px; border-radius: 15px; font-size: 12px; border: 1px solid rgba(161, 0, 255, 0.3); white-space: nowrap;">${item.subcategory}</span>` : ''}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #00eaff;">
+                            <h5 style="margin: 0 0 12px 0; color: #00eaff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                                <i class="ri-question-line"></i> 问题
+                            </h5>
+                            <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.question, 200)}</p>
+                        </div>
+                        
+                        ${item.human_answer ? `
+                            <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(0, 234, 255, 0.05); border-left: 3px solid #00eaff;">
+                                <h5 style="margin: 0 0 12px 0; color: #00eaff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                                    <i class="ri-user-line"></i> 人工答案
+                                </h5>
+                                <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.human_answer, 200)}</p>
+                            </div>
+                        ` : ''}
+                        
+                        ${item.ai_answer ? `
+                            <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(161, 0, 255, 0.05); border-left: 3px solid #a100ff;">
+                                <h5 style="margin: 0 0 12px 0; color: #a100ff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
+                                    <i class="ri-robot-line"></i> AI答案
+                                </h5>
+                                <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.ai_answer, 200)}</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <button onclick="viewDetails('${item.id}')" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <i class="ri-eye-line"></i> 查看详情
+                        </button>
+                        <button onclick="saveToNotes('${item.id}')" style="background: linear-gradient(45deg, #a100ff, #7f00ff); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                            <i class="ri-bookmark-line"></i> 保存到笔记
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 重置搜索
+        function resetSearch() {
+            document.getElementById('kb-keyword').value = '';
+            document.getElementById('kb-category').value = '';
+            document.getElementById('kb-subcategory').value = '';
+            showWelcome();
+        }
+
+        // 辅助函数：截断文本
+        function truncateText(text, maxLength) {
+            if (text && text.length > maxLength) {
+                return text.substring(0, maxLength) + '...';
+            }
+            return text || '';
+        }
+
+        // 查看详情（简化版）
+        function viewDetails(itemId) {
+            const item = knowledgeData.questions.find(q => q.id === itemId);
+            if (item) {
+                alert(`问题详情：\n\n${item.title}\n\n${item.question}\n\n${item.human_answer || item.ai_answer || '暂无答案'}`);
+            }
+        }
+
+        // 保存到笔记（简化版）
+        function saveToNotes(itemId) {
+            const item = knowledgeData.questions.find(q => q.id === itemId);
+            if (item) {
+                console.log('保存笔记:', item.title);
+                alert('保存功能将在完整版本中实现');
+            }
+        }
+
         // 退出登录
         function logout() {
-            if (confirm(getText('confirmLogout') || '确定要退出登录吗？')) {
+            if (confirm('确定要退出登录吗？')) {
                 firebase.auth().signOut().then(() => {
-                    alert(getText('loggedOut') || '已退出登录');
+                    alert('已退出登录');
                     window.location.href = window.location.origin + '/templates/login.html';
                 }).catch(error => {
                     console.error('退出登录失败:', error);
@@ -135,7 +858,7 @@
                 });
             }
         }
-        
+
         // 检查用户登录状态
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
@@ -143,20 +866,16 @@
                 document.getElementById('user-email').textContent = user.email;
             } else {
                 console.log('用户未登录，重定向到登录页面');
-                alert(getText('notLoggedIn') || '请先登录');
+                alert('请先登录');
                 window.location.href = window.location.origin + '/templates/login.html';
             }
         });
-        
-        // 旋转动画
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('知识库页面加载完成，开始初始化...');
+            initKnowledgeBase();
+        });
     </script>
 </body>
 </html> 

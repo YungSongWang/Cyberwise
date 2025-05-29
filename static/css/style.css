@@ -1,5 +1,5 @@
 body {
-  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'PingFang SC', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
   background-color: #0f0f0f;
   color: white;
   display: flex;
@@ -8,6 +8,28 @@ body {
   height: 100vh;
   margin: 0;
   position: relative;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 确保所有元素都使用统一字体 */
+* {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  color: #00eaff;
+  font-family: inherit;
 }
 
 /* 右上角工具栏 */
@@ -63,12 +85,15 @@ body {
   text-align: center;
 }
 
+/* dashboard标题 */
 h1 {
   background: linear-gradient(90deg, #00eaff, #a100ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 32px;
   margin-bottom: 20px;
+  font-family: inherit;
+  font-weight: 600;
 }
 
 input {
@@ -119,14 +144,6 @@ button {
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  color: #00eaff;
 }
 .user-info {
   font-size: 14px;
@@ -197,8 +214,10 @@ button {
 
 .password-container input {
     width: 100%;
+    padding: 20px;
     padding-right: 50px; /* 为眼睛图标留出空间 */
     margin: 0; /* 重置margin，因为容器已经有了 */
+    box-sizing: border-box; /* 确保总宽度包含padding */
 }
 
 /* 密码切换图标样式 */
@@ -218,6 +237,11 @@ button {
     color: #333;
 }
 
+/* 确保邮箱输入框也使用相同的box-sizing */
+input[type="text"], input[type="email"] {
+    box-sizing: border-box;
+}
+
 /* 响应式调整 */
 @media (max-width: 480px) {
     .password-toggle {
@@ -230,14 +254,40 @@ button {
     }
 }
 
-/* 知识库样式 */
+/* 针对知识库页面的特殊布局 */
+body[data-page="knowledge"] .main {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+body[data-page="knowledge"] #knowledge-search-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* 知识库布局优化 */
+.knowledge-base-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-family: inherit;
+}
+
 .knowledge-base-header {
     text-align: center;
-    margin-bottom: 30px;
     padding: 20px;
     background: linear-gradient(135deg, rgba(0, 234, 255, 0.1), rgba(161, 0, 255, 0.1));
     border-radius: 12px;
     border: 1px solid rgba(0, 234, 255, 0.2);
+    margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .knowledge-base-header h2 {
@@ -246,18 +296,27 @@ button {
     -webkit-text-fill-color: transparent;
     font-size: 28px;
     margin-bottom: 10px;
+    font-family: inherit;
+    font-weight: 600;
 }
 
 .knowledge-base-header p {
     color: #ccc;
     font-size: 16px;
+    font-family: inherit;
 }
 
 .search-controls {
-    margin-bottom: 30px;
+    background: rgba(30, 30, 30, 0.95);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 234, 255, 0.1);
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .search-input-container {
@@ -276,6 +335,8 @@ button {
     color: white;
     font-size: 16px;
     margin: 0;
+    font-family: inherit;
+    line-height: 1.4;
 }
 
 .search-input-container input::placeholder {
@@ -291,6 +352,11 @@ button {
     transition: all 0.3s ease;
     margin: 0;
     width: auto;
+}
+
+#kb-reset-btn {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    padding: 12px 15px;
 }
 
 .search-input-container button:hover {
@@ -312,11 +378,52 @@ button {
     border-radius: 8px;
     color: white;
     font-size: 14px;
+    font-family: inherit;
+    line-height: 1.4;
 }
 
 .filter-controls select option {
     background: #1e1e1e;
     color: white;
+}
+
+/* 搜索结果区域 - 独立滚动容器 */
+.search-results-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 234, 255, 0.5) rgba(255, 255, 255, 0.1);
+}
+
+/* 搜索结果内容 */
+.search-results {
+    padding: 0;
+}
+
+/* 自定义滚动条样式 */
+.search-results-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-results-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00eaff, #a100ff);
+    border-radius: 4px;
+}
+
+.search-results-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00d4e6, #8e00e6);
+}
+
+/* 移除之前的知识库页面容器滚动设置 */
+body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
+    display: none;
 }
 
 .welcome-message {
@@ -385,18 +492,13 @@ button {
     font-size: 14px;
 }
 
-.results-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 .result-card {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 234, 255, 0.2);
     border-radius: 12px;
     padding: 20px;
     transition: all 0.3s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'PingFang SC', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif;
 }
 
 .result-card:hover {
@@ -434,7 +536,9 @@ button {
     margin: 0;
     color: white;
     font-size: 18px;
-    line-height: 1.3;
+    line-height: 1.4;
+    font-weight: 600;
+    font-family: inherit;
 }
 
 .result-meta {
@@ -489,12 +593,14 @@ button {
 
 .answer-section h5,
 .question-section h5 {
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
     color: #00eaff;
     font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    font-weight: 600;
+    font-family: inherit;
 }
 
 .answer-section.ai-answer h5 {
@@ -504,8 +610,11 @@ button {
 .answer-section p,
 .question-section p {
     margin: 0;
-    color: #ccc;
-    line-height: 1.5;
+    color: #e0e0e0;
+    line-height: 1.7;
+    font-size: 15px;
+    font-family: inherit;
+    letter-spacing: 0.3px;
 }
 
 .result-actions {
@@ -606,6 +715,9 @@ button {
     margin: 0;
     color: white;
     font-size: 20px;
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 .close-btn {
@@ -645,15 +757,20 @@ button {
     display: flex;
     align-items: center;
     gap: 8px;
+    font-family: inherit;
+    font-weight: 600;
 }
 
 .content-text {
-    color: #ccc;
-    line-height: 1.6;
+    color: #e0e0e0;
+    line-height: 1.8;
     padding: 15px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
     border-left: 3px solid #00eaff;
+    font-size: 15px;
+    font-family: inherit;
+    letter-spacing: 0.3px;
 }
 
 .human-answer-text {
@@ -709,4 +826,12 @@ button {
         flex: 1;
         justify-content: center;
     }
+}
+
+/* 确保搜索结果列表正确显示 */
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
 } 

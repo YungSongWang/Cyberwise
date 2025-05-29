@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>CyberWise Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
   <link rel="stylesheet" href="../static/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -43,7 +42,10 @@
       <div class="menu-item" onclick="showSection('start')"><i class="ri-time-line"></i><span data-lang="menuStart">Start</span></div>
       <div class="menu-item ai" onclick="showSection('ai')"><i class="ri-magic-line"></i><span data-lang="menuAI">AI Writing</span></div>
       <div class="menu-item" onclick="showSection('notes')"><i class="ri-quill-pen-line"></i><span data-lang="menuNotes">Notes</span></div>
-      <div class="menu-item" onclick="goToKnowledgeBase()"><i class="ri-book-open-line"></i><span data-lang="knowledgeBase">Knowledge Base</span></div>
+      <div class="menu-item" onclick="window.location.href='/templates/knowledge_base.html'" style="cursor: pointer;">
+        <i class="ri-book-open-line"></i>
+        <span data-lang="knowledgeBase">Knowledge Base</span>
+      </div>
       <div class="menu-item" onclick="showSection('favorites')"><i class="ri-star-line"></i><span data-lang="menuFavorites">Favorites</span></div>
       <div class="menu-item" onclick="showSection('community')"><i class="ri-group-line"></i><span data-lang="menuCommunity">Community</span></div>
     </div>
@@ -60,7 +62,18 @@
         <h3 data-lang="quickActions">Quick Actions:</h3>
         <button onclick="createNewDocument()" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="createNewDoc">Create New Document</button>
         <button onclick="showSection('notes')" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="viewNotes">View Notes</button>
-        <button onclick="goToKnowledgeBase()" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">🔍 浏览知识库</button>
+        <button onclick="
+          console.log('Browse Knowledge Base clicked - inline!'); 
+          try {
+            console.log('测试按钮跳转...');
+            window.location.href = '/templates/knowledge_base.html';
+          } catch(e) {
+            console.error('测试按钮跳转失败:', e);
+            // 移除弹窗，只记录错误
+            // alert('跳转失败: ' + e.message);
+          }
+        " style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">🔍 浏览知识库 (内联JS)</button>
+        <a href="/templates/knowledge_base.html" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #ff6b6b, #ff8e53); color: white; text-decoration: none; border-radius: 8px; display: inline-block;">📚 知识库 (直接链接)</a>
       </div>
     </div>
 
@@ -93,5 +106,38 @@
   <script src="../static/js/firebase-init.js"></script>
   <script src="../static/js/language.js"></script>
   <script src="../static/js/dashboard.js"></script>
+  
+  <!-- 测试脚本 -->
+  <script>
+    console.log('Dashboard page JavaScript loaded');
+    
+    // 测试函数是否存在
+    setTimeout(() => {
+      console.log('=== JavaScript 环境检查 ===');
+      console.log('typeof goToKnowledgeBase:', typeof goToKnowledgeBase);
+      console.log('typeof testKnowledgeBaseNav:', typeof testKnowledgeBaseNav);
+      console.log('typeof showSection:', typeof showSection);
+      
+      // 检查是否有JavaScript错误
+      if (typeof goToKnowledgeBase === 'undefined') {
+        console.error('goToKnowledgeBase 函数未定义');
+      }
+      
+      // 为所有知识库相关按钮添加事件监听器作为备用
+      document.querySelectorAll('[data-kb-backup]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          console.log('备用事件监听器触发');
+          e.preventDefault();
+          window.location.href = '/templates/knowledge_base.html';
+        });
+      });
+    }, 1000);
+    
+    // 全局错误捕获
+    window.addEventListener('error', function(e) {
+      console.error('JavaScript错误:', e.error);
+      console.error('错误位置:', e.filename, '行:', e.lineno);
+    });
+  </script>
 </body>
 </html> 

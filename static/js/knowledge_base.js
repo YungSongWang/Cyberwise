@@ -54,52 +54,59 @@ class KnowledgeBase {
         if (!searchContainer) return;
 
         searchContainer.innerHTML = `
-            <div class="knowledge-base-header">
-                <h2>🔍 知识库搜索</h2>
-                <p>搜索 ${this.stats.total_questions} 个技术问题和解决方案</p>
-            </div>
-            
-            <div class="search-controls">
-                <div class="search-input-container">
-                    <input type="text" id="kb-search-input" placeholder="输入关键词搜索问题...">
-                    <button id="kb-search-btn" onclick="knowledgeBase.search()">
-                        <i class="ri-search-line"></i>
-                    </button>
+            <div class="knowledge-base-container">
+                <div class="knowledge-base-header">
+                    <h2>🔍 知识库搜索</h2>
+                    <p>搜索 ${this.stats.total_questions} 个技术问题和解决方案</p>
                 </div>
                 
-                <div class="filter-controls">
-                    <select id="category-filter">
-                        <option value="">所有分类</option>
-                        ${this.stats.categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
-                    </select>
+                <div class="search-controls">
+                    <div class="search-input-container">
+                        <input type="text" id="kb-search-input" placeholder="输入关键词搜索问题...">
+                        <button id="kb-search-btn" onclick="knowledgeBase.search()">
+                            <i class="ri-search-line"></i>
+                        </button>
+                        <button id="kb-reset-btn" onclick="knowledgeBase.resetSearch()" title="重置搜索">
+                            <i class="ri-refresh-line"></i>
+                        </button>
+                    </div>
                     
-                    <select id="subcategory-filter">
-                        <option value="">所有子分类</option>
-                        ${this.stats.subcategories.map(sub => `<option value="${sub}">${sub}</option>`).join('')}
-                    </select>
+                    <div class="filter-controls">
+                        <select id="category-filter">
+                            <option value="">所有分类</option>
+                            ${this.stats.categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
+                        </select>
+                        
+                        <select id="subcategory-filter">
+                            <option value="">所有子分类</option>
+                            ${this.stats.subcategories.map(sub => `<option value="${sub}">${sub}</option>`).join('')}
+                        </select>
+                    </div>
                 </div>
-            </div>
-            
-            <div id="search-results" class="search-results">
-                <div class="welcome-message">
-                    <h3>欢迎使用知识库 🎓</h3>
-                    <p>这里包含了 ${this.stats.total_questions} 个技术问题和解决方案</p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number">${this.stats.categories.length}</span>
-                            <span class="stat-label">主要分类</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${this.stats.subcategories.length}</span>
-                            <span class="stat-label">子分类</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${this.questions.filter(q => q.human_answer).length}</span>
-                            <span class="stat-label">人工答案</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">${this.questions.filter(q => q.ai_answer).length}</span>
-                            <span class="stat-label">AI答案</span>
+                
+                <div class="search-results-container">
+                    <div id="search-results" class="search-results">
+                        <div class="welcome-message">
+                            <h3>欢迎使用知识库 🎓</h3>
+                            <p>这里包含了 ${this.stats.total_questions} 个技术问题和解决方案</p>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-number">${this.stats.categories.length}</span>
+                                    <span class="stat-label">主要分类</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">${this.stats.subcategories.length}</span>
+                                    <span class="stat-label">子分类</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">${this.questions.filter(q => q.human_answer).length}</span>
+                                    <span class="stat-label">人工答案</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">${this.questions.filter(q => q.ai_answer).length}</span>
+                                    <span class="stat-label">AI答案</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -176,6 +183,21 @@ class KnowledgeBase {
         `;
 
         container.innerHTML = resultsHtml;
+
+        // 滚动到顶部 - 确保搜索结果容器滚动到顶部
+        const scrollContainer = document.querySelector('.search-results-container');
+        if (scrollContainer) {
+            scrollContainer.scrollTop = 0;
+            console.log('已滚动到搜索结果顶部');
+        }
+
+        // 备用方案：如果上面的滚动不工作，尝试滚动整个容器
+        setTimeout(() => {
+            const knowledgeContainer = document.getElementById('knowledge-search-container');
+            if (knowledgeContainer) {
+                knowledgeContainer.scrollTop = 0;
+            }
+        }, 100);
     }
 
     // 创建结果卡片
@@ -351,6 +373,40 @@ ${item.ai_answer}` : ''}
     // 按索引获取问题
     getQuestionByIndex(index) {
         return this.questions.find(q => q.index === index);
+    }
+
+    // 重置搜索
+    resetSearch() {
+        document.getElementById('kb-search-input').value = '';
+        document.getElementById('category-filter').value = '';
+        document.getElementById('subcategory-filter').value = '';
+
+        // 显示欢迎页面
+        const container = document.getElementById('search-results');
+        container.innerHTML = `
+            <div class="welcome-message">
+                <h3>欢迎使用知识库 🎓</h3>
+                <p>这里包含了 ${this.stats.total_questions} 个技术问题和解决方案</p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">${this.stats.categories.length}</span>
+                        <span class="stat-label">主要分类</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${this.stats.subcategories.length}</span>
+                        <span class="stat-label">子分类</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${this.questions.filter(q => q.human_answer).length}</span>
+                        <span class="stat-label">人工答案</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${this.questions.filter(q => q.ai_answer).length}</span>
+                        <span class="stat-label">AI答案</span>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
 

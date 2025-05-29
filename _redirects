@@ -2,6 +2,13 @@
 /templates/login.html    /templates/login.html    200
 /templates/register.html /templates/register.html 200
 /templates/dashboard.html /templates/dashboard.html 200
+/templates/knowledge_base.html /templates/knowledge_base.html 200
+
+# 简化路径重定向
+/dashboard.html    /templates/dashboard.html    200
+/login.html        /templates/login.html        200
+/register.html     /templates/register.html     200
+/knowledge_base.html /templates/knowledge_base.html 200
 
 # 静态资源文件
 /static/*  /static/:splat  200

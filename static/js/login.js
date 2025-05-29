@@ -25,12 +25,18 @@ function login() {
 }
 
 function loginWithEmail(email, password) {
+    console.log("=== 开始邮箱登录流程 ===");
     console.log("Logging in with email:", email);
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
+            console.log("=== Firebase登录成功 ===");
             console.log("Login successful:", userCredential.user);
-            alert("✅ " + getText('loginSuccessful'));
+            console.log("准备跳转，不显示任何弹窗");
+
+            // 确保没有任何弹窗
+            // 移除弹窗，直接跳转
+            // alert("✅ " + getText('loginSuccessful'));
 
             // 添加延迟和多种跳转方式
             console.log("准备跳转到dashboard...");
@@ -41,6 +47,7 @@ function loginWithEmail(email, password) {
 
                 try {
                     // 方法1: 直接跳转
+                    console.log("执行跳转...");
                     window.location.href = dashboardUrl;
 
                     // 方法2: 备用跳转（如果第一种方法失败）
@@ -67,7 +74,7 @@ function loginWithEmail(email, password) {
                         showManualJumpButton();
                     }
                 }
-            }, 500); // 延迟500ms确保登录状态已保存
+            }, 100); // 进一步减少延迟时间
         })
         .catch(error => {
             console.error("Email login error:", error);

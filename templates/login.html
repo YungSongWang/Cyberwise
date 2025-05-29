@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>CyberWise Login</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -43,6 +42,19 @@
   <script src="../static/js/login.js"></script>
   
   <script>
+    // 添加弹窗拦截功能 - 调试用
+    const originalAlert = window.alert;
+    window.alert = function(message) {
+      console.log('拦截到alert弹窗:', message);
+      // 如果是登录成功消息，直接忽略
+      if (message.includes('Login successful') || message.includes('登录成功')) {
+        console.log('忽略登录成功弹窗，直接跳转');
+        return;
+      }
+      // 其他消息仍然显示
+      originalAlert(message);
+    };
+    
     // 添加导航函数
     function goToRegister() {
       window.location.href = window.location.origin + '/templates/register.html';

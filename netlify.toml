@@ -18,6 +18,12 @@
   to = "/templates/:splat"
   status = 200
 
+# 默认首页重定向
+[[redirects]]
+  from = "/"
+  to = "/templates/login.html"
+  status = 200
+
 # 防止直接访问数据文件
 [[headers]]
   for = "/static/data/*"
@@ -29,12 +35,6 @@
   for = "*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-
-# SPA重定向规则 - 这是关键！
-[[redirects]]
-  from = "/*"
-  to = "/templates/login.html"
-  status = 200
 
 # 头部设置
 [[headers]]

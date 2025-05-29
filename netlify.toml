@@ -1,13 +1,31 @@
 [build]
-  # 发布目录
+  # 发布目录（当前目录）
   publish = "."
   
-  # 构建命令（静态站点不需要构建）
-  command = "echo 'No build required for static site'"
+  # 构建命令（对于静态站点，通常不需要）
+  command = "echo 'Static site - no build required'"
 
 [build.environment]
-  # Node.js版本
-  NODE_VERSION = "18"
+  # Python版本（如果需要）
+  PYTHON_VERSION = "3.9"
+
+# 重定向规则
+[[redirects]]
+  from = "/templates/*"
+  to = "/templates/:splat"
+  status = 200
+
+# 防止直接访问数据文件
+[[headers]]
+  for = "/static/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+# 文件类型处理
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # SPA重定向规则 - 这是关键！
 [[redirects]]

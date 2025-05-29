@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>CyberWise Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
-  <link rel="stylesheet" href="../static/css/style.css?v=2.2.0">
+  <link rel="stylesheet" href="../static/css/style.css?v=2.3.0">
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
@@ -23,14 +23,24 @@
   <!-- 右上角工具栏 -->
   <div class="top-toolbar">
     <button id="language-btn" class="toolbar-btn" onclick="toggleLanguage()">中文</button>
-    <button class="toolbar-btn logout-btn" onclick="logout()">
-      <i class="ri-logout-box-line"></i> <span data-lang="logout">Logout</span>
-    </button>
   </div>
 
   <div class="sidebar">
     <div class="logo"><i class="ri-shield-user-line"></i>CyberWise</div>
-    <div class="user-info" id="userEmail">Loading user info...</div>
+    
+    <!-- 用户信息下拉菜单 -->
+    <div class="user-info-dropdown">
+      <div class="user-info" id="userEmail" onclick="toggleUserDropdown()">
+        Loading user info...
+        <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+      </div>
+      <div class="user-dropdown-menu" id="userDropdownMenu">
+        <div class="dropdown-item" onclick="logout()">
+          <i class="ri-logout-box-line"></i>
+          <span data-lang="logout">Logout</span>
+        </div>
+      </div>
+    </div>
 
     <div class="search-box">
       <i class="ri-search-line"></i>
@@ -162,7 +172,7 @@
 
   <script src="../static/js/firebase-init.js?v=2.2.0"></script>
   <script src="../static/js/language.js?v=2.2.0"></script>
-  <script src="../static/js/dashboard.js?v=2.2.0"></script>
+  <script src="../static/js/dashboard.js?v=2.3.0"></script>
   
   <!-- 测试脚本 -->
   <script>

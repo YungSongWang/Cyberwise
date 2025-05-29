@@ -951,4 +951,22 @@ function initializeDashboard() {
     }, 2000); // 延迟2秒执行，确保用户认证完成
 
     console.log('Dashboard初始化完成');
+}
+
+// 切换用户下拉菜单
+function toggleUserDropdown() {
+    const dropdown = document.querySelector('.user-info-dropdown');
+    const menu = document.getElementById('userDropdownMenu');
+
+    if (dropdown && menu) {
+        dropdown.classList.toggle('open');
+
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', function closeDropdown(event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('open');
+                document.removeEventListener('click', closeDropdown);
+            }
+        });
+    }
 } 

@@ -200,28 +200,28 @@
         .kb-results-header {
             padding: 20px 25px;
             border-bottom: 1px solid rgba(0, 234, 255, 0.2);
-            background: rgba(0, 234, 255, 0.05);
+            background: rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
         }
         
         .kb-results-title {
             font-size: 18px;
             font-weight: 600;
-            color: #00eaff;
-            margin-bottom: 5px;
+            color: white;
+            margin: 0;
         }
         
         .kb-results-subtitle {
-            font-size: 13px;
-            color: #ccc;
+            font-size: 14px;
+            color: #888;
+            margin: 4px 0 0 0;
         }
         
         .kb-results-content {
             flex: 1;
-            padding: 20px 25px;
             overflow-y: auto;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(0, 234, 255, 0.5) rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            min-height: 0;
         }
         
         .kb-results-content::-webkit-scrollbar {
@@ -363,6 +363,36 @@
                 width: calc(100vw - 260px);
             }
         }
+        
+        /* 语言切换按钮 - 左下角固定位置 */
+        .language-toggle {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            background: linear-gradient(45deg, #00eaff, #a100ff);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+        }
+        
+        .language-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 234, 255, 0.4);
+        }
+        
+        .language-toggle i {
+            font-size: 16px;
+        }
     </style>
 </head>
 
@@ -436,42 +466,42 @@
         <div class="kb-main">
             <!-- 上方搜索面板 -->
             <div class="kb-search-panel">
-                <div class="kb-search-title">
+                <div class="kb-search-title" id="kb-search-title">
                     <i class="ri-search-line"></i>
-                    知识库搜索
+                    Knowledge Base Search
                 </div>
                 
                 <div class="kb-search-form">
                     <div class="kb-search-row">
                         <div class="kb-input-group keyword">
-                            <label for="kb-keyword">关键词搜索</label>
-                            <input type="text" id="kb-keyword" class="kb-input" placeholder="输入关键词搜索问题...">
+                            <label for="kb-keyword" id="kb-keyword-label">Keyword Search</label>
+                            <input type="text" id="kb-keyword" class="kb-input" placeholder="Enter keywords to search questions...">
                         </div>
                         
                         <div class="kb-input-group category">
-                            <label for="kb-category">主分类</label>
+                            <label for="kb-category" id="kb-category-label">Main Category</label>
                             <select id="kb-category" class="kb-select">
-                                <option value="">所有分类</option>
+                                <option value="">All Categories</option>
                             </select>
                         </div>
                         
                         <div class="kb-input-group category">
-                            <label for="kb-subcategory">子分类</label>
+                            <label for="kb-subcategory" id="kb-subcategory-label">Subcategory</label>
                             <select id="kb-subcategory" class="kb-select">
-                                <option value="">所有子分类</option>
+                                <option value="">All Subcategories</option>
                             </select>
                         </div>
                         
                         <div class="kb-input-group actions">
                             <label>&nbsp;</label>
                             <div class="kb-actions">
-                                <button class="kb-btn kb-btn-primary" onclick="performSearch()">
+                                <button class="kb-btn kb-btn-primary" id="search-btn" onclick="performSearch()">
                                     <i class="ri-search-line"></i>
-                                    搜索
+                                    Search
                                 </button>
-                                <button class="kb-btn kb-btn-secondary" onclick="resetSearch()">
-                                    <i class="ri-refresh-line"></i>
-                                    重置
+                                <button class="kb-btn kb-btn-secondary" id="reset-btn" onclick="resetSearch()">
+                                    <i class="ri-close-line"></i>
+                                    Reset
                                 </button>
                             </div>
                         </div>
@@ -523,11 +553,199 @@
         <button id="language-btn" class="toolbar-btn" onclick="toggleLanguage()">中文</button>
     </div>
 
+    <!-- 语言切换按钮 -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <i class="ri-translate-2"></i>
+        <span id="language-text">中文</span>
+    </button>
+
     <!-- 脚本文件 -->
     <script src="../static/js/firebase-init.js?v=2.2.0"></script>
     <script src="../static/js/language.js?v=2.2.0"></script>
     
     <script>
+        // 当前语言设置
+        let currentLanguage = 'en'; // 默认英文
+        
+        // 多语言文本配置
+        const languages = {
+            zh: {
+                // 页面标题和导航
+                title: 'CyberWise - 知识库',
+                knowledgeBase: '知识库',
+                start: '开始',
+                aiWriting: 'AI写作',
+                notes: '笔记',
+                favorites: '收藏',
+                community: '社区',
+                logout: '登出',
+                
+                // 搜索相关
+                searchTitle: '知识库搜索',
+                keywordLabel: '关键词搜索',
+                keywordPlaceholder: '输入关键词搜索问题...',
+                categoryLabel: '主分类',
+                subcategoryLabel: '子分类',
+                allCategories: '所有分类',
+                allSubcategories: '所有子分类',
+                searchButton: '搜索',
+                resetButton: '重置',
+                
+                // 结果页面
+                searchResults: '搜索结果',
+                searchPlaceholder: '请使用上方搜索框开始搜索',
+                welcome: '欢迎使用知识库 🎓',
+                welcomeDesc: '个技术问题和解决方案，使用上方搜索功能开始探索吧！',
+                totalQuestions: '问题总数',
+                mainCategories: '主要分类',
+                subCategories: '子分类',
+                aiAnswers: 'AI答案',
+                
+                // 搜索结果
+                question: '问题',
+                humanAnswer: '人工答案',
+                aiAnswer: 'AI答案',
+                viewDetails: '查看详情',
+                saveToNotes: '保存到笔记',
+                noResults: '未找到相关结果',
+                noResultsDesc: '请尝试其他关键词或调整筛选条件',
+                
+                // 状态信息
+                loading: '正在加载知识库...',
+                loadingDesc: '请稍候，正在初始化数据...',
+                loadError: '加载失败',
+                loadErrorDesc: '加载知识库数据失败，请刷新页面重试',
+                dataNotLoaded: '数据还未加载完成',
+                
+                // 语言切换
+                languageToggle: '中文'
+            },
+            en: {
+                // 页面标题和导航
+                title: 'CyberWise - Knowledge Base',
+                knowledgeBase: 'Knowledge Base',
+                start: 'Start',
+                aiWriting: 'AI Writing',
+                notes: 'Notes',
+                favorites: 'Favorites',
+                community: 'Community',
+                logout: 'Logout',
+                
+                // 搜索相关
+                searchTitle: 'Knowledge Base Search',
+                keywordLabel: 'Keyword Search',
+                keywordPlaceholder: 'Enter keywords to search questions...',
+                categoryLabel: 'Main Category',
+                subcategoryLabel: 'Subcategory',
+                allCategories: 'All Categories',
+                allSubcategories: 'All Subcategories',
+                searchButton: 'Search',
+                resetButton: 'Reset',
+                
+                // 结果页面
+                searchResults: 'Search Results',
+                searchPlaceholder: 'Please use the search box above to start searching',
+                welcome: 'Welcome to Knowledge Base 🎓',
+                welcomeDesc: ' technical questions and solutions, use the search function above to start exploring!',
+                totalQuestions: 'Total Questions',
+                mainCategories: 'Main Categories',
+                subCategories: 'Subcategories',
+                aiAnswers: 'AI Answers',
+                
+                // 搜索结果
+                question: 'Question',
+                humanAnswer: 'Human Answer',
+                aiAnswer: 'AI Answer',
+                viewDetails: 'View Details',
+                saveToNotes: 'Save to Notes',
+                noResults: 'No results found',
+                noResultsDesc: 'Please try other keywords or adjust filter conditions',
+                
+                // 状态信息
+                loading: 'Loading Knowledge Base...',
+                loadingDesc: 'Please wait, initializing data...',
+                loadError: 'Loading Failed',
+                loadErrorDesc: 'Failed to load knowledge base data, please refresh the page and try again',
+                dataNotLoaded: 'Data not loaded yet',
+                
+                // 语言切换
+                languageToggle: 'English'
+            }
+        };
+        
+        // 获取当前语言文本
+        function getText(key) {
+            return languages[currentLanguage][key] || languages.en[key] || key;
+        }
+        
+        // 切换语言
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'zh' ? 'en' : 'zh';
+            updatePageLanguage();
+            localStorage.setItem('knowledgeBaseLanguage', currentLanguage);
+        }
+        
+        // 更新页面语言
+        function updatePageLanguage() {
+            // 更新标题
+            document.title = getText('title');
+            
+            // 更新语言切换按钮
+            document.getElementById('language-text').textContent = getText('languageToggle');
+            
+            // 更新页面中的所有文本元素
+            updateElementText('kb-search-title', getText('searchTitle'));
+            updateElementText('kb-keyword-label', getText('keywordLabel'));
+            updateElementText('kb-category-label', getText('categoryLabel'));
+            updateElementText('kb-subcategory-label', getText('subcategoryLabel'));
+            
+            // 更新输入框placeholder
+            const keywordInput = document.getElementById('kb-keyword');
+            if (keywordInput) {
+                keywordInput.placeholder = getText('keywordPlaceholder');
+            }
+            
+            // 更新按钮文本
+            updateElementText('search-btn', getText('searchButton'));
+            updateElementText('reset-btn', getText('resetButton'));
+            
+            // 更新下拉选项
+            updateSelectOptions();
+            
+            // 重新显示欢迎界面或搜索结果
+            if (knowledgeData.isLoaded) {
+                const keyword = document.getElementById('kb-keyword').value.trim();
+                if (!keyword && !document.getElementById('kb-category').value && !document.getElementById('kb-subcategory').value) {
+                    showWelcome();
+                } else {
+                    // 重新执行搜索以更新结果显示语言
+                    performSearch();
+                }
+            }
+        }
+        
+        // 更新元素文本
+        function updateElementText(id, text) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.textContent = text;
+            }
+        }
+        
+        // 更新下拉选项
+        function updateSelectOptions() {
+            const categorySelect = document.getElementById('kb-category');
+            const subcategorySelect = document.getElementById('kb-subcategory');
+            
+            if (categorySelect && categorySelect.options.length > 0) {
+                categorySelect.options[0].textContent = getText('allCategories');
+            }
+            
+            if (subcategorySelect && subcategorySelect.options.length > 0) {
+                subcategorySelect.options[0].textContent = getText('allSubcategories');
+            }
+        }
+
         // 知识库数据
         let knowledgeData = {
             questions: [],
@@ -640,8 +858,8 @@
                     <div class="kb-loading-icon">
                         <i class="ri-loader-4-line"></i>
                     </div>
-                    <h3>正在加载知识库...</h3>
-                    <p>请稍候，正在初始化数据...</p>
+                    <h3>${getText('loading')}</h3>
+                    <p>${getText('loadingDesc')}</p>
                 </div>
             `;
         }
@@ -649,36 +867,40 @@
         // 显示欢迎界面
         function showWelcome() {
             const content = document.getElementById('results-content');
+            const welcomeText = currentLanguage === 'zh' 
+                ? `这里包含了 ${knowledgeData.stats.total_questions} ${getText('welcomeDesc')}`
+                : `Here are ${knowledgeData.stats.total_questions}${getText('welcomeDesc')}`;
+                
             content.innerHTML = `
                 <div class="kb-welcome">
                     <div class="kb-welcome-icon">
                         <i class="ri-book-open-line"></i>
                     </div>
-                    <h3>欢迎使用知识库 🎓</h3>
-                    <p>这里包含了 ${knowledgeData.stats.total_questions} 个技术问题和解决方案，使用上方搜索功能开始探索吧！</p>
+                    <h3>${getText('welcome')}</h3>
+                    <p>${welcomeText}</p>
                     <div class="kb-stats-grid">
                         <div class="kb-stat-item">
                             <span class="kb-stat-number">${knowledgeData.stats.total_questions}</span>
-                            <span class="kb-stat-label">问题总数</span>
+                            <span class="kb-stat-label">${getText('totalQuestions')}</span>
                         </div>
                         <div class="kb-stat-item">
                             <span class="kb-stat-number">${knowledgeData.stats.categories.length}</span>
-                            <span class="kb-stat-label">主要分类</span>
+                            <span class="kb-stat-label">${getText('mainCategories')}</span>
                         </div>
                         <div class="kb-stat-item">
                             <span class="kb-stat-number">${knowledgeData.stats.subcategories.length}</span>
-                            <span class="kb-stat-label">子分类</span>
+                            <span class="kb-stat-label">${getText('subCategories')}</span>
                         </div>
                         <div class="kb-stat-item">
                             <span class="kb-stat-number">${knowledgeData.questions.filter(q => q.ai_answer).length}</span>
-                            <span class="kb-stat-label">AI答案</span>
+                            <span class="kb-stat-label">${getText('aiAnswers')}</span>
                         </div>
                     </div>
                 </div>
             `;
             
-            document.getElementById('results-title').textContent = '搜索结果';
-            document.getElementById('results-subtitle').textContent = '请使用上方搜索框开始搜索';
+            document.getElementById('results-title').textContent = getText('searchResults');
+            document.getElementById('results-subtitle').textContent = getText('searchPlaceholder');
         }
 
         // 显示错误信息
@@ -689,8 +911,8 @@
                     <div style="font-size: 48px; color: #ff6b6b; margin-bottom: 20px;">
                         <i class="ri-error-warning-line"></i>
                     </div>
-                    <h3>加载失败</h3>
-                    <p>${message}</p>
+                    <h3>${getText('loadError')}</h3>
+                    <p>${message || getText('loadErrorDesc')}</p>
                 </div>
             `;
         }
@@ -737,8 +959,14 @@
             const title = document.getElementById('results-title');
             const subtitle = document.getElementById('results-subtitle');
             
-            title.textContent = `搜索结果 (${results.length} 个)`;
-            subtitle.textContent = keyword ? `关键词: "${keyword}"` : '按条件筛选的结果';
+            const resultsText = currentLanguage === 'zh' 
+                ? `${getText('searchResults')} (${results.length} 个)`
+                : `${getText('searchResults')} (${results.length})`;
+            
+            title.textContent = resultsText;
+            subtitle.textContent = keyword 
+                ? (currentLanguage === 'zh' ? `关键词: "${keyword}"` : `Keywords: "${keyword}"`)
+                : (currentLanguage === 'zh' ? '按条件筛选的结果' : 'Filtered results');
             
             if (results.length === 0) {
                 content.innerHTML = `
@@ -746,8 +974,8 @@
                         <div style="font-size: 48px; color: #888; margin-bottom: 20px;">
                             <i class="ri-search-line"></i>
                         </div>
-                        <h3>未找到相关结果</h3>
-                        <p>请尝试其他关键词或调整筛选条件</p>
+                        <h3>${getText('noResults')}</h3>
+                        <p>${getText('noResultsDesc')}</p>
                     </div>
                 `;
                 return;
@@ -780,7 +1008,7 @@
                     <div style="margin-bottom: 20px;">
                         <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(255, 255, 255, 0.03); border-left: 3px solid #00eaff;">
                             <h5 style="margin: 0 0 12px 0; color: #00eaff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
-                                <i class="ri-question-line"></i> 问题
+                                <i class="ri-question-line"></i> ${getText('question')}
                             </h5>
                             <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.question, 200)}</p>
                         </div>
@@ -788,7 +1016,7 @@
                         ${item.human_answer ? `
                             <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(0, 234, 255, 0.05); border-left: 3px solid #00eaff;">
                                 <h5 style="margin: 0 0 12px 0; color: #00eaff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
-                                    <i class="ri-user-line"></i> 人工答案
+                                    <i class="ri-user-line"></i> ${getText('humanAnswer')}
                                 </h5>
                                 <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.human_answer, 200)}</p>
                             </div>
@@ -797,7 +1025,7 @@
                         ${item.ai_answer ? `
                             <div style="margin-bottom: 15px; padding: 15px; border-radius: 8px; background: rgba(161, 0, 255, 0.05); border-left: 3px solid #a100ff;">
                                 <h5 style="margin: 0 0 12px 0; color: #a100ff; font-size: 14px; display: flex; align-items: center; gap: 8px; font-weight: 600;">
-                                    <i class="ri-robot-line"></i> AI答案
+                                    <i class="ri-robot-line"></i> ${getText('aiAnswer')}
                                 </h5>
                                 <p style="margin: 0; color: #e0e0e0; line-height: 1.7; font-size: 15px; letter-spacing: 0.3px; word-wrap: break-word; overflow-wrap: break-word;">${truncateText(item.ai_answer, 200)}</p>
                             </div>
@@ -806,10 +1034,10 @@
                     
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                         <button onclick="viewDetails('${item.id}')" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                            <i class="ri-eye-line"></i> 查看详情
+                            <i class="ri-eye-line"></i> ${getText('viewDetails')}
                         </button>
                         <button onclick="saveToNotes('${item.id}')" style="background: linear-gradient(45deg, #a100ff, #7f00ff); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
-                            <i class="ri-bookmark-line"></i> 保存到笔记
+                            <i class="ri-bookmark-line"></i> ${getText('saveToNotes')}
                         </button>
                     </div>
                 </div>
@@ -877,6 +1105,17 @@
         // 页面加载完成后初始化
         document.addEventListener('DOMContentLoaded', function() {
             console.log('知识库页面加载完成，开始初始化...');
+            
+            // 初始化语言设置
+            const savedLanguage = localStorage.getItem('knowledgeBaseLanguage');
+            if (savedLanguage) {
+                currentLanguage = savedLanguage;
+            }
+            
+            // 更新页面语言
+            updatePageLanguage();
+            
+            // 初始化知识库
             initKnowledgeBase();
         });
 

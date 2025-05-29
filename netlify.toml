@@ -1,5 +1,4 @@
 [build]
-  base = "cyberwise_new"
   publish = "."
 
 [[redirects]]

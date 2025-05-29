@@ -1,3 +1,5 @@
+// CyberWise Dashboard - Version 2.1.0 - Force Cache Refresh
+// Updated: 2025-05-29 - AI Writing Modal Enhancement
 let currentUser = null;
 let authChecked = false; // 添加认证检查标志
 

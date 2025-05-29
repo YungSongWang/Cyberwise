@@ -7,16 +7,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "credenti",
-      "security",
-      "output",
-      "show",
-      "store",
+      "process",
+      "anyth",
+      "sandbox",
+      "nice",
+      "least",
+      "publish",
+      "line",
       "code",
-      "tell",
-      "onlin",
-      "environ",
-      "launch"
+      "switch",
+      "cach"
     ]
   },
   {
@@ -27,16 +27,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "guidelin",
-      "protocols",
-      "draft",
-      "depend",
-      "difficult",
+      "still",
       "follow",
-      "name",
-      "physic",
-      "releas",
-      "openssh"
+      "modern",
+      "featur",
+      "maintain",
+      "pass",
+      "mechanisms",
+      "function",
+      "difficult",
+      "support"
     ]
   },
   {
@@ -47,16 +47,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "securitydefinitions",
-      "object",
-      "information",
-      "resource",
-      "will",
       "overloaded",
-      "naming",
+      "term",
+      "vague",
       "support",
-      "finalize"
+      "level",
+      "resolve",
+      "management",
+      "spec",
+      "securitydefinitions",
+      "security"
     ]
   },
   {
@@ -67,16 +67,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "caus",
-      "cooki",
-      "httponli",
-      "path",
-      "vitali",
-      "strang",
-      "problem",
+      "issu",
       "import",
-      "header",
-      "domain"
+      "control",
+      "html",
+      "host",
+      "becom",
+      "port",
+      "timeout",
+      "screenshot",
+      "rack"
     ]
   },
   {
@@ -87,16 +87,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
+      "usernam",
+      "header",
       "mention",
-      "requests",
-      "show",
-      "alreadi",
-      "column",
-      "side",
-      "avail",
-      "client",
+      "issu",
+      "detail",
       "enhancements",
-      "insid"
+      "limit",
+      "messag",
+      "happen",
+      "feature"
     ]
   },
   {
@@ -107,16 +107,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "packer",
-      "token",
-      "security",
-      "addit",
-      "secret",
+      "creat",
+      "miss",
+      "think",
       "pass",
-      "desir",
-      "multipl",
-      "servic",
-      "imag"
+      "secret",
+      "option",
+      "support",
+      "account",
+      "assumerol",
+      "management"
     ]
   },
   {
@@ -127,16 +127,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
-      "errors",
-      "broken",
-      "pass",
-      "case",
+      "issu",
+      "header",
+      "creat",
       "handling",
-      "googl",
       "error",
-      "charact",
-      "instead",
-      "clear"
+      "publish",
+      "technic",
+      "unclear",
+      "pass",
+      "valid"
     ]
   },
   {
@@ -147,16 +147,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "string",
       "follow",
-      "addit",
-      "schema",
+      "base",
       "length",
-      "regex",
+      "pattern",
       "enhancements",
-      "byte",
-      "array"
+      "valid",
+      "string",
+      "support",
+      "request",
+      "feature"
     ]
   },
   {
@@ -167,16 +167,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "debug",
-      "protection",
+      "cant",
       "chnged",
-      "problem",
+      "protection",
+      "save",
+      "cryptography",
       "data",
-      "there",
-      "find",
+      "option",
       "anymor",
-      "accident"
+      "find",
+      "encrypt"
     ]
   },
   {
@@ -187,15 +187,15 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "guidelin",
-      "requests",
-      "script",
       "great",
-      "convers",
-      "shell",
+      "feature",
+      "requests",
       "enhancements",
-      "exampl",
-      "feature"
+      "shell",
+      "guidelin",
+      "convers",
+      "script",
+      "exampl"
     ]
   },
   {
@@ -206,16 +206,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "exceed",
-      "quantiti",
-      "code",
-      "errors",
+      "issu",
+      "checklist",
       "manual",
-      "contribut",
-      "chang",
-      "autom",
-      "pass"
+      "error",
+      "handling",
+      "relev",
+      "pass",
+      "limit",
+      "code",
+      "password"
     ]
   },
   {
@@ -226,16 +226,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "disabl",
-      "cipher",
+      "still",
       "select",
-      "suit",
-      "restrict",
-      "propos",
-      "either",
-      "argo",
-      "nowaday"
+      "blacklist",
+      "modern",
+      "take",
+      "cryptography",
+      "consid",
+      "server",
+      "weak",
+      "provid"
     ]
   },
   {
@@ -246,16 +246,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "maco",
-      "includ",
-      "enabl",
-      "signatur",
-      "introduc",
-      "path",
+      "process",
+      "export",
+      "issu",
+      "affect",
+      "layout",
+      "reproduc",
       "handling",
-      "file"
+      "step",
+      "desktop",
+      "error"
     ]
   },
   {
@@ -266,16 +266,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "androidout",
-      "node",
-      "exit",
-      "runtime",
-      "debug",
-      "errors",
-      "maco",
-      "though",
-      "standalon",
-      "shell"
+      "export",
+      "creat",
+      "push",
+      "perfect",
+      "bundl",
+      "error",
+      "handling",
+      "iosout",
+      "publish",
+      "mainifest"
     ]
   },
   {
@@ -286,16 +286,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "argument",
-      "name",
-      "errors",
-      "addit",
-      "chang",
-      "method",
-      "symbol",
+      "handling",
+      "error",
+      "valid",
       "pass",
-      "handling"
+      "option",
+      "chang",
+      "runtime",
+      "prevent",
+      "argument",
+      "appli"
     ]
   },
   {
@@ -306,16 +306,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "output",
-      "follow",
-      "releas",
-      "built",
-      "whether",
-      "toolchain",
-      "bazel",
-      "easiest",
-      "newer"
+      "newer",
+      "anyth",
+      "issu",
+      "lang",
+      "blacklist",
+      "reproduc",
+      "featur",
+      "found",
+      "error",
+      "minim"
     ]
   },
   {
@@ -326,16 +326,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "cooki",
-      "mechanisms",
-      "rest",
-      "wordpress",
+      "base",
+      "server",
       "path",
-      "verification",
-      "unauthor",
+      "mechanisms",
+      "respons",
       "case",
+      "wordpress",
+      "rest",
       "problem",
-      "call"
+      "authentication"
     ]
   },
   {
@@ -346,16 +346,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "node",
-      "entri",
-      "privat",
+      "happili",
+      "ecdsa",
+      "consul",
+      "think",
+      "relev",
+      "line",
+      "everyth",
       "cryptography",
-      "store",
-      "string",
-      "tell",
-      "respond",
-      "configur",
-      "client"
+      "server",
+      "file"
     ]
   },
   {
@@ -366,16 +366,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
+      "management",
+      "implement",
+      "nativ",
       "cryptography",
-      "instead",
+      "gener",
+      "pass",
+      "certif",
       "code",
       "certificate",
-      "nativ",
-      "management",
-      "gener",
-      "openssl",
-      "pass",
-      "implement"
+      "instead"
     ]
   },
   {
@@ -386,16 +386,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "code",
-      "chang",
-      "latest",
-      "environ",
-      "older",
-      "admin",
       "cellphon",
-      "pull",
-      "setup"
+      "docker",
+      "code",
+      "setup",
+      "password",
+      "chang",
+      "management",
+      "jackett",
+      "descript",
+      "admin"
     ]
   },
   {
@@ -406,16 +406,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "weed",
-      "help",
-      "anomaly",
+      "blacklist",
+      "tracker",
+      "detection",
+      "updat",
+      "pull",
+      "even",
       "breach",
-      "emul",
-      "refer",
-      "month",
-      "ipfilt",
       "frequent",
-      "updat"
+      "anomaly",
+      "weed"
     ]
   },
   {
@@ -426,16 +426,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "alreadi",
-      "kapacitor",
-      "configur",
-      "pass",
-      "solut",
-      "mergabl",
+      "issu",
       "unmarsh",
-      "problem",
-      "verifi"
+      "backend",
+      "pass",
+      "verifi",
+      "server",
+      "test",
+      "management",
+      "updat",
+      "solut"
     ]
   },
   {
@@ -446,16 +446,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "email",
-      "clone",
-      "remain",
-      "instead",
-      "password",
-      "authentication",
-      "credential",
       "default",
+      "usernam",
+      "clone",
+      "credential",
+      "instead",
+      "letter",
+      "pass",
       "mechanisms",
-      "configur"
+      "validation",
+      "telescop"
     ]
   },
   {
@@ -467,15 +467,15 @@
     "subcategory": "User Identity Verification",
     "keywords": [
       "flag",
-      "walk",
-      "code",
-      "submiss",
-      "releas",
-      "broken",
-      "chang",
-      "mechanisms",
-      "enabl",
-      "verification"
+      "creat",
+      "immedi",
+      "checklist",
+      "warrant",
+      "improv",
+      "verifi",
+      "branch",
+      "note",
+      "consid"
     ]
   },
   {
@@ -486,16 +486,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "auth",
+      "usernam",
+      "make",
       "colon",
-      "everyth",
-      "password",
-      "authentication",
       "credential",
-      "basic",
-      "cannot",
-      "contain",
-      "correct"
+      "valu",
+      "user",
+      "everyth",
+      "return",
+      "validation",
+      "mechanisms"
     ]
   },
   {
@@ -507,14 +507,14 @@
     "subcategory": "User Identity Verification",
     "keywords": [
       "transmiss",
-      "identity",
-      "password",
-      "authentication",
-      "plain",
-      "mechanisms",
       "anymor",
+      "plain",
       "user",
-      "verification"
+      "mechanisms",
+      "verification",
+      "password",
+      "identity",
+      "authentication"
     ]
   },
   {
@@ -525,16 +525,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "privat",
-      "link",
-      "requests",
-      "provid",
-      "password",
+      "give",
+      "feature",
       "creat",
-      "happi",
+      "implement",
       "requir",
-      "individu",
-      "guidanc"
+      "access",
+      "privat",
+      "requests",
+      "condit",
+      "enhancements"
     ]
   },
   {
@@ -545,16 +545,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "privat",
-      "theori",
+      "give",
+      "cfnetwork",
+      "need",
+      "error",
       "cryptography",
-      "assign",
-      "perfectli",
-      "mqttsslsecuritypolici",
-      "debug",
-      "code",
-      "proper",
-      "peer"
+      "valid",
+      "troubl",
+      "server",
+      "combin",
+      "specif"
     ]
   },
   {
@@ -566,15 +566,15 @@
     "subcategory": "Key and Certificate Management",
     "keywords": [
       "mention",
-      "cryptography",
-      "report",
-      "packag",
-      "releas",
-      "certificate",
-      "current",
-      "secur",
+      "true",
+      "appar",
+      "pleas",
       "management",
-      "sign"
+      "cryptography",
+      "sign",
+      "page",
+      "certificate",
+      "releas"
     ]
   },
   {
@@ -585,16 +585,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
+      "findsecuritybug",
+      "four",
       "code",
-      "brief",
-      "releas",
-      "past",
-      "environ",
-      "learn",
-      "problem",
-      "promot",
-      "plugin",
-      "verifi"
+      "exam",
+      "secret",
+      "provid",
+      "report",
+      "chang",
+      "approach",
+      "review"
     ]
   },
   {
@@ -605,16 +605,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "errors",
+      "export",
+      "true",
       "impl",
-      "spawn",
-      "contain",
-      "assum",
+      "runtime",
       "block",
-      "item",
-      "true"
+      "spawn",
+      "error",
+      "handling",
+      "assum",
+      "item"
     ]
   },
   {
@@ -625,16 +625,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "separ",
-      "cryptography",
-      "token",
-      "protection",
-      "support",
-      "data",
-      "code",
+      "remov",
       "relat",
-      "secur",
-      "remov"
+      "protection",
+      "separ",
+      "oauth",
+      "cryptography",
+      "live",
+      "repo",
+      "code",
+      "data"
     ]
   },
   {
@@ -645,15 +645,15 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "easier",
-      "insert",
-      "requests",
-      "store",
+      "default",
       "select",
       "requir",
+      "enhancements",
+      "password",
+      "factor",
       "integ",
-      "parti",
-      "make",
+      "feature",
+      "prevent",
       "valu"
     ]
   },
@@ -666,15 +666,15 @@
     "subcategory": "Resource Usage Optimization",
     "keywords": [
       "mention",
-      "heap",
-      "check",
-      "avail",
-      "guid",
-      "optim",
-      "admin",
-      "resource",
+      "performance",
       "verifi",
-      "performance"
+      "especi",
+      "high",
+      "check",
+      "append",
+      "avail",
+      "block",
+      "admin"
     ]
   },
   {
@@ -685,16 +685,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "detail",
+      "display",
+      "leak",
+      "anomaly",
       "support",
-      "data",
-      "distribut",
-      "inform",
-      "detection",
-      "import",
+      "beforehand",
+      "detail",
       "indic",
-      "current",
-      "beforehand"
+      "inform",
+      "vulner",
+      "import"
     ]
   },
   {
@@ -705,16 +705,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "privat",
-      "cryptography",
-      "output",
-      "releas",
-      "larg",
-      "contain",
+      "pars",
+      "issu",
+      "architectur",
+      "goarch",
+      "reproduc",
+      "probabl",
+      "protection",
       "manual",
-      "question",
-      "latest",
-      "integ"
+      "error",
+      "cryptography"
     ]
   },
   {
@@ -725,16 +725,16 @@
     "category": "Performance Optimization",
     "subcategory": "Latency/Speed Optimization",
     "keywords": [
-      "protocol",
-      "follow",
-      "bool",
-      "bypass",
+      "datawithcontentsoffil",
       "disk",
-      "datapath",
-      "self",
-      "data",
-      "downloadcach",
-      "therequest"
+      "usedatafromcach",
+      "follow",
+      "performance",
+      "line",
+      "bypass",
+      "therequest",
+      "rather",
+      "cach"
     ]
   },
   {
@@ -745,16 +745,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "renamepngtest",
-      "name",
-      "errors",
-      "directori",
-      "path",
+      "issu",
+      "creat",
       "handling",
+      "error",
+      "errormessag",
+      "valid",
+      "path",
       "file",
-      "asset",
-      "error"
+      "custum",
+      "rightclick"
     ]
   },
   {
@@ -765,16 +765,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
-      "credenti",
-      "head",
-      "show",
-      "follow",
-      "nginx",
-      "errors",
-      "secret",
       "registri",
-      "compos",
-      "client"
+      "reproduc",
+      "follow",
+      "harbor",
+      "pier",
+      "dgvzddpkb",
+      "step",
+      "error",
+      "handling",
+      "pass"
     ]
   },
   {
@@ -785,15 +785,15 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "that",
-      "prototyp",
-      "packag",
-      "summari",
       "detection",
+      "that",
+      "updat",
+      "remov",
       "anomaly",
-      "pollut",
+      "breach",
       "plan",
-      "secur",
+      "result",
+      "prototyp",
       "handlebar"
     ]
   },
@@ -805,16 +805,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "string",
-      "errors",
-      "foreverfram",
-      "element",
-      "contain",
+      "pars",
+      "need",
+      "untermin",
+      "escap",
       "handling",
-      "valu",
       "error",
-      "script"
+      "emit",
+      "detect",
+      "string",
+      "messag"
     ]
   },
   {
@@ -825,16 +825,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "captur",
-      "runtime",
-      "cisco",
-      "string",
+      "packetf",
+      "sourc",
+      "reproduc",
       "follow",
-      "chrome",
-      "errors",
-      "root",
-      "lookup",
-      "chang"
+      "handling",
+      "error",
+      "step",
+      "pfdhcp",
+      "desktop",
+      "line"
     ]
   },
   {
@@ -845,16 +845,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "antiforgeri",
-      "disabl",
-      "token",
-      "cooki",
-      "security",
-      "anti",
       "addmvccor",
-      "invalidoperationexcept",
+      "still",
+      "iantiforgeri",
+      "issu",
       "manual",
-      "aspnet"
+      "valid",
+      "resolv",
+      "document",
+      "request",
+      "invalidoperationexcept"
     ]
   },
   {
@@ -865,16 +865,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "errors",
-      "skippgpcheck",
-      "unsecur",
-      "mislukt",
-      "makepkg",
-      "instal",
       "handling",
-      "curl",
+      "error",
+      "skippgpcheck",
+      "unknown",
       "suuy",
-      "instruct"
+      "window",
+      "mislukt",
+      "build",
+      "updat",
+      "compil"
     ]
   },
   {
@@ -885,16 +885,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "show",
-      "debug",
-      "mattermost",
-      "check",
+      "reproduc",
+      "step",
+      "server",
       "mechanisms",
-      "instal",
-      "tool",
+      "firebug",
       "password",
-      "summari",
-      "step"
+      "request",
+      "check",
+      "expect",
+      "login"
     ]
   },
   {
@@ -905,16 +905,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "credenti",
-      "sever",
-      "protocols",
-      "help",
-      "code",
-      "mind",
+      "modern",
+      "think",
       "mechanisms",
-      "chang",
+      "code",
+      "sever",
       "enabl",
-      "factor"
+      "mind",
+      "factor",
+      "main",
+      "chang"
     ]
   },
   {
@@ -925,16 +925,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "store",
-      "alreadi",
-      "includ",
-      "mechanisms",
+      "need",
       "manual",
       "specif",
-      "time",
-      "mean",
+      "mechanisms",
       "selenium",
-      "pair"
+      "offer",
+      "test",
+      "login",
+      "open",
+      "time"
     ]
   },
   {
@@ -945,16 +945,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
       "nuke",
-      "protection",
-      "problem",
-      "profil",
-      "data",
-      "correct",
+      "need",
       "decrypt",
+      "protection",
+      "solut",
       "uuid",
-      "need"
+      "save",
+      "cryptography",
+      "data",
+      "correct"
     ]
   },
   {
@@ -965,16 +965,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "area",
-      "head",
-      "errors",
-      "anoth",
+      "miss",
       "handling",
-      "time",
-      "freez",
+      "coars",
       "error",
-      "region"
+      "region",
+      "xref",
+      "runtime",
+      "inject",
+      "anoth",
+      "merg"
     ]
   },
   {
@@ -985,16 +985,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "third",
-      "errors",
+      "redeemscript",
+      "creat",
       "requir",
+      "error",
       "avoid",
-      "check",
-      "method",
-      "object",
       "handling",
-      "error"
+      "third",
+      "provid",
+      "check",
+      "runtime"
     ]
   },
   {
@@ -1005,16 +1005,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "show",
+      "need",
+      "modern",
+      "save",
       "lastpass",
       "mechanisms",
-      "similar",
-      "router",
+      "password",
+      "factor",
+      "rememb",
       "client",
-      "method",
-      "verification",
-      "reli",
-      "rememb"
+      "reli"
     ]
   },
   {
@@ -1025,16 +1025,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
+      "usernam",
       "flag",
-      "credenti",
-      "security",
-      "store",
-      "contain",
-      "chang",
-      "kpod",
+      "push",
+      "alpin",
       "path",
+      "docker",
       "file",
-      "imag"
+      "urvashi",
+      "runtim",
+      "authfil"
     ]
   },
   {
@@ -1045,16 +1045,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "easier",
+      "still",
+      "header",
+      "usernam",
       "grant",
-      "portu",
+      "server",
       "mechanisms",
-      "configur",
-      "client",
-      "verification",
-      "make",
-      "permiss",
-      "header"
+      "password",
+      "fall",
+      "happen",
+      "build"
     ]
   },
   {
@@ -1065,16 +1065,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "link",
-      "freez",
-      "requests",
-      "javascript",
-      "propos",
-      "enabl",
-      "imag",
+      "safe",
+      "firefox",
       "make",
+      "feature",
+      "requests",
       "enhancements",
-      "feature"
+      "propos",
+      "link",
+      "javascript",
+      "enabl"
     ]
   },
   {
@@ -1085,16 +1085,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "protocols",
-      "properli",
+      "usernam",
       "grant",
-      "unsur",
-      "code",
-      "though",
-      "best",
+      "probabl",
+      "creat",
+      "modern",
+      "begin",
+      "relev",
       "mechanisms",
-      "latest",
-      "configur"
+      "code",
+      "though"
     ]
   },
   {
@@ -1105,16 +1105,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "help",
-      "store",
-      "corefx",
+      "creat",
+      "protection",
+      "leakag",
       "requir",
+      "cryptography",
       "mitig",
-      "beta",
-      "aspnet",
-      "make",
-      "ident"
+      "data",
+      "password",
+      "deprec",
+      "harder"
     ]
   },
   {
@@ -1125,16 +1125,16 @@
     "category": "Configuration & Management",
     "subcategory": "System Deployment",
     "keywords": [
-      "node",
-      "kubeconfig",
+      "untouch",
       "flag",
+      "reproduc",
+      "later",
+      "detail",
+      "minim",
       "third",
-      "store",
-      "upgrad",
-      "includ",
-      "deployment",
       "pass",
-      "instal"
+      "file",
+      "remain"
     ]
   },
   {
@@ -1145,12 +1145,12 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "support",
-      "ldap",
-      "certificate",
       "management",
-      "implement"
+      "implement",
+      "support",
+      "cryptography",
+      "certificate",
+      "ldap"
     ]
   },
   {
@@ -1161,16 +1161,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "issu",
+      "architectur",
       "flag",
-      "cryptography",
-      "releas",
-      "question",
-      "latest",
-      "signatur",
+      "reproduc",
       "protection",
       "error",
-      "instead",
-      "data"
+      "cryptography",
+      "data",
+      "gohostarch",
+      "submit"
     ]
   },
   {
@@ -1181,16 +1181,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "physic",
-      "help",
-      "conduct",
+      "issu",
       "enhancements",
-      "time",
-      "asset",
+      "post",
+      "feature",
+      "back",
+      "accept",
+      "actual",
+      "physic",
       "date",
-      "bounti",
-      "post"
+      "time"
     ]
   },
   {
@@ -1201,12 +1201,12 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "partition",
       "hash",
-      "ycql",
-      "data",
       "protection",
+      "partition",
+      "cryptography",
+      "data",
+      "ycql",
       "explain"
     ]
   },
@@ -1218,16 +1218,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "licens",
-      "confirm",
-      "configur",
-      "enforc",
-      "contribut",
-      "advanc",
+      "modul",
+      "term",
       "enhancements",
+      "apach",
+      "option",
+      "request",
+      "support",
       "submit",
-      "explicitli"
+      "messag",
+      "feature"
     ]
   },
   {
@@ -1238,16 +1238,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "caus",
-      "protocols",
-      "token",
-      "alreadi",
-      "code",
-      "secret",
-      "compos",
+      "modern",
+      "refresh",
+      "everyth",
+      "server",
       "mechanisms",
-      "fail",
-      "client"
+      "file",
+      "enabl",
+      "somehow",
+      "secret",
+      "code"
     ]
   },
   {
@@ -1258,16 +1258,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "brew",
-      "revis",
-      "runtime",
-      "errors",
-      "includ",
-      "formula",
-      "instal",
-      "object",
+      "matchassert",
+      "formulari",
+      "pathnam",
       "handling",
-      "file"
+      "error",
+      "resolv",
+      "file",
+      "audit",
+      "pack",
+      "extend"
     ]
   },
   {
@@ -1278,16 +1278,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "front",
-      "allow",
-      "identity",
-      "authentication",
-      "submit",
-      "recaptcha",
       "click",
-      "mechanisms",
       "user",
-      "verification"
+      "valid",
+      "allow",
+      "mechanisms",
+      "identity",
+      "verification",
+      "front",
+      "recaptcha",
+      "form"
     ]
   },
   {
@@ -1298,16 +1298,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "privat",
-      "cryptography",
+      "default",
       "deliv",
-      "name",
-      "synchron",
-      "addit",
-      "regularli",
-      "mind",
+      "bare",
+      "week",
+      "least",
+      "need",
+      "great",
       "requir",
-      "paper"
+      "overcom",
+      "replac"
     ]
   },
   {
@@ -1318,16 +1318,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "show",
-      "errors",
-      "linux",
-      "root",
-      "chang",
-      "path",
-      "instal",
+      "issu",
+      "still",
+      "creat",
+      "miss",
+      "found",
+      "error",
+      "step",
+      "readm",
       "handling",
-      "file",
-      "error"
+      "path"
     ]
   },
   {
@@ -1338,16 +1338,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "link",
-      "error",
-      "decod",
       "runtime",
       "creat",
-      "handling",
-      "errors",
       "match",
+      "handling",
+      "error",
+      "attr",
       "variat",
-      "attr"
+      "encod",
+      "link",
+      "exception"
     ]
   },
   {
@@ -1358,16 +1358,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "chang",
-      "complianc",
-      "legaci",
+      "issu",
+      "jare",
+      "namespac",
+      "quick",
+      "backport",
       "path",
       "audit",
-      "jare",
-      "plugin",
       "travi",
-      "updat"
+      "test",
+      "chang"
     ]
   },
   {
@@ -1378,16 +1378,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "UI/UX Enhancements",
     "keywords": [
-      "email",
-      "version",
-      "requests",
-      "instead",
-      "show",
-      "upgrad",
-      "code",
-      "screenshot",
       "feature",
-      "ui/ux"
+      "upgrad",
+      "address",
+      "requests",
+      "enhancements",
+      "version",
+      "instead",
+      "text",
+      "screenshot",
+      "protect"
     ]
   },
   {
@@ -1398,16 +1398,16 @@
     "category": "Compatibility & Dependencies",
     "subcategory": "Third-party Dependencies",
     "keywords": [
-      "sever",
-      "depend",
       "upgrad",
       "logback",
-      "dependencies",
-      "current",
-      "vulner",
-      "recommend",
       "third-party",
-      "compatibility"
+      "vulner",
+      "sever",
+      "recommend",
+      "current",
+      "compatibility",
+      "depend",
+      "dependencies"
     ]
   },
   {
@@ -1418,16 +1418,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "credenti",
-      "check",
       "forgot",
       "mechanisms",
-      "case",
-      "reload",
-      "reset",
+      "password",
       "alway",
+      "messag",
+      "check",
+      "case",
       "happen",
-      "password"
+      "expect",
+      "state"
     ]
   },
   {
@@ -1438,16 +1438,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "hash",
-      "project",
+      "feature",
       "asset",
-      "allow",
+      "hash",
+      "updat",
       "requests",
-      "name",
-      "properti",
-      "multipl",
+      "enhancements",
+      "project",
       "call",
-      "feature"
+      "contain",
+      "allow"
     ]
   },
   {
@@ -1458,16 +1458,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "serial",
-      "case",
-      "valu",
+      "clientcertificateserialnumb",
+      "systemview",
       "enhancements",
+      "serial",
+      "extendedsystemview",
       "audit",
       "data",
-      "interfac",
-      "cast",
-      "loginput"
+      "respons",
+      "expos",
+      "request"
     ]
   },
   {
@@ -1478,16 +1478,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "similar",
-      "method",
-      "misunderstand",
+      "redeemscript",
+      "newest",
       "protection",
-      "offlin",
+      "cryptography",
       "data",
+      "librari",
+      "sign",
       "ledger",
-      "move",
-      "form"
+      "similar",
+      "work"
     ]
   },
   {
@@ -1498,16 +1498,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "contain",
-      "broken",
-      "chang",
-      "instanc",
-      "environ",
+      "escap",
+      "reproduc",
+      "creat",
       "handling",
+      "step",
       "error",
-      "charact"
+      "passwordhash",
+      "line",
+      "password",
+      "test"
     ]
   },
   {
@@ -1518,16 +1518,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "mydomain",
-      "string",
+      "anyth",
+      "impli",
       "requir",
-      "well",
-      "capabl",
-      "attempt",
+      "cryptography",
+      "valid",
+      "amazon",
+      "string",
       "patch",
-      "certificate",
-      "impli"
+      "host",
+      "wildcard"
     ]
   },
   {
@@ -1538,16 +1538,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "disabl",
-      "protection",
-      "data",
       "linux",
-      "possibl",
-      "volumetyp",
       "remov",
+      "disabl",
+      "volumetyp",
+      "possibl",
+      "protection",
+      "sinc",
       "volum",
-      "sinc"
+      "cryptography",
+      "data"
     ]
   },
   {
@@ -1558,16 +1558,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "ship",
-      "alreadi",
-      "data",
       "detection",
-      "anomaly",
       "leak",
-      "overboard",
-      "introduc",
+      "anomaly",
+      "accident",
+      "ship",
       "want",
-      "cover"
+      "alreadi",
+      "overboard",
+      "cover",
+      "data"
     ]
   },
   {
@@ -1579,15 +1579,15 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
-      "error",
-      "argument",
-      "code",
-      "report",
-      "errors",
-      "step",
-      "sign",
+      "stefan",
       "destindex",
-      "stefan"
+      "handling",
+      "step",
+      "error",
+      "valu",
+      "argument",
+      "pass",
+      "sign"
     ]
   },
   {
@@ -1598,16 +1598,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "csrf",
-      "auth",
-      "thank",
-      "security",
-      "creat",
-      "automat",
       "management",
-      "protect",
       "need",
-      "line"
+      "creat",
+      "csrf",
+      "config",
+      "line",
+      "thank",
+      "protect",
+      "auth",
+      "automat"
     ]
   },
   {
@@ -1618,16 +1618,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "UI/UX Enhancements",
     "keywords": [
-      "requests",
-      "protocol",
-      "descript",
       "content",
-      "enhancements",
-      "ui/ux",
-      "includ",
-      "improv",
+      "feature",
+      "descript",
       "signatur",
-      "rich"
+      "requests",
+      "tooltip",
+      "improv",
+      "enhancements",
+      "protocol",
+      "ui/ux"
     ]
   },
   {
@@ -1638,16 +1638,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "prepar",
-      "protection",
-      "statement",
-      "data",
-      "accept",
+      "safe",
+      "escap",
       "possibl",
-      "includ",
+      "client",
+      "protection",
       "solut",
-      "side"
+      "accept",
+      "includ",
+      "statement",
+      "queri"
     ]
   },
   {
@@ -1658,16 +1658,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "output",
-      "name",
+      "need",
+      "timezon",
+      "filter",
       "follow",
-      "avail",
-      "file",
-      "clean",
       "enhancements",
-      "well",
-      "region"
+      "region",
+      "file",
+      "data",
+      "provid",
+      "feature"
     ]
   },
   {
@@ -1678,16 +1678,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "guess",
-      "mechanisms",
-      "titl",
-      "method",
-      "avail",
-      "verification",
+      "default",
+      "still",
+      "issu",
+      "filter",
+      "laravel",
       "resolv",
-      "realli",
-      "group",
-      "insid"
+      "mechanisms",
+      "control",
+      "expect",
+      "avail"
     ]
   },
   {
@@ -1698,14 +1698,14 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "sinatra",
+      "leak",
+      "anomaly",
       "copi",
+      "rack",
+      "protect",
       "data",
       "detection",
-      "rack",
-      "anomaly",
-      "leak",
-      "protect"
+      "sinatra"
     ]
   },
   {
@@ -1716,16 +1716,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "ldap",
-      "mechanisms",
-      "configur",
-      "directori",
-      "either",
       "handler",
-      "verification",
-      "nativ",
+      "resolv",
+      "retriev",
+      "mechanisms",
+      "provid",
+      "attribut",
+      "flexibl",
       "fancier",
-      "resolv"
+      "directori",
+      "defin"
     ]
   },
   {
@@ -1736,16 +1736,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "retag",
-      "code",
-      "releas",
-      "anomaly",
-      "breach",
-      "confirm",
+      "sourc",
+      "replac",
+      "detail",
+      "aptli",
       "whose",
+      "file",
+      "code",
+      "detection",
       "check",
-      "legitim",
-      "file"
+      "retag"
     ]
   },
   {
@@ -1756,16 +1756,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "string",
-      "code",
-      "errors",
-      "cannot",
-      "addmethod",
-      "html",
-      "check",
+      "textarea",
+      "classruleset",
+      "handling",
+      "error",
+      "valid",
       "pass",
-      "true"
+      "code",
+      "html",
+      "string",
+      "addmethod"
     ]
   },
   {
@@ -1776,15 +1776,15 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "entri",
-      "impact",
-      "mechanisms",
-      "news",
-      "verification",
+      "radiu",
+      "issu",
       "workflow",
-      "author",
-      "file",
       "delet",
+      "branch",
+      "mechanisms",
+      "file",
+      "impact",
+      "descript",
       "merg"
     ]
   },
@@ -1796,16 +1796,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "email",
+      "chang",
       "hash",
-      "success",
-      "reset",
-      "password",
-      "authentication",
-      "certain",
-      "lost",
+      "email",
       "credential",
-      "activ"
+      "lost",
+      "address",
+      "validation",
+      "activ",
+      "reset",
+      "success"
     ]
   },
   {
@@ -1816,13 +1816,13 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "data",
-      "field",
-      "detection",
-      "anomaly",
       "leak",
+      "anomaly",
+      "escap",
+      "field",
       "valid",
-      "escap"
+      "data",
+      "detection"
     ]
   },
   {
@@ -1833,16 +1833,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "runtime",
-      "crash",
-      "mechan",
-      "errors",
+      "process",
+      "issu",
+      "affect",
+      "along",
       "mkmapview",
-      "though",
-      "chang",
-      "path",
-      "problemat"
+      "handling",
+      "dedic",
+      "base",
+      "error",
+      "line"
     ]
   },
   {
@@ -1853,16 +1853,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "cooki",
-      "right",
-      "detail",
-      "name",
-      "given",
-      "automat",
+      "restrict",
+      "type",
+      "remov",
+      "specifi",
       "feature",
-      "site",
-      "remov"
+      "detail",
+      "requests",
+      "howev",
+      "forc",
+      "think"
     ]
   },
   {
@@ -1873,16 +1873,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
+      "issu",
       "mention",
+      "need",
       "follow",
-      "errors",
-      "linux",
       "manual",
-      "latest",
-      "directori",
-      "instal",
+      "error",
+      "bundl",
       "handling",
-      "topic"
+      "server",
+      "linux"
     ]
   },
   {
@@ -1893,16 +1893,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
-      "code",
-      "errors",
-      "instal",
       "give",
-      "environ",
+      "issu",
+      "featur",
       "handling",
+      "bundl",
+      "detail",
       "error",
-      "problem",
-      "well",
-      "publish"
+      "revert",
+      "publish",
+      "line"
     ]
   },
   {
@@ -1913,16 +1913,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "help",
-      "chang",
-      "around",
-      "advanc",
-      "trust",
-      "problem",
+      "need",
       "much",
+      "provid",
+      "chang",
+      "management",
+      "remov",
+      "domain",
+      "certif",
       "find",
-      "domain"
+      "advanc"
     ]
   },
   {
@@ -1933,16 +1933,16 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
-      "hashmap",
-      "synchron",
-      "clienttoproxyworkerpool",
-      "proxytoserverworkerpool",
+      "creat",
+      "hold",
       "avoid",
-      "chang",
-      "make",
-      "overhead",
-      "warn",
-      "group"
+      "performance",
+      "nioeventloopgroup",
+      "plain",
+      "getproxytoserverworkerfor",
+      "server",
+      "synchron",
+      "clienttoproxybosspool"
     ]
   },
   {
@@ -1953,16 +1953,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "stunnel",
-      "help",
-      "claim",
-      "certificate",
       "management",
       "need",
       "user",
+      "cryptography",
+      "certif",
+      "help",
+      "certificate",
+      "claim",
       "pleas",
-      "certif"
+      "stunnel"
     ]
   },
   {
@@ -1973,16 +1973,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "flag",
-      "caus",
-      "properli",
-      "alreadi",
+      "exploit",
+      "issu",
       "scan",
-      "code",
-      "string",
-      "claim",
-      "anomaly",
-      "though"
+      "flag",
+      "filter",
+      "replac",
+      "error",
+      "repres",
+      "click",
+      "valid"
     ]
   },
   {
@@ -1993,16 +1993,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "runtime",
-      "errors",
-      "root",
-      "chang",
-      "nativ",
       "handling",
-      "file",
       "error",
-      "neither"
+      "superus",
+      "neither",
+      "file",
+      "password",
+      "messag",
+      "chang",
+      "runtime",
+      "accur"
     ]
   },
   {
@@ -2013,16 +2013,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "mechan",
-      "away",
-      "properli",
-      "angular",
-      "disappear",
-      "anoth",
-      "propos",
-      "check",
-      "newer"
+      "newer",
+      "reproduc",
+      "affect",
+      "featur",
+      "error",
+      "step",
+      "click",
+      "enhancements",
+      "valid",
+      "disappear"
     ]
   },
   {
@@ -2033,16 +2033,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "token",
-      "mechanisms",
-      "chang",
-      "scrum",
-      "loopback",
       "delet",
-      "intern",
-      "connect",
+      "mechanisms",
       "password",
-      "invalid"
+      "chang",
+      "strongloop",
+      "back",
+      "port",
+      "connect",
+      "scrum",
+      "session"
     ]
   },
   {
@@ -2053,16 +2053,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "durat",
       "output",
-      "show",
-      "certificate",
-      "document",
-      "leas",
-      "includ",
       "management",
-      "gener"
+      "leas",
+      "cryptography",
+      "gener",
+      "durat",
+      "certif",
+      "certificate",
+      "includ",
+      "show"
     ]
   },
   {
@@ -2073,16 +2073,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "templateeditor",
-      "nginx",
+      "issu",
+      "statu",
+      "messag",
       "linux",
-      "texteditor",
-      "though",
-      "enabl",
+      "chang",
+      "runtime",
+      "expect",
       "client",
-      "handling",
-      "file",
-      "systemtag"
+      "actual",
+      "storag"
     ]
   },
   {
@@ -2093,16 +2093,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "experi",
-      "anomaly",
+      "bundl",
+      "detect",
+      "dnscrypt",
+      "detection",
+      "suppos",
+      "engin",
+      "download",
       "breach",
-      "instal",
-      "antiviru",
-      "posit",
-      "virustot",
-      "malwar",
-      "proxi",
-      "binari"
+      "peopl",
+      "safe"
     ]
   },
   {
@@ -2113,15 +2113,15 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
+      "chang",
+      "probabl",
+      "modern",
+      "requir",
+      "oidc",
+      "mechanisms",
       "protocols",
       "ldap",
-      "oidc",
-      "authentication",
-      "requir",
-      "modern",
-      "probabl",
-      "mechanisms",
-      "chang"
+      "authentication"
     ]
   },
   {
@@ -2132,15 +2132,15 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "letsencrypt",
-      "version",
-      "recogn",
       "window",
-      "security",
+      "letsencrypt",
       "management",
       "sinc",
+      "version",
       "configuration",
-      "certif"
+      "certif",
+      "security",
+      "recogn"
     ]
   },
   {
@@ -2151,16 +2151,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "percentag",
-      "traffic",
-      "follow",
-      "code",
-      "otherwis",
-      "requir",
       "label",
-      "prometheu",
-      "reli"
+      "need",
+      "follow",
+      "requir",
+      "cryptography",
+      "metic",
+      "switch",
+      "code",
+      "compat",
+      "report"
     ]
   },
   {
@@ -2171,16 +2171,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "cooki",
-      "nginx",
-      "tell",
-      "mechanisms",
-      "lead",
-      "organizr",
       "ubuntu",
-      "problem",
-      "instead",
-      "master"
+      "step",
+      "begin",
+      "branch",
+      "lead",
+      "mechanisms",
+      "embi",
+      "descript",
+      "login",
+      "tell"
     ]
   },
   {
@@ -2191,16 +2191,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "copi",
-      "switch",
-      "requests",
-      "code",
-      "enhancements",
+      "ethash",
       "feature",
+      "copi",
       "manual",
-      "equihash",
+      "requests",
+      "enhancements",
+      "algo",
       "want",
-      "algo"
+      "code",
+      "switch"
     ]
   },
   {
@@ -2211,16 +2211,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "node",
+      "appset",
+      "issu",
+      "github",
       "code",
-      "grpc",
-      "requir",
-      "channel",
-      "core",
+      "cert",
+      "greeter",
+      "openssl",
       "client",
-      "path",
-      "file",
-      "ddcb"
+      "keyout",
+      "argument"
     ]
   },
   {
@@ -2231,16 +2231,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "upgrad",
-      "errors",
-      "adminus",
-      "yaml",
-      "jenkin",
-      "client",
-      "chart",
+      "anyth",
+      "need",
+      "reproduc",
       "handling",
-      "valu"
+      "error",
+      "minim",
+      "jenkin",
+      "server",
+      "file",
+      "runtime"
     ]
   },
   {
@@ -2251,16 +2251,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "protocols",
-      "code",
-      "tell",
-      "mechanisms",
-      "latest",
-      "method",
-      "solut",
-      "never",
+      "need",
+      "modern",
       "error",
-      "feel"
+      "valid",
+      "mechanisms",
+      "code",
+      "custom",
+      "better",
+      "devis",
+      "updat"
     ]
   },
   {
@@ -2272,15 +2272,15 @@
     "subcategory": "Resource Usage Optimization",
     "keywords": [
       "enum",
-      "argument",
-      "string",
-      "resource",
-      "heon",
       "leak",
-      "memori",
-      "sign",
+      "sang",
       "performance",
-      "optimization"
+      "argument",
+      "optimization",
+      "sign",
+      "resource",
+      "string",
+      "usage"
     ]
   },
   {
@@ -2291,16 +2291,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "detection",
-      "anomaly",
-      "breach",
-      "concern",
+      "passwd",
       "built",
-      "perform",
-      "protect",
-      "modul",
       "suggest",
-      "request"
+      "anomaly",
+      "miss",
+      "perform",
+      "think",
+      "modul",
+      "protect",
+      "concern"
     ]
   },
   {
@@ -2311,16 +2311,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "link",
+      "runtime",
+      "handling",
       "error",
       "readm",
-      "runtime",
       "branch",
-      "errors",
-      "wrong",
-      "handling",
+      "link",
       "file",
-      "exception"
+      "wrong",
+      "exception",
+      "errors"
     ]
   },
   {
@@ -2331,16 +2331,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "code",
-      "releas",
+      "privileg",
+      "need",
       "requir",
-      "rule",
-      "check",
-      "chang",
-      "contribut",
-      "side",
-      "note"
+      "branch",
+      "note",
+      "file",
+      "code",
+      "tidb",
+      "test",
+      "cherri"
     ]
   },
   {
@@ -2351,16 +2351,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "chrome",
-      "code",
-      "emul",
-      "rest",
-      "file",
-      "compani",
+      "bundl",
       "repres",
-      "instruct",
-      "local"
+      "rapidssl",
+      "cryptography",
+      "valid",
+      "server",
+      "file",
+      "code",
+      "android",
+      "host"
     ]
   },
   {
@@ -2371,14 +2371,14 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "mention",
-      "requests",
-      "descript",
       "issu",
+      "mention",
       "relat",
-      "test",
+      "feature",
+      "descript",
+      "requests",
       "enhancements",
-      "feature"
+      "test"
     ]
   },
   {
@@ -2389,14 +2389,14 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "report",
-      "commit",
-      "includ",
-      "staff",
-      "enhancements",
       "feature",
-      "login"
+      "login",
+      "requests",
+      "enhancements",
+      "commit",
+      "staff",
+      "includ",
+      "report"
     ]
   },
   {
@@ -2407,15 +2407,15 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "name",
-      "check",
-      "directori",
-      "shell",
-      "file",
-      "inherit",
+      "tclass",
+      "parent",
       "audit",
-      "scontext",
+      "file",
+      "resourc",
+      "check",
+      "management",
+      "directori",
+      "type",
       "script"
     ]
   },
@@ -2427,16 +2427,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "error",
-      "errors",
       "disk",
-      "devic",
-      "soni",
-      "build/compile",
       "fail",
-      "amami",
+      "error",
       "handling",
-      "exception"
+      "amami",
+      "build/compile",
+      "encrypt",
+      "soni",
+      "exception",
+      "devic"
     ]
   },
   {
@@ -2447,16 +2447,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "wish",
-      "cooki",
-      "store",
-      "loginfail",
+      "architectur",
+      "need",
       "mechanisms",
-      "geir",
-      "method",
-      "acegi",
-      "verification",
-      "purpos"
+      "respons",
+      "basicprocessingfilt",
+      "password",
+      "front",
+      "provid",
+      "request",
+      "soap"
     ]
   },
   {
@@ -2467,16 +2467,16 @@
     "category": "Compatibility & Dependencies",
     "subcategory": "Third-party Dependencies",
     "keywords": [
-      "mention",
-      "refus",
-      "sure",
-      "debug",
-      "linux",
+      "issu",
       "label",
-      "includ",
-      "question",
-      "life",
-      "instal"
+      "mention",
+      "reproduc",
+      "later",
+      "step",
+      "relev",
+      "bootstrap",
+      "file",
+      "setup"
     ]
   },
   {
@@ -2487,16 +2487,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "help",
-      "identity",
-      "password",
+      "chang",
+      "pleas",
       "creat",
-      "authentication",
-      "insid",
       "possibl",
-      "mechanisms",
       "forgot",
-      "chang"
+      "open",
+      "user",
+      "mechanisms",
+      "verification",
+      "insid"
     ]
   },
   {
@@ -2507,16 +2507,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "asset",
-      "requests",
-      "allow",
-      "name",
       "load",
       "feature",
+      "asset",
+      "requests",
+      "enhancements",
       "user",
       "encod",
-      "enhancements",
-      "file"
+      "allow",
+      "file",
+      "name"
     ]
   },
   {
@@ -2527,16 +2527,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "cooki",
-      "string",
-      "name",
+      "export",
       "follow",
-      "addit",
-      "errors",
-      "contain",
+      "handling",
+      "error",
+      "valid",
+      "string",
+      "patch",
+      "rune",
       "check",
-      "handling"
+      "runtime"
     ]
   },
   {
@@ -2547,16 +2547,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "guidelin",
-      "runtime",
+      "header",
+      "checklist",
       "follow",
-      "code",
-      "errors",
       "manual",
-      "contribut",
-      "cover",
+      "error",
       "handling",
-      "resolv"
+      "relev",
+      "valid",
+      "resolv",
+      "code"
     ]
   },
   {
@@ -2567,16 +2567,16 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
-      "code",
-      "descriptor",
-      "javacv",
-      "time",
-      "resource",
       "performance",
+      "line",
+      "code",
+      "remain",
+      "extractor",
+      "consumpt",
+      "increas",
+      "time",
       "imag",
-      "usage",
-      "comput",
-      "comment"
+      "usage"
     ]
   },
   {
@@ -2588,12 +2588,12 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
-      "error",
-      "problem",
       "descript",
-      "errors",
       "handling",
-      "exception"
+      "error",
+      "exception",
+      "errors",
+      "problem"
     ]
   },
   {
@@ -2604,16 +2604,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "hash",
-      "data",
-      "better",
-      "serializedscript",
-      "produc",
       "srcipt",
-      "method",
+      "better",
+      "hash",
       "protection",
-      "address"
+      "serializedscript",
+      "cryptography",
+      "data",
+      "address",
+      "method",
+      "produc"
     ]
   },
   {
@@ -2624,16 +2624,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "applicationtokenprovid",
-      "subscipt",
-      "name",
-      "code",
-      "though",
-      "fluent",
-      "azureglobalcloud",
-      "core",
-      "studio",
-      "client"
+      "issu",
+      "give",
+      "need",
+      "along",
+      "func",
+      "project",
+      "throwfornonsuccess",
+      "compilerservic",
+      "stack",
+      "code"
     ]
   },
   {
@@ -2644,16 +2644,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "output",
-      "help",
+      "issu",
+      "nois",
+      "still",
       "follow",
-      "name",
-      "requir",
       "vote",
-      "configur",
-      "note",
-      "valu"
+      "affect",
+      "requir",
+      "maintain",
+      "error",
+      "longer"
     ]
   },
   {
@@ -2664,16 +2664,16 @@
     "category": "Configuration & Management",
     "subcategory": "System Deployment",
     "keywords": [
-      "requir",
-      "envoy",
-      "manual",
-      "deployment",
-      "local",
-      "merg",
-      "notic",
       "default",
-      "pick",
-      "imag"
+      "manual",
+      "requir",
+      "docker",
+      "post",
+      "test",
+      "envoy",
+      "cherri",
+      "management",
+      "append"
     ]
   },
   {
@@ -2684,16 +2684,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "linux",
       "mint",
+      "desktopcli",
+      "server",
       "mechanisms",
-      "problem",
+      "password",
+      "regard",
+      "linux",
       "fedora",
       "connect",
-      "password",
-      "boot",
-      "validation",
-      "type"
+      "kind"
     ]
   },
   {
@@ -2704,16 +2704,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "popular",
-      "addit",
-      "demand",
-      "quit",
-      "solut",
+      "featur",
       "enhancements",
-      "problem",
-      "screenshot",
-      "clear"
+      "consid",
+      "altern",
+      "request",
+      "alway",
+      "happen",
+      "feature",
+      "descript",
+      "quit"
     ]
   },
   {
@@ -2724,16 +2724,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "someon",
-      "cryptography",
-      "sure",
+      "sourc",
+      "agre",
       "follow",
-      "proper",
-      "number",
+      "easili",
+      "brown",
       "requir",
-      "meet",
-      "channel",
-      "configur"
+      "protection",
+      "cryptography",
+      "demonstr",
+      "import"
     ]
   },
   {
@@ -2744,16 +2744,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "entri",
-      "errors",
-      "chang",
+      "usernam",
+      "reproduc",
+      "creat",
       "handling",
       "error",
-      "screenshot",
-      "empti",
-      "exampl",
-      "exception"
+      "relev",
+      "remain",
+      "provid",
+      "appear",
+      "chang"
     ]
   },
   {
@@ -2764,16 +2764,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "argument",
-      "name",
-      "trim",
+      "usernam",
       "length",
-      "method",
-      "either",
-      "internets",
       "enhancements",
-      "charact"
+      "alphabet",
+      "internets",
+      "option",
+      "trim",
+      "feature",
+      "argument",
+      "internet"
     ]
   },
   {
@@ -2784,16 +2784,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "privat",
-      "cryptography",
-      "difficult",
-      "tell",
-      "encount",
-      "contain",
+      "issu",
       "disambigu",
+      "error",
+      "cryptography",
       "pass",
-      "make",
-      "error"
+      "difficult",
+      "request",
+      "test",
+      "messag",
+      "load"
     ]
   },
   {
@@ -2804,16 +2804,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "runtime",
-      "crash",
-      "assign",
-      "comp",
-      "errors",
-      "linux",
-      "heap",
-      "checkisscript",
-      "previous"
+      "lang",
+      "startui",
+      "interceptor",
+      "found",
+      "error",
+      "statement",
+      "handling",
+      "term",
+      "cfec",
+      "fontforgeex"
     ]
   },
   {
@@ -2824,16 +2824,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "guess",
-      "code",
-      "errors",
-      "race",
-      "unix",
-      "client",
-      "lead",
+      "func",
+      "creat",
       "handling",
-      "file"
+      "error",
+      "gopath",
+      "trunner",
+      "server",
+      "lead",
+      "xaef",
+      "code"
     ]
   },
   {
@@ -2844,16 +2844,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "privat",
-      "cryptography",
-      "name",
       "requir",
-      "restrict",
-      "whether",
+      "cryptography",
+      "forego",
+      "valid",
       "chang",
-      "selinux",
-      "directori",
-      "case"
+      "case",
+      "restrict",
+      "management",
+      "privat",
+      "directori"
     ]
   },
   {
@@ -2864,16 +2864,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "symfoni",
-      "authent",
-      "identity",
+      "latest",
       "follow",
-      "authentication",
+      "implement",
       "guard",
       "updat",
-      "mechanisms",
-      "latest",
-      "alway"
+      "login",
+      "featur",
+      "user",
+      "authent",
+      "mechanisms"
     ]
   },
   {
@@ -2884,16 +2884,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "error",
-      "repositori",
       "polici",
-      "compil",
-      "errors",
+      "repositori",
+      "handling",
+      "error",
       "rapidli",
+      "activ",
+      "compil",
+      "exception",
       "occur",
-      "deactiv",
-      "build/compile",
-      "activ"
+      "build/compile"
     ]
   },
   {
@@ -2904,16 +2904,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "binari",
-      "credenti",
-      "security",
-      "support",
-      "configuration",
-      "order",
-      "integr",
       "management",
+      "make",
+      "builder",
+      "order",
       "base",
-      "login"
+      "credenti",
+      "login",
+      "configuration",
+      "docker",
+      "security"
     ]
   },
   {
@@ -2924,16 +2924,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "assign",
-      "script",
+      "chang",
+      "management",
+      "behavior",
+      "updat",
       "creat",
       "format",
-      "behavior",
-      "configuration",
-      "updat",
-      "management",
-      "chang"
+      "assign",
+      "unit",
+      "cover",
+      "script"
     ]
   },
   {
@@ -2944,16 +2944,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "grantor",
-      "output",
-      "name",
-      "string",
+      "export",
+      "usernam",
+      "reproduc",
       "follow",
-      "releas",
-      "errors",
-      "contain",
-      "believ"
+      "grantor",
+      "replac",
+      "error",
+      "step",
+      "sourcedb",
+      "alter"
     ]
   },
   {
@@ -2964,16 +2964,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "issu",
       "mention",
-      "cryptography",
-      "disabl",
-      "popup",
-      "confirm",
-      "propos",
-      "chang",
-      "enabl",
+      "still",
+      "affect",
+      "dashboard",
       "protection",
-      "pane"
+      "step",
+      "cryptography",
+      "remain",
+      "enabl"
     ]
   },
   {
@@ -2984,16 +2984,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "hash",
-      "insert",
-      "certificate",
-      "root",
-      "close",
       "management",
+      "self",
+      "hash",
+      "close",
+      "cryptography",
       "checksum",
+      "certificate",
+      "insert",
       "attribut",
-      "self"
+      "root"
     ]
   },
   {
@@ -3005,15 +3005,15 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
+      "handling",
       "error",
+      "system",
       "librari",
-      "certif",
-      "errors",
-      "servic",
-      "fopen",
       "directori",
+      "certif",
       "path",
-      "handling"
+      "file",
+      "fopen"
     ]
   },
   {
@@ -3024,16 +3024,16 @@
     "category": "Performance Optimization",
     "subcategory": "Latency/Speed Optimization",
     "keywords": [
-      "modifi",
+      "remov",
+      "need",
+      "relat",
+      "performance",
       "constructor",
       "instead",
-      "string",
-      "relat",
-      "unsaf",
-      "remov",
       "optimization",
-      "performance",
-      "need"
+      "unsaf",
+      "modifi",
+      "string"
     ]
   },
   {
@@ -3044,16 +3044,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "captur",
-      "token",
-      "busi",
-      "goal",
-      "otherwis",
-      "check",
+      "event",
+      "server",
       "mechanisms",
-      "plan",
-      "instanc",
-      "ident"
+      "provid",
+      "request",
+      "goal",
+      "captur",
+      "account",
+      "check",
+      "login"
     ]
   },
   {
@@ -3064,16 +3064,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "repositori",
-      "data",
-      "creat",
-      "packag",
-      "flat",
+      "check",
       "detection",
       "anomaly",
-      "contain",
+      "creat",
+      "repositori",
       "leak",
-      "alert"
+      "flat",
+      "signatur",
+      "alert",
+      "data"
     ]
   },
   {
@@ -3084,16 +3084,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "head",
-      "errors",
-      "includ",
-      "method",
-      "instal",
-      "handling",
+      "methodnotallowedexcept",
+      "usernam",
+      "found",
+      "step",
       "error",
-      "except",
-      "post"
+      "handling",
+      "click",
+      "password",
+      "post",
+      "runtime"
     ]
   },
   {
@@ -3104,16 +3104,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
+      "multipli",
+      "issu",
+      "longer",
       "follow",
-      "string",
-      "errors",
-      "produc",
-      "built",
-      "integ",
       "handling",
       "error",
-      "script"
+      "occur",
+      "demonstr",
+      "string",
+      "report"
     ]
   },
   {
@@ -3124,13 +3124,13 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "protocols",
       "repositori",
-      "authentication",
-      "master",
       "modern",
+      "port",
       "mechanisms",
-      "port"
+      "protocols",
+      "master",
+      "authentication"
     ]
   },
   {
@@ -3141,16 +3141,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
       "follow",
-      "errors",
-      "secret",
       "requir",
-      "compos",
-      "includ",
-      "configur",
-      "solut",
-      "handling"
+      "error",
+      "handling",
+      "modul",
+      "secret",
+      "request",
+      "test",
+      "suggest",
+      "runtime"
     ]
   },
   {
@@ -3161,16 +3161,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "entri",
-      "requests",
-      "readi",
-      "assign",
-      "code",
-      "squash",
+      "still",
+      "issu",
       "label",
-      "includ",
-      "titl",
-      "note"
+      "creat",
+      "enhancements",
+      "github",
+      "relev",
+      "branch",
+      "note",
+      "code"
     ]
   },
   {
@@ -3181,16 +3181,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "audit",
+      "check",
       "mention",
-      "time",
-      "thank",
-      "security",
+      "pleas",
       "issu",
-      "first",
-      "submit",
       "management",
-      "check"
+      "thank",
+      "audit",
+      "time",
+      "margin",
+      "know"
     ]
   },
   {
@@ -3201,16 +3201,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "addit",
-      "notif",
+      "issu",
+      "creat",
       "handling",
-      "valu",
-      "integrationtestserv",
-      "complet",
       "error",
-      "caller"
+      "server",
+      "fault",
+      "test",
+      "runtime",
+      "complet",
+      "valu"
     ]
   },
   {
@@ -3221,15 +3221,15 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "authentication",
-      "validatescop",
       "credential",
-      "authorizationendpoint",
+      "validatescop",
+      "made",
       "mechanisms",
-      "method",
       "validation",
       "tokenendpoint",
-      "made"
+      "authorizationendpoint",
+      "method",
+      "authentication"
     ]
   },
   {
@@ -3240,16 +3240,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "author",
-      "know",
-      "offlin",
-      "servic",
-      "sinc",
-      "account",
-      "host",
       "still",
-      "management"
+      "need",
+      "cert",
+      "host",
+      "account",
+      "management",
+      "know",
+      "servic",
+      "security",
+      "configuration"
     ]
   },
   {
@@ -3260,16 +3260,16 @@
     "category": "Cryptography",
     "subcategory": "Cryptographic Algorithms",
     "keywords": [
-      "cipher",
-      "oqskex",
-      "understood",
-      "avail",
-      "greet",
+      "issu",
+      "least",
+      "need",
+      "unsupport",
+      "think",
       "extend",
-      "learn",
-      "neither",
-      "verifi",
-      "program"
+      "softwar",
+      "provid",
+      "openssl",
+      "window"
     ]
   },
   {
@@ -3280,16 +3280,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
       "follow",
-      "check",
-      "whether",
-      "configur",
-      "securitylogin",
+      "filter",
+      "error",
+      "securitycontextholderawarerequestfilt",
       "securitycontextpersistencefilt",
-      "instanc",
-      "exceptiontranslationfilt",
-      "error"
+      "migrat",
+      "filtersecurityinterceptor",
+      "check",
+      "management",
+      "applicationcontext"
     ]
   },
   {
@@ -3300,15 +3300,15 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
+      "need",
+      "handling",
+      "error",
+      "typescript",
+      "directli",
       "runtime",
-      "guess",
       "argument",
       "errors",
-      "method",
-      "either",
-      "subscriptionresolv",
-      "object",
-      "handling",
+      "type",
       "know"
     ]
   },
@@ -3320,16 +3320,16 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
-      "captur",
-      "consum",
+      "issu",
+      "reproduc",
+      "performance",
+      "step",
+      "minim",
+      "softwar",
       "perfectli",
-      "includ",
-      "built",
-      "latest",
-      "steadili",
-      "sensor",
-      "godot",
-      "script"
+      "test",
+      "captur",
+      "window"
     ]
   },
   {
@@ -3340,16 +3340,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "detail",
-      "descript",
-      "inform",
-      "issu",
-      "errors",
       "check",
+      "issu",
+      "runtime",
+      "descript",
       "handling",
-      "exception"
+      "detail",
+      "error",
+      "inform",
+      "exception",
+      "errors"
     ]
   },
   {
@@ -3360,13 +3360,13 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "certificate",
       "management",
       "client",
-      "char",
       "second",
-      "certif"
+      "cryptography",
+      "certif",
+      "certificate",
+      "char"
     ]
   },
   {
@@ -3377,16 +3377,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "output",
-      "cannot",
-      "sskh",
+      "issu",
+      "creat",
       "past",
-      "instanc",
+      "line",
       "note",
+      "sskh",
+      "test",
+      "management",
       "case",
-      "valu",
-      "never"
+      "transport"
     ]
   },
   {
@@ -3397,16 +3397,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "somewhat",
-      "cryptography",
-      "cipher",
-      "string",
-      "requir",
+      "issu",
+      "checklist",
+      "creat",
       "decrypt",
-      "check",
       "manual",
-      "chang",
-      "mitig"
+      "base",
+      "requir",
+      "featur",
+      "protection",
+      "cryptography"
     ]
   },
   {
@@ -3417,16 +3417,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "disabl",
+      "blacklist",
+      "creat",
       "code",
-      "anomaly",
-      "gerasiov",
-      "breach",
-      "firejail",
-      "instal",
-      "author",
-      "common",
-      "disallow"
+      "arbitrari",
+      "detection",
+      "host",
+      "open",
+      "hole",
+      "commit",
+      "idea"
     ]
   },
   {
@@ -3437,16 +3437,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "propos",
-      "check",
-      "like",
-      "time",
-      "upstream",
-      "realli",
-      "whitelist",
+      "default",
+      "blacklist",
+      "care",
+      "support",
       "basic",
-      "default"
+      "ruleset",
+      "check",
+      "management",
+      "back",
+      "whitelist"
     ]
   },
   {
@@ -3457,16 +3457,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach detection",
     "keywords": [
-      "bodi",
-      "detection",
-      "anomaly",
-      "http",
-      "guarante",
-      "breach",
       "default",
-      "vegeta",
-      "control",
-      "request"
+      "make",
+      "anomaly",
+      "breach",
+      "client",
+      "bodi",
+      "user",
+      "must",
+      "encod",
+      "guarante"
     ]
   },
   {
@@ -3477,16 +3477,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "anoth",
-      "alloc",
-      "object",
+      "unsynchron",
       "handling",
-      "valu",
       "error",
-      "mean",
-      "unsynchron"
+      "memo",
+      "fiber",
+      "runtime",
+      "anoth",
+      "valu",
+      "connect",
+      "mean"
     ]
   },
   {
@@ -3497,16 +3497,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "caus",
-      "auth",
+      "remov",
       "local",
-      "fals",
-      "cipher",
-      "cryptography",
       "mode",
-      "data",
-      "grpc",
-      "commit"
+      "protection",
+      "teleport",
+      "fail",
+      "fals",
+      "commit",
+      "cryptography",
+      "auth"
     ]
   },
   {
@@ -3517,16 +3517,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach detection",
     "keywords": [
+      "default",
+      "issu",
+      "privaci",
       "follow",
-      "debug",
-      "understood",
-      "breach",
-      "anomaly",
-      "confirm",
-      "codebas",
-      "check",
-      "avail",
-      "pane"
+      "reproduc",
+      "creat",
+      "step",
+      "base",
+      "templat",
+      "unfamiliar"
     ]
   },
   {
@@ -3537,15 +3537,15 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Improvement",
     "keywords": [
-      "requests",
-      "code",
-      "metadata",
+      "give",
+      "hard",
+      "featur",
       "requir",
+      "error",
       "avoid",
-      "codebas",
-      "advic",
-      "chang",
-      "configur",
+      "detail",
+      "modul",
+      "enhancements",
       "pass"
     ]
   },
@@ -3557,16 +3557,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "addit",
-      "uphold",
-      "number",
+      "privaci",
       "requir",
-      "impact",
-      "latest",
-      "enabl",
+      "enhancements",
+      "line",
+      "valid",
+      "invari",
       "specif",
-      "launch"
+      "control",
+      "inadvert",
+      "enabl"
     ]
   },
   {
@@ -3577,16 +3577,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "error",
-      "security",
       "window",
-      "mode",
-      "issu",
+      "give",
       "work",
-      "document",
-      "anywher",
-      "configuration",
-      "management"
+      "issu",
+      "management",
+      "mode",
+      "deni",
+      "access",
+      "error",
+      "administr"
     ]
   },
   {
@@ -3597,16 +3597,16 @@
     "category": "Configuration & Management",
     "subcategory": "System Deployment",
     "keywords": [
+      "issu",
+      "passphras",
+      "owner",
       "linux",
-      "directori",
-      "beta",
-      "environ",
-      "file",
-      "permiss",
-      "problem",
-      "clear",
-      "group",
-      "default"
+      "chang",
+      "expect",
+      "tabl",
+      "duplic",
+      "actual",
+      "sqlite"
     ]
   },
   {
@@ -3617,16 +3617,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "securitycontextpersistencefilt",
-      "path",
-      "environ",
-      "handling",
-      "springsecurityfilterchain",
-      "everyth",
-      "pattern",
-      "ibati",
-      "form",
-      "appfus"
+      "namespac",
+      "filtersecurityinterceptor",
+      "chang",
+      "runtime",
+      "screenshot",
+      "accessdeniedhandlerimpl",
+      "mainmenu",
+      "element",
+      "convers",
+      "true"
     ]
   },
   {
@@ -3638,15 +3638,15 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
-      "error",
-      "messag",
-      "option",
-      "errors",
       "behavior",
-      "current",
-      "oneoftestsoneof",
+      "reproduc",
+      "handling",
+      "error",
+      "valid",
+      "option",
       "encod",
-      "reproduc"
+      "exception",
+      "current"
     ]
   },
   {
@@ -3657,16 +3657,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "protocols",
+      "need",
+      "modern",
       "third",
-      "callback",
-      "code",
       "throught",
+      "server",
       "mechanisms",
-      "parti",
-      "wrote",
-      "blazor",
-      "sampl"
+      "code",
+      "provid",
+      "host",
+      "chat"
     ]
   },
   {
@@ -3677,16 +3677,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "full",
-      "requests",
-      "rather",
-      "name",
+      "usernam",
+      "feature",
       "field",
-      "anywher",
-      "enhancements",
-      "respons",
-      "includ",
-      "person"
+      "login",
+      "requests",
+      "person",
+      "full",
+      "github",
+      "user",
+      "enhancements"
     ]
   },
   {
@@ -3697,16 +3697,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "antiviru",
-      "hello",
       "window",
-      "data",
-      "inform",
-      "detection",
+      "compar",
+      "glpi",
       "anomaly",
       "leak",
+      "hello",
       "agent",
-      "glpi"
+      "inform",
+      "program",
+      "data"
     ]
   },
   {
@@ -3718,13 +3718,13 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
+      "handling",
       "error",
+      "cast",
       "allow",
       "errors",
-      "cast",
       "unsaf",
-      "rust",
-      "function",
+      "exception",
       "type",
       "pointer"
     ]
@@ -3737,16 +3737,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "depend",
-      "alreadi",
-      "requir",
-      "descriptor",
-      "method",
-      "avail",
-      "nullabl",
+      "issu",
+      "nice",
       "referenc",
-      "enhancements"
+      "along",
+      "easili",
+      "requir",
+      "enhancements",
+      "line",
+      "nullabl",
+      "detect"
     ]
   },
   {
@@ -3757,16 +3757,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "third",
+      "issu",
       "follow",
-      "addit",
+      "third",
       "mechanisms",
+      "offic",
+      "provid",
       "chang",
-      "similar",
-      "umbraco",
-      "verification",
-      "environ",
-      "instal"
+      "local",
+      "back",
+      "login"
     ]
   },
   {
@@ -3777,16 +3777,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "properli",
-      "upload",
       "select",
       "follow",
-      "errors",
-      "prioriti",
-      "broken",
-      "thanx",
-      "handling"
+      "handling",
+      "error",
+      "server",
+      "import",
+      "statu",
+      "option",
+      "runtime",
+      "local"
     ]
   },
   {
@@ -3797,16 +3797,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "checkout",
-      "entri",
-      "requests",
-      "sure",
-      "name",
-      "contain",
-      "sort",
-      "propos",
-      "chang",
-      "core"
+      "blacklist",
+      "filter",
+      "creat",
+      "featur",
+      "rcwf",
+      "forbidden",
+      "improv",
+      "term",
+      "enhancements",
+      "pass"
     ]
   },
   {
@@ -3817,16 +3817,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
+      "applianc",
+      "issu",
       "mention",
-      "security",
-      "sure",
-      "debug",
-      "releas",
-      "linux",
-      "includ",
-      "question",
-      "autom",
-      "instal"
+      "reproduc",
+      "found",
+      "step",
+      "ubuntu",
+      "excut",
+      "modul",
+      "relev"
     ]
   },
   {
@@ -3837,16 +3837,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "protocol",
-      "errors",
-      "linux",
-      "sysv",
-      "fbddf",
-      "soft",
+      "creat",
+      "swreactorthread",
+      "handling",
+      "error",
+      "signal",
+      "sigat",
+      "event",
+      "verifi",
       "reactor",
-      "unix",
-      "directori"
+      "file"
     ]
   },
   {
@@ -3857,16 +3857,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "struct",
-      "proper",
       "protection",
-      "instead",
-      "data",
-      "byte",
-      "opaqu",
+      "cryptography",
       "verifi",
-      "move"
+      "data",
+      "messag",
+      "struct",
+      "ensur",
+      "sign",
+      "variou",
+      "type"
     ]
   },
   {
@@ -3877,16 +3877,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "instead",
-      "errors",
-      "custom",
-      "unneed",
-      "probabl",
       "write",
+      "runtime",
+      "probabl",
+      "unneed",
+      "handling",
+      "error",
+      "rais",
+      "instead",
       "strnlen",
-      "handling"
+      "exception"
     ]
   },
   {
@@ -3897,16 +3897,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "issu",
+      "work",
+      "hope",
+      "describ",
+      "protection",
+      "improv",
       "cryptography",
       "tunnel",
       "partli",
-      "data",
-      "issu",
-      "describ",
-      "work",
-      "includ",
-      "improv",
-      "hope"
+      "data"
     ]
   },
   {
@@ -3917,16 +3917,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "right",
-      "identity",
-      "authentication",
-      "doug",
-      "sign",
-      "mechanisms",
-      "verification",
-      "user",
       "davi",
-      "return"
+      "user",
+      "sign",
+      "return",
+      "mechanisms",
+      "right",
+      "doug",
+      "verification",
+      "identity",
+      "authentication"
     ]
   },
   {
@@ -3937,12 +3937,12 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
+      "portion",
+      "feature",
       "requests",
       "enhancements",
-      "galleri",
       "side",
-      "portion",
-      "feature"
+      "galleri"
     ]
   },
   {
@@ -3953,16 +3953,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "guidelin",
-      "requests",
-      "upload",
-      "show",
-      "name",
-      "odoo",
-      "selector",
-      "confirm",
+      "default",
       "manual",
-      "length"
+      "length",
+      "enhancements",
+      "char",
+      "function",
+      "option",
+      "submit",
+      "present",
+      "feature"
     ]
   },
   {
@@ -3973,16 +3973,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "caus",
-      "easier",
-      "cipher",
+      "issu",
+      "need",
+      "namespac",
+      "maxrewrit",
+      "spoe",
+      "templat",
+      "project",
+      "rather",
       "code",
-      "tlsv",
-      "linux",
-      "label",
-      "mess",
-      "avail",
-      "client"
+      "observ"
     ]
   },
   {
@@ -3993,14 +3993,14 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
-      "build",
-      "resource",
-      "optimization",
-      "javascript",
-      "performance",
       "shave",
+      "build",
+      "performance",
+      "javascript",
+      "minifi",
+      "resource",
       "usage",
-      "minifi"
+      "optimization"
     ]
   },
   {
@@ -4011,16 +4011,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "checkout",
-      "credenti",
+      "issu",
+      "creat",
+      "troubleshoot",
+      "github",
+      "server",
+      "right",
       "sever",
-      "ctrl",
-      "chrome",
-      "incorrect",
-      "anomaly",
-      "breach",
-      "includ",
-      "influxdb"
+      "data",
+      "respons",
+      "expos"
     ]
   },
   {
@@ -4031,16 +4031,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "cooki",
       "follow",
+      "creat",
+      "configureapplicationcooki",
+      "save",
+      "publish",
+      "drive",
+      "microsoft",
+      "server",
       "code",
-      "name",
-      "authcooki",
-      "simultan",
-      "live",
-      "ticketdataformat",
-      "success"
+      "option"
     ]
   },
   {
@@ -4052,15 +4052,15 @@
     "subcategory": "Network/Protocol Errors",
     "keywords": [
       "follow",
-      "chrome",
-      "errors",
-      "meet",
       "handling",
-      "time",
       "error",
       "ubuntu",
-      "admin",
-      "start"
+      "think",
+      "server",
+      "apach",
+      "compat",
+      "account",
+      "network/protocol"
     ]
   },
   {
@@ -4071,16 +4071,16 @@
     "category": "Performance Optimization",
     "subcategory": "Latency/Speed Optimization",
     "keywords": [
-      "infinit",
-      "merg",
-      "code",
-      "simd",
-      "mayb",
-      "first",
-      "wait",
-      "mani",
+      "salt",
+      "speed",
+      "implement",
       "performance",
-      "trick"
+      "infinit",
+      "howev",
+      "merg",
+      "boost",
+      "simd",
+      "mayb"
     ]
   },
   {
@@ -4091,16 +4091,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
-      "firebas",
-      "credenti",
-      "token",
-      "cooki",
-      "errors",
       "handling",
       "error",
-      "oauth",
-      "exception",
-      "http"
+      "valid",
+      "firebas",
+      "function",
+      "request",
+      "expect",
+      "network/protocol",
+      "login",
+      "oauth"
     ]
   },
   {
@@ -4111,16 +4111,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "caus",
-      "refus",
-      "security",
-      "name",
-      "linux",
+      "compon",
+      "issu",
+      "default",
+      "reproduc",
       "decrypt",
-      "ansibl",
-      "configur",
-      "stagingo",
-      "ident"
+      "error",
+      "step",
+      "line",
+      "file",
+      "ansibl"
     ]
   },
   {
@@ -4131,12 +4131,12 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "saehi",
-      "security",
-      "park",
       "management",
+      "park",
+      "saehi",
       "sign",
       "jerryscript",
+      "security",
       "configuration"
     ]
   },
@@ -4148,16 +4148,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "addsignin",
-      "secureyour",
-      "cooki",
-      "polici",
-      "alreadi",
-      "output",
-      "code",
-      "errors",
-      "mind"
+      "issu",
+      "tracker",
+      "affect",
+      "featur",
+      "found",
+      "creat",
+      "detail",
+      "elig",
+      "configureapplicationcooki",
+      "github"
     ]
   },
   {
@@ -4168,16 +4168,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "authenticateexternalasync",
-      "cooki",
-      "wsfeder",
-      "callback",
-      "name",
+      "issu",
+      "responsehandl",
+      "think",
+      "rather",
       "code",
-      "authenticateresult",
-      "becker",
-      "core",
-      "client"
+      "provid",
+      "client",
+      "state",
+      "wrong",
+      "authorizeendpointcontrol"
     ]
   },
   {
@@ -4188,16 +4188,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "hello",
-      "output",
-      "requir",
-      "question",
-      "specif",
-      "pass",
       "protection",
-      "know",
-      "repres"
+      "requir",
+      "repres",
+      "cryptography",
+      "pass",
+      "specif",
+      "data",
+      "expos",
+      "alway",
+      "tabl"
     ]
   },
   {
@@ -4208,16 +4208,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "credenti",
-      "token",
-      "clientid",
+      "usernam",
       "grant",
-      "errors",
-      "client",
-      "userdetailsservic",
-      "author",
-      "handling"
+      "handling",
+      "base",
+      "error",
+      "server",
+      "password",
+      "custom",
+      "runtime",
+      "client"
     ]
   },
   {
@@ -4228,16 +4228,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "credenti",
+      "default",
+      "hacker",
+      "suffer",
       "sever",
-      "anomaly",
-      "breach",
-      "news",
       "enabl",
+      "detection",
+      "eslint",
       "know",
-      "compromis",
-      "problem",
-      "extens"
+      "breach",
+      "compromis"
     ]
   },
   {
@@ -4248,14 +4248,14 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "certificate",
-      "publish",
-      "management",
+      "safe",
       "chang",
+      "management",
       "sinc",
+      "publish",
+      "cryptography",
       "assum",
-      "safe"
+      "certificate"
     ]
   },
   {
@@ -4266,16 +4266,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "default",
+      "issu",
       "mention",
-      "cryptography",
-      "consum",
+      "creat",
+      "reproduc",
+      "protection",
       "useclientmodel",
-      "claim",
-      "otherwis",
-      "thought",
-      "secret",
-      "column",
-      "believ"
+      "step",
+      "cryptography",
+      "laravel"
     ]
   },
   {
@@ -4286,16 +4286,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "look",
-      "audit",
-      "left",
-      "disabl",
-      "error",
       "runtime",
-      "thrown",
-      "errors",
+      "disabl",
+      "without",
+      "block",
+      "error",
+      "handling",
       "auditor",
-      "block"
+      "left",
+      "except",
+      "audit"
     ]
   },
   {
@@ -4306,16 +4306,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "privat",
-      "cryptography",
-      "output",
-      "depend",
-      "tell",
-      "unless",
+      "nice",
+      "miss",
       "avoid",
-      "believ",
-      "annoy",
-      "much"
+      "much",
+      "cryptography",
+      "rather",
+      "obvious",
+      "support",
+      "openssl",
+      "management"
     ]
   },
   {
@@ -4326,16 +4326,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "data",
-      "secur",
-      "java",
-      "found",
-      "zerobytepad",
-      "nosuchalgorithmexcept",
       "protection",
+      "found",
+      "cryptography",
+      "nosuchalgorithmexcept",
+      "data",
       "zerospad",
-      "provid"
+      "provid",
+      "zerobytepad",
+      "secur",
+      "java"
     ]
   },
   {
@@ -4346,16 +4346,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
+      "still",
       "runtime",
-      "convert",
-      "param",
-      "behav",
-      "error",
-      "bodi",
+      "affect",
       "handling",
-      "errors",
-      "defin",
-      "rout"
+      "bodi",
+      "error",
+      "howev",
+      "symbol",
+      "space",
+      "defin"
     ]
   },
   {
@@ -4366,16 +4366,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "credenti",
-      "iainfou",
-      "linux",
+      "xrdp",
+      "issu",
+      "sourc",
+      "virtual",
       "requir",
+      "base",
+      "detail",
+      "github",
       "mechanisms",
-      "independ",
-      "enabl",
-      "directori",
-      "azur",
-      "verification"
+      "enabl"
     ]
   },
   {
@@ -4386,16 +4386,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
+      "give",
+      "need",
       "cryptography",
-      "easier",
-      "addit",
-      "maco",
-      "conclus",
-      "directori",
-      "method",
-      "avail",
+      "file",
+      "cach",
       "enabl",
-      "give"
+      "data",
+      "attribut",
+      "directli",
+      "level"
     ]
   },
   {
@@ -4406,16 +4406,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "cooki",
-      "errors",
-      "pseudo",
-      "includ",
-      "check",
-      "true",
+      "later",
       "handling",
+      "error",
+      "minim",
       "resolv",
-      "error"
+      "provid",
+      "resourc",
+      "attribut",
+      "request",
+      "obvious"
     ]
   },
   {
@@ -4426,16 +4426,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "help",
-      "ddea",
-      "name",
-      "errors",
-      "addit",
-      "secret",
-      "includ",
+      "compon",
+      "issu",
+      "still",
+      "mode",
       "decrypt",
-      "check"
+      "handling",
+      "step",
+      "error",
+      "backport",
+      "file"
     ]
   },
   {
@@ -4446,16 +4446,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "trip",
-      "walk",
-      "round",
-      "grab",
-      "errors",
-      "instrument",
-      "contribut",
-      "cell",
-      "envvar",
-      "past"
+      "pars",
+      "give",
+      "sourc",
+      "creat",
+      "eventu",
+      "miss",
+      "past",
+      "stringifi",
+      "fuzzit",
+      "think"
     ]
   },
   {
@@ -4466,16 +4466,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "authtag",
+      "cipheriv",
+      "protection",
+      "prototyp",
       "cryptography",
       "authent",
-      "cipher",
-      "prototyp",
-      "data",
-      "cipheriv",
-      "method",
+      "specif",
+      "authtag",
       "setaad",
-      "specif"
+      "cipher",
+      "data"
     ]
   },
   {
@@ -4486,16 +4486,16 @@
     "category": "Configuration & Management",
     "subcategory": "System Deployment",
     "keywords": [
-      "hello",
+      "default",
+      "issu",
       "follow",
-      "string",
-      "compos",
-      "deployment",
-      "environ",
-      "workflow",
-      "blank",
+      "found",
       "error",
-      "recogn"
+      "workflow",
+      "docker",
+      "string",
+      "handsom",
+      "host"
     ]
   },
   {
@@ -4506,16 +4506,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "vuln",
-      "hello",
-      "auxiliari",
-      "anomaly",
-      "breach",
-      "check",
-      "core",
-      "shell",
-      "framework",
-      "file"
+      "exploit",
+      "creat",
+      "base",
+      "modul",
+      "troubl",
+      "nilclass",
+      "valid",
+      "file",
+      "abort",
+      "detection"
     ]
   },
   {
@@ -4526,16 +4526,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "privat",
-      "third",
-      "code",
-      "cannot",
-      "mechanisms",
-      "chang",
-      "core",
       "past",
-      "parti",
-      "refer"
+      "child",
+      "detail",
+      "third",
+      "revert",
+      "branch",
+      "mechanisms",
+      "code",
+      "control",
+      "extend"
     ]
   },
   {
@@ -4546,16 +4546,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Improvement",
     "keywords": [
-      "requests",
-      "name",
-      "chrome",
-      "linux",
+      "issu",
+      "creat",
+      "along",
+      "reproduc",
       "manual",
-      "chang",
-      "pass",
-      "environ",
-      "sugar",
-      "enhancements"
+      "detail",
+      "step",
+      "ubuntu",
+      "enhancements",
+      "pass"
     ]
   },
   {
@@ -4566,16 +4566,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "caus",
-      "cryptography",
-      "mydomain",
-      "guess",
+      "take",
       "cheer",
+      "cryptography",
+      "server",
       "code",
-      "proper",
-      "thought",
-      "parti",
-      "object"
+      "care",
+      "provid",
+      "mismatch",
+      "host",
+      "basic"
     ]
   },
   {
@@ -4586,16 +4586,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Build/Compile Errors",
     "keywords": [
-      "error",
-      "spit",
-      "errors",
-      "aircrack",
       "built",
-      "fine",
       "chang",
-      "build/compile",
       "instal",
-      "handling"
+      "handling",
+      "error",
+      "build/compile",
+      "fine",
+      "spit",
+      "aircrack",
+      "exception"
     ]
   },
   {
@@ -4607,15 +4607,15 @@
     "subcategory": "Credential Validation",
     "keywords": [
       "flag",
-      "credenti",
-      "network",
-      "authentication",
+      "fetch",
       "credential",
       "step",
-      "http",
-      "cach",
+      "credenti",
+      "validation",
       "mechanisms",
-      "validation"
+      "gate",
+      "cach",
+      "network"
     ]
   },
   {
@@ -4626,16 +4626,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "method",
-      "signatur",
-      "seen",
+      "tradit",
       "handling",
-      "anyon",
-      "resolv",
       "error",
-      "charact"
+      "verifi",
+      "resolv",
+      "verif",
+      "provid",
+      "hashlen",
+      "runtime",
+      "happen"
     ]
   },
   {
@@ -4646,12 +4646,12 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "protection",
+      "convertto",
       "cryptography",
       "data",
       "password",
-      "convertto",
-      "securestr",
-      "protection"
+      "securestr"
     ]
   },
   {
@@ -4662,16 +4662,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "progress",
-      "chrome",
-      "mechanisms",
-      "verification",
-      "github",
-      "launch",
       "immedi",
-      "success",
+      "dashboard",
+      "github",
       "everyth",
-      "delet"
+      "delet",
+      "mechanisms",
+      "somehow",
+      "abort",
+      "alway",
+      "login"
     ]
   },
   {
@@ -4682,16 +4682,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "hello",
-      "anomaly",
-      "breach",
-      "time",
-      "infect",
-      "screenshot",
+      "somehow",
+      "detection",
+      "adwar",
+      "happen",
       "osticket",
-      "unaffect",
-      "redirect",
-      "domain"
+      "domain",
+      "seem",
+      "screenshot",
+      "time",
+      "breach"
     ]
   },
   {
@@ -4702,16 +4702,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
+      "issu",
       "scan",
-      "anomaly",
-      "breach",
-      "includ",
-      "screenshoot",
+      "reproduc",
+      "found",
+      "step",
+      "detection",
+      "incoher",
+      "back",
       "plan",
-      "threat",
-      "admin",
-      "jetpack",
-      "step"
+      "admin"
     ]
   },
   {
@@ -4722,16 +4722,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "privat",
-      "credenti",
       "registri",
-      "centurion",
-      "mechanisms",
-      "verification",
-      "environ",
-      "error",
       "take",
-      "patch"
+      "centurion",
+      "error",
+      "server",
+      "docker",
+      "mechanisms",
+      "care",
+      "patch",
+      "support"
     ]
   },
   {
@@ -4742,13 +4742,13 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Improvement",
     "keywords": [
-      "requests",
-      "wrapper",
+      "feature",
       "descript",
-      "chainabl",
+      "requests",
       "enhancements",
-      "improvement",
-      "feature"
+      "wrapper",
+      "chainabl",
+      "improvement"
     ]
   },
   {
@@ -4759,16 +4759,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "bffad",
-      "errors",
-      "openmp",
-      "built",
-      "core",
+      "nice",
       "handling",
+      "ubuntu",
+      "error",
+      "valid",
       "file",
-      "know",
-      "error"
+      "runtime",
+      "build",
+      "hardwar",
+      "quad"
     ]
   },
   {
@@ -4779,16 +4779,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "node",
-      "version",
-      "cryptography",
-      "right",
-      "consist",
+      "chromium",
+      "management",
       "copay",
-      "certificate",
       "behavior",
+      "self",
+      "make",
       "accept",
-      "management"
+      "pertain",
+      "consist",
+      "version"
     ]
   },
   {
@@ -4799,16 +4799,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
+      "issu",
+      "featur",
       "requir",
-      "suit",
-      "best",
-      "contribut",
-      "refer",
-      "none",
-      "reliabl",
+      "detail",
+      "enhancements",
       "github",
-      "enhancements"
+      "provid",
+      "high",
+      "support",
+      "test"
     ]
   },
   {
@@ -4819,16 +4819,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "disabl",
-      "mechanisms",
-      "chang",
-      "verification",
-      "case",
+      "usernam",
+      "creat",
       "immedi",
-      "find",
-      "correct",
+      "mechanisms",
       "option",
-      "proxi"
+      "chang",
+      "case",
+      "edit",
+      "allow",
+      "find"
     ]
   },
   {
@@ -4839,16 +4839,16 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
-      "unsubscrib",
-      "licens",
-      "contributor",
-      "resource",
-      "element",
-      "leak",
-      "memori",
       "destroy",
+      "leak",
+      "element",
+      "performance",
+      "event",
+      "unsubscrib",
+      "sign",
+      "text",
       "confirm",
-      "sign"
+      "resource"
     ]
   },
   {
@@ -4859,16 +4859,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
+      "anomaly",
+      "possibl",
       "hello",
       "hack",
-      "detection",
-      "possibl",
-      "anomaly",
-      "breach",
-      "discov",
+      "protect",
       "mitm",
       "webrtc",
-      "protect"
+      "attack",
+      "detection",
+      "breach"
     ]
   },
   {
@@ -4879,12 +4879,12 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "creat",
-      "base",
-      "enhancements",
       "feature",
-      "layout"
+      "creat",
+      "layout",
+      "base",
+      "requests",
+      "enhancements"
     ]
   },
   {
@@ -4895,16 +4895,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "addit",
-      "propos",
-      "mechanisms",
-      "enforc",
-      "enabl",
+      "header",
+      "reproduc",
+      "step",
+      "detail",
+      "kong",
+      "line",
+      "valid",
       "pass",
       "specif",
-      "true",
-      "mean",
-      "date"
+      "mechanisms"
     ]
   },
   {
@@ -4915,16 +4915,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
+      "need",
       "follow",
-      "tlsv",
-      "linux",
-      "rspec",
-      "errors",
-      "alert",
-      "client",
-      "method",
-      "path"
+      "handling",
+      "error",
+      "line",
+      "verif",
+      "path",
+      "request",
+      "openssl",
+      "unknown"
     ]
   },
   {
@@ -4935,16 +4935,16 @@
     "category": "Cryptography",
     "subcategory": "Cryptographic Algorithms",
     "keywords": [
-      "node",
-      "cryptography",
-      "support",
-      "overload",
-      "algorithms",
       "issu",
-      "document",
-      "addit",
+      "need",
       "cryptographic",
-      "recent"
+      "anoth",
+      "recent",
+      "avoid",
+      "approach",
+      "cryptography",
+      "node",
+      "addit"
     ]
   },
   {
@@ -4955,16 +4955,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "handler",
-      "client",
-      "specif",
-      "instanc",
-      "make",
-      "know",
       "base",
-      "connect",
-      "provid"
+      "handler",
+      "cryptography",
+      "server",
+      "specif",
+      "limit",
+      "respons",
+      "cert",
+      "provid",
+      "request"
     ]
   },
   {
@@ -4975,16 +4975,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "hello",
-      "protocol",
-      "linearli",
-      "name",
-      "fowl",
+      "issu",
+      "still",
+      "need",
+      "least",
+      "mode",
+      "decrypt",
       "follow",
-      "maco",
-      "linux",
-      "addit"
+      "begin",
+      "situat",
+      "base"
     ]
   },
   {
@@ -4995,16 +4995,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "guess",
-      "errors",
-      "make",
+      "issu",
       "handling",
       "error",
-      "arriv",
-      "activemerch",
+      "test",
+      "runtime",
       "updat",
-      "failur"
+      "remot",
+      "make",
+      "broke",
+      "guess"
     ]
   },
   {
@@ -5015,16 +5015,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "store",
-      "safari",
-      "check",
-      "whether",
-      "opera",
-      "mechanisms",
-      "rememb",
       "ticket",
-      "trac",
-      "report"
+      "featur",
+      "keyword",
+      "save",
+      "mechanisms",
+      "password",
+      "migrat",
+      "provid",
+      "report",
+      "suggest"
     ]
   },
   {
@@ -5035,16 +5035,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Improvement",
     "keywords": [
-      "requests",
-      "cooki",
-      "assign",
-      "note",
-      "case",
-      "enhancements",
-      "mean",
-      "prefix",
       "default",
-      "move"
+      "warrant",
+      "enhancements",
+      "note",
+      "cach",
+      "larger",
+      "case",
+      "remov",
+      "feature",
+      "domain"
     ]
   },
   {
@@ -5055,16 +5055,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "abstracturi",
-      "requir",
-      "handling",
-      "problem",
+      "issu",
+      "least",
+      "think",
+      "much",
+      "specif",
       "import",
-      "firefox",
-      "step",
-      "possibl",
-      "real",
-      "least"
+      "html",
+      "compat",
+      "runtime",
+      "remov"
     ]
   },
   {
@@ -5075,16 +5075,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "readi",
-      "synchron",
-      "releas",
-      "errors",
+      "onsubscrib",
       "avoid",
-      "race",
-      "make",
+      "error",
+      "handling",
+      "synchron",
+      "resourc",
       "case",
-      "handling"
+      "runtime",
+      "wonder",
+      "trigger"
     ]
   },
   {
@@ -5095,16 +5095,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "perfectli",
-      "start",
-      "everyth",
-      "errors",
       "work",
-      "sign",
+      "start",
+      "runtime",
       "handling",
-      "exception"
+      "error",
+      "everyth",
+      "sign",
+      "perfectli",
+      "exception",
+      "errors"
     ]
   },
   {
@@ -5115,12 +5115,12 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
+      "management",
       "follow",
-      "certificate",
-      "compat",
+      "cryptography",
       "backward",
-      "management"
+      "certificate",
+      "compat"
     ]
   },
   {
@@ -5131,16 +5131,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "sever",
-      "upgrad",
-      "metadata",
-      "anomaly",
-      "breach",
-      "best",
-      "snyk",
+      "affect",
       "path",
+      "sever",
+      "detection",
       "report",
-      "notic"
+      "request",
+      "test",
+      "metadata",
+      "pull",
+      "moment"
     ]
   },
   {
@@ -5151,16 +5151,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "runtime",
-      "token",
-      "errors",
-      "meet",
-      "race",
-      "html",
-      "case",
+      "process",
+      "issu",
+      "dummi",
+      "miss",
       "handling",
-      "silent"
+      "error",
+      "valid",
+      "html",
+      "collect",
+      "case"
     ]
   },
   {
@@ -5171,16 +5171,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
+      "need",
       "ouch",
-      "solut",
-      "tool",
       "namesrvaddr",
-      "consol",
-      "analyt",
       "hacker",
-      "public",
-      "network"
+      "server",
+      "rocketmq",
+      "network",
+      "management",
+      "port",
+      "solut"
     ]
   },
   {
@@ -5191,16 +5191,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
+      "leak",
+      "anomaly",
+      "client",
+      "file",
       "mute",
       "data",
-      "distribut",
-      "detection",
-      "anomaly",
-      "spammer",
-      "leak",
       "stop",
-      "client",
-      "file"
+      "detection",
+      "spammer",
+      "distribut"
     ]
   },
   {
@@ -5211,16 +5211,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "runtime",
+      "issu",
+      "creat",
+      "ticket",
       "follow",
-      "errors",
-      "eeec",
-      "check",
       "past",
-      "instal",
+      "error",
       "handling",
-      "ticket"
+      "unxutil",
+      "valid",
+      "window"
     ]
   },
   {
@@ -5231,16 +5231,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "time",
-      "simpl",
-      "stump",
-      "thank",
-      "help",
-      "admin",
-      "password",
-      "authentication",
+      "instal",
       "credential",
-      "first"
+      "login",
+      "admin",
+      "thank",
+      "validation",
+      "mechanisms",
+      "help",
+      "appreci",
+      "time"
     ]
   },
   {
@@ -5251,16 +5251,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "follow",
-      "name",
-      "errors",
-      "epip",
-      "broken",
-      "core",
       "extern",
-      "refer",
-      "catch"
+      "follow",
+      "handling",
+      "error",
+      "base",
+      "bundl",
+      "epip",
+      "modul",
+      "docker",
+      "path"
     ]
   },
   {
@@ -5271,16 +5271,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "fire",
-      "requests",
-      "across",
-      "gitlab",
-      "stumbl",
-      "possibl",
-      "though",
       "default",
       "usernam",
-      "test"
+      "make",
+      "feature",
+      "across",
+      "possibl",
+      "requests",
+      "fire",
+      "enhancements",
+      "gitlab"
     ]
   },
   {
@@ -5291,16 +5291,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "node",
-      "entri",
-      "security",
-      "help",
-      "show",
-      "name",
-      "index",
-      "number",
-      "anoth",
-      "includ"
+      "default",
+      "threshold",
+      "event",
+      "templat",
+      "line",
+      "emit",
+      "audit",
+      "file",
+      "provid",
+      "option"
     ]
   },
   {
@@ -5311,16 +5311,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "depend",
-      "schoenebeck",
-      "project",
-      "openwrt",
-      "correspond",
+      "lede",
+      "sourc",
       "base",
-      "move",
-      "pull",
-      "christian"
+      "relev",
+      "project",
+      "cryptography",
+      "openwrt",
+      "management",
+      "build",
+      "pull"
     ]
   },
   {
@@ -5331,16 +5331,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "stope",
-      "project",
-      "identity",
-      "eveth",
       "browser",
-      "authentication",
       "work",
-      "updat",
       "restclient",
-      "fine"
+      "updat",
+      "login",
+      "unauthor",
+      "project",
+      "user",
+      "stope",
+      "mechanisms"
     ]
   },
   {
@@ -5351,16 +5351,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "name",
+      "issu",
+      "need",
+      "tymon",
+      "project",
       "code",
-      "column",
-      "highli",
-      "default",
+      "provid",
+      "messag",
+      "chang",
       "vagrant",
-      "entiti",
-      "compon",
-      "eloquentuseradapt",
-      "invalid"
+      "tabl"
     ]
   },
   {
@@ -5371,15 +5371,15 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "thank",
-      "switch",
-      "requests",
-      "code",
-      "mauric",
-      "split",
+      "hmac",
       "feature",
       "requir",
-      "hmac",
+      "orig",
+      "requests",
+      "enhancements",
+      "diff",
+      "thank",
+      "split",
       "advanc"
     ]
   },
@@ -5391,15 +5391,15 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "time",
-      "security",
-      "admin",
-      "white",
       "work",
-      "current",
-      "helpcent",
       "management",
       "blacklist",
+      "client",
+      "fail",
+      "white",
+      "admin",
+      "valid",
+      "server",
       "side"
     ]
   },
@@ -5411,15 +5411,15 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "link",
-      "identity",
-      "authentication",
-      "mechanisms",
       "blacklist",
-      "side",
       "user",
+      "server",
+      "link",
+      "side",
+      "mechanisms",
       "verification",
-      "server"
+      "identity",
+      "authentication"
     ]
   },
   {
@@ -5431,15 +5431,15 @@
     "subcategory": "Breach Detection",
     "keywords": [
       "exploit",
-      "wang",
-      "refer",
       "output",
-      "follow",
-      "detection",
-      "guard",
-      "plugin",
       "anomaly",
-      "breach"
+      "follow",
+      "guard",
+      "wordpress",
+      "wang",
+      "modul",
+      "wpvdbid",
+      "refer"
     ]
   },
   {
@@ -5450,16 +5450,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "busi",
-      "sale",
+      "process",
       "versionstr",
-      "anti",
-      "propos",
+      "featur",
+      "dedic",
+      "enhancements",
       "enabl",
-      "make",
-      "administr",
-      "know"
+      "password",
+      "welcom",
+      "provid",
+      "properti"
     ]
   },
   {
@@ -5470,16 +5470,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "configur",
-      "author",
-      "param",
-      "problem",
-      "without",
-      "block",
-      "design",
+      "anyth",
       "management",
-      "user"
+      "descript",
+      "block",
+      "login",
+      "actual",
+      "security",
+      "configuration",
+      "problem",
+      "author"
     ]
   },
   {
@@ -5490,16 +5490,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Improvement",
     "keywords": [
-      "requests",
-      "chrome",
-      "\"authenticaten\"",
-      "using?",
-      "what",
-      "datasource",
+      "places",
+      "where",
+      "opening",
       "enhancements",
-      "spelling",
+      "datasource",
       "data",
-      "happened"
+      "instead?",
+      "network",
+      "query",
+      "request"
     ]
   },
   {
@@ -5510,16 +5510,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "show",
-      "alreadi",
-      "name",
-      "errors",
-      "linux",
-      "openssh",
-      "core",
-      "ansibl",
-      "configur"
+      "compon",
+      "issu",
+      "reproduc",
+      "snemirovskyal",
+      "featur",
+      "handling",
+      "step",
+      "error",
+      "modul",
+      "github"
     ]
   },
   {
@@ -5530,16 +5530,16 @@
     "category": "Compatibility & Dependencies",
     "subcategory": "Third-party Dependencies",
     "keywords": [
-      "hard",
-      "depend",
       "extens",
-      "instead",
+      "hard",
+      "suggest",
       "make",
       "possibl",
       "requir",
-      "dependencies",
-      "suggest",
-      "solut"
+      "solut",
+      "third-party",
+      "instead",
+      "compatibility"
     ]
   },
   {
@@ -5550,16 +5550,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "protection",
-      "data",
-      "phpass",
-      "replac",
-      "updat",
-      "vendor",
       "affect",
-      "done",
-      "password"
+      "protection",
+      "replac",
+      "cryptography",
+      "verif",
+      "data",
+      "password",
+      "garden",
+      "remov",
+      "updat"
     ]
   },
   {
@@ -5570,16 +5570,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "output",
-      "errors",
-      "sweet",
-      "chang",
-      "regex",
-      "refer",
-      "handling",
-      "salt",
-      "error"
+      "issu",
+      "creat",
+      "virtual",
+      "along",
+      "probabl",
+      "take",
+      "minim",
+      "error",
+      "modul",
+      "improv"
     ]
   },
   {
@@ -5590,13 +5590,13 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "certificate",
       "management",
       "domain",
-      "cover",
+      "cryptography",
       "known",
-      "certif"
+      "certif",
+      "cover",
+      "certificate"
     ]
   },
   {
@@ -5607,16 +5607,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "sure",
-      "alreadi",
-      "number",
+      "protection",
       "requir",
-      "check",
-      "signatur",
-      "make",
+      "detail",
+      "cryptography",
+      "valid",
+      "data",
       "multisig",
-      "protection"
+      "check",
+      "input",
+      "sign"
     ]
   },
   {
@@ -5627,16 +5627,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "credenti",
-      "devinb",
-      "requir",
-      "mechanisms",
-      "chang",
+      "issu",
+      "sourc",
       "studio",
-      "independ",
-      "client",
       "troubleshoot",
-      "github"
+      "requir",
+      "detail",
+      "error",
+      "refresh",
+      "github",
+      "docker"
     ]
   },
   {
@@ -5647,16 +5647,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "though",
+      "defaultwebsubjectfactori",
+      "creat",
+      "inde",
       "avoid",
-      "check",
-      "defaultwebsessionstorageevalu",
-      "noarg",
+      "error",
       "handling",
-      "delegatingsubject",
-      "error"
+      "websubject",
+      "respons",
+      "though",
+      "test"
     ]
   },
   {
@@ -5667,16 +5667,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "palard",
       "cherri",
-      "julien",
+      "faaa",
+      "runtime",
       "handling",
-      "errors",
+      "error",
       "commit",
       "pick",
-      "author"
+      "palard",
+      "author",
+      "julien"
     ]
   },
   {
@@ -5687,16 +5687,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "protection",
+      "scheme",
       "singl",
+      "actual",
+      "gener",
       "cryptography",
-      "problem",
-      "round",
-      "password",
-      "data",
-      "document",
+      "even",
       "given",
-      "storag",
-      "scheme"
+      "data",
+      "password"
     ]
   },
   {
@@ -5707,16 +5707,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "guess",
-      "depend",
-      "name",
-      "proper",
-      "linux",
-      "mobil",
+      "usernam",
+      "matter",
       "chang",
-      "phone",
-      "instal"
+      "linux",
+      "build",
+      "rememb",
+      "chroot",
+      "management",
+      "confus",
+      "mayb"
     ]
   },
   {
@@ -5727,13 +5727,13 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "miquel",
-      "authentication",
       "credential",
       "sabat",
-      "mechanisms",
+      "miquel",
       "sign",
-      "validation"
+      "validation",
+      "mechanisms",
+      "authentication"
     ]
   },
   {
@@ -5744,16 +5744,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
+      "chang",
+      "sure",
+      "make",
       "runtime",
       "hash",
+      "handling",
       "error",
-      "cooki",
-      "driver",
-      "sure",
-      "errors",
-      "make",
-      "especi",
-      "valu"
+      "valu",
+      "valid",
+      "driver"
     ]
   },
   {
@@ -5764,16 +5764,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "guidelin",
-      "requests",
-      "odoo",
-      "confirm",
-      "desir",
+      "issu",
+      "creat",
+      "featur",
       "enhancements",
-      "time",
-      "merg",
+      "valid",
       "submit",
-      "move"
+      "feature",
+      "descript",
+      "prevent",
+      "gantt"
     ]
   },
   {
@@ -5784,16 +5784,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "code",
-      "vertial",
-      "errors",
-      "align",
+      "issu",
+      "middl",
+      "checklist",
       "forgot",
       "manual",
-      "contribut",
-      "chang",
-      "autom"
+      "captcha",
+      "error",
+      "handling",
+      "click",
+      "relev"
     ]
   },
   {
@@ -5804,16 +5804,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "drop",
-      "chrome",
-      "mautic",
-      "check",
-      "similar",
-      "avail",
+      "issu",
+      "creat",
       "troubleshoot",
-      "file",
-      "learn"
+      "reproduc",
+      "later",
+      "detail",
+      "step",
+      "error",
+      "line",
+      "cryptography"
     ]
   },
   {
@@ -5824,16 +5824,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "hash",
-      "data",
-      "vector",
       "possibl",
-      "find",
-      "signatur",
+      "hash",
       "ecdsa",
-      "test",
-      "protection"
+      "part",
+      "signatur",
+      "protection",
+      "cryptography",
+      "find",
+      "data",
+      "address"
     ]
   },
   {
@@ -5844,16 +5844,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "addon",
-      "check",
-      "mechanisms",
-      "question",
-      "verification",
       "ticket",
+      "improv",
+      "branch",
+      "mechanisms",
+      "test",
       "deprec",
+      "check",
       "updat",
-      "form",
-      "identity"
+      "descript",
+      "categori"
     ]
   },
   {
@@ -5864,16 +5864,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "look",
-      "cooki",
-      "instead",
-      "follow",
-      "sourc",
-      "detection",
       "work",
-      "data",
-      "secret",
-      "cookiepars"
+      "sourc",
+      "cookiepars",
+      "follow",
+      "anomaly",
+      "leak",
+      "read",
+      "seem",
+      "actual",
+      "sign"
     ]
   },
   {
@@ -5884,16 +5884,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Network/Protocol Errors",
     "keywords": [
-      "webclientprotocol",
-      "hello",
-      "protocol",
-      "getwebrespons",
+      "issu",
+      "sourc",
       "follow",
-      "string",
-      "errors",
       "requir",
-      "channel",
-      "independ"
+      "error",
+      "detail",
+      "handling",
+      "github",
+      "valid",
+      "server"
     ]
   },
   {
@@ -5904,16 +5904,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "someon",
-      "cryptography",
-      "configur",
+      "issu",
       "give",
-      "self",
-      "case",
-      "error",
+      "reproduc",
+      "mode",
+      "creat",
       "ubuntu",
-      "instead",
-      "start"
+      "hang",
+      "error",
+      "templat",
+      "minim"
     ]
   },
   {
@@ -5924,15 +5924,15 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
-      "unabl",
-      "descript",
       "issu",
-      "errors",
+      "runtime",
       "updat",
-      "forg",
+      "descript",
       "client",
+      "forg",
+      "error",
+      "handling",
+      "unabl",
       "enter"
     ]
   },
@@ -5944,16 +5944,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
+      "newer",
+      "need",
+      "protection",
+      "guarate",
       "cryptography",
-      "output",
-      "store",
-      "bulk",
       "code",
-      "reencod",
-      "chang",
-      "rest",
-      "plan",
-      "newer"
+      "guarante",
+      "data",
+      "declar",
+      "chang"
     ]
   },
   {
@@ -5964,16 +5964,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "releas",
-      "chang",
-      "team",
-      "avlasov",
-      "note",
       "replac",
       "maintain",
-      "secur",
-      "level"
+      "announc",
+      "templat",
+      "note",
+      "test",
+      "level",
+      "chang",
+      "management",
+      "sign"
     ]
   },
   {
@@ -5984,16 +5984,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "column",
-      "propos",
-      "titl",
-      "protection",
-      "case",
-      "know",
+      "icon",
       "ticket",
-      "blank",
-      "trac"
+      "keyword",
+      "protection",
+      "cryptography",
+      "data",
+      "migrat",
+      "seth",
+      "report",
+      "messag"
     ]
   },
   {
@@ -6004,16 +6004,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "code",
-      "errors",
-      "loginfailureexcept",
-      "ident",
       "handling",
-      "voic",
       "error",
-      "success",
-      "wart"
+      "xxxxxxx",
+      "save",
+      "code",
+      "password",
+      "runtime",
+      "chat",
+      "wart",
+      "loginfailureexcept"
     ]
   },
   {
@@ -6024,14 +6024,14 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
+      "management",
+      "access",
       "authent",
-      "security",
       "password",
-      "configuration",
+      "security",
       "current",
       "host",
-      "management",
-      "access"
+      "configuration"
     ]
   },
   {
@@ -6042,16 +6042,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "input.",
-      "anomaly",
-      "breach",
-      "contain",
-      "passed",
-      "other",
-      "addresses",
-      "cover",
-      "older",
-      "commands."
+      "cause",
+      "some",
+      "very",
+      "line",
+      "which",
+      "smtp",
+      "injection",
+      "ruby",
+      "detection",
+      "disallows"
     ]
   },
   {
@@ -6062,16 +6062,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "kunenatre",
-      "security",
-      "code",
-      "jomsoci",
+      "layout",
       "blue",
-      "eagl",
-      "footer",
-      "element",
-      "jxtend",
-      "configur"
+      "creat",
+      "noixacl",
+      "jomsoci",
+      "templat",
+      "improv",
+      "file",
+      "code",
+      "versionmajor"
     ]
   },
   {
@@ -6082,16 +6082,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "upload",
-      "name",
-      "code",
-      "errors",
-      "opera",
-      "environ",
-      "github",
+      "issu",
+      "sandbox",
+      "creat",
+      "affect",
       "handling",
-      "error"
+      "went",
+      "error",
+      "github",
+      "consid",
+      "code"
     ]
   },
   {
@@ -6102,16 +6102,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "sever",
-      "assign",
-      "ldap",
-      "mechanisms",
-      "pass",
+      "compon",
       "project",
-      "ldaploginmodul",
-      "report",
-      "wrote",
-      "util"
+      "pass",
+      "server",
+      "mechanisms",
+      "sever",
+      "bindpassword",
+      "migrat",
+      "password",
+      "report"
     ]
   },
   {
@@ -6122,16 +6122,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "debug",
-      "code",
-      "number",
-      "mechanisms",
-      "verification",
-      "make",
+      "distinguish",
       "error",
-      "problem",
-      "form",
-      "cryptic"
+      "mechanisms",
+      "code",
+      "cryptic",
+      "becom",
+      "messag",
+      "increas",
+      "actual",
+      "allow"
     ]
   },
   {
@@ -6142,16 +6142,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "entri",
-      "output",
-      "help",
-      "argument",
-      "name",
+      "compon",
+      "issu",
+      "still",
+      "step",
+      "modul",
+      "valid",
+      "lead",
+      "iosxr",
       "code",
-      "addit",
-      "anomaly",
-      "includ",
-      "chang"
+      "data"
     ]
   },
   {
@@ -6162,16 +6162,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "clone",
-      "authent",
-      "protocols",
-      "support",
-      "authentication",
-      "current",
-      "remot",
-      "modern",
       "great",
-      "mechanisms"
+      "clone",
+      "modern",
+      "authent",
+      "repo",
+      "mechanisms",
+      "remot",
+      "atlanti",
+      "protocols",
+      "current"
     ]
   },
   {
@@ -6182,16 +6182,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
+      "reproduc",
       "forgot",
-      "honor",
-      "handling",
+      "miss",
+      "step",
       "error",
+      "handling",
       "purpl",
-      "class",
-      "seem",
-      "exception"
+      "password",
+      "custom",
+      "runtime"
     ]
   },
   {
@@ -6202,16 +6202,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
+      "compar",
+      "issu",
+      "compon",
+      "extendedkeyusag",
+      "modul",
       "cryptography",
-      "string",
-      "name",
-      "addit",
+      "rather",
+      "limit",
       "ansibl",
-      "extendedkyeusag",
-      "devel",
-      "valu",
-      "instead",
-      "util"
+      "string"
     ]
   },
   {
@@ -6222,16 +6222,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "caus",
-      "version",
       "visual",
-      "sure",
-      "error",
-      "runtime",
-      "fixrm",
-      "compil",
       "issu",
-      "errors"
+      "sure",
+      "runtime",
+      "studio",
+      "handling",
+      "error",
+      "breakag",
+      "version",
+      "seem"
     ]
   },
   {
@@ -6242,16 +6242,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "code",
-      "errors",
-      "cannot",
-      "unless",
-      "pass",
+      "checklist",
+      "mode",
       "handling",
       "error",
-      "local",
-      "success"
+      "interact",
+      "pass",
+      "verifi",
+      "code",
+      "test",
+      "runtime"
     ]
   },
   {
@@ -6262,16 +6262,16 @@
     "category": "Performance Optimization",
     "subcategory": "Resource Usage Optimization",
     "keywords": [
+      "need",
+      "performance",
       "handler",
-      "gorilla",
-      "note",
-      "true",
-      "clearhandl",
       "everyth",
+      "note",
       "import",
-      "call",
-      "resource",
-      "wrap"
+      "level",
+      "usage",
+      "memori",
+      "context"
     ]
   },
   {
@@ -6282,16 +6282,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "credenti",
-      "output",
-      "mechanisms",
-      "minikub",
-      "param",
-      "everyth",
-      "discuss",
+      "usernam",
       "chartmuseum",
+      "everyth",
+      "mechanisms",
+      "password",
+      "provid",
+      "rancher",
+      "open",
       "pick",
-      "kubernet"
+      "authentication"
     ]
   },
   {
@@ -6302,16 +6302,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "look",
-      "thank",
-      "cryptography",
-      "right",
+      "anyth",
       "sourc",
-      "issu",
       "offici",
-      "document",
-      "certificate",
-      "product"
+      "issu",
+      "need",
+      "environ",
+      "management",
+      "cryptography",
+      "thank",
+      "path"
     ]
   },
   {
@@ -6322,16 +6322,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "token",
-      "identity",
-      "delet",
-      "code",
-      "authentication",
-      "though",
+      "chang",
+      "avail",
       "requir",
-      "automat",
-      "control",
-      "chang"
+      "config",
+      "user",
+      "delet",
+      "setauthvar",
+      "mechanisms",
+      "code",
+      "control"
     ]
   },
   {
@@ -6342,16 +6342,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "sure",
-      "store",
+      "hard",
       "select",
-      "otherwis",
+      "need",
+      "protection",
+      "backend",
+      "cryptography",
+      "perhap",
       "mainli",
-      "fairli",
-      "note",
-      "sync",
-      "protection"
+      "assum",
+      "note"
     ]
   },
   {
@@ -6362,16 +6362,16 @@
     "category": "Configuration & Management",
     "subcategory": "System Deployment",
     "keywords": [
-      "protocol",
-      "sorri",
+      "sourc",
       "length",
-      "deployment",
-      "asset",
+      "control",
+      "host",
+      "request",
       "basic",
-      "exampl",
-      "system",
-      "link",
-      "host"
+      "management",
+      "port",
+      "protocol",
+      "deployment"
     ]
   },
   {
@@ -6382,16 +6382,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "data",
-      "descript",
-      "detection",
-      "step",
-      "anomaly",
       "leak",
+      "anomaly",
+      "reproduc",
+      "descript",
+      "expect",
+      "step",
       "actual",
-      "alway",
       "vulner",
-      "classif"
+      "data",
+      "subject"
     ]
   },
   {
@@ -6402,16 +6402,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "music",
+      "feature",
       "descript",
-      "listen",
-      "site",
-      "resourc",
-      "onlin",
-      "featur",
+      "without",
       "client",
-      "sniff"
+      "featur",
+      "requests",
+      "onlin",
+      "resourc",
+      "sniff",
+      "listen"
     ]
   },
   {
@@ -6422,16 +6422,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "token",
-      "errors",
-      "nullcurl",
-      "question",
-      "jenkin",
+      "issu",
+      "usernam",
       "handling",
-      "curl",
-      "salt",
-      "error"
+      "error",
+      "jenkin",
+      "password",
+      "setup",
+      "statu",
+      "test",
+      "salt"
     ]
   },
   {
@@ -6442,16 +6442,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "requests",
-      "number",
-      "though",
-      "contain",
-      "object",
-      "true",
-      "valu",
+      "default",
+      "need",
+      "modul",
       "enhancements",
-      "call",
-      "default"
+      "though",
+      "messag",
+      "feature",
+      "valu",
+      "forc",
+      "toobject"
     ]
   },
   {
@@ -6462,16 +6462,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "alreadi",
       "follow",
-      "ctrl",
-      "errors",
-      "channel",
       "handling",
-      "freez",
       "error",
-      "call"
+      "event",
+      "main",
+      "runtime",
+      "updat",
+      "ctrl",
+      "alreadi",
+      "freez"
     ]
   },
   {
@@ -6482,16 +6482,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach detection",
     "keywords": [
-      "revis",
-      "maco",
+      "issu",
+      "blacklist",
+      "reproduc",
+      "step",
+      "consist",
+      "detection",
+      "submit",
+      "window",
       "linux",
-      "releas",
-      "anomaly",
-      "encount",
-      "breach",
-      "similar",
-      "distro",
-      "instal"
+      "expect"
     ]
   },
   {
@@ -6502,14 +6502,14 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "password",
-      "data",
       "possibl",
-      "protect",
-      "litedb",
       "protection",
-      "access"
+      "access",
+      "cryptography",
+      "litedb",
+      "protect",
+      "data",
+      "password"
     ]
   },
   {
@@ -6520,16 +6520,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "support",
-      "librari",
-      "data",
-      "love",
-      "wire",
-      "litenetlib",
       "need",
       "protection",
-      "packet"
+      "love",
+      "wire",
+      "cryptography",
+      "librari",
+      "litenetlib",
+      "data",
+      "encrypt",
+      "support"
     ]
   },
   {
@@ -6540,16 +6540,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
+      "check",
+      "failur",
       "mention",
-      "error",
       "runtime",
       "handling",
-      "errors",
-      "origin",
-      "commun",
-      "check",
-      "ignor",
-      "failur"
+      "error",
+      "scrape",
+      "certif",
+      "exception",
+      "ignor"
     ]
   },
   {
@@ -6560,16 +6560,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "hashmap",
+      "commandrout",
       "deliv",
-      "alreadi",
       "follow",
-      "errors",
+      "featur",
+      "handling",
+      "error",
       "iconsistenthash",
-      "router",
-      "method",
-      "make"
+      "reach",
+      "somehow",
+      "hocon"
     ]
   },
   {
@@ -6580,16 +6580,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "token",
+      "anyth",
+      "creat",
+      "step",
+      "ubuntu",
+      "valid",
       "mechanisms",
-      "configur",
-      "side",
-      "verification",
-      "environ",
-      "ident",
-      "ideal",
-      "anyon",
-      "googl"
+      "provid",
+      "keycloak",
+      "folk",
+      "unknown"
     ]
   },
   {
@@ -6600,16 +6600,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "protocols",
-      "token",
+      "need",
       "grant",
-      "code",
-      "tell",
+      "modern",
       "mechanisms",
+      "code",
+      "control",
+      "alway",
+      "present",
       "client",
-      "behalf",
-      "make",
-      "author"
+      "tell"
     ]
   },
   {
@@ -6620,16 +6620,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "caus",
+      "issu",
+      "creat",
       "follow",
-      "incorrect",
-      "number",
-      "anomaly",
-      "breach",
-      "titl",
-      "refer",
+      "templat",
       "github",
-      "topic"
+      "delet",
+      "detection",
+      "descript",
+      "merg",
+      "actual"
     ]
   },
   {
@@ -6640,16 +6640,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "well",
       "cortex",
+      "well",
       "follow",
-      "data",
+      "protection",
       "thought",
-      "secur",
       "improv",
-      "minor",
-      "protection"
+      "cryptography",
+      "data",
+      "done",
+      "secur"
     ]
   },
   {
@@ -6660,16 +6660,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "caus",
-      "consum",
-      "releas",
-      "linux",
+      "issu",
+      "need",
       "manual",
-      "avail",
-      "mitig",
-      "either",
-      "quit",
-      "client"
+      "billion",
+      "four",
+      "observ",
+      "compat",
+      "consumpt",
+      "report",
+      "becom"
     ]
   },
   {
@@ -6680,11 +6680,11 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
+      "nice",
+      "feature",
       "requests",
       "enhancements",
-      "critic",
-      "nice",
-      "feature"
+      "critic"
     ]
   },
   {
@@ -6695,16 +6695,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "upgrad",
-      "downgrad",
+      "need",
+      "server",
       "mechanisms",
-      "team",
-      "verification",
-      "know",
-      "time",
-      "realli",
+      "password",
+      "request",
       "alway",
-      "identity"
+      "mani",
+      "time",
+      "downgrad",
+      "know"
     ]
   },
   {
@@ -6715,13 +6715,13 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "certificate",
       "management",
-      "sign",
-      "configur",
       "self",
-      "certif"
+      "cryptography",
+      "sign",
+      "certif",
+      "certificate",
+      "configur"
     ]
   },
   {
@@ -6732,16 +6732,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "error",
+      "girl",
+      "guilti",
       "sure",
+      "runtime",
       "descript",
-      "factori",
-      "rspec",
       "handling",
-      "incorrect",
-      "errors",
-      "object"
+      "error",
+      "instanti",
+      "seem",
+      "user"
     ]
   },
   {
@@ -6753,12 +6753,12 @@
     "subcategory": "Runtime Errors",
     "keywords": [
       "runtime",
+      "handling",
       "error",
-      "errors",
       "redirect",
       "visit",
-      "handling",
-      "exception"
+      "exception",
+      "errors"
     ]
   },
   {
@@ -6769,16 +6769,16 @@
     "category": "Anomaly detection",
     "subcategory": "Data Leak Detection",
     "keywords": [
-      "anomaly",
-      "achiv",
-      "case",
-      "know",
-      "data",
-      "connect",
-      "thank",
+      "need",
       "hold",
-      "real",
-      "http"
+      "server",
+      "cach",
+      "achiv",
+      "data",
+      "cloudflar",
+      "detection",
+      "request",
+      "case"
     ]
   },
   {
@@ -6789,16 +6789,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "privat",
-      "caus",
-      "security",
-      "rule",
+      "issu",
+      "reproduc",
+      "featur",
+      "step",
+      "incred",
+      "winrm",
+      "modul",
+      "configureremotingforans",
       "ansibl",
-      "configur",
-      "environ",
-      "necessari",
-      "piec",
-      "script"
+      "network"
     ]
   },
   {
@@ -6809,16 +6809,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "show",
-      "linux",
-      "portal",
-      "column",
+      "process",
+      "issu",
+      "disk",
+      "sourc",
+      "creat",
+      "virtual",
+      "protection",
       "requir",
-      "confirm",
-      "mbaldwin",
-      "check",
-      "independ"
+      "detail",
+      "think"
     ]
   },
   {
@@ -6829,16 +6829,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "credenti",
-      "sever",
-      "help",
-      "anoth",
-      "mechanisms",
-      "instal",
-      "time",
-      "error",
+      "still",
+      "creat",
       "virtual",
-      "admin"
+      "error",
+      "delet",
+      "mechanisms",
+      "sever",
+      "alway",
+      "messag",
+      "regard"
     ]
   },
   {
@@ -6849,16 +6849,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "depend",
-      "show",
       "follow",
-      "errors",
-      "importerror",
-      "requir",
       "manual",
-      "instal",
-      "handling"
+      "requir",
+      "error",
+      "handling",
+      "branch",
+      "salt",
+      "runtime",
+      "merg",
+      "errors"
     ]
   },
   {
@@ -6869,15 +6869,15 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
+      "issu",
+      "check",
+      "management",
+      "match",
       "privat",
+      "revok",
       "cryptography",
       "certif",
-      "issu",
       "certificate",
-      "match",
-      "management",
-      "check",
-      "revok",
       "provid"
     ]
   },
@@ -6889,16 +6889,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "thank",
-      "reset",
-      "password",
-      "authentication",
-      "credential",
       "recov",
-      "mechanisms",
       "forgot",
+      "credential",
+      "thank",
+      "superadmin",
+      "mechanisms",
+      "reset",
       "validation",
-      "superadmin"
+      "password",
+      "authentication"
     ]
   },
   {
@@ -6909,16 +6909,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "privat",
-      "token",
-      "mechanisms",
+      "usernam",
+      "need",
+      "featur",
       "jenkin",
-      "verification",
-      "instanc",
+      "mechanisms",
       "file",
-      "prefer",
-      "protect",
-      "featur"
+      "password",
+      "privat",
+      "allow",
+      "token"
     ]
   },
   {
@@ -6929,16 +6929,16 @@
     "category": "Cryptography",
     "subcategory": "Cryptographic Algorithms",
     "keywords": [
-      "cryptography",
-      "cipher",
-      "algorithms",
-      "master",
       "cryptographic",
-      "ecdh",
-      "poli",
       "ecdsa",
+      "chacha",
+      "cryptography",
+      "poli",
+      "algorithms",
+      "cipher",
+      "ecdh",
       "gmssl",
-      "chacha"
+      "master"
     ]
   },
   {
@@ -6949,16 +6949,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "privat",
-      "error",
+      "along",
       "public",
-      "cryptography",
+      "threw",
       "protection",
-      "encrypt",
-      "data",
-      "includ",
+      "error",
       "sinc",
-      "threw"
+      "privat",
+      "publicencrypt",
+      "abil",
+      "cryptography"
     ]
   },
   {
@@ -6969,16 +6969,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "credenti",
-      "token",
-      "security",
+      "export",
       "follow",
-      "alreadi",
-      "wordaround",
       "requir",
-      "includ",
-      "configur",
-      "boto"
+      "error",
+      "think",
+      "line",
+      "valid",
+      "file",
+      "request",
+      "management"
     ]
   },
   {
@@ -6989,16 +6989,16 @@
     "category": "Performance Optimization",
     "subcategory": "Latency/Speed Optimization",
     "keywords": [
-      "ldap",
-      "latest",
-      "client",
+      "issu",
+      "immedi",
+      "super",
+      "html",
       "chromium",
-      "file",
-      "strang",
-      "problem",
-      "admin",
-      "realli",
-      "except"
+      "expect",
+      "client",
+      "previou",
+      "actual",
+      "time"
     ]
   },
   {
@@ -7009,16 +7009,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "identity",
-      "code",
       "issu",
-      "report",
-      "authentication",
-      "origin",
-      "mechanisms",
+      "googl",
       "user",
+      "mechanisms",
       "verification",
-      "googl"
+      "code",
+      "origin",
+      "report",
+      "identity",
+      "authentication"
     ]
   },
   {
@@ -7029,16 +7029,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "someon",
+      "process",
       "mention",
-      "requests",
-      "assign",
-      "histori",
-      "notif",
-      "codecov",
-      "fail",
-      "avail",
-      "other"
+      "nois",
+      "week",
+      "think",
+      "click",
+      "enhancements",
+      "pass",
+      "watch",
+      "care"
     ]
   },
   {
@@ -7049,16 +7049,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "help",
-      "name",
-      "anoth",
-      "softacul",
+      "issu",
+      "base",
+      "project",
       "mechanisms",
-      "chang",
-      "instal",
-      "solut",
-      "know",
-      "project"
+      "data",
+      "password",
+      "host",
+      "regard",
+      "softacul",
+      "chang"
     ]
   },
   {
@@ -7069,16 +7069,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "captur",
+      "issu",
+      "mutex",
+      "protection",
+      "found",
       "cryptography",
-      "depend",
-      "callback",
-      "number",
-      "includ",
-      "check",
-      "onlin",
-      "question",
-      "other"
+      "librdkafka",
+      "somehow",
+      "data",
+      "openssl",
+      "captur"
     ]
   },
   {
@@ -7089,16 +7089,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "polici",
-      "anoth",
-      "restrict",
-      "mechanisms",
-      "verification",
-      "make",
+      "issu",
+      "take",
+      "found",
       "github",
-      "organ",
-      "problem",
-      "data"
+      "mechanisms",
+      "data",
+      "respons",
+      "basic",
+      "request",
+      "restrict"
     ]
   },
   {
@@ -7109,16 +7109,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "encryptedtext",
-      "cryptography",
-      "string",
-      "code",
-      "cryptoswift",
+      "reproduc",
+      "mode",
       "decrypt",
-      "instanc",
       "protection",
       "error",
-      "data"
+      "step",
+      "tobas",
+      "base",
+      "cryptography",
+      "code"
     ]
   },
   {
@@ -7129,16 +7129,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "credenti",
-      "area",
-      "sure",
-      "security",
-      "show",
-      "alreadi",
-      "addit",
-      "root",
-      "crendenti",
-      "storag"
+      "issu",
+      "halyard",
+      "reproduc",
+      "featur",
+      "error",
+      "backend",
+      "step",
+      "much",
+      "detail",
+      "crendenti"
     ]
   },
   {
@@ -7149,9 +7149,9 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
       "management",
-      "certificate"
+      "certificate",
+      "cryptography"
     ]
   },
   {
@@ -7162,16 +7162,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "privat",
-      "disabl",
-      "hello",
-      "security",
-      "chang",
-      "configur",
+      "issu",
+      "nice",
+      "network",
+      "postgresql",
+      "option",
+      "keycloak",
       "incub",
-      "critic",
-      "chart",
-      "necessari"
+      "chang",
+      "management",
+      "privat"
     ]
   },
   {
@@ -7182,16 +7182,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Modern Authentication Protocols",
     "keywords": [
-      "credenti",
-      "token",
-      "protocols",
       "follow",
+      "modern",
+      "base",
       "mechanisms",
-      "greet",
-      "setbasicauth",
-      "problem",
       "basic",
-      "call"
+      "setbasicauth",
+      "oauth",
+      "seem",
+      "return",
+      "exact"
     ]
   },
   {
@@ -7202,16 +7202,16 @@
     "category": "Feature Requests & Enhancements",
     "subcategory": "Feature Requests",
     "keywords": [
-      "node",
-      "guess",
-      "name",
-      "code",
-      "linux",
-      "though",
+      "issu",
       "manual",
-      "lineinfil",
-      "file",
-      "instead"
+      "modul",
+      "project",
+      "specif",
+      "code",
+      "char",
+      "ansibl",
+      "welcom",
+      "chang"
     ]
   },
   {
@@ -7222,16 +7222,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "security",
-      "right",
-      "password",
-      "properti",
-      "insid",
-      "configuration",
       "management",
+      "case",
+      "cluster",
       "miss",
-      "configur",
-      "user"
+      "want",
+      "user",
+      "connect",
+      "cassandra",
+      "right",
+      "insid"
     ]
   },
   {
@@ -7242,16 +7242,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "refus",
+      "base",
+      "server",
       "mechanisms",
-      "rest",
-      "verification",
-      "true",
-      "author",
-      "unauthor",
-      "anyon",
-      "curl",
-      "basic"
+      "password",
+      "digest",
+      "basic",
+      "alway",
+      "custom",
+      "although",
+      "back"
     ]
   },
   {
@@ -7262,16 +7262,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "dirti",
-      "show",
-      "traceback",
-      "errors",
-      "cpython",
       "handling",
-      "file",
       "error",
-      "start"
+      "line",
+      "file",
+      "behav",
+      "test",
+      "unicodedecodeerror",
+      "runtime",
+      "happen",
+      "expect"
     ]
   },
   {
@@ -7282,16 +7282,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "cryptography",
-      "licens",
-      "code",
-      "redhat",
-      "includ",
-      "protection",
+      "need",
+      "creat",
       "ticket",
-      "charact",
-      "data",
-      "deprec"
+      "featur",
+      "protection",
+      "cryptography",
+      "valid",
+      "branch",
+      "code",
+      "limit"
     ]
   },
   {
@@ -7302,15 +7302,15 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "hostnam",
-      "certificate",
-      "lookup",
-      "real",
-      "lower",
       "sensit",
-      "base",
+      "case",
+      "lower",
       "management",
+      "base",
+      "exist",
+      "cryptography",
+      "directori",
+      "real",
       "file"
     ]
   },
@@ -7322,16 +7322,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "hello",
-      "ldap",
-      "path",
-      "environ",
-      "handling",
-      "asset",
-      "strang",
-      "problem",
-      "admin",
-      "delet"
+      "issu",
+      "need",
+      "rather",
+      "offic",
+      "import",
+      "messag",
+      "suggest",
+      "runtime",
+      "remov",
+      "hardwar"
     ]
   },
   {
@@ -7342,16 +7342,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "alreadi",
-      "alloc",
-      "case",
-      "call",
-      "behaviour",
-      "mbedtl",
-      "certificate",
       "still",
-      "management"
+      "need",
+      "cryptography",
+      "chain",
+      "cert",
+      "directli",
+      "management",
+      "case",
+      "format",
+      "allow"
     ]
   },
   {
@@ -7362,16 +7362,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "near",
-      "yubikey",
+      "process",
       "great",
-      "mess",
-      "around",
-      "permit",
-      "mean",
-      "insid",
-      "precursor"
+      "cryptography",
+      "yubikey",
+      "precursor",
+      "openssl",
+      "management",
+      "deleg",
+      "modifi",
+      "mean"
     ]
   },
   {
@@ -7382,16 +7382,16 @@
     "category": "Error & Exception Handling",
     "subcategory": "Runtime Errors",
     "keywords": [
-      "runtime",
-      "errors",
-      "pass",
       "newer",
-      "refer",
-      "make",
+      "issu",
+      "miss",
       "handling",
-      "launch",
-      "salt",
-      "error"
+      "error",
+      "backport",
+      "winrm",
+      "pass",
+      "expos",
+      "option"
     ]
   },
   {
@@ -7402,16 +7402,16 @@
     "category": "Configuration & Management",
     "subcategory": "Security Configuration",
     "keywords": [
-      "token",
-      "security",
-      "script",
-      "spill",
-      "secret",
-      "commit",
-      "requir",
-      "explicitli",
+      "management",
       "remov",
-      "discuss"
+      "discuss",
+      "requir",
+      "login",
+      "accident",
+      "spill",
+      "improv",
+      "explicitli",
+      "commit"
     ]
   },
   {
@@ -7422,16 +7422,16 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "sock",
-      "chrome",
-      "nginx",
-      "linux",
-      "vmess",
-      "true",
-      "author",
+      "issu",
       "allowinsecur",
-      "youtub"
+      "english",
+      "cryptography",
+      "youtub",
+      "unknown",
+      "linux",
+      "management",
+      "sign",
+      "certif"
     ]
   },
   {
@@ -7442,16 +7442,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "credenti",
-      "kubeconfig",
-      "output",
-      "secret",
-      "anoth",
-      "proof",
-      "contain",
+      "creat",
+      "step",
+      "verifi",
       "mechanisms",
-      "verification",
-      "desir"
+      "demonstr",
+      "secret",
+      "proof",
+      "request",
+      "exercis",
+      "account"
     ]
   },
   {
@@ -7462,16 +7462,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "User Identity Verification",
     "keywords": [
-      "help",
-      "confus",
-      "password",
-      "authentication",
-      "identity",
-      "lessen",
+      "hope",
       "discuss",
+      "action",
+      "confus",
+      "user",
+      "around",
+      "edit",
       "mechanisms",
-      "mail",
-      "verification"
+      "verification",
+      "help"
     ]
   },
   {
@@ -7482,16 +7482,16 @@
     "category": "Anomaly detection",
     "subcategory": "Breach Detection",
     "keywords": [
-      "caus",
+      "csrfrequestdatavalueprocessor",
+      "later",
       "sessionmanagementfilt",
-      "token",
-      "anomaly",
-      "breach",
-      "csrftoken",
-      "newli",
-      "fire",
-      "csrf",
-      "render"
+      "respons",
+      "csrffilter",
+      "migrat",
+      "expos",
+      "detection",
+      "attribut",
+      "request"
     ]
   },
   {
@@ -7502,11 +7502,11 @@
     "category": "Cryptography",
     "subcategory": "Key and Certificate Management",
     "keywords": [
-      "cryptography",
-      "certificate",
-      "commit",
       "management",
-      "broken"
+      "broken",
+      "commit",
+      "cryptography",
+      "certificate"
     ]
   },
   {
@@ -7518,15 +7518,15 @@
     "subcategory": "Security Configuration",
     "keywords": [
       "easier",
-      "final",
-      "security",
-      "instead",
-      "everyth",
-      "secur",
-      "sshd",
       "management",
+      "make",
+      "final",
+      "user",
+      "everyth",
+      "sshd",
+      "line",
       "configur",
-      "user"
+      "instead"
     ]
   },
   {
@@ -7538,15 +7538,15 @@
     "subcategory": "Breach Detection",
     "keywords": [
       "exploit",
-      "rail",
-      "metasploit",
-      "token",
-      "applic",
-      "detection",
-      "csfr",
+      "metal",
       "anomaly",
-      "breach",
-      "metal"
+      "alien",
+      "fail",
+      "csfr",
+      "modul",
+      "bypass",
+      "metasploit",
+      "detection"
     ]
   },
   {
@@ -7557,14 +7557,14 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "time",
-      "authentication",
       "issu",
       "credential",
-      "correct",
-      "mechanisms",
+      "seem",
       "validation",
-      "seem"
+      "mechanisms",
+      "time",
+      "correct",
+      "authentication"
     ]
   },
   {
@@ -7575,16 +7575,16 @@
     "category": "Cryptography",
     "subcategory": "Data Protection",
     "keywords": [
-      "link",
-      "tracker",
-      "cryptography",
-      "protection",
-      "made",
-      "data",
       "default",
+      "tracker",
+      "instal",
+      "protection",
+      "bcrypt",
+      "cryptography",
+      "made",
+      "link",
       "joomla",
-      "item",
-      "instal"
+      "item"
     ]
   },
   {
@@ -7595,16 +7595,16 @@
     "category": "Authentication Mechanisms",
     "subcategory": "Credential Validation",
     "keywords": [
-      "code",
-      "index",
-      "anoth",
-      "spell",
+      "process",
+      "default",
+      "replac",
+      "consist",
+      "verif",
       "mechanisms",
-      "chang",
-      "question",
-      "reli",
-      "know",
-      "instead"
+      "code",
+      "password",
+      "stream",
+      "chang"
     ]
   }
 ]

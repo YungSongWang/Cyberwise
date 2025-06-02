@@ -1196,6 +1196,9 @@
         function createResultCard(item) {
             const texts = languages[currentLanguage];
             
+            // 使用 index 作为唯一标识符，因为数据可能没有 id 字段
+            const itemId = item.id || item.index || Math.random().toString(36).substr(2, 9);
+            
             return `
                 <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(0,234,255,0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; transition: all 0.3s ease; width: 100%; box-sizing: border-box;" onmouseover="this.style.borderColor='rgba(0,234,255,0.5)'" onmouseout="this.style.borderColor='rgba(0,234,255,0.2)'">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
@@ -1237,10 +1240,10 @@
                     </div>
                     
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <button onclick="viewDetails('${item.id}')" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <button onclick="viewDetails(${item.index})" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-eye-line"></i> ${texts['view-details']}
                         </button>
-                        <button onclick="saveToNotes('${item.id}')" style="background: linear-gradient(45deg, #a100ff, #7f00ff); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <button onclick="saveToNotes(${item.index})" style="background: linear-gradient(45deg, #a100ff, #7f00ff); color: white; border: none; padding: 8px 15px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; margin: 0; width: auto; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-bookmark-line"></i> ${texts['save-notes']}
                         </button>
                     </div>
@@ -1265,56 +1268,110 @@
         }
 
         // 查看详情（显示模态框）
-        function viewDetails(itemId) {
-            const item = knowledgeData.questions.find(q => q.id === itemId);
-            if (!item) {
-                console.error('未找到问题:', itemId);
+        function viewDetails(itemIndex) {
+            console.log('=== viewDetails 被调用 ===');
+            console.log('传入的 itemIndex:', itemIndex);
+            console.log('知识库数据加载状态:', knowledgeData.isLoaded);
+            console.log('知识库问题数量:', knowledgeData.questions?.length);
+            
+            // 检查数据是否加载
+            if (!knowledgeData.isLoaded || !knowledgeData.questions) {
+                console.error('知识库数据未加载');
+                alert('数据正在加载中，请稍后再试');
                 return;
             }
             
-            const texts = languages[currentLanguage];
+            // 查找问题
+            const item = knowledgeData.questions.find(q => q.index == itemIndex);
+            console.log('找到的问题:', item);
             
-            // 更新模态框标题
-            document.getElementById('detail-modal-title-text').textContent = texts['detail-modal-title'];
-            document.getElementById('detail-close-text').textContent = texts['close-modal'];
-            
-            // 更新各部分标题
-            document.getElementById('detail-question-title').textContent = texts['question-label'];
-            document.getElementById('detail-human-title').textContent = texts['human-answer-label'];
-            document.getElementById('detail-ai-title').textContent = texts['ai-answer-label'];
-            
-            // 填充元信息
-            const metaInfo = document.getElementById('detail-meta-info');
-            metaInfo.innerHTML = `
-                <div class="detail-index-badge">#${item.index}</div>
-                <div class="detail-category-tag">${item.category}</div>
-                ${item.subcategory ? `<div class="detail-subcategory-tag">${item.subcategory}</div>` : ''}
-            `;
-            
-            // 填充问题内容
-            document.getElementById('detail-question-content').textContent = item.question || '暂无问题内容';
-            
-            // 填充人工答案
-            const humanSection = document.getElementById('detail-human-section');
-            if (item.human_answer) {
-                document.getElementById('detail-human-content').textContent = item.human_answer;
-                humanSection.style.display = 'block';
-            } else {
-                humanSection.style.display = 'none';
+            if (!item) {
+                console.error('未找到问题:', itemIndex);
+                console.log('所有问题的 index:', knowledgeData.questions.map(q => q.index));
+                alert('未找到对应的问题，请刷新页面重试');
+                return;
             }
             
-            // 填充AI答案
-            const aiSection = document.getElementById('detail-ai-section');
-            if (item.ai_answer) {
-                document.getElementById('detail-ai-content').textContent = item.ai_answer;
-                aiSection.style.display = 'block';
-            } else {
-                aiSection.style.display = 'none';
+            try {
+                const texts = languages[currentLanguage];
+                console.log('开始更新模态框内容...');
+                
+                // 检查模态框是否存在
+                const modal = document.getElementById('detailModal');
+                if (!modal) {
+                    console.error('找不到模态框元素');
+                    alert('页面组件加载异常，请刷新页面');
+                    return;
+                }
+                
+                // 更新模态框标题
+                const titleElement = document.getElementById('detail-modal-title-text');
+                const closeElement = document.getElementById('detail-close-text');
+                
+                if (titleElement) titleElement.textContent = texts['detail-modal-title'];
+                if (closeElement) closeElement.textContent = texts['close-modal'];
+                
+                // 更新各部分标题
+                const questionTitleElement = document.getElementById('detail-question-title');
+                const humanTitleElement = document.getElementById('detail-human-title');
+                const aiTitleElement = document.getElementById('detail-ai-title');
+                
+                if (questionTitleElement) questionTitleElement.textContent = texts['question-label'];
+                if (humanTitleElement) humanTitleElement.textContent = texts['human-answer-label'];
+                if (aiTitleElement) aiTitleElement.textContent = texts['ai-answer-label'];
+                
+                // 填充元信息
+                const metaInfo = document.getElementById('detail-meta-info');
+                if (metaInfo) {
+                    metaInfo.innerHTML = `
+                        <div class="detail-index-badge">#${item.index}</div>
+                        <div class="detail-category-tag">${item.category || '未分类'}</div>
+                        ${item.subcategory ? `<div class="detail-subcategory-tag">${item.subcategory}</div>` : ''}
+                    `;
+                }
+                
+                // 填充问题内容
+                const questionContent = document.getElementById('detail-question-content');
+                if (questionContent) {
+                    questionContent.textContent = item.question || '暂无问题内容';
+                }
+                
+                // 填充人工答案
+                const humanSection = document.getElementById('detail-human-section');
+                const humanContent = document.getElementById('detail-human-content');
+                if (humanSection && humanContent) {
+                    if (item.human_answer) {
+                        humanContent.textContent = item.human_answer;
+                        humanSection.style.display = 'block';
+                    } else {
+                        humanSection.style.display = 'none';
+                    }
+                }
+                
+                // 填充AI答案
+                const aiSection = document.getElementById('detail-ai-section');
+                const aiContent = document.getElementById('detail-ai-content');
+                if (aiSection && aiContent) {
+                    if (item.ai_answer) {
+                        aiContent.textContent = item.ai_answer;
+                        aiSection.style.display = 'block';
+                    } else {
+                        aiSection.style.display = 'none';
+                    }
+                }
+                
+                console.log('模态框内容更新完成，准备显示...');
+                
+                // 显示模态框
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
+                
+                console.log('模态框已显示');
+                
+            } catch (error) {
+                console.error('显示详情时发生错误:', error);
+                alert('显示详情时发生错误，请刷新页面重试');
             }
-            
-            // 显示模态框
-            document.getElementById('detailModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // 防止背景滚动
         }
 
         // 关闭详情模态框
@@ -1324,8 +1381,8 @@
         }
 
         // 保存到笔记（简化版）
-        function saveToNotes(itemId) {
-            const item = knowledgeData.questions.find(q => q.id === itemId);
+        function saveToNotes(itemIndex) {
+            const item = knowledgeData.questions.find(q => q.index === itemIndex);
             if (item) {
                 console.log('保存笔记:', item.title);
                 const texts = languages[currentLanguage];

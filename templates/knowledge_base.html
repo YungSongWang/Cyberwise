@@ -1298,15 +1298,27 @@
         // 加载知识库数据
         async function loadKnowledgeData() {
             try {
-                const response = await fetch('../static/data/questions_dataset.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                // 加载问题数据（这是一个数组）
+                const questionsResponse = await fetch('../static/data/questions_dataset.json');
+                if (!questionsResponse.ok) {
+                    throw new Error(`HTTP error! status: ${questionsResponse.status}`);
                 }
-                const data = await response.json();
-                knowledgeData.questions = data.questions;
-                knowledgeData.stats = data.stats;
+                const questionsArray = await questionsResponse.json();
+                
+                // 加载统计数据
+                const statsResponse = await fetch('../static/data/dataset_stats.json');
+                if (!statsResponse.ok) {
+                    throw new Error(`HTTP error! status: ${statsResponse.status}`);
+                }
+                const statsData = await statsResponse.json();
+                
+                // 设置数据结构
+                knowledgeData.questions = questionsArray;
+                knowledgeData.stats = statsData;
                 knowledgeData.isLoaded = true;
+                
                 console.log('知识库数据加载成功，问题数量:', knowledgeData.questions.length);
+                console.log('统计数据:', knowledgeData.stats);
                 
                 // 同时加载LIWC数据
                 await loadLIWCData();
@@ -1314,6 +1326,7 @@
             } catch (error) {
                 console.error('加载知识库数据时出错:', error);
                 alert(currentLanguage === 'en' ? 'Failed to load knowledge base data' : '加载知识库数据失败');
+                throw error; // 重新抛出错误以便上层处理
             }
         }
 

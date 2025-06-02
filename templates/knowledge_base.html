@@ -400,6 +400,192 @@
         .language-toggle:active {
             transform: translateY(0);
         }
+
+        /* 详情模态框样式 */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .detail-modal-content {
+            position: relative;
+            background: #1e1e1e;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .detail-modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+            background: rgba(0, 234, 255, 0.05);
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .detail-modal-header h3 {
+            margin: 0;
+            color: #00eaff;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .detail-close-btn:hover {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .detail-modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .detail-meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .detail-index-badge {
+            background: linear-gradient(45deg, #00eaff, #a100ff);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .detail-category-tag {
+            background: rgba(0, 234, 255, 0.2);
+            color: #00eaff;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(0, 234, 255, 0.3);
+        }
+
+        .detail-subcategory-tag {
+            background: rgba(161, 0, 255, 0.2);
+            color: #a100ff;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(161, 0, 255, 0.3);
+        }
+
+        .detail-content-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-content-section h4 {
+            margin: 0 0 15px 0;
+            color: #00eaff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+        }
+
+        .detail-content-section.ai-answer h4 {
+            color: #a100ff;
+            border-bottom-color: rgba(161, 0, 255, 0.2);
+        }
+
+        .detail-content-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+        }
+
+        .detail-modal-footer {
+            padding: 20px 25px;
+            border-top: 1px solid rgba(0, 234, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .detail-modal-content {
+                margin: 2% auto;
+                width: 95%;
+                max-height: 95vh;
+            }
+            
+            .detail-modal-header,
+            .detail-modal-body,
+            .detail-modal-footer {
+                padding: 15px;
+            }
+            
+            .detail-meta-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 
@@ -561,6 +747,65 @@
         </div>
     </div>
 
+    <!-- 详情模态框 -->
+    <div id="detailModal" class="detail-modal">
+        <div class="detail-modal-content">
+            <div class="detail-modal-header">
+                <h3 id="detail-modal-title">
+                    <i class="ri-file-text-line"></i>
+                    <span id="detail-modal-title-text">Question Details</span>
+                </h3>
+                <button class="detail-close-btn" onclick="closeDetailModal()">
+                    <i class="ri-close-line"></i>
+                </button>
+            </div>
+            
+            <div class="detail-modal-body">
+                <div class="detail-meta-info" id="detail-meta-info">
+                    <!-- 元信息将被 JavaScript 填充 -->
+                </div>
+                
+                <div class="detail-content-section" id="detail-question-section">
+                    <h4>
+                        <i class="ri-question-line"></i>
+                        <span id="detail-question-title">Question</span>
+                    </h4>
+                    <div class="detail-content-text" id="detail-question-content">
+                        <!-- 问题内容 -->
+                    </div>
+                </div>
+                
+                <div class="detail-content-section" id="detail-human-section" style="display: none;">
+                    <h4>
+                        <i class="ri-user-line"></i>
+                        <span id="detail-human-title">Human Answer</span>
+                    </h4>
+                    <div class="detail-content-text" id="detail-human-content">
+                        <!-- 人工答案 -->
+                    </div>
+                </div>
+                
+                <div class="detail-content-section ai-answer" id="detail-ai-section" style="display: none;">
+                    <h4>
+                        <i class="ri-robot-line"></i>
+                        <span id="detail-ai-title">AI Answer</span>
+                    </h4>
+                    <div class="detail-content-text" id="detail-ai-content">
+                        <!-- AI答案 -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-modal-footer">
+                <span style="color: #888; font-size: 12px;">Click outside or press ESC to close</span>
+                <button class="kb-btn kb-btn-secondary" onclick="closeDetailModal()">
+                    <i class="ri-close-line"></i>
+                    <span id="detail-close-text">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 脚本文件 -->
     <script src="../static/js/firebase-init.js?v=2.2.0"></script>
     
@@ -605,7 +850,9 @@
                 'loading-text': 'Loading...',
                 'search-results-count': 'Search Results ({count})',
                 'keyword-prefix': 'Keyword: "{keyword}"',
-                'filtered-results': 'Filtered results'
+                'filtered-results': 'Filtered results',
+                'detail-modal-title': 'Question Details',
+                'close-modal': 'Close'
             },
             zh: {
                 'search-title': '知识库搜索',
@@ -645,7 +892,9 @@
                 'loading-text': '加载中...',
                 'search-results-count': '搜索结果 ({count} 个)',
                 'keyword-prefix': '关键词: "{keyword}"',
-                'filtered-results': '按条件筛选的结果'
+                'filtered-results': '按条件筛选的结果',
+                'detail-modal-title': '问题详情',
+                'close-modal': '关闭'
             }
         };
 
@@ -1015,12 +1264,63 @@
             return text || '';
         }
 
-        // 查看详情（简化版）
+        // 查看详情（显示模态框）
         function viewDetails(itemId) {
             const item = knowledgeData.questions.find(q => q.id === itemId);
-            if (item) {
-                alert(`问题详情：\n\n${item.title}\n\n${item.question}\n\n${item.human_answer || item.ai_answer || '暂无答案'}`);
+            if (!item) {
+                console.error('未找到问题:', itemId);
+                return;
             }
+            
+            const texts = languages[currentLanguage];
+            
+            // 更新模态框标题
+            document.getElementById('detail-modal-title-text').textContent = texts['detail-modal-title'];
+            document.getElementById('detail-close-text').textContent = texts['close-modal'];
+            
+            // 更新各部分标题
+            document.getElementById('detail-question-title').textContent = texts['question-label'];
+            document.getElementById('detail-human-title').textContent = texts['human-answer-label'];
+            document.getElementById('detail-ai-title').textContent = texts['ai-answer-label'];
+            
+            // 填充元信息
+            const metaInfo = document.getElementById('detail-meta-info');
+            metaInfo.innerHTML = `
+                <div class="detail-index-badge">#${item.index}</div>
+                <div class="detail-category-tag">${item.category}</div>
+                ${item.subcategory ? `<div class="detail-subcategory-tag">${item.subcategory}</div>` : ''}
+            `;
+            
+            // 填充问题内容
+            document.getElementById('detail-question-content').textContent = item.question || '暂无问题内容';
+            
+            // 填充人工答案
+            const humanSection = document.getElementById('detail-human-section');
+            if (item.human_answer) {
+                document.getElementById('detail-human-content').textContent = item.human_answer;
+                humanSection.style.display = 'block';
+            } else {
+                humanSection.style.display = 'none';
+            }
+            
+            // 填充AI答案
+            const aiSection = document.getElementById('detail-ai-section');
+            if (item.ai_answer) {
+                document.getElementById('detail-ai-content').textContent = item.ai_answer;
+                aiSection.style.display = 'block';
+            } else {
+                aiSection.style.display = 'none';
+            }
+            
+            // 显示模态框
+            document.getElementById('detailModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 防止背景滚动
+        }
+
+        // 关闭详情模态框
+        function closeDetailModal() {
+            document.getElementById('detailModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // 恢复滚动
         }
 
         // 保存到笔记（简化版）
@@ -1028,7 +1328,8 @@
             const item = knowledgeData.questions.find(q => q.id === itemId);
             if (item) {
                 console.log('保存笔记:', item.title);
-                alert('保存功能将在完整版本中实现');
+                const texts = languages[currentLanguage];
+                alert(currentLanguage === 'zh' ? '保存功能将在完整版本中实现' : 'Save feature will be implemented in the full version');
             }
         }
 
@@ -1071,7 +1372,35 @@
             updateTexts();
             
             initKnowledgeBase();
+            
+            // 添加模态框事件监听器
+            setupModalEvents();
         });
+
+        // 设置模态框事件
+        function setupModalEvents() {
+            const modal = document.getElementById('detailModal');
+            const modalContent = document.querySelector('.detail-modal-content');
+            
+            // 点击模态框外部关闭
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeDetailModal();
+                }
+            });
+            
+            // 阻止模态框内容点击事件冒泡
+            modalContent.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+            
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeDetailModal();
+                }
+            });
+        }
 
         // 切换用户下拉菜单
         function toggleUserDropdown() {

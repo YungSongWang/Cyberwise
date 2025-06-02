@@ -34,8 +34,8 @@ function hideLoadingIndicator() {
                     <h3 data-lang="quickActions">Quick Actions:</h3>
                     <button onclick="createNewDocument()" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="createNewDoc">Create New Document</button>
                     <button onclick="showSection('notes')" style="margin: 10px; width: auto; padding: 10px 20px;" data-lang="viewNotes">View Notes</button>
-                    <button onclick="goToKnowledgeBase()" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">🔍 浏览知识库</button>
-                    <a href="/templates/knowledge_base.html" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #ff6b6b, #ff8e53); color: white; text-decoration: none; border-radius: 8px; display: inline-block;">📚 知识库 (直接链接)</a>
+                    <button onclick="goToKnowledgeBase()" style="margin: 10px; width: auto; padding: 10px 20px; background: linear-gradient(45deg, #00eaff, #a100ff);">Browsing the Knowledge Base</button>
+
                 </div>
             </div>
 

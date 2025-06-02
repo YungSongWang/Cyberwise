@@ -621,10 +621,85 @@
         }
 
         /* LIWC 模态框样式 */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
         .liwc-modal {
+            position: relative;
+            background: #1e1e1e;
+            margin: 0;
+            padding: 0;
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 12px;
             width: 90%;
             max-width: 1200px;
             max-height: 90vh;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+            background: rgba(0, 234, 255, 0.05);
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            margin: 0;
+            color: #00eaff;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 25px;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
         }
 
         .liwc-content {
@@ -635,26 +710,26 @@
         }
 
         .liwc-section {
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 20px;
-            border: 1px solid #e9ecef;
+            border: 1px solid rgba(0, 234, 255, 0.2);
         }
 
         .liwc-section h3 {
             margin: 0 0 15px 0;
-            color: #495057;
+            color: #00eaff;
             font-size: 18px;
-            border-bottom: 2px solid #dee2e6;
+            border-bottom: 2px solid rgba(0, 234, 255, 0.3);
             padding-bottom: 8px;
         }
 
         .liwc-comparison {
             grid-column: 1 / -1;
-            background: #fff;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 8px;
             padding: 20px;
-            border: 1px solid #dee2e6;
+            border: 1px solid rgba(0, 234, 255, 0.2);
         }
 
         .liwc-metric {
@@ -662,7 +737,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 8px 0;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .liwc-metric:last-child {
@@ -671,13 +746,13 @@
 
         .liwc-metric-name {
             font-weight: 500;
-            color: #495057;
+            color: #e0e0e0;
             flex: 1;
         }
 
         .liwc-metric-value {
             font-weight: bold;
-            color: #007bff;
+            color: #00eaff;
             min-width: 60px;
             text-align: right;
         }
@@ -686,7 +761,7 @@
             display: flex;
             align-items: center;
             padding: 10px 0;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .liwc-comparison-item:last-child {
@@ -696,7 +771,7 @@
         .liwc-comparison-name {
             flex: 1;
             font-weight: 500;
-            color: #495057;
+            color: #e0e0e0;
         }
 
         .liwc-comparison-bars {
@@ -747,6 +822,11 @@
         }
 
         @media (max-width: 768px) {
+            .liwc-modal {
+                width: 95%;
+                max-height: 95vh;
+            }
+            
             .liwc-content {
                 grid-template-columns: 1fr;
             }
@@ -755,6 +835,11 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 5px;
+            }
+            
+            .modal-header,
+            .modal-body {
+                padding: 15px;
             }
         }
     </style>
@@ -1848,7 +1933,7 @@
             const liwcHTML = generateLIWCContent(question, aiData, humanData, texts);
             liwcContent.innerHTML = liwcHTML;
 
-            // 显示模态框
+            // 显示模态框 - 使用flex居中显示
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }

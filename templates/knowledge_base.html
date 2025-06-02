@@ -1298,12 +1298,15 @@
         // 加载知识库数据
         async function loadKnowledgeData() {
             try {
-                const response = await fetch('static/data/questions_dataset.json');
+                const response = await fetch('../static/data/questions_dataset.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data = await response.json();
                 knowledgeData.questions = data.questions;
                 knowledgeData.stats = data.stats;
                 knowledgeData.isLoaded = true;
-                console.log('知识库数据加载成功');
+                console.log('知识库数据加载成功，问题数量:', knowledgeData.questions.length);
                 
                 // 同时加载LIWC数据
                 await loadLIWCData();
@@ -1317,7 +1320,12 @@
         // 加载LIWC数据
         async function loadLIWCData() {
             try {
-                const response = await fetch('static/data/liwc_data.json');
+                const response = await fetch('../static/data/liwc_data.json');
+                if (!response.ok) {
+                    console.warn(`LIWC数据请求失败: ${response.status}`);
+                    liwcDataLoaded = false;
+                    return;
+                }
                 liwcData = await response.json();
                 liwcDataLoaded = true;
                 console.log('LIWC数据加载成功，条数:', Object.keys(liwcData).length);

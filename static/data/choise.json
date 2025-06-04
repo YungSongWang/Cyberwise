@@ -1,0 +1,40 @@
+
+{
+  "quiz_title": "Multiple Choise Questions",
+  "last_updated": "2025-06-03",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the recommended solution for resolving Azure SDK authentication issues with Key Vault when encountering \"authority should be in Uri format\" exceptions?",
+      "options": {
+        "A": "Continue using Microsoft.Azure.Management.Fluent with updated authentication context",
+        "B": "Switch to newer Azure Security Key Vault package with Azure Identity package for simpler authentication",
+        "C": "Downgrade to older versions of Microsoft.Azure.KeyVault",
+        "D": "Use different authentication credentials for Key Vault access"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 2,
+      "question": "What is the primary reason for appending the Docker image SHA to the Envoy image in Nomad?",
+      "options": {
+        "A": "To improve the visual appearance of documentation",
+        "B": "To ensure users default to using the version that Nomad was tested against",
+        "C": "To reduce the size of Docker images",
+        "D": "To enable automatic updates of Envoy versions"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 3,
+      "question": "What is the primary security concern with the mbed Transport Layer Security examples that use weak random number generators?",
+      "options": {
+        "A": "The examples consume too much memory during execution",
+        "B": "Without proper random numbers, the communication channels are not secure",
+        "C": "The examples are incompatible with newer versions of mbed Transport Layer Security",
+        "D": "The weak generators cause performance issues on embedded platforms"
+      },
+      "correct_answer": "B"
+    }
+  ]
+}

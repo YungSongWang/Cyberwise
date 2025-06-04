@@ -842,6 +842,9 @@
                 padding: 15px;
             }
         }
+
+        /* 子分类禁用样式 */
+        .kb-select:disabled { background: #222 !important; color: #888 !important; cursor: not-allowed; }
     </style>
 </head>
 
@@ -1433,27 +1436,79 @@
             }
         }
 
+        // 主分类与子分类映射
+        const categoryToSubcategory = {
+            "Authentication Mechanisms": [
+                "User Identity Verification",
+                "Credential Validation",
+                "Modern Authentication Protocols"
+            ],
+            "Anomaly detection": [
+                "Breach Detection",
+                "Data Leak Detection"
+            ],
+            "Cryptography": [
+                "Data Protection",
+                "Cryptographic Algorithms",
+                "Key and Certificate Management"
+            ],
+            "Feature Requests & Enhancements": [
+                "Feature Requests",
+                "Improvement",
+                "UI/UX Enhancements"
+            ],
+            "Error & Exception Handling": [
+                "Build/Compile Errors",
+                "Runtime Errors",
+                "Network/Protocol Errors"
+            ],
+            "Configuration & Management": [
+                "Security Configuration",
+                "System Deployment"
+            ],
+            "Compatibility & Dependencies": [
+                "Third-party Dependencies",
+                "Version Compatibility"
+            ],
+            "Performance Optimization": [
+                "Latency/Speed Optimization",
+                "Resource Usage Optimization"
+            ]
+        };
+
         // 初始化搜索控件
         function initializeControls() {
             const categorySelect = document.getElementById('kb-category');
             const subcategorySelect = document.getElementById('kb-subcategory');
-            
-            // 填充分类选项
-            knowledgeData.stats.categories.forEach(category => {
+            // 填充主分类
+            categorySelect.innerHTML = `<option value="">${languages[currentLanguage]['all-categories']}</option>`;
+            Object.keys(categoryToSubcategory).forEach(category => {
                 const option = document.createElement('option');
                 option.value = category;
                 option.textContent = category;
                 categorySelect.appendChild(option);
             });
-            
-            // 填充子分类选项
-            knowledgeData.stats.subcategories.forEach(subcategory => {
-                const option = document.createElement('option');
-                option.value = subcategory;
-                option.textContent = subcategory;
-                subcategorySelect.appendChild(option);
+            // 子分类初始禁用
+            subcategorySelect.disabled = true;
+            subcategorySelect.innerHTML = `<option value="">${languages[currentLanguage]['all-subcategories']}</option>`;
+            // 绑定主分类选择事件
+            categorySelect.addEventListener('change', function() {
+                const selectedCategory = this.value;
+                subcategorySelect.innerHTML = '';
+                if (!selectedCategory) {
+                    subcategorySelect.disabled = true;
+                    subcategorySelect.innerHTML = `<option value="">${languages[currentLanguage]['all-subcategories']}</option>`;
+                } else {
+                    subcategorySelect.disabled = false;
+                    subcategorySelect.innerHTML = `<option value="">${languages[currentLanguage]['all-subcategories']}</option>`;
+                    (categoryToSubcategory[selectedCategory] || []).forEach(sub => {
+                        const option = document.createElement('option');
+                        option.value = sub;
+                        option.textContent = sub;
+                        subcategorySelect.appendChild(option);
+                    });
+                }
             });
-            
             // 绑定回车搜索
             document.getElementById('kb-keyword').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
@@ -1461,6 +1516,11 @@
                 }
             });
         }
+
+        // 子分类禁用样式
+        const style = document.createElement('style');
+        style.innerHTML = `.kb-select:disabled { background: #222 !important; color: #888 !important; cursor: not-allowed; }`;
+        document.head.appendChild(style);
 
         // 显示加载状态
         function showLoading() {
@@ -1933,7 +1993,7 @@
             const liwcHTML = generateLIWCContent(question, aiData, humanData, texts);
             liwcContent.innerHTML = liwcHTML;
 
-            // 显示模态框 - 使用flex居中显示
+            // 显示模态框
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }

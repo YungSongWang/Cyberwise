@@ -12,6 +12,65 @@ const questionSources = {
     mixed: ['../static/data/choise.json', '../static/data/TF.json']
 };
 
+// Firebase用户认证检查
+firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+        console.log('用户已登录:', user);
+        const userEmailElement = document.getElementById('userEmail');
+        if (userEmailElement) {
+            userEmailElement.textContent = user.displayName || user.email || 'Unknown User';
+        }
+    } else {
+        console.log('用户未登录，重定向到登录页面');
+        setTimeout(() => {
+            alert('请先登录');
+            window.location.href = window.location.origin + '/templates/login.html';
+        }, 1000);
+    }
+});
+
+// 退出登录函数
+function logout() {
+    if (confirm('确定要退出登录吗？')) {
+        firebase.auth().signOut().then(() => {
+            alert('已退出登录');
+            window.location.href = window.location.origin + '/templates/login.html';
+        }).catch(error => {
+            console.error('退出登录失败:', error);
+            alert('退出登录失败，请重试');
+        });
+    }
+}
+
+// 用户下拉菜单切换
+function toggleUserDropdown() {
+    const dropdown = document.querySelector('.user-info-dropdown');
+    const menu = document.getElementById('userDropdownMenu');
+
+    if (dropdown && menu) {
+        dropdown.classList.toggle('open');
+
+        // 点击其他地方关闭下拉菜单
+        document.addEventListener('click', function closeDropdown(event) {
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('open');
+                document.removeEventListener('click', closeDropdown);
+            }
+        });
+    }
+}
+
+// 页面导航函数（quizs.html中的侧边栏可能会调用）
+function showSection(sectionName) {
+    // Quiz页面没有多个section，这个函数主要是为了兼容
+    console.log('showSection called:', sectionName);
+}
+
+function createNewDocument() {
+    // 跳转到dashboard页面的创建文档功能
+    window.location.href = window.location.origin + '/templates/dashboard.html';
+}
+
 // 初始化
 window.addEventListener('DOMContentLoaded', () => {
     bindToolbar();
@@ -29,7 +88,8 @@ function bindToolbar() {
         item.onclick = () => {
             typeList.style.display = 'none';
             loadQuestions(item.dataset.type);
-            typeBtn.innerHTML = item.textContent + ' <i class="ri-arrow-down-s-line"></i>';
+            const typeText = item.textContent;
+            typeBtn.innerHTML = `<span data-lang="${item.getAttribute('data-lang')}">${typeText}</span> <i class="ri-arrow-down-s-line"></i>`;
         };
     });
     // 清空历史
@@ -39,6 +99,13 @@ function bindToolbar() {
         updateScore();
         loadQuestions(currentType);
     };
+
+    // 点击其他地方关闭下拉菜单
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.quiz-type-dropdown')) {
+            typeList.style.display = 'none';
+        }
+    });
 }
 
 async function loadQuestions(type) {
@@ -92,7 +159,8 @@ function shuffleArray(array) {
 }
 
 function updateScore() {
-    document.getElementById('quizScore').textContent = `连续答对次数: ${score}`;
+    const scoreText = window.getText ? getText('consecutiveCorrect') : 'Consecutive Correct';
+    document.getElementById('quizScore').innerHTML = `<span data-lang="consecutiveCorrect">${scoreText}</span>: ${score}`;
 }
 
 function showNextQuestion() {
@@ -102,7 +170,8 @@ function showNextQuestion() {
     // 过滤掉已答过的题
     const remain = currentQuestions.filter(q => !questionHistory.includes(q.id));
     if (remain.length === 0) {
-        document.getElementById('quizQuestion').textContent = '恭喜你，已完成全部题目！点击清空历史可重新开始。';
+        const doneText = window.getText ? getText('allQuestionsDone') : 'Congratulations! You\'ve completed all questions in the question bank! Amazing! Now clear history to start over.';
+        document.getElementById('quizQuestion').textContent = doneText;
         document.getElementById('quizOptions').innerHTML = '';
         return;
     }
@@ -144,7 +213,13 @@ window.selectQuizOption = function (btn) {
     // 反馈
     const feedback = document.getElementById('quizFeedback');
     feedback.className = 'quiz-feedback visible ' + (isCorrect ? 'correct' : 'wrong');
-    feedback.textContent = isCorrect ? '答对了！' : `答错了，正确答案：${currentQuestion.answer}`;
+    if (isCorrect) {
+        const correctText = window.getText ? getText('answerCorrect') : 'Correct!';
+        feedback.textContent = correctText;
+    } else {
+        const wrongText = window.getText ? getText('answerWrong') : 'Wrong! Correct answer: ';
+        feedback.textContent = wrongText + currentQuestion.answer;
+    }
     // 分数
     if (isCorrect) score++; else score = 0;
     updateScore();

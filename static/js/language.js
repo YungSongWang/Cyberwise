@@ -33,6 +33,7 @@ const languages = {
         menuNotes: "Notes",
         menuFavorites: "Favorites",
         menuCommunity: "Community",
+        menuQuiz: "Quiz",
         knowledgeBase: "Knowledge Base",
         logOut: "Log Out",
 
@@ -87,7 +88,21 @@ const languages = {
         // AI Writing 模态框
         aiWritingTitle: "AI Writing Assistant",
         aiPromptLabel: "Writing Prompt",
-        aiPromptPlaceholder: "Enter your writing prompt here..."
+        aiPromptPlaceholder: "Enter your writing prompt here...",
+
+        // Quiz页面
+        quizTypeChoice: "Multiple Choice",
+        quizTypeTrueFalse: "True/False",
+        quizTypeMixed: "Mixed",
+        consecutiveCorrect: "Consecutive Correct",
+        clearHistory: "Clear",
+        nextQuestion: "Next Question",
+        loadingQuestions: "Loading questions...",
+        answerCorrect: "Correct!",
+        answerWrong: "Wrong! Correct answer: ",
+        allQuestionsDone: "Congratulations! You've completed all questions in the question bank! Amazing! Now clear history to start over.",
+        optionTrue: "True",
+        optionFalse: "False"
     },
     zh: {
         // 登录页面
@@ -122,6 +137,7 @@ const languages = {
         menuNotes: "笔记",
         menuFavorites: "收藏",
         menuCommunity: "社区",
+        menuQuiz: "测验",
         knowledgeBase: "知识库",
         logOut: "退出登录",
 
@@ -176,12 +192,29 @@ const languages = {
         // AI Writing 模态框
         aiWritingTitle: "AI 写作助手",
         aiPromptLabel: "写作提示",
-        aiPromptPlaceholder: "在此输入您的写作提示..."
+        aiPromptPlaceholder: "在此输入您的写作提示...",
+
+        // Quiz页面
+        quizTypeChoice: "选择题",
+        quizTypeTrueFalse: "判断题",
+        quizTypeMixed: "混合题",
+        consecutiveCorrect: "连续答对次数",
+        clearHistory: "清空",
+        nextQuestion: "下一题",
+        loadingQuestions: "题目加载中...",
+        answerCorrect: "答对了！",
+        answerWrong: "答错了！正确答案：",
+        allQuestionsDone: "什么？你竟然做完了题库全部题目！Σヽ(ﾟД ﾟ; )ﾉ 真是不可思议！现在清空历史重新再做一遍吧",
+        optionTrue: "正确",
+        optionFalse: "错误"
     }
 };
 
 // 当前语言
 let currentLanguage = localStorage.getItem('cyberwise-language') || 'en';
+
+// 将currentLanguage绑定到window对象，确保全局可访问
+window.currentLanguage = currentLanguage;
 
 // 获取文本
 function getText(key) {
@@ -191,6 +224,7 @@ function getText(key) {
 // 切换语言
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
+    window.currentLanguage = currentLanguage; // 同步更新window对象上的变量
     localStorage.setItem('cyberwise-language', currentLanguage);
     updateLanguage();
     updateLanguageButton();
@@ -224,6 +258,9 @@ function updateLanguage() {
     if (titleKey) {
         document.title = getText('title') + ' - ' + getText(titleKey);
     }
+
+    // 触发语言切换事件
+    document.dispatchEvent(new CustomEvent('languageChanged'));
 }
 
 // 初始化语言

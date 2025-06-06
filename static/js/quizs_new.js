@@ -241,8 +241,8 @@ window.selectQuizOption = function (btn) {
         const correctText = window.getText ? getText('answerCorrect') : 'Correct!';
         feedback.textContent = correctText;
     } else {
-        const wrongText = window.getText ? getText('answerWrong') : 'Wrong! Correct answer: ';
-        feedback.textContent = wrongText + currentQuestion.answer;
+        const wrongText = window.getText ? getText('answerWrong') : 'Wrong!';
+        feedback.textContent = wrongText;
     }
     // 分数
     if (isCorrect) score++; else score = 0;

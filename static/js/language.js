@@ -91,6 +91,16 @@ const languages = {
 
         // Quiz页面
         clearHistory: "clear",
+        quizTypeChoice: "Choice",
+        quizTypeTrueFalse: "True/False",
+        quizTypeMixed: "Mixed",
+        consecutiveCorrect: "Consecutive Correct",
+        nextQuestion: "Next Question",
+        optionTrue: "True",
+        optionFalse: "False",
+        answerCorrect: "Correct!",
+        answerWrong: "Wrong!",
+        allQuestionsDone: "Congratulations! You've completed all questions in the question bank! Amazing! Now clear history to start over.",
 
         // AI Writing 相关文本
         aiChatTitle: "🤖 AI Security Assistant",
@@ -232,6 +242,16 @@ const languages = {
 
         // Quiz页面
         clearHistory: "clear",
+        quizTypeChoice: "Choice",
+        quizTypeTrueFalse: "True/False",
+        quizTypeMixed: "Mixed",
+        consecutiveCorrect: "连续答对",
+        nextQuestion: "下一题",
+        optionTrue: "True",
+        optionFalse: "False",
+        answerCorrect: "正确！",
+        answerWrong: "错误！",
+        allQuestionsDone: "恭喜！您已完成题库中的所有题目！太棒了！现在清空历史记录重新开始吧。",
 
         // AI Writing 相关文本
         aiChatTitle: "🤖 AI 安全助手",

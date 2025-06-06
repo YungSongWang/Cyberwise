@@ -40,50 +40,50 @@ function hideLoadingIndicator() {
             </div>
 
             <div id="ai-section" style="display: none;">
-                <div class="ai-chat-container">
-                    <!-- 聊天标题 -->
-                    <div class="ai-chat-header">
-                        <h1 data-lang="aiChatTitle">🤖 AI Security Assistant</h1>
-                        <p data-lang="aiChatDesc">Ask about cybersecurity questions and get intelligent recommendations</p>
-                    </div>
-                    
-                    <!-- 消息展示区域 -->
-                    <div class="ai-chat-messages" id="aiChatMessages">
+                <!-- ChatGPT风格的AI聊天界面 -->
+                <div class="chatgpt-container">
+                    <!-- 上方：消息显示区域 -->
+                    <div class="chat-messages" id="aiChatMessages">
+                        <!-- 欢迎消息 -->
                         <div class="welcome-message">
                             <div class="ai-message">
                                 <div class="ai-avatar">🤖</div>
                                 <div class="ai-message-content">
-                                    <p data-lang="aiChatWelcome1">👋 Hello! I'm CyberWise's AI security assistant.</p>
-                                    <p data-lang="aiChatWelcome2">Please describe the cybersecurity issues you encounter, and I will automatically analyze the problem type and match the most relevant solutions for you.</p>
-                                    <div class="ai-suggestions">
-                                        <p style="margin-bottom: 8px;" data-lang="aiChatSuggestions">💡 You can try asking me:</p>
-                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion1Text'))" data-lang="aiChatSuggestion1">🦠 Malware Issues</div>
-                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion2Text'))" data-lang="aiChatSuggestion2">🔐 Password Security</div>
-                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion3Text'))" data-lang="aiChatSuggestion3">📧 Phishing Attacks</div>
-                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion4Text'))" data-lang="aiChatSuggestion4">🛡️ Network Protection</div>
+                                    <h3 data-lang="aiChatWelcomeTitle">欢迎使用AI安全助手 🤖</h3>
+                                    <p data-lang="aiChatWelcome1">👋 您好！我是CyberWise的AI安全助手。</p>
+                                    <p data-lang="aiChatWelcome2">请描述您遇到的网络安全问题，我将自动分析问题类型并为您匹配最相关的解决方案。</p>
+                                    
+                                    <div class="quick-suggestions">
+                                        <p data-lang="aiChatSuggestions">💡 您可以试着问我：</p>
+                                        <div class="suggestion-buttons">
+                                            <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion1Text'))" data-lang="aiChatSuggestion1">🦠 恶意软件问题</button>
+                                            <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion2Text'))" data-lang="aiChatSuggestion2">🔐 密码安全</button>
+                                            <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion3Text'))" data-lang="aiChatSuggestion3">📧 钓鱼攻击</button>
+                                            <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion4Text'))" data-lang="aiChatSuggestion4">🛡️ 网络防护</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- 输入区域 -->
-                    <div class="ai-chat-input-container">
-                        <div class="ai-input-wrapper">
+                    <!-- 下方：输入区域 -->
+                    <div class="chat-input-container">
+                        <div class="input-wrapper">
                             <textarea 
                                 id="aiChatInput" 
                                 data-lang="aiChatInputPlaceholder"
-                                placeholder="Describe your cybersecurity question..." 
+                                placeholder="描述您遇到的网络安全问题..." 
                                 rows="1"
                                 onkeydown="handleChatKeydown(event)"
                                 oninput="autoResizeTextarea(this)"
                             ></textarea>
-                            <button id="aiSendBtn" onclick="sendMessage()" class="ai-send-btn">
+                            <button id="aiSendBtn" onclick="sendMessage()" class="send-btn">
                                 <i class="ri-send-plane-line"></i>
                             </button>
                         </div>
-                        <div class="ai-input-footer">
-                            <small data-lang="aiChatFooter">AI will automatically analyze problem types and match relevant solutions • Press Enter to send, Shift+Enter for new line</small>
+                        <div class="input-hint">
+                            <small data-lang="aiChatFooter">AI将自动分析问题类型并匹配相关解决方案 • 回车发送，Shift+回车换行</small>
                         </div>
                     </div>
                 </div>
@@ -193,6 +193,14 @@ function showSection(sectionName) {
     document.querySelectorAll('.menu-item').forEach(item => {
         item.classList.remove('active');
     });
+
+    // 控制侧边栏固定状态 - 只有AI Writing页面需要固定侧边栏
+    const body = document.body;
+    if (sectionName === 'ai') {
+        body.classList.add('ai-writing-active');
+    } else {
+        body.classList.remove('ai-writing-active');
+    }
 
     // 根据section加载相应内容
     switch (sectionName) {

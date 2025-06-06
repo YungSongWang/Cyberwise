@@ -90,7 +90,56 @@ const languages = {
         aiPromptPlaceholder: "Enter your writing prompt here...",
 
         // Quiz页面
-        clearHistory: "clear"
+        clearHistory: "clear",
+
+        // AI Writing 相关文本
+        aiChatTitle: "🤖 AI Security Assistant",
+        aiChatDesc: "Ask about cybersecurity questions and get intelligent recommendations",
+        aiChatInputPlaceholder: "Describe your cybersecurity question...",
+        aiChatFooter: "AI will automatically analyze problem types and match relevant solutions • Press Enter to send, Shift+Enter for new line",
+        aiChatWelcome1: "👋 Hello! I'm CyberWise's AI security assistant.",
+        aiChatWelcome2: "Please describe the cybersecurity issues you encounter, and I will automatically analyze the problem type and match the most relevant solutions for you.",
+        aiChatSuggestions: "💡 You can try asking me:",
+        aiChatSuggestion1: "🦠 Malware Issues",
+        aiChatSuggestion2: "🔐 Password Security",
+        aiChatSuggestion3: "📧 Phishing Attacks",
+        aiChatSuggestion4: "🛡️ Network Protection",
+        aiChatSuggestion1Text: "My computer seems to be infected with malware, how should I handle it?",
+        aiChatSuggestion2Text: "How to set strong password policies?",
+        aiChatSuggestion3Text: "How to identify and respond to phishing emails?",
+        aiChatSuggestion4Text: "How to protect network security?",
+        aiChatAnalyzing: "AI is analyzing your question...",
+        aiChatError: "❌ Sorry, AI analysis failed, please try again.",
+        aiChatAnalysisComplete: "✅ Analysis Complete!",
+        aiChatCategoryIntro: "Problem category:",
+        aiChatCategoryEnd: "category",
+        aiChatSolutionsIntro: "Based on the analysis, I found the following relevant solutions:",
+        aiChatMatchedQuestions: "📚 Related Questions:",
+        aiChatViewDetail: "👁️ View details",
+        aiChatNoMatches: "🔍 No directly matching solutions found in the knowledge base.",
+        aiChatNoMatchesTip1: "💡 Recommendation 1: Try using more specific keywords",
+        aiChatNoMatchesTip2: "💡 Recommendation 2: Browse the knowledge base for more solutions",
+        aiChatNoMatchesTip3: "💡 Recommendation 3: Ask our cybersecurity experts for help",
+        aiChatMoreHelp: "Need more help? You can browse",
+        aiChatKnowledgeBase: "Knowledge Base",
+        aiChatOrConsult: "or consult our experts.",
+        aiChatCategoryMalware: "Malware & Virus",
+        aiChatCategoryPassword: "Password Security",
+        aiChatCategoryPhishing: "Phishing Attack",
+        aiChatCategoryNetwork: "Network Security",
+        aiChatCategoryPrivacy: "Privacy Protection",
+        aiChatCategorySystem: "System Security",
+        aiChatCategoryGeneral: "General Security",
+
+        // AI Writing 新增文本
+        aiChatInputLabel: "Ask about cybersecurity questions",
+        aiChatSendBtn: "Send",
+        aiChatConversation: "Conversation",
+        aiChatWelcomeTitle: "Welcome to AI Security Assistant 🤖",
+        aiChatStatSecurity: "Security Analysis",
+        aiChatStatMatching: "Smart Matching",
+        aiChatStatSolutions: "Solution Recommendations",
+        aiChatStatFast: "Real-time Response"
     },
     zh: {
         // 登录页面
@@ -182,7 +231,56 @@ const languages = {
         aiPromptPlaceholder: "在此输入您的写作提示...",
 
         // Quiz页面
-        clearHistory: "clear"
+        clearHistory: "clear",
+
+        // AI Writing 相关文本
+        aiChatTitle: "🤖 AI 安全助手",
+        aiChatDesc: "询问网络安全问题，获得智能推荐",
+        aiChatInputPlaceholder: "描述您遇到的网络安全问题...",
+        aiChatFooter: "AI将自动分析问题类型并匹配相关解决方案 • 回车发送，Shift+回车换行",
+        aiChatWelcome1: "👋 您好！我是CyberWise的AI安全助手。",
+        aiChatWelcome2: "请描述您遇到的网络安全问题，我将自动分析问题类型并为您匹配最相关的解决方案。",
+        aiChatSuggestions: "💡 您可以试着问我：",
+        aiChatSuggestion1: "🦠 恶意软件问题",
+        aiChatSuggestion2: "🔐 密码安全",
+        aiChatSuggestion3: "📧 钓鱼攻击",
+        aiChatSuggestion4: "🛡️ 网络防护",
+        aiChatSuggestion1Text: "我的电脑似乎感染了恶意软件，应该如何处理？",
+        aiChatSuggestion2Text: "如何设置强密码策略？",
+        aiChatSuggestion3Text: "如何识别和应对钓鱼邮件？",
+        aiChatSuggestion4Text: "如何保护网络安全？",
+        aiChatAnalyzing: "AI正在分析您的问题...",
+        aiChatError: "❌ 抱歉，AI分析失败，请重试。",
+        aiChatAnalysisComplete: "✅ 分析完成！",
+        aiChatCategoryIntro: "问题类别：",
+        aiChatCategoryEnd: "类",
+        aiChatSolutionsIntro: "根据分析，我找到了以下相关解决方案：",
+        aiChatMatchedQuestions: "📚 相关问题：",
+        aiChatViewDetail: "👁️ 查看详情",
+        aiChatNoMatches: "🔍 知识库中未找到直接匹配的解决方案。",
+        aiChatNoMatchesTip1: "💡 建议1：尝试使用更具体的关键词",
+        aiChatNoMatchesTip2: "💡 建议2：浏览知识库寻找更多解决方案",
+        aiChatNoMatchesTip3: "💡 建议3：咨询我们的网络安全专家",
+        aiChatMoreHelp: "需要更多帮助？您可以浏览",
+        aiChatKnowledgeBase: "知识库",
+        aiChatOrConsult: "或咨询我们的专家。",
+        aiChatCategoryMalware: "恶意软件和病毒",
+        aiChatCategoryPassword: "密码安全",
+        aiChatCategoryPhishing: "钓鱼攻击",
+        aiChatCategoryNetwork: "网络安全",
+        aiChatCategoryPrivacy: "隐私保护",
+        aiChatCategorySystem: "系统安全",
+        aiChatCategoryGeneral: "常规安全",
+
+        // AI Writing 新增文本
+        aiChatInputLabel: "询问网络安全问题",
+        aiChatSendBtn: "发送",
+        aiChatConversation: "对话",
+        aiChatWelcomeTitle: "欢迎使用AI安全助手 🤖",
+        aiChatStatSecurity: "安全分析",
+        aiChatStatMatching: "智能匹配",
+        aiChatStatSolutions: "解决方案推荐",
+        aiChatStatFast: "实时响应"
     }
 };
 

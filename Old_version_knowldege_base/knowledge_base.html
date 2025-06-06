@@ -908,9 +908,9 @@
                     <span id="menu-favorites">Favorites</span>
                 </div>
                 
-                <div class="menu-item" onclick="goToQuiz()">
-                    <i class="ri-questionnaire-line"></i>
-                    <span id="menu-quiz">menuQuiz</span>
+                <div class="menu-item" onclick="goToCommunity()">
+                    <i class="ri-group-line"></i>
+                    <span id="menu-community">Community</span>
                 </div>
             </div>
             
@@ -1110,7 +1110,7 @@
                 'menu-notes': 'Notes',
                 'menu-knowledge': 'Knowledge Base',
                 'menu-favorites': 'Favorites',
-                'menu-quiz': 'menuQuiz',
+                'menu-community': 'Community',
                 'menu-expand-text': 'Knowledge Base',
                 'logout-text': 'Logout',
                 'lang-btn-text': '中文',
@@ -1158,7 +1158,7 @@
                 'menu-notes': '笔记',
                 'menu-knowledge': '知识库',
                 'menu-favorites': '收藏',
-                'menu-quiz': '智能测试',
+                'menu-community': '社区',
                 'menu-expand-text': '知识库',
                 'logout-text': '退出登录',
                 'lang-btn-text': 'English',
@@ -1355,9 +1355,8 @@
             window.location.href = window.location.origin + '/templates/dashboard.html#favorites';
         }
         
-        
-        function goToQuiz() {
-            window.location.href = window.location.origin + '/templates/quizs.html';
+        function goToCommunity() {
+            window.location.href = window.location.origin + '/templates/dashboard.html#community';
         }
 
         // 初始化页面

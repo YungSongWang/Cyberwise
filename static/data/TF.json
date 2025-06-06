@@ -16,6 +16,332 @@
       "id": 3,
       "question": "According to security best practices, cryptographic examples should require additional effort to build with insecure entropy configurations rather than making them easily accessible.",
       "correct_answer": true
+    },
+    {
+      "id": 4,
+      "question": "Using JavaCV to bind OpenCV in Java results in increased memory consumption over time.",
+      "correct_answer": false
+    },
+    {
+      "id": 5,
+      "question": "The issue with DBAtool can be fixed by replacing the username with the correct database username in the role permissions.",
+      "correct_answer": true
+    },
+    {
+      "id": 6,
+      "question": "It is recommended to read the basic namespace chapter in the Spring Security manual for better understanding.",
+      "correct_answer": true
+    },
+    {
+      "id": 7,
+      "question": "It is good to use Valgrind or Memcheck for debugging memory leaks in Godot on Linux.",
+      "correct_answer": true
+    },
+    {
+      "id": 8,
+      "question": "Using platform-specific configurations is not necessary when setting up Test Kitchen.",
+      "correct_answer": false
+    },
+    {
+      "id": 9,
+      "question": "It is important to ensure that the correct tenant is selected to avoid errors when publishing to the cloud.",
+      "correct_answer": true
+    },
+    {
+      "id": 10,
+      "question": "The issue with the export template in Godot could not causes the embedded package to lose its signature, resulting in a corrupt executable.",
+      "correct_answer": false
+    },
+    {
+      "id": 11,
+      "question": "Changing the data type of the public exponent from a signed integer to an unsigned integer could resolve compatibility issues in parsing RSA private keys across different machine architectures.",
+      "correct_answer": true
+    },
+    {
+      "id": 12,
+      "question": "Directly reading cached data from disk and setting it as the raw response data in a network request can not help implement a custom disk cache mechanism.",
+      "correct_answer": false
+    },
+    {
+      "id": 13,
+      "question": "Renaming a file within a web-based content management system can fail if the new filename or directory path is not correctly specified or recognized by the system.",
+      "correct_answer": true
+    },
+    {
+      "id": 14,
+      "question": "Properly defining and implementing all required cryptographic flags according to the RFC can not prevent errors encountered during signature verification.",
+      "correct_answer": false
+    },
+    {
+      "id": 15,
+      "question": "The Resource Owner Password Credentials Grant type allows a client application to directly handle user credentials, but its usage is discouraged in favor of more secure OAuth flows.",
+      "correct_answer": true
+    },
+    {
+      "id": 16,
+      "question": "Misconfiguration in the PAM system can prevent non-root users from logging in, even if the user accounts exist and passwords are correct.",
+      "correct_answer": true
+    },
+    {
+      "id": 17,
+      "question": "If a username contains spaces, failing to properly encode the username in the password reset link can cause the link to break or malfunction.",
+      "correct_answer": true
+    },
+    {
+      "id": 18,
+      "question": "Verifying the SHA checksum of source files is unnecessary because release tags and dates alone guarantee source code authenticity.",
+      "correct_answer": false
+    },
+    {
+      "id": 19,
+      "question": "In jQuery Validation, a custom validation method that returns true for empty strings can cause invalid (empty) content to pass validation unintentionally.",
+      "correct_answer": true
+    },
+    {
+      "id": 20,
+      "question": "Updating the CA certificate bundle on an embedded Linux system always guarantees that SSL/TLS errors when downloading data will be resolved.",
+      "correct_answer": false
+    },
+    {
+      "id": 21,
+      "question": "Installing the Stripe gem can never cause any issues with the Devise authentication gem in a Ruby on Rails application.",
+      "correct_answer": false
+    },
+    {
+      "id": 22,
+      "question": "If a web server properly sanitizes user input and uses XSS mitigations, a vulnerability scanner’s report of script execution via embedded links is always a valid and exploitable security flaw.",
+      "correct_answer": false
+    },
+    {
+      "id": 23,
+      "question": "If the trusted_domains setting in OwnCloud’s config.php does not include the domain or IP you are accessing, the login page may reload without an error, preventing login.",
+      "correct_answer": true
+    },
+    {
+      "id": 24,
+      "question": "Maintaining backward compatibility when changing metric labels in Prometheus queries is unnecessary and can be safely ignored.",
+      "correct_answer": false
+    },
+    {
+      "id": 25,
+      "question": "Browser ad blockers can sometimes interfere with authentication cookies, causing login issues in setups involving subdomains.",
+      "correct_answer": true
+    },
+    {
+      "id": 26,
+      "question": "After upgrading Jenkins with Helm, setting new admin credentials in values.yaml will always immediately update the login credentials without any extra steps.",
+      "correct_answer": false
+    },
+    {
+      "id": 27,
+      "question": "Simply reverting to the old valid? method implementation is always the best long-term solution when upgrading Devise.",
+      "correct_answer": false
+    },
+    {
+      "id": 28,
+      "question": "Updating the Android emulator’s hosts file alone ensures the emulator trusts your local CA certificate for SSL validation.",
+      "correct_answer": false
+    },
+    {
+      "id": 29,
+      "question": "You can always install any Salt version on Kali Linux after its EOL without updating repository sources or bootstrap scripts.",
+      "correct_answer": false
+    },
+    {
+    "id": 30,
+    "question": "Issues with rapidly activating and deactivating compiled repositories can occur when cancellation policies are not properly implemented.",
+    "correct_answer": true
+    },
+    {
+    "id": 31,
+    "question": "When fixing UI state synchronization issues in browser extensions, updating related configuration properties is unnecessary as interface components automatically reflect current user settings.",
+    "correct_answer": false
+    },
+    {
+    "id": 32,
+    "question": "When implementing external policy enforcement with OPA in Kubernetes, admission webhooks cannot be used to intercept mutation requests like create, update, patch, and delete operations.",
+    "correct_answer": false
+    },
+    {
+    "id": 33,
+    "question": "When encountering login route issues in Sylius administration, the only solution is to reinstall the entire system as there are no temporary workarounds available.",
+    "correct_answer": false
+    },
+    {
+    "id": 34,
+    "question": "For API applications that don't require cookie-based sessions, it's still mandatory to keep both cookie validation and CSRF validation enabled in the request component configuration.",
+    "correct_answer": false
+    },
+    {
+    "id": 35,
+    "question": "When resolving merge conflicts in a PR, it's recommended to rebase against the develop branch rather than removing conflicting lines to avoid blocking the merge process.",
+    "correct_answer": false
+    },
+    {
+    "id": 36,
+    "question": "First-time contributors to Google open source projects can submit pull requests without any additional requirements beyond the code review process.",
+    "correct_answer": false
+    },
+    {
+    "id": 37,
+    "question": "Race conditions between initialization callbacks and object state updates can cause flaky integration tests that intermittently fail with segmentation faults.",
+    "correct_answer": true
+    },
+    {
+    "id": 38,
+    "question": "In OAuth2 implementations, using a single validation logic for all endpoints is the recommended approach as it ensures consistency across the entire system.",
+    "correct_answer": false
+    },
+    {
+    "id": 39,
+    "question": "Memory leaks in game engines can only be effectively diagnosed using actual hardware sensors, making external software with recorded test data insufficient for debugging.",
+    "correct_answer": false
+    },
+    {
+    "id": 40,
+    "question": "Event subscriptions in component-based architectures are automatically cleaned up by garbage collection, so manual cleanup during component destruction is unnecessary.",
+    "correct_answer": false
+    },
+    {
+    "id": 41,
+    "question": "When refactoring cloud service utilities, maintaining separate libraries for each specific function is preferable to avoid coupling and complexity.",
+    "correct_answer": false
+    },
+    {
+    "id": 42,
+    "question": "Guice only recognizes @Nullable annotations from the standard Java libraries and doesn't support annotations from third-party frameworks.",
+    "correct_answer": false
+    },
+    {
+    "id": 43,
+    "question": "When TypeScript encounters union types with identical signatures but different structural expectations, explicitly defining each field with its specific type can resolve type ambiguity issues.",
+    "correct_answer": true
+    },
+    {
+    "id": 44,
+    "question": "Partial schema serialization that excludes validation rules is sufficient for most external tools since they typically only need basic structure information.",
+    "correct_answer": false
+    },
+    {
+    "id": 45,
+    "question": "Edge cases involving zero values in cryptographic operations often reveal mathematical or implementation flaws that may not surface during normal operation with random data.",
+    "correct_answer": true
+    },
+    {
+    "id": 46,
+    "question": "Java platforms have equal native support for both PKCS#8 and PKCS#1 private key formats with no preference for either.",
+    "correct_answer": false
+    },
+    {
+    "id": 47,
+    "question": "Function overloading can be an effective approach to prevent unexpected issues when initialization vectors (IVs) might be null for algorithms that require them.",
+    "correct_answer": true
+    },
+    {
+    "id": 48,
+    "question": "Network proxy and traffic interception tools can run with standard user privileges on Windows systems without requiring any elevated access.",
+    "correct_answer": false
+    },
+    {
+    "id": 49,
+    "question": "When executing commands via SSH in non-interactive mode, environment variables that are available in interactive sessions may not be automatically propagated to the remote command execution context.",
+    "correct_answer": true
+    },
+    {
+    "id": 50,
+    "question": "Making class methods protected instead of private allows child classes to access and reuse parent functionality while maintaining proper encapsulation boundaries.",
+    "correct_answer": true
+    },
+    {
+    "id": 51,
+    "question": "UmbracoIdentity works seamlessly with existing Member Types without requiring any additional properties and uses the standard Umbraco MembershipHelper methods.",
+    "correct_answer": false
+    },
+    {
+    "id": 52,
+    "question": "In this Kong HMAC plugin implementation, if no digest header is received from the client, the body validation is automatically bypassed and the request is allowed to proceed.",
+    "correct_answer": true
+    },
+    {
+    "id": 53,
+    "question": "The fact that opening a new tab resolves the dashboard issues suggests that the problem is related to session state rather than server-side authentication or app deployment failures.",
+    "correct_answer": true
+    },
+    {
+    "id": 54,
+    "question": "According to the bug report, the Pi-hole admin panel's comprehensive DNS query logging should always be enabled by default as it poses no privacy concerns.",
+    "correct_answer": false
+    },
+    {
+    "id": 55,
+    "question": "According to this issue report, Grafana version 5.2.2 includes robust login attempt throttling and account lockout mechanisms to prevent brute force attacks.",
+    "correct_answer": false
+    },
+    {
+    "id": 56,
+    "question": "The reported Jetpack bug shows inconsistent user interface messaging where the system simultaneously indicates both the presence and absence of security threats.",
+    "correct_answer": true
+    },
+    {
+    "id": 57,
+    "question": "According to this Snyk security alert, the moment.js library vulnerability cannot be resolved through version upgrades and requires replacing the entire library.",
+    "correct_answer": false
+    },
+    {
+      "id": 58,
+      "question": "The author expresses gratitude for the prompt updates regarding vulnerabilities in the Rails application.",
+      "correct_answer": true
+    },
+    {
+      "id": 59,
+      "question": "The proposed solution involves refactoring the CSRF authentication strategy to correctly update the CSRF token in the request attributes.",
+      "correct_answer": true
+    },
+    {
+      "id": 60,
+      "question": "The provided response suggests reaching out to a mailing list or Stack Overflow for assistance with the issue.",
+      "correct_answer": true
+    },
+    {
+      "id": 61,
+      "question": "The issue will be automatically marked as stale if there is no recent activity.",
+      "correct_answer": true
+    },
+    {
+      "id": 62,
+      "question": "The recommended solution is to upgrade to a secure version of the affected package.",
+      "correct_answer": true
+    },
+    {
+      "id": 63,
+      "question": "The author implies that compromising the signaling server is not easy.",
+      "correct_answer": false
+    },
+    {
+      "id": 64,
+      "question": "The response indicates that the issue was already known and appropriate action had not been taken.",
+      "correct_answer": false
+    },
+    {
+      "id": 65,
+      "question": "The response indicates that upgrading to a newer version of the ESLint extension can resolve vulnerabilities.",
+      "correct_answer": true
+    },
+    {
+      "id": 66,
+      "question": "The user expresses gratitude for any help provided in resolving the issue.",
+      "correct_answer": true
+    },
+    {
+      "id": 67,
+      "question": "The response suggests adding information to the wiki regarding the SSHD configuration.",
+      "correct_answer": true
+    },
+    {
+      "id": 68,
+      "question": "The response indicates appreciation not for the help received on the mailing list.",
+      "correct_answer": false
     }
+
   ]
 }

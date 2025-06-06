@@ -389,7 +389,7 @@
                     </div>
                 </div>
                 <div class="quiz-score" id="quizScore"><span data-lang="consecutiveCorrect">Consecutive Correct</span>: 0</div>
-                <button class="quiz-clear-btn" id="quizClearBtn" data-lang="clearHistory">Clear History</button>
+                <button class="quiz-clear-btn" id="quizClearBtn" data-lang="clearHistory">clear</button>
             </div>
             <div class="quiz-card">
                 <div class="quiz-question" id="quizQuestion">Loading questions...</div>
@@ -475,6 +475,11 @@
             // 更新分数显示
             if (window.updateScore && typeof updateScore === 'function') {
                 updateScore();
+            }
+            
+            // 更新当前显示的判断题选项
+            if (window.updateCurrentQuestionOptions && typeof updateCurrentQuestionOptions === 'function') {
+                updateCurrentQuestionOptions();
             }
         }
     </script>

@@ -40,10 +40,53 @@ function hideLoadingIndicator() {
             </div>
 
             <div id="ai-section" style="display: none;">
-                <h1 data-lang="aiTitle">AI Writing Assistant</h1>
-                <p data-lang="aiDesc">Use AI to help with your writing and knowledge creation.</p>
-                <textarea data-lang="aiPlaceholder" placeholder="Enter your prompt here..." style="width: 100%; height: 200px; margin: 20px 0; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; border: none;"></textarea>
-                <button onclick="generateAIContent()" style="width: auto; padding: 10px 20px;" data-lang="generateBtn">Generate Content</button>
+                <div class="ai-chat-container">
+                    <!-- 聊天标题 -->
+                    <div class="ai-chat-header">
+                        <h1 data-lang="aiChatTitle">🤖 AI Security Assistant</h1>
+                        <p data-lang="aiChatDesc">Ask about cybersecurity questions and get intelligent recommendations</p>
+                    </div>
+                    
+                    <!-- 消息展示区域 -->
+                    <div class="ai-chat-messages" id="aiChatMessages">
+                        <div class="welcome-message">
+                            <div class="ai-message">
+                                <div class="ai-avatar">🤖</div>
+                                <div class="ai-message-content">
+                                    <p data-lang="aiChatWelcome1">👋 Hello! I'm CyberWise's AI security assistant.</p>
+                                    <p data-lang="aiChatWelcome2">Please describe the cybersecurity issues you encounter, and I will automatically analyze the problem type and match the most relevant solutions for you.</p>
+                                    <div class="ai-suggestions">
+                                        <p style="margin-bottom: 8px;" data-lang="aiChatSuggestions">💡 You can try asking me:</p>
+                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion1Text'))" data-lang="aiChatSuggestion1">🦠 Malware Issues</div>
+                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion2Text'))" data-lang="aiChatSuggestion2">🔐 Password Security</div>
+                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion3Text'))" data-lang="aiChatSuggestion3">📧 Phishing Attacks</div>
+                                        <div class="suggestion-item" onclick="sendSuggestion(getText('aiChatSuggestion4Text'))" data-lang="aiChatSuggestion4">🛡️ Network Protection</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 输入区域 -->
+                    <div class="ai-chat-input-container">
+                        <div class="ai-input-wrapper">
+                            <textarea 
+                                id="aiChatInput" 
+                                data-lang="aiChatInputPlaceholder"
+                                placeholder="Describe your cybersecurity question..." 
+                                rows="1"
+                                onkeydown="handleChatKeydown(event)"
+                                oninput="autoResizeTextarea(this)"
+                            ></textarea>
+                            <button id="aiSendBtn" onclick="sendMessage()" class="ai-send-btn">
+                                <i class="ri-send-plane-line"></i>
+                            </button>
+                        </div>
+                        <div class="ai-input-footer">
+                            <small data-lang="aiChatFooter">AI will automatically analyze problem types and match relevant solutions • Press Enter to send, Shift+Enter for new line</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="notes-section" style="display: none;">
@@ -157,7 +200,8 @@ function showSection(sectionName) {
             loadNotes();
             break;
         case 'ai':
-            // AI功能初始化
+            // AI功能初始化 - 更新聊天界面语言
+            updateAIChatLanguage();
             break;
         case 'favorites':
             loadFavorites();
@@ -165,6 +209,24 @@ function showSection(sectionName) {
         case 'community':
             loadCommunity();
             break;
+    }
+}
+
+// 更新AI聊天界面语言
+function updateAIChatLanguage() {
+    // 更新placeholder
+    const inputElement = document.getElementById('aiChatInput');
+    if (inputElement) {
+        inputElement.placeholder = getText('aiChatInputPlaceholder');
+    }
+
+    // 更新建议按钮的点击事件，使其使用当前语言的文本
+    const suggestionButtons = document.querySelectorAll('.suggestion-item');
+    if (suggestionButtons.length >= 4) {
+        suggestionButtons[0].onclick = () => sendSuggestion(getText('aiChatSuggestion1Text'));
+        suggestionButtons[1].onclick = () => sendSuggestion(getText('aiChatSuggestion2Text'));
+        suggestionButtons[2].onclick = () => sendSuggestion(getText('aiChatSuggestion3Text'));
+        suggestionButtons[3].onclick = () => sendSuggestion(getText('aiChatSuggestion4Text'));
     }
 }
 
@@ -969,4 +1031,272 @@ function toggleUserDropdown() {
             }
         });
     }
-} 
+}
+
+// === AI 聊天功能 ===
+
+// 发送消息
+function sendMessage() {
+    const input = document.getElementById('aiChatInput');
+    const message = input.value.trim();
+
+    if (!message) return;
+
+    // 添加用户消息到聊天
+    addUserMessage(message);
+
+    // 清空输入框
+    input.value = '';
+    autoResizeTextarea(input);
+
+    // 处理AI响应
+    processAIResponse(message);
+}
+
+// 发送建议问题
+function sendSuggestion(suggestionText) {
+    const input = document.getElementById('aiChatInput');
+    input.value = suggestionText;
+    sendMessage();
+}
+
+// 添加用户消息
+function addUserMessage(message) {
+    const chatMessages = document.getElementById('aiChatMessages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'user-message';
+    messageElement.innerHTML = `
+        <div class="user-avatar">👤</div>
+        <div class="user-message-content">
+            <p>${escapeHtml(message)}</p>
+        </div>
+    `;
+
+    chatMessages.appendChild(messageElement);
+    scrollToBottom();
+}
+
+// 添加AI消息
+function addAIMessage(content, isTyping = false) {
+    const chatMessages = document.getElementById('aiChatMessages');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'ai-message';
+
+    if (isTyping) {
+        messageElement.innerHTML = `
+            <div class="ai-avatar">🤖</div>
+            <div class="ai-message-content">
+                <div class="typing-indicator">
+                    ${getText('aiChatAnalyzing')}
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        messageElement.innerHTML = `
+            <div class="ai-avatar">🤖</div>
+            <div class="ai-message-content">
+                ${content}
+            </div>
+        `;
+    }
+
+    chatMessages.appendChild(messageElement);
+    scrollToBottom();
+
+    return messageElement;
+}
+
+// 处理AI响应
+async function processAIResponse(userMessage) {
+    // 显示加载状态
+    const typingMessage = addAIMessage('', true);
+
+    try {
+        // 模拟AI处理延迟
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        // 分析问题类型
+        const category = classifySecurityQuestion(userMessage);
+
+        // 匹配相似问题
+        const matchedQuestions = findSimilarQuestions(userMessage, category);
+
+        // 生成AI回复
+        const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
+
+        // 移除加载状态
+        typingMessage.remove();
+
+        // 添加AI回复
+        addAIMessage(aiResponse);
+
+    } catch (error) {
+        console.error('AI处理出错:', error);
+        typingMessage.remove();
+        addAIMessage(`<p>${getText('aiChatError')}</p>`);
+    }
+}
+
+// 问题分类函数（简化版）
+function classifySecurityQuestion(question) {
+    const categories = {
+        'malware': ['恶意软件', '病毒', '木马', '勒索软件', '感染'],
+        'password': ['密码', '口令', '登录', '认证', '二次验证'],
+        'phishing': ['钓鱼', '欺诈', '诈骗', '可疑邮件', '虚假网站'],
+        'network': ['网络', '防火墙', 'DDoS', '入侵', '攻击'],
+        'privacy': ['隐私', '数据泄露', '个人信息', '信息安全'],
+        'system': ['系统', '漏洞', '补丁', '更新', '安全配置']
+    };
+
+    for (const [category, keywords] of Object.entries(categories)) {
+        if (keywords.some(keyword => question.includes(keyword))) {
+            return category;
+        }
+    }
+
+    return 'general';
+}
+
+// 查找相似问题（模拟数据）
+function findSimilarQuestions(userQuestion, category) {
+    // 模拟知识库数据
+    const knowledgeBase = [
+        {
+            id: 1,
+            question: "计算机感染恶意软件后的处理步骤",
+            category: "malware",
+            similarity: 0.95
+        },
+        {
+            id: 2,
+            question: "如何设置强密码策略",
+            category: "password",
+            similarity: 0.88
+        },
+        {
+            id: 3,
+            question: "识别和应对钓鱼邮件的方法",
+            category: "phishing",
+            similarity: 0.92
+        }
+    ];
+
+    // 根据分类和相似度筛选
+    return knowledgeBase
+        .filter(item => item.category === category || category === 'general')
+        .sort((a, b) => b.similarity - a.similarity)
+        .slice(0, 3);
+}
+
+// 生成AI回复
+function generateAIResponse(userQuestion, category, matchedQuestions) {
+    const categoryNames = {
+        'malware': getText('aiChatCategoryMalware'),
+        'password': getText('aiChatCategoryPassword'),
+        'phishing': getText('aiChatCategoryPhishing'),
+        'network': getText('aiChatCategoryNetwork'),
+        'privacy': getText('aiChatCategoryPrivacy'),
+        'system': getText('aiChatCategorySystem'),
+        'general': getText('aiChatCategoryGeneral')
+    };
+
+    let response = `
+        <p><strong>${getText('aiChatAnalysisComplete')}</strong></p>
+        <p>${getText('aiChatCategoryIntro')} <span style="color: #00eaff; font-weight: 600;">${categoryNames[category]}</span> ${getText('aiChatCategoryEnd')}</p>
+        <p>${getText('aiChatSolutionsIntro')}</p>
+    `;
+
+    if (matchedQuestions.length > 0) {
+        response += `<div class="matched-questions"><h4>${getText('aiChatMatchedQuestions')}</h4>`;
+
+        matchedQuestions.forEach(question => {
+            response += `
+                <div class="matched-question-item" onclick="viewQuestionDetail(${question.id})">
+                    <div class="question-title">${question.question}</div>
+                    <div class="question-meta">
+                        <span>${getText('aiChatViewDetail')}</span>
+                        <span class="similarity-score">${Math.round(question.similarity * 100)}% 匹配</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        response += '</div>';
+    } else {
+        response += `<p>${getText('aiChatNoMatches')}</p>`;
+        response += `<p>${getText('aiChatNoMatchesTip1')}</p>`;
+        response += `<p>${getText('aiChatNoMatchesTip2')}</p>`;
+        response += `<p>${getText('aiChatNoMatchesTip3')}</p>`;
+    }
+
+    response += `
+        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 12px; color: #888;">
+                ${getText('aiChatMoreHelp')} <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">${getText('aiChatKnowledgeBase')}</span> ${getText('aiChatOrConsult')}
+            </p>
+        </div>
+    `;
+
+    return response;
+}
+
+// 查看问题详情
+function viewQuestionDetail(questionId) {
+    alert(`查看问题详情 ID: ${questionId}\n\n这里未来会跳转到具体的问题详情页面。`);
+    // 未来可以跳转到knowledge_base.html并定位到具体问题
+}
+
+// 处理键盘事件
+function handleChatKeydown(event) {
+    if (event.key === 'Enter') {
+        if (event.shiftKey) {
+            // Shift+Enter 换行
+            return true;
+        } else {
+            // Enter 发送消息
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+}
+
+// 自动调整textarea高度
+function autoResizeTextarea(textarea) {
+    textarea.style.height = '20px';
+    textarea.style.height = Math.min(textarea.scrollHeight, 120) + 'px';
+}
+
+// 滚动到底部
+function scrollToBottom() {
+    const chatMessages = document.getElementById('aiChatMessages');
+    setTimeout(() => {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 100);
+}
+
+// HTML转义
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// 页面初始化时绑定事件
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('Dashboard AI chat functions loaded');
+
+    // 监听语言切换事件，更新AI聊天界面
+    document.addEventListener('languageChanged', function () {
+        console.log('Language changed, updating AI chat interface');
+        // 如果当前显示的是AI界面，更新语言
+        const aiSection = document.getElementById('ai-section');
+        if (aiSection && aiSection.style.display !== 'none') {
+            updateAIChatLanguage();
+        }
+    });
+}); 

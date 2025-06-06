@@ -1,7 +1,7 @@
 
 {
   "quiz_title": "Multiple Choise Questions",
-  "last_updated": "2025-06-03",
+  "last_updated": "2025-06-04",
   "questions": [
     {
       "id": 1,
@@ -35,6 +35,634 @@
         "D": "The weak generators cause performance issues on embedded platforms"
       },
       "correct_answer": "B"
+    },
+    {
+      "id": 4,
+      "question":"What happens to memory consumption when using JavaCV to bind OpenCV for image processing in Java?",
+      "options": {
+        "A":"Memory consumption increases significantly over time",
+        "B":"Memory consumption remains static",
+        "C":"Memory consumption decreases over time",
+        "D":"Memory consumption fluctuates unpredictably"
+      },
+      "correct_answer":"B"
+    },
+    {
+      "id": 5,
+      "question":"What is a common method to bypass the default cache delegate and read cached data directly from disk in a network request?",
+      "options": {
+        "A":"Use the standard cache delegate to handle all caching automatically.",
+        "B":"Disable caching entirely for all requests.",
+        "C":"Set the raw response data of the request to a mutable data object created from the cached file contents on disk.",
+        "D":"Use only in-memory cache without accessing disk."
+      },
+      "correct_answer":"C"
+    },
+    {
+      "id": 6,
+      "question":"According to current OAuth security best practices, which of the following statements about the Resource Owner Password Credentials Grant type is correct?",
+      "options": {
+        "A":"All new applications must use the most secure authentication method.",
+        "B":"It is the only grant type supported by the latest OAuth specifications.",
+        "C":"It requires no username or password to function correctly.",
+        "D":"It is commonly disallowed or deprecated due to security concerns and should be avoided."
+      },
+      "correct_answer":"D"
+    },
+    {
+      "id": 7,
+      "question":"What is a primary reason for using short-lived TLS certificates, such as those issued by Let’s Encrypt, combined with automated renewal processes?",
+      "options": {
+        "A":"To reduce the administrative burden of manual certificate updates and improve overall security through frequent key rotation.",
+        "B":"To allow certificates to be valid indefinitely without any renewal.",
+        "C":"To prevent the use of any encryption on web servers.",
+        "D":"To make websites incompatible with modern browsers."
+      },
+      "correct_answer":"A"
+    },
+    {
+      "id": 8,
+      "question":"What is a typical cause for a broken password reset link when a username contains spaces?",
+      "options": {
+        "A":"The server's CPU architecture is incompatible with the username format.",
+        "B":"The password reset link fails because the user’s browser is offline.",
+        "C":"The reset link does not properly escape or encode special characters such as spaces.",
+        "D":"The username must always be a number for the password reset to work."
+      },
+      "correct_answer":"C"
+    },
+    {
+      "id": 9,
+      "question":"What is a common security measure to verify the integrity of source code before building software like Homebrew packages?",
+      "options": {
+        "A":"Checking the SHA checksum of the source archive against a trusted release to ensure no tampering.",
+        "B":"Trusting any source code found online without verification.",
+        "C":"Building from any source regardless of origin or checksum.",
+        "D":"Ignoring release tags and dates when verifying source authenticity."
+      },
+      "correct_answer":"A"
+    },
+    {
+      "id": 10,
+      "question":"In jQuery Validation, what is a common issue when validating content inside a textarea or a code editor like CKEditor?",
+      "options": {
+        "A":"The validation always ignores hidden fields by default.",
+        "B":"The validation automatically fixes invalid content without developer intervention.",
+        "C":"The validation cannot be customized with additional methods.",
+        "D":"The validation may incorrectly treat an empty string as valid content."
+      },
+      "correct_answer":"D"
+    },
+    {
+      "id": 11,
+      "question":"What is the recommended approach when updating Grafana dashboards to report TLS traffic metrics in a way that maintains backward compatibility?",
+      "options": {
+        "A":"Switch the metric label from tls to tls_label, using the value true and omitting it otherwise, with a small query structure tweak.",
+        "B":"Remove all TLS-related labels to simplify the query and ignore backward compatibility.",
+        "C":"Replace Prometheus with a non-compatible monitoring system.",
+        "D":"Hardcode all metric values instead of using labels."
+      },
+      "correct_answer":"A"
+    },
+    {
+      "id": 12,
+      "question":"When using gRPC in .NET with a client certificate in PEM format, why might loading the certificate with SslCredentials from the PEM content fail?",
+      "options": {
+        "A":"SslCredentials expects a PFX (PKCS#12) certificate with private key, not separate PEM files.",
+        "B":"PEM files are not supported by any SSL/TLS library in .NET or gRPC.",
+        "C":"The client certificate must always be self-signed and cannot come from a CA.",
+        "D":"gRPC does not support mutual TLS authentication in .NET."
+      },
+      "correct_answer":"A"
+    },
+    {
+      "id": 13,
+      "question":"What is a common cause of login failure after upgrading Jenkins using the Helm chart, despite setting adminUser and adminPassword values in values.yaml?",
+      "options": {
+        "A":"Jenkins no longer supports admin users after version upgrades.",
+        "B":"The Helm upgrade does not update or overwrite the existing Kubernetes Secret storing Jenkins credentials, so new values are ignored.",
+        "C":"Kubernetes deletes all secrets automatically after a Helm upgrad",
+        "D":"The values.yaml file is ignored by Helm during upgrades."
+      },
+      "correct_answer":"B"
+    },
+    {
+      "id": 14,
+      "question":"What is a better approach when updating Devise to a newer version if the valid? method behavior changed and causes OAuth errors?",
+      "options": {
+        "A":"Downgrade the entire Ruby on Rails framework to avoid issues.",
+        "B":"Ignore all validation errors and allow any input.",
+        "C":"Remove Devise from the project and use basic HTTP auth instead.",
+        "D":"Override the method with a custom validation that returns a specific error instead of simply returning false."
+      },
+      "correct_answer":"D"
+    },
+    {
+      "id": 15,
+      "question":"When testing a REST API locally with a RapidSSL certificate and CA bundle, why might SSL validation succeed on Mac and iOS emulators but fail on Android emulators?",
+      "options": {
+        "A":"Android emulators cannot use SSL at all.",
+        "B":"Chrome on Mac disables SSL validation for local hosts by default.",
+        "C":"The Android emulator does not automatically trust the macOS system’s custom CA bundle, requiring manual addition of the CA certificate.",
+        "D":"The CA bundle is irrelevant; Android requires certificates only from Google."
+      },
+      "correct_answer":"C"
+    },
+    {
+      "id": 16,
+      "question":"What is a common cause for bootstrap-salt.sh refusing to install a specific Salt version on Kali Linux after its EOL (End of Life)?",
+      "options": {
+        "A":"SaltStack requires a Windows OS to install.",
+        "B":"Kali Linux disables all shell scripts by default.",
+        "C":"Salt cannot be installed without a graphical installer.",
+        "D":"The Kali Linux repositories no longer contain the requested Salt version due to EOL support removal."
+      },
+      "correct_answer":"D"
+    },
+    {
+      "id": 17,
+      "question": "What is the recommended solution for resolving Azure SDK authentication issues with Key Vault when encountering authority should be in Uri format exceptions?",
+      "options": {
+      "A": "Continue using Microsoft.Azure.Management.Fluent with updated authentication context",
+      "B": "Switch to newer Azure Security Key Vault package with Azure Identity package for simpler authentication",
+      "C": "Downgrade to older versions of Microsoft.Azure.KeyVault",
+      "D": "Use different authentication credentials for Key Vault access"
+    },
+    "correct_answer": "B"
+    },
+    {
+      "id": 18,
+      "question": "What is the primary security concern with the mbed Transport Layer Security examples that use weak random number generators?",
+      "options": {
+        "A": "The examples consume too much memory during execution",
+        "B": "Without proper random numbers, the communication channels are not secure",
+        "C": "The examples are incompatible with newer versions of mbed Transport Layer Security",
+        "D": "The weak generators cause performance issues on embedded platforms"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 19,
+      "question": "What was the main improvement made to PKCS#12 certificate and private key container handling in this pull request?",
+      "options": {
+        "A": "Increased loading speed for PKCS#12 containers",
+        "B": "Added support for additional certificate formats",
+        "C": "Disambiguated error messages to distinguish between container and content loading failures",
+        "D": "Reduced memory usage during certificate processing"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 20,
+      "question": "What is the primary cause of random file descriptor closing issues in the Go crypto/ssh package testing scenario?",
+     "options": {
+        "A": "Insufficient memory allocation for file descriptors",
+        "B": "Data race conditions between write goroutines and file close operations in concurrent read/write scenarios",
+        "C": "Incorrect implementation of Transport Layer Security protocols",
+        "D": "Missing error handling in network connection establishment"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 21,
+      "question": "What is typically required before contributing to Google open source projects when submitting a pull request?",
+      "options": {
+        "A": "Providing detailed unit test coverage reports",
+        "B": "Signing a Contributor License Agreement (CLA)",
+        "C": "Demonstrating experience with compiled repositories",
+        "D": "Implementing cancellation policies in the code"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 22,
+      "question": "What is the root cause of the firewall pane remaining open after toggling advancedUser from the popup?",
+      "options": {
+        "A": "The popup fails to communicate with the dashboard component",
+        "B": "The dynamicFilteringEnabled setting is not updated when advancedUserEnabled is fired",
+        "C": "Browser extension permissions are insufficient for UI state management",
+        "D": "The firewall pane has a separate toggle mechanism that conflicts with advancedUser"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 23,
+      "question": "What is the primary mechanism suggested for implementing token-based authentication denial in Kubernetes using OPA?",
+      "options": {
+        "A": "Implementing custom authentication plugins directly in the API server",
+        "B": "Using policy hooks built into authentication methods to distinguish login events from API requests",
+        "C": "Modifying the service account token generation process",
+        "D": "Creating custom RBAC rules to block token authentication"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 24,
+      "question": "What HTTP error occurs when attempting to POST to the Sylius administration login route that only accepts GET and HEAD methods?",
+      "options": {
+        "A": "404 Not Found",
+        "B": "403 Forbidden",
+        "C": "405 Method Not Allowed",
+        "D": "500 Internal Server Error"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 25,
+      "question": "What Ruby method is mentioned as a solution for accessing nested hash data safely without causing errors when keys don't exist?",
+      "options": {
+        "A": "fetch",
+        "B": "dig",
+        "C": "select",
+        "D": "merge"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 26,
+      "question": "According to the PR requirements mentioned, what should be updated along with code changes when submitting a pull request?",
+      "options": {
+        "A": "Only the test files and documentation",
+        "B": "PENDING.md entries with issue numbers and relevant documentation",
+        "C": "Just the GitHub issue links and labels",
+        "D": "Only the commit messages and branch references"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 27,
+      "question": "Why did the maintainers suggest that a negative margins audit might not be necessary?",
+      "options": {
+        "A": "Negative margins cause browser compatibility issues",
+        "B": "The codebase already has comprehensive margin validation",
+        "C": "Negative margins are commonly used in CSS and are generally acceptable",
+        "D": "The audit would conflict with existing flexbox implementations"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 28,
+      "question": "What was the root cause of the segmentation fault issue in the IntegrationTestServer implementation?",
+      "options": {
+        "A": "Insufficient memory allocation for server objects during initialization",
+        "B": "Race condition between server initialization completion and server value assignment in the test thread",
+        "C": "Network connectivity issues preventing proper server startup",
+        "D": "Incorrect configuration parameters passed to the server constructor"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 29,
+      "question": "What is the primary reason for creating separate validateScope() methods for AuthorizationEndpoint and TokenEndpoint?",
+      "options": {
+        "A": "To improve code readability and reduce method complexity",
+        "B": "Each endpoint handles different request types (AuthorizationRequest vs TokenRequest) with potentially different validation requirements",
+        "C": "To prevent method name conflicts in the OAuth2 framework",
+        "D": "To enable parallel processing of authorization and token requests"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 30,
+      "question": "When investigating suspected memory leaks in game engines caused by external scripts or plugins, what is the most important diagnostic information to provide?",
+      "options": {
+        "A": "System specifications, reproducible steps, and a minimal example project demonstrating the issue",
+        "B": "Only the game engine version and operating system",
+        "C": "Just the external plugin documentation and source code",
+        "D": "Only video evidence of the memory consumption increase"
+      },
+      "correct_answer": "A"
+    },
+    {
+      "id": 31,
+      "question": "What is the primary cause of memory leaks in UI components that use internationalization (i18n) systems?",
+      "options": {
+        "A": "Excessive string allocation during translation processes",
+        "B": "Incorrect locale configuration in the application settings",
+        "C": "UI components not unsubscribing from i18n events when destroyed",
+        "D": "Using deprecated translation APIs in modern frameworks"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 32,
+      "question": "What is the main benefit of consolidating salt.utils.iam functionality into salt.utils.aws in this refactoring?",
+      "options": {
+        "A": "Improved compatibility with newer AWS API versions",
+        "B": "Better integration with existing authentication mechanisms",
+        "C": "Simplified installation and dependency management",
+        "D": "Enhanced error handling, caching capabilities, and elimination of hardcoded region values"
+      },
+      "correct_answer": "D"
+    },
+    {
+      "id": 33,
+      "question": "According to the Guice documentation, what happens when null is injected into a parameter that is not annotated with @Nullable?",
+      "options": {
+        "A": "Guice automatically converts the null to a default value",
+        "B": "The injection proceeds normally with null as the value",
+        "C": "Guice throws a NULL_INJECTED_INTO_NON_NULLABLE ProvisionException",
+        "D": "Guice logs a warning but continues with the injection"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 34,
+      "question": "Why does TypeScript have difficulty distinguishing between QueryResolver and SubscriptionResolver when they are combined in a union type?",
+      "options": {
+        "A": "TypeScript cannot handle generic type parameters with the same constraints",
+        "B": "The resolvers use incompatible return types that conflict with each other",
+        "C": "Both types have identical argument signatures, making TypeScript unable to determine if the object is a function or an object with subscribe/resolve methods",
+        "D": "Union types are not supported for resolver functions in TypeScript"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 35,
+      "question": "What is the main issue with Yup schema serialization described in this problem?",
+      "options": {
+        "A": "The oneOf validation constraint is not included in the serialized schema's tests array",
+        "B": "The schema object structure is completely malformed during serialization",
+        "C": "Required validations are missing from the serialized output",
+        "D": "The label property is not properly encoded in the JSON output"
+      },
+      "correct_answer": "A"
+    },
+    {
+      "id": 36,
+      "question": "What is the root cause of the ECC signature verification failure when the hash contains all zero bytes and the traditional (non-Shamir) method is used?",
+      "options": {
+        "A": "The hash length parameter is incorrectly set to 20 instead of the expected value",
+        "B": "The mathematical calculation of u1_mG + u2_mQ produces incorrect results when the hash input is all zeros",
+        "C": "The ecc_mul2add function pointer is incorrectly set to NULL",
+        "D": "The signature values (r,s) are malformed due to improper encoding"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 37,
+      "question": "What is the main limitation of cfssl regarding private key output formats?",
+      "options": {
+        "A": "It cannot generate RSA private keys longer than 2048 bits",
+        "B": "It only supports PKCS#1 format output, not PKCS#8 format",
+        "C": "It requires OpenSSL as a mandatory dependency for key generation",
+        "D": "It cannot export private keys in PEM format"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 38,
+      "question": "What is the main limitation of cfssl regarding private key output formats?",
+      "options": {
+        "A": "It cannot generate RSA private keys longer than 2048 bits",
+        "B": "It only supports PKCS#1 format output, not PKCS#8 format",
+        "C": "It requires OpenSSL as a mandatory dependency for key generation",
+        "D": "It cannot export private keys in PEM format"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 39,
+      "question": "According to the documentation evolution, which Node.js version was the last to support the duplexStreamOption parameter in crypto functions?",
+      "options": {
+        "A": "Node 6",
+        "B": "Node 8", 
+        "C": "Node 10",
+        "D": "Node 12"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 40,
+      "question": "Why does mitmdump require Administrator privileges on Windows 10 to function properly?",
+      "options": {
+        "A": "To access encrypted certificate stores in the Windows registry",
+        "B": "To modify Windows Firewall rules automatically during startup",
+        "C": "To write log files to protected system directories",
+        "D": "To manipulate network interfaces and capture traffic at the system level"
+      },
+      "correct_answer": "D"
+    },
+    {
+      "id": 41,
+      "question": "Why does the HOSTNAME environment variable fail to be recognized when running docker-compose via SSH remote command execution?",
+      "options": {
+        "A": "Docker Compose 1.9.0 has a known bug with environment variable parsing",
+        "B": "SSH remote command execution doesn't inherit the same environment variables as interactive sessions",
+        "C": "The wurstmeister/kafka image doesn't support dynamic hostname configuration",
+        "D": "Windows and Linux systems handle environment variables differently in containerized environments"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 42,
+      "question": "What is the primary reason for changing method visibility in the Piwik Login Controller class?",
+      "options": {
+        "A": "To improve performance by reducing method call overhead",
+        "B": "To enable third-party login plugins to extend the controller without code duplication",
+        "C": "To comply with new PHP coding standards introduced in version 3.x",
+        "D": "To fix security vulnerabilities in the authentication system"
+      },
+      "correct_answer": "B"
+
+    },
+    {
+      "id": 43,
+      "question": "What is the main challenge described when integrating Umbraco Cloud with Auth0 using UmbracoIdentity?",
+      "options": {
+        "A": "Auth0 doesn't support OWIN authentication mechanisms",
+        "B": "Back-office users cannot access the Umbraco admin panel",
+        "C": "Local changes cannot be successfully deployed to the Umbraco Cloud environment",
+        "D": "The SecurityStamp property is incompatible with third-party providers"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 44,
+      "question": "What happens in this Kong HMAC plugin validation logic when a digest header is received but the request body is missing?",
+      "options": {
+        "A": "The function returns true and allows the request to proceed",
+        "B": "The function returns false and rejects the request",
+        "C": "The function generates an empty SHA-256 hash for comparison",
+        "D": "The function throws an exception and logs an error"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 45,
+      "question": "Based on the described behavior, what is the most likely cause of the dashboard abort issue after GitHub authentication?",
+      "options": {
+        "A": "The GitHub OAuth token has expired and needs renewal",
+        "B": "Chrome's localStorage quota has been exceeded on OSX 10.10.5",
+        "C": "The dashboard's JavaScript state has become corrupted after the authentication flow",
+        "D": "The app launching process conflicts with the dashboard's progress tracking system"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 46,
+      "question": "What is the maximum data retention period for content posted on termbin.com?",
+      "options": {
+        "A": "24 hours",
+        "B": "3 days", 
+        "C": "One week",
+        "D": "One month"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 47,
+      "question": "What specific security vulnerability is being reported in this Grafana GitHub issue?",
+      "options": {
+        "A": "SQL injection in the InfluxDB datasource queries",
+        "B": "Cross-site scripting (XSS) in the dashboard interface",
+        "C": "Lack of rate limiting or account lockout for failed login attempts",
+        "D": "Unencrypted storage of user credentials in the database"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 48,
+      "question": "What is the main issue described in this Jetpack security dashboard bug report?",
+      "options": {
+        "A": "Security scanning is not working for sites with paid plans",
+        "B": "The dashboard displays contradictory information about threat status",
+        "C": "Backup functionality conflicts with threat detection features",
+        "D": "The admin page URL is redirecting to an incorrect security section"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 49,
+      "question": "What type of security vulnerability was detected in the moment.js package?",
+      "options": {
+        "A": "SQL Injection",
+        "B": "Cross-Site Scripting (XSS)",
+        "C": "Regular Expression Denial of Service (ReDoS)",
+        "D": "Buffer Overflow"
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 50,
+      "question": "What is necessary for bypassing a Cross-Site Request Forgery token in a Rails application?",
+      "options": {
+        "A": "A valid user session",
+        "B": "A proper exploit module",
+        "C": " An updated Rails version",
+        "D": "A secure server configuration"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 51,
+      "question": "What issue arises when the CSRF token is updated during authentication in the described scenario?",
+      "options": {
+        "A": "The request is processed without a token.",
+        "B": "The old CSRF token is used instead of the newly generated one.",
+        "C": "The session management filter fails to authenticate.",
+        "D": "The form submission is successful."
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 52,
+      "question": "What is the primary reason for needing the user's real IP address when using Cloudflare?",
+      "options": {
+        "A": "To improve website speed",
+        "B": "For security reasons",
+        "C": "To track user behavior",
+        "D": "To manage server load"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 53,
+      "question": "What is the purpose of providing steps to reproduce a vulnerability?",
+      "options": {
+        "A": "To automate the reporting process",
+        "B": "To clarify the expected and actual results",
+        "C": "To increase the severity of the issue",
+        "D": "To simplify the documentation"
+      },
+      "correct_answer": "B"
+    },
+    {
+      "id": 54,
+      "question": "What is the main concern raised regarding the regular expression in the mentioned repository?",
+      "options": {
+        "A": "It causes performance issues.",
+        "B": "It affects the installation process.",
+        "C": "It leads to a denial of service vulnerability.",
+        "D": "It is incompatible with Node.js LTS."
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 55,
+      "question": "What is a recommended method to enhance WebRTC security?",
+      "options": {
+        "A": "Ensure secure signaling exchange channels",
+        "B": "Use an insecure signaling server",
+        "C": "Disable WebRTC entirely",
+        "D": "Rely on public networks"
+      },
+      "correct_answer": "A"
+    },
+    {
+      "id": 56,
+      "question": "What issue was discovered on the osTicket website?",
+      "options": {
+        "A": "It was down for maintenance.",
+        "B": "It had outdated content.",
+        "C": "It was undergoing redesign.",
+        "D": "It was infected with adware."
+      },
+      "correct_answer": "D"
+    },
+    {
+      "id": 57,
+      "question": "What is a known risk associated with enabling the ESLint extension in Visual Studio Code?",
+      "options": {
+        "A": "It can cause system crashes.",
+        "B": "It slows down the system.",
+        "C": "It may compromise credentials.",
+        "D": "It conflicts with other extensions."
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 58,
+      "question": "What is the suggested action for addressing the issue with the commit?",
+      "options": {
+        "A": "Make a new fork of the project",
+        "B": "Create a new branch",
+        "C": "Ignore the issue",
+        "D": "Revert to a previous commit"
+      },
+      "correct_answer": "A"
+    },
+    {
+      "id": 59,
+      "question": "What is the main concern regarding the SSHD configuration?",
+      "options": {
+        "A": "It complicates user access.",
+        "B": "It enhances security for all users.",
+        "C": "It affects application uploads to OpenStack.",
+        "D": " It is not relevant to OpenStack."
+      },
+      "correct_answer": "C"
+    },
+    {
+      "id": 60,
+      "question": "What is the main purpose of the discussion on the mailing list?",
+      "options": {
+        "A": "To clarify password edit actions",
+        "B": "To promote GitHub features",
+        "C": "To announce a new release",
+        "D": "To discuss code contributions"
+      },
+      "correct_answer": "A"
     }
   ]
 }

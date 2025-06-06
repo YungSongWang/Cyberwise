@@ -143,7 +143,10 @@ async function fetchQuestions(url) {
                 id: 'tf_' + q.id,
                 type: 'trueFalse',
                 text: q.question,
-                options: ['正确', '错误'],
+                options: [
+                    window.getText ? getText('optionTrue') : 'True',
+                    window.getText ? getText('optionFalse') : 'False'
+                ],
                 answer: q.correct_answer === true ? 'A' : 'B'
             }));
         }
@@ -161,6 +164,27 @@ function shuffleArray(array) {
 function updateScore() {
     const scoreText = window.getText ? getText('consecutiveCorrect') : 'Consecutive Correct';
     document.getElementById('quizScore').innerHTML = `<span data-lang="consecutiveCorrect">${scoreText}</span>: ${score}`;
+}
+
+// 更新当前问题的选项语言
+function updateCurrentQuestionOptions() {
+    if (!currentQuestion || currentQuestion.type !== 'trueFalse') return;
+
+    const options = document.querySelectorAll('.quiz-option');
+    if (options.length === 2) {
+        // 更新判断题选项文本
+        const trueText = window.getText ? getText('optionTrue') : 'True';
+        const falseText = window.getText ? getText('optionFalse') : 'False';
+
+        const option1 = options[0].querySelector('span:last-child');
+        const option2 = options[1].querySelector('span:last-child');
+
+        if (option1) option1.textContent = trueText;
+        if (option2) option2.textContent = falseText;
+
+        // 同时更新当前问题对象中的选项
+        currentQuestion.options = [trueText, falseText];
+    }
 }
 
 function showNextQuestion() {
@@ -228,4 +252,7 @@ window.selectQuizOption = function (btn) {
     const nextBtn = document.getElementById('quizNextBtn');
     nextBtn.style.display = 'block';
     nextBtn.onclick = showNextQuestion;
-}; 
+};
+
+// 将需要在HTML中调用的函数绑定到window对象
+window.updateCurrentQuestionOptions = updateCurrentQuestionOptions; 

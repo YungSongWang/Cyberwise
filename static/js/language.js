@@ -31,9 +31,10 @@ const languages = {
         menuStart: "Start",
         menuAI: "AI Writing",
         menuNotes: "Notes",
-        menuFavorites: "Favorites",
+        menuFavorites: "User Guide",
         menuCommunity: "Community",
         knowledgeBase: "Knowledge Base",
+        menuQuiz: "Quiz",
         logOut: "Log Out",
 
         // AI页面
@@ -52,8 +53,43 @@ const languages = {
         deleteBtn: "Delete",
 
         // 收藏页面
-        favoritesTitle: "Favorites",
+        favoritesTitle: "User Guide",
         favoritesDesc: "Your starred documents and important references.",
+        userGuideTitle: "📖 CyberWise User Guide",
+        userGuideDesc: "Welcome to CyberWise Cybersecurity Knowledge Management Platform! This guide will help you quickly understand and use our various features.",
+        platformOverview: "🌟 Platform Overview",
+        platformOverviewDesc: "CyberWise is a professional cybersecurity knowledge management and learning platform that integrates AI assistant, knowledge base, note management, online testing and other functions, aiming to help users improve cybersecurity awareness and skills.",
+        aiWritingFeature: "🤖 AI Security Assistant",
+        aiWritingDesc: "Intelligent AI assistant can help you analyze cybersecurity issues, automatically match related solutions, and provide professional advice. Supports natural language conversation, making security consultation simple and efficient.",
+        knowledgeBaseFeature: "📚 Knowledge Base",
+        knowledgeBaseDesc: "Rich cybersecurity knowledge base containing various security issues and solutions. Supports intelligent search and category filtering to help you quickly find the information you need.",
+        notesFeature: "📝 Note Management",
+        notesDesc: "Personal note management system that supports creating, editing, and favoriting notes. Local storage ensures data security, record your learning insights anytime.",
+        quizFeature: "📊 Online Testing",
+        quizDesc: "Online testing system with multiple question types including single choice and true/false questions. Real-time statistics help you test your learning effectiveness.",
+        howToUse: "How to Use:",
+        aiWritingHowTo: "Click 'AI Writing' in the sidebar, enter your security question, and AI will automatically analyze and provide relevant solutions.",
+        knowledgeBaseHowTo: "Click 'Knowledge Base' to enter the knowledge base, use the search box to find related questions, or browse content through category filtering.",
+        notesHowTo: "Click 'Notes' to enter the notes page, use 'Create New Document' to create new notes, supports favoriting and deleting operations.",
+        quizHowTo: "Click 'Quiz' to enter the test page, select question type to start answering, the system will automatically record your answer history and scores.",
+        quickStart: "🚀 Quick Start",
+        step1: "Step 1: Browse Knowledge Base",
+        step1Desc: "Visit the knowledge base to understand common security issues and solutions",
+        step2: "Step 2: Experience AI Assistant",
+        step2Desc: "Ask the AI assistant questions and get personalized security advice",
+        step3: "Step 3: Take Tests",
+        step3Desc: "Test your cybersecurity knowledge mastery through online tests",
+        technicalFeatures: "⚙️ Technical Features",
+        responsive: "Responsive Design",
+        responsiveDesc: "Supports desktop and mobile access",
+        localStorage: "Local Storage",
+        localStorageDesc: "Data saved locally, protecting privacy",
+        multiLanguage: "Multi-language Support",
+        multiLanguageDesc: "Switch between Chinese and English interfaces anytime",
+        security: "Secure & Reliable",
+        securityDesc: "Focused on cybersecurity field",
+        contactUs: "📞 Contact Us",
+        contactDesc: "If you encounter any problems during use or have any suggestions, please feel free to contact us. We are committed to providing you with the best cybersecurity learning experience.",
 
         // 社区页面
         communityTitle: "Community",
@@ -91,7 +127,7 @@ const languages = {
 
         // Quiz页面
         clearHistory: "clear",
-        quizTypeChoice: "Choice",
+        quizTypeChoice: "Single Choice",
         quizTypeTrueFalse: "True/False",
         quizTypeMixed: "Mixed",
         consecutiveCorrect: "Consecutive Correct",
@@ -149,7 +185,20 @@ const languages = {
         aiChatStatSecurity: "Security Analysis",
         aiChatStatMatching: "Smart Matching",
         aiChatStatSolutions: "Solution Recommendations",
-        aiChatStatFast: "Real-time Response"
+        aiChatStatFast: "Real-time Response",
+
+        // Dashboard Start页面新增文本
+        userGuideIntro: "New to CyberWise? Don't worry! Our detailed user guide will help you quickly master all features, from AI assistant to knowledge base search, making you a cybersecurity expert!",
+        viewUserGuide: "View User Guide",
+        tryAI: "Try Now",
+        startQuiz: "Start Quiz",
+        manageNotes: "Manage Notes",
+        askAI: "Ask AI",
+        takeQuiz: "Take Quiz",
+        totalQuestions: "Knowledge Base Questions",
+        mainCategories: "Main Categories",
+        quizTypes: "Quiz Types",
+        unlimitedNotes: "Unlimited Notes"
     },
     zh: {
         // 登录页面
@@ -182,9 +231,10 @@ const languages = {
         menuStart: "开始",
         menuAI: "AI 写作",
         menuNotes: "笔记",
-        menuFavorites: "收藏",
+        menuFavorites: "用户指南",
         menuCommunity: "社区",
         knowledgeBase: "知识库",
+        menuQuiz: "Quiz",
         logOut: "退出登录",
 
         // AI页面
@@ -203,8 +253,43 @@ const languages = {
         deleteBtn: "删除",
 
         // 收藏页面
-        favoritesTitle: "收藏夹",
+        favoritesTitle: "用户指南",
         favoritesDesc: "您收藏的文档和重要参考资料。",
+        userGuideTitle: "📖 CyberWise 用户指南",
+        userGuideDesc: "欢迎使用 CyberWise 网络安全知识管理平台！本指南将帮助您快速了解和使用我们的各种功能。",
+        platformOverview: "🌟 平台概览",
+        platformOverviewDesc: "CyberWise 是一个专业的网络安全知识管理和学习平台，集成了 AI 助手、知识库、笔记管理、在线测试等功能，旨在帮助用户提高网络安全意识和技能。",
+        aiWritingFeature: "🤖 AI 安全助手",
+        aiWritingDesc: "智能 AI 助手可以帮助您分析网络安全问题，自动匹配相关解决方案，并提供专业建议。支持自然语言对话，使安全咨询简单高效。",
+        knowledgeBaseFeature: "📚 知识库",
+        knowledgeBaseDesc: "丰富的网络安全知识库，包含各种安全问题和解决方案。支持智能搜索和分类过滤，帮助您快速找到所需信息。",
+        notesFeature: "📝 笔记管理",
+        notesDesc: "个人笔记管理系统，支持创建、编辑和收藏笔记。本地存储确保数据安全，记录您的学习见解随时可用。",
+        quizFeature: "📊 在线测试",
+        quizDesc: "在线测试系统，包含单选题和判断题等多种题型。实时统计帮助您测试学习效果。",
+        howToUse: "如何使用：",
+        aiWritingHowTo: "点击左侧边栏的 'AI 写作'，输入安全问题，AI 将自动分析并提供相关解决方案。",
+        knowledgeBaseHowTo: "点击 '知识库' 进入知识库，使用搜索框查找相关问题，或通过分类过滤浏览内容。",
+        notesHowTo: "点击 '笔记' 进入笔记页面，使用 '创建新文档' 创建新笔记，支持收藏和删除操作。",
+        quizHowTo: "点击 'Quiz' 进入测试页面，选择题型开始答题，系统将自动记录您的答题历史和分数。",
+        quickStart: "🚀 快速开始",
+        step1: "步骤 1：浏览知识库",
+        step1Desc: "访问知识库以了解常见安全问题和解决方案",
+        step2: "步骤 2：体验 AI 助手",
+        step2Desc: "向 AI 助手提问并获取个性化安全建议",
+        step3: "步骤 3：参加测试",
+        step3Desc: "通过在线测试测试您的网络安全知识掌握程度",
+        technicalFeatures: "⚙️ 技术特性",
+        responsive: "响应式设计",
+        responsiveDesc: "支持桌面和移动访问",
+        localStorage: "本地存储",
+        localStorageDesc: "数据本地保存，保护隐私",
+        multiLanguage: "多语言支持",
+        multiLanguageDesc: "随时切换中文和英文界面",
+        security: "安全可靠",
+        securityDesc: "专注于网络安全领域",
+        contactUs: "📞 联系我们",
+        contactDesc: "如果您在使用过程中遇到任何问题或有任何建议，请随时联系我们。我们致力于为您提供最佳的网络安全学习体验。",
 
         // 社区页面
         communityTitle: "社区",
@@ -242,7 +327,7 @@ const languages = {
 
         // Quiz页面
         clearHistory: "clear",
-        quizTypeChoice: "Choice",
+        quizTypeChoice: "Single Choice",
         quizTypeTrueFalse: "True/False",
         quizTypeMixed: "Mixed",
         consecutiveCorrect: "连续答对",
@@ -300,7 +385,20 @@ const languages = {
         aiChatStatSecurity: "安全分析",
         aiChatStatMatching: "智能匹配",
         aiChatStatSolutions: "解决方案推荐",
-        aiChatStatFast: "实时响应"
+        aiChatStatFast: "实时响应",
+
+        // Dashboard Start页面新增文本
+        userGuideIntro: "初次使用CyberWise？别担心！我们的详细使用指南将帮助您快速掌握所有功能，从AI助手到知识库搜索，让您成为网络安全专家！",
+        viewUserGuide: "查看使用指南",
+        tryAI: "立即体验",
+        startQuiz: "开始测试",
+        manageNotes: "管理笔记",
+        askAI: "咨询AI",
+        takeQuiz: "开始测试",
+        totalQuestions: "知识库问题",
+        mainCategories: "主要分类",
+        quizTypes: "测试类型",
+        unlimitedNotes: "无限笔记"
     }
 };
 

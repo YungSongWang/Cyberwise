@@ -954,6 +954,7 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   padding: 20px;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 234, 255, 0.5) rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -981,6 +982,7 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   gap: 12px;
   margin-bottom: 20px;
   animation: messageSlideIn 0.3s ease-out;
+  width: 100%;
 }
 
 .ai-avatar {
@@ -1001,9 +1003,13 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   border: 1px solid rgba(0, 234, 255, 0.2);
   border-radius: 12px;
   padding: 16px 20px;
-  max-width: 80%;
+  max-width: calc(100% - 60px);
+  min-width: 0;
   word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
   line-height: 1.6;
+  flex-grow: 1;
 }
 
 .ai-message-content h3 {
@@ -1011,6 +1017,7 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   color: #00eaff;
   font-size: 18px;
   font-weight: 600;
+  word-wrap: break-word;
 }
 
 .ai-message-content p {
@@ -1018,6 +1025,9 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   color: #e0e0e0;
   font-size: 14px;
   line-height: 1.6;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .ai-message-content p:last-child {
@@ -1068,6 +1078,8 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   gap: 12px;
   margin-bottom: 20px;
   animation: messageSlideIn 0.3s ease-out;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .user-avatar {
@@ -1089,16 +1101,24 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   border: 1px solid rgba(0, 234, 255, 0.3);
   border-radius: 12px;
   padding: 12px 16px;
-  max-width: 80%;
+  max-width: calc(100% - 60px);
+  min-width: 0;
   word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
   line-height: 1.6;
   color: white;
+  flex-grow: 0;
+  flex-shrink: 1;
 }
 
 .user-message-content p {
   margin: 0;
   color: #e0e0e0;
   font-size: 14px;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 下方：输入区域 */
@@ -1299,7 +1319,20 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
   
   .ai-message-content,
   .user-message-content {
-    max-width: 90%;
+    max-width: calc(100% - 50px);
+    padding: 10px 12px;
+  }
+  
+  .ai-message,
+  .user-message {
+    gap: 8px;
+  }
+  
+  .ai-avatar,
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
   }
   
   .suggestion-buttons {
@@ -1426,6 +1459,193 @@ body[data-page="knowledge"] #knowledge-search-container::-webkit-scrollbar {
     padding: 15px;
     font-size: 16px;
   }
-} 
+}
 
-/* Knowledge Base 特殊样式已移除，使用默认布局 */ 
+/* Knowledge Base 特殊样式已移除，使用默认布局 */
+
+/* Dashboard 模态框样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(5px);
+}
+
+.modal .modal-content {
+  background: #1e1e1e;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+  background: rgba(0, 234, 255, 0.05);
+  border-radius: 12px 12px 0 0;
+}
+
+.modal .modal-header h2 {
+  margin: 0;
+  color: #00eaff;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.modal .close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.modal .close:hover {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  transform: rotate(90deg);
+}
+
+.modal .modal-body {
+  padding: 25px;
+}
+
+.modal .form-group {
+  margin-bottom: 20px;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #00eaff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.modal .form-group input,
+.modal .form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.modal .form-group input:focus,
+.modal .form-group textarea:focus {
+  outline: none;
+  border-color: #00eaff;
+  box-shadow: 0 0 0 2px rgba(0, 234, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.modal .form-group input::placeholder,
+.modal .form-group textarea::placeholder {
+  color: #888;
+}
+
+.modal .modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid rgba(0, 234, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.modal .modal-footer button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.modal .btn-primary {
+  background: linear-gradient(45deg, #00eaff, #a100ff);
+  color: white;
+}
+
+.modal .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+}
+
+.modal .btn-secondary {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.modal .btn-secondary:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .modal .modal-content {
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .modal .modal-header,
+  .modal .modal-body,
+  .modal .modal-footer {
+    padding: 15px 20px;
+  }
+  
+  .modal .modal-footer {
+    flex-direction: column;
+  }
+  
+  .modal .modal-footer button {
+    width: 100%;
+    margin: 0;
+  }
+} 

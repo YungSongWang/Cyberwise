@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberWise - Knowledge Base</title>
+    <link rel="icon" type="image/jpeg" href="../static/img/CyberWise_logo.jpg">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/style.css?v=2.4.0">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -859,8 +860,9 @@
         <!-- 侧边栏 -->
         <div class="sidebar">
             <div class="logo">
-                <i class="ri-shield-user-line" ></i>
-                <span>CyberWise</span>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <img src="../static/img/CyberWise.jpg" alt="CyberWise" style="max-width: 130px; height: auto;">
+                </div>
             </div>
             
             <!-- 用户信息下拉菜单 -->
@@ -910,7 +912,7 @@
                 
                 <div class="menu-item" onclick="goToQuiz()">
                     <i class="ri-questionnaire-line"></i>
-                    <span id="menu-quiz">menuQuiz</span>
+                    <span id="menu-quiz">Quiz</span>
                 </div>
             </div>
             
@@ -1110,7 +1112,7 @@
                 'menu-notes': 'Notes',
                 'menu-knowledge': 'Knowledge Base',
                 'menu-favorites': 'Favorites',
-                'menu-quiz': 'menuQuiz',
+                'menu-quiz': 'Quiz',
                 'menu-expand-text': 'Knowledge Base',
                 'logout-text': 'Logout',
                 'lang-btn-text': '中文',
@@ -1158,7 +1160,7 @@
                 'menu-notes': '笔记',
                 'menu-knowledge': '知识库',
                 'menu-favorites': '收藏',
-                'menu-quiz': '智能测试',
+                'menu-quiz': 'Quiz',
                 'menu-expand-text': '知识库',
                 'logout-text': '退出登录',
                 'lang-btn-text': 'English',

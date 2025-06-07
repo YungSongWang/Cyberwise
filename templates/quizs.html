@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>CyberWise Dashboard - 题库页面</title>
+    <link rel="icon" type="image/jpeg" href="../static/img/CyberWise_logo.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" href="../static/css/style.css?v=2.4.0">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -27,7 +28,7 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 80px 20px 20px 20px;
+            padding: 20px 20px 20px 20px;
             background: none;
             overflow-y: auto;
         }
@@ -163,7 +164,7 @@
             font-size: 22px;
             font-weight: 600;
             color: #fff;
-            text-align: center;
+            text-align: left;
             line-height: 1.4;
             margin-bottom: 8px;
         }
@@ -188,6 +189,7 @@
             align-items: center;
             gap: 12px;
             min-height: 50px;
+            text-align: left;
         }
 
         .quiz-option:hover {
@@ -239,7 +241,7 @@
             text-align: center;
             font-size: 18px;
             font-weight: 600;
-            margin: 16px 0;
+            margin: 8px 0;
             opacity: 0;
             transform: translateY(10px);
             transition: all 0.3s ease;
@@ -278,7 +280,7 @@
 
         @media (max-width: 768px) {
             .main {
-                padding: 60px 16px 16px 16px;
+                padding: 20px 16px 16px 16px;
             }
 
             .quiz-root {
@@ -346,7 +348,11 @@
     </div>
 
     <div class="sidebar">
-        <div class="logo"><i class="ri-shield-user-line"></i>CyberWise</div>
+        <div class="logo">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="../static/img/CyberWise.jpg" alt="CyberWise" style="max-width: 130px; height: auto;">
+            </div>
+        </div>
         <div class="user-info-dropdown">
             <div class="user-info" id="userEmail" onclick="toggleUserDropdown()">Loading user info...
                 <i class="ri-arrow-down-s-line dropdown-arrow"></i>
@@ -381,9 +387,9 @@
         <div class="quiz-root">
             <div class="quiz-toolbar">
                 <div class="quiz-type-dropdown">
-                    <button class="quiz-type-btn" id="quizTypeBtn"><span data-lang="quizTypeChoice">Choice</span> <i class="ri-arrow-down-s-line"></i></button>
+                    <button class="quiz-type-btn" id="quizTypeBtn"><span data-lang="quizTypeChoice">Single Choice</span> <i class="ri-arrow-down-s-line"></i></button>
                     <div class="quiz-type-list" id="quizTypeList" style="display:none;">
-                        <div class="quiz-type-item" data-type="choice" data-lang="quizTypeChoice">Choice</div>
+                        <div class="quiz-type-item" data-type="choice" data-lang="quizTypeChoice">Single Choice</div>
                         <div class="quiz-type-item" data-type="trueFalse" data-lang="quizTypeTrueFalse">True/False</div>
                         <div class="quiz-type-item" data-type="mixed" data-lang="quizTypeMixed">Mixed</div>
                     </div>

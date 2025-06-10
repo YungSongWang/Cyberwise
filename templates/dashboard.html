@@ -15,6 +15,24 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
+  <!-- 强制刷新缓存的script -->
+  <script>
+      // 强制清除缓存版本标识
+      const CACHE_VERSION = '2.0-20250610-1640';
+      console.log('🔄 CyberWise Cache Version:', CACHE_VERSION);
+      
+      // 检测并强制刷新旧版本缓存
+      if (localStorage.getItem('cyberwise_version') !== CACHE_VERSION) {
+          console.log('🔄 Clearing old cache...');
+          localStorage.setItem('cyberwise_version', CACHE_VERSION);
+          if ('caches' in window) {
+              caches.keys().then(names => {
+                  names.forEach(name => caches.delete(name));
+              });
+          }
+      }
+  </script>
   <style>
     body {
       display: flex;
@@ -916,20 +934,14 @@
       try {
         console.log('🔍 Starting AI analysis...', userMessage);
         
-        // API服务器列表（按准确性优先级排序）
+                // API服务器列表（按准确性优先级排序）- 强制使用v2.0
         const apiServers = [
-                     // 优先使用准确的线上Netlify函数 v2.0
-           {
-             name: 'Enhanced Netlify Functions v2.0 (Accurate)',
-             url: '/.netlify/functions/analyze-text-v2',
-             timeout: 10000
-           },
-           // 备用旧版本
-           {
-             name: 'Enhanced Netlify Functions (Backup)',
-             url: '/.netlify/functions/analyze-text',
-             timeout: 8000
-           },
+          // 强制优先使用准确的线上Netlify函数 v2.0 
+          {
+            name: 'Enhanced Netlify Functions v2.0 (FORCED)',
+            url: '/.netlify/functions/analyze-text-v2?v=' + Date.now(), // 添加时间戳避免缓存
+            timeout: 10000
+          },
           // 其他云端服务器作为备用
           {
             name: 'Railway AI Backend',

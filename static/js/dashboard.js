@@ -892,19 +892,13 @@ async function generateAIContent() {
         // 调用真实的AI分析API - 优先使用准确的线上版本
         console.log('🔍 Starting AI analysis for content generation...', prompt);
 
-        // API服务器列表（按准确性优先级排序）
+        // API服务器列表（按准确性优先级排序）- 强制v2.0
         const apiServers = [
-            // 优先使用准确的线上Netlify函数 v2.0
+            // 强制优先使用准确的线上Netlify函数 v2.0
             {
-                name: 'Enhanced Netlify Functions v2.0 (Accurate)',
-                url: '/.netlify/functions/analyze-text-v2',
+                name: 'Enhanced Netlify Functions v2.0 (FORCED)',
+                url: '/.netlify/functions/analyze-text-v2?v=' + Date.now(), // 添加时间戳避免缓存
                 timeout: 10000
-            },
-            // 备用旧版本
-            {
-                name: 'Enhanced Netlify Functions (Backup)',
-                url: '/.netlify/functions/analyze-text',
-                timeout: 8000
             },
             // 其他云端服务器作为备用
             {

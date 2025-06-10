@@ -910,8 +910,8 @@
       try {
         console.log('正在调用text_analyzer API...', userMessage);
         
-        // 调用Netlify函数 text_analyzer API
-        const response = await fetch('/.netlify/functions/analyze-text', {
+        // 调用本地AI后端服务器 API
+        const response = await fetch('http://localhost:5001/api/analyze-text', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

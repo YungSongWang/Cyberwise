@@ -51,8 +51,8 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    # Railway自动提供PORT环境变量
-    port = int(os.environ.get('PORT', 5000))
+    # Railway自动提供PORT环境变量，本地使用5002
+    port = int(os.environ.get('PORT', 5002))
     debug_mode = os.environ.get('FLASK_ENV', 'production') == 'development'
     
     logger.info(f'🚀 Starting CyberWise AI Backend on port: {port}')

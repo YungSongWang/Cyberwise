@@ -1443,29 +1443,130 @@ async function processAIResponse(userMessage) {
     const typingMessage = addAIMessage('', true);
 
     try {
-        // 模拟AI处理延迟
-        await new Promise(resolve => setTimeout(resolve, 1500));
-
-        // 分析问题类型
-        const category = classifySecurityQuestion(userMessage);
-
-        // 匹配相似问题
-        const matchedQuestions = findSimilarQuestions(userMessage, category);
-
-        // 生成AI回复
-        const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
+        // 调用真实的AI API
+        const aiResult = await callAIAnalysisAPI(userMessage);
 
         // 移除加载状态
         typingMessage.remove();
 
-        // 添加AI回复
+        // 显示真实的AI分析结果
+        const aiResponse = formatAIAnalysisResult(aiResult, userMessage);
         addAIMessage(aiResponse);
 
     } catch (error) {
         console.error('AI处理出错:', error);
         typingMessage.remove();
-        addAIMessage(`<p>${getText('aiChatError')}</p>`);
+
+        // 如果API失败，回退到模拟模式
+        console.log('API调用失败，使用模拟模式...');
+        try {
+            // 分析问题类型
+            const category = classifySecurityQuestion(userMessage);
+            // 匹配相似问题
+            const matchedQuestions = findSimilarQuestions(userMessage, category);
+            // 生成AI回复
+            const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
+            addAIMessage(aiResponse);
+        } catch (fallbackError) {
+            addAIMessage(`<p>${getText('aiChatError')}</p>`);
+        }
     }
+}
+
+// 调用AI分析API的函数
+async function callAIAnalysisAPI(text) {
+    const apiServers = [
+        'http://localhost:5001',  // 本地AI服务器（优先）
+        'https://cyberwise-production-cb11.up.railway.app',  // Railway云端
+        '/api/analyze-text'  // Netlify函数（备用）
+    ];
+
+    for (const server of apiServers) {
+        try {
+            console.log(`尝试调用AI API: ${server}`);
+
+            const url = server.startsWith('http') ? `${server}/api/analyze-text` : server;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ text: text }),
+                timeout: 10000  // 10秒超时
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                console.log(`✅ AI API调用成功: ${server}`, result);
+                return result;
+            } else {
+                console.log(`❌ AI API返回错误: ${server}`, response.status);
+            }
+        } catch (error) {
+            console.log(`❌ AI API调用失败: ${server}`, error.message);
+            continue;
+        }
+    }
+
+    throw new Error('所有AI服务器都不可用');
+}
+
+// 格式化AI分析结果
+function formatAIAnalysisResult(result, userQuestion) {
+    let response = `<p><strong>🤖 AI分析完成</strong></p>`;
+
+    // 显示分类结果
+    if (result.classification && result.classification.predicted) {
+        response += `<p>📊 <strong>问题分类：</strong><span style="color: #00eaff; font-weight: 600;">${result.classification.predicted}</span></p>`;
+
+        // 显示置信度
+        if (result.classification.probabilities && result.classification.probabilities.length > 0) {
+            const topProb = result.classification.probabilities[0];
+            const confidence = Math.round(topProb[1] * 100);
+            response += `<p>🎯 <strong>置信度：</strong>${confidence}%</p>`;
+        }
+    }
+
+    // 显示情感分析
+    if (result.sentiment) {
+        const sentimentEmoji = {
+            'positive': '😊',
+            'negative': '😟',
+            'neutral': '😐'
+        };
+        const emoji = sentimentEmoji[result.sentiment.sentiment] || '🤔';
+        response += `<p>${emoji} <strong>情感倾向：</strong>${result.sentiment.sentiment} (${result.sentiment.compound})</p>`;
+    }
+
+    // 显示相似文本
+    if (result.similar_texts && result.similar_texts.length > 0) {
+        response += `<div class="matched-questions"><h4>🔍 相关知识库内容</h4>`;
+
+        result.similar_texts.slice(0, 3).forEach((item, index) => {
+            const similarity = Math.round(item.similarity * 100);
+            response += `
+                <div class="matched-question-item">
+                    <div class="question-title">${item.text.substring(0, 100)}${item.text.length > 100 ? '...' : ''}</div>
+                    <div class="question-meta">
+                        <span style="color: #00eaff;">相似度: ${similarity}%</span>
+                    </div>
+                </div>
+            `;
+        });
+
+        response += '</div>';
+    }
+
+    // 添加建议和帮助
+    response += `
+        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <p style="font-size: 12px; color: #888;">
+                💡 需要更多帮助？访问 <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">知识库</span> 或继续提问
+            </p>
+        </div>
+    `;
+
+    return response;
 }
 
 // 问题分类函数（简化版）

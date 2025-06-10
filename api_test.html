@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI分类测试 - CyberWise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .test-container {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+        input {
+            width: 70%;
+            background: #2a2a2a;
+            color: #fff;
+        }
+        button {
+            background: #00eaff;
+            color: #000;
+            cursor: pointer;
+        }
+        .result {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+        }
+        .success {
+            color: #00ff00;
+        }
+        .error {
+            color: #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔬 AI分类功能测试</h1>
+    <p>测试新版本AI分类API是否正常工作</p>
+
+    <div class="test-container">
+        <h3>手动测试</h3>
+        <input type="text" id="testInput" placeholder="输入要分析的文本" value="How to protect network security?">
+        <button onclick="testAPI()">测试API</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <div class="test-container">
+        <h3>预设测试案例</h3>
+        <button onclick="runAllTests()">运行所有测试</button>
+        <div id="allResults" class="result"></div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const text = document.getElementById('testInput').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = '🔄 正在测试...';
+            
+            try {
+                // 测试新版本API
+                const response = await fetch('/.netlify/functions/analyze-text-v2', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: text })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<span class="success">✅ API测试成功</span>
+输入: "${text}"
+
+情感分析: ${data.sentiment.sentiment} (${data.sentiment.compound})
+分类结果: ${data.classification.predicted}
+主要概率: ${(data.classification.probabilities[0][1] * 100).toFixed(1)}%
+
+相似文本匹配: ${data.similar_texts.length}个结果
+最高相似度: ${(data.similar_texts[0]?.similarity * 100 || 0).toFixed(1)}%`;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">❌ API调用失败</span>
+状态码: ${response.status}
+错误信息: ${response.statusText}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ 网络错误</span>
+错误详情: ${error.message}`;
+            }
+        }
+
+        async function runAllTests() {
+            const testCases = [
+                "How to protect network security?",
+                "How to identify phishing emails",
+                "Best practices for password security",
+                "Malware protection strategies",
+                "Data backup and recovery"
+            ];
+            
+            const resultsDiv = document.getElementById('allResults');
+            resultsDiv.innerHTML = '🔄 运行测试套件...\n\n';
+            
+            for (let i = 0; i < testCases.length; i++) {
+                const testCase = testCases[i];
+                resultsDiv.innerHTML += `测试 ${i + 1}: "${testCase}"\n`;
+                
+                try {
+                    const response = await fetch('/.netlify/functions/analyze-text-v2', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ text: testCase })
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        resultsDiv.innerHTML += `✅ 分类: ${data.classification.predicted} (${(data.classification.probabilities[0][1] * 100).toFixed(1)}%)\n\n`;
+                    } else {
+                        resultsDiv.innerHTML += `❌ 失败: ${response.status}\n\n`;
+                    }
+                } catch (error) {
+                    resultsDiv.innerHTML += `❌ 错误: ${error.message}\n\n`;
+                }
+            }
+            
+            resultsDiv.innerHTML += '✅ 测试套件完成';
+        }
+
+        // 页面加载时自动运行一次测试
+        window.onload = function() {
+            document.getElementById('result').innerHTML = '⚡ 页面加载完成，点击"测试API"按钮开始测试';
+        };
+    </script>
+</body>
+</html> 

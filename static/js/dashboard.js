@@ -869,7 +869,8 @@ function closeAIWritingModal() {
     }
 }
 
-// AI内容生成
+// AI内容生成 v2.0 - Enhanced Classification
+// 更新时间: 2025-06-10 - 使用新版本API
 async function generateAIContent() {
     const prompt = document.getElementById('aiPrompt').value.trim();
     const titleField = document.getElementById('aiTitle');

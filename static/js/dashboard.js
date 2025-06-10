@@ -529,6 +529,12 @@ function showSection(sectionName) {
         case 'ai':
             // AI功能初始化 - 更新聊天界面语言
             updateAIChatLanguage();
+            // 确保AI界面正确初始化
+            setTimeout(() => {
+                if (typeof initializeAIInterface === 'function') {
+                    initializeAIInterface();
+                }
+            }, 100);
             break;
         case 'favorites':
             loadFavorites();

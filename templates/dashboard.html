@@ -568,11 +568,11 @@
           <p data-lang="aiDesc">Ask about cybersecurity questions and get intelligent recommendations</p>
           
           <!-- AI 模式切换按钮 -->
-          <div style="margin-top: 15px; display: flex; gap: 10px;">
-            <button onclick="switchAIMode('chat')" id="chatModeBtn" class="ai-mode-btn active" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease;">
+          <div id="ai-mode-buttons" style="margin-top: 15px; display: flex; gap: 10px;">
+            <button id="chatModeBtn" class="ai-mode-btn active" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;">
               💬 智能问答
             </button>
-            <button onclick="switchAIMode('writing')" id="writingModeBtn" class="ai-mode-btn" style="background: rgba(255, 255, 255, 0.1); color: #ccc; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease;">
+            <button id="writingModeBtn" class="ai-mode-btn" style="background: rgba(255, 255, 255, 0.1); color: #ccc; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;">
               ✍️ AI 写作
             </button>
           </div>
@@ -892,6 +892,38 @@
     console.log('Dashboard page JavaScript loaded');
     
     // === AI 聊天功能 ===
+    
+    // 初始化AI界面
+    function initializeAIInterface() {
+      console.log('初始化AI界面...');
+      
+      // 绑定模式切换按钮事件
+      const chatModeBtn = document.getElementById('chatModeBtn');
+      const writingModeBtn = document.getElementById('writingModeBtn');
+      
+      if (chatModeBtn) {
+        chatModeBtn.addEventListener('click', function() {
+          switchAIMode('chat');
+        });
+        console.log('✅ 聊天模式按钮事件已绑定');
+      } else {
+        console.log('❌ 找不到聊天模式按钮');
+      }
+      
+      if (writingModeBtn) {
+        writingModeBtn.addEventListener('click', function() {
+          switchAIMode('writing');
+        });
+        console.log('✅ 写作模式按钮事件已绑定');
+      } else {
+        console.log('❌ 找不到写作模式按钮');
+      }
+      
+      // 确保默认显示聊天模式
+      switchAIMode('chat');
+      
+      console.log('✅ AI界面初始化完成');
+    }
     
     // AI 模式切换功能
     function switchAIMode(mode) {
@@ -1477,6 +1509,20 @@ ${categoryName}是一个持续发展的领域，需要综合考虑技术、管�
     window.addEventListener('error', function(e) {
       console.error('JavaScript错误:', e.error);
       console.error('错误位置:', e.filename, '行:', e.lineno);
+    });
+    
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('页面DOM加载完成');
+      
+      // 将初始化函数添加到全局作用域
+      window.initializeAIInterface = initializeAIInterface;
+      
+      // 如果当前在AI页面，立即初始化
+      const aiSection = document.getElementById('ai-section');
+      if (aiSection && aiSection.style.display === 'block') {
+        setTimeout(initializeAIInterface, 500);
+      }
     });
   </script>
 </body>

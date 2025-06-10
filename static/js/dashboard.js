@@ -531,10 +531,16 @@ function showSection(sectionName) {
             updateAIChatLanguage();
             // 确保AI界面正确初始化
             setTimeout(() => {
+                console.log('初始化AI界面...');
+                // 首先尝试创建按钮
+                createAIModeButtons();
+                // 然后切换到默认模式
+                switchAIMode('chat');
+                // 如果HTML中定义了初始化函数，也调用它
                 if (typeof initializeAIInterface === 'function') {
                     initializeAIInterface();
                 }
-            }, 100);
+            }, 200);
             break;
         case 'favorites':
             loadFavorites();
@@ -1684,34 +1690,118 @@ function closeModal(modalId) {
     }
 }
 
-// AI 模式切换功能
+// AI 模式切换功能 
 function switchAIMode(mode) {
+    console.log('switchAIMode 调用，模式:', mode);
+
     const chatModeBtn = document.getElementById('chatModeBtn');
     const writingModeBtn = document.getElementById('writingModeBtn');
     const chatMessages = document.getElementById('aiChatMessages');
     const writingArea = document.getElementById('aiWritingArea');
     const chatInputContainer = document.getElementById('aiChatInputContainer');
 
+    console.log('找到的元素:', {
+        chatModeBtn: !!chatModeBtn,
+        writingModeBtn: !!writingModeBtn,
+        chatMessages: !!chatMessages,
+        writingArea: !!writingArea,
+        chatInputContainer: !!chatInputContainer
+    });
+
+    // 如果按钮不存在，尝试创建它们
+    if (!chatModeBtn || !writingModeBtn) {
+        console.log('按钮不存在，尝试创建...');
+        createAIModeButtons();
+        // 重新获取元素
+        const newChatBtn = document.getElementById('chatModeBtn');
+        const newWritingBtn = document.getElementById('writingModeBtn');
+        if (newChatBtn && newWritingBtn) {
+            console.log('✅ 按钮创建成功');
+        } else {
+            console.log('❌ 按钮创建失败');
+            return;
+        }
+    }
+
     if (mode === 'chat') {
         // 切换到聊天模式
-        chatModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-        chatModeBtn.style.color = 'white';
-        writingModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-        writingModeBtn.style.color = '#ccc';
+        if (chatModeBtn) {
+            chatModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
+            chatModeBtn.style.color = 'white';
+        }
+        if (writingModeBtn) {
+            writingModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+            writingModeBtn.style.color = '#ccc';
+        }
 
-        chatMessages.style.display = 'flex';
-        writingArea.style.display = 'none';
-        chatInputContainer.style.display = 'block';
+        if (chatMessages) chatMessages.style.display = 'flex';
+        if (writingArea) writingArea.style.display = 'none';
+        if (chatInputContainer) chatInputContainer.style.display = 'block';
+
+        console.log('✅ 切换到聊天模式');
     } else if (mode === 'writing') {
         // 切换到写作模式
-        writingModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-        writingModeBtn.style.color = 'white';
-        chatModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-        chatModeBtn.style.color = '#ccc';
+        if (writingModeBtn) {
+            writingModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
+            writingModeBtn.style.color = 'white';
+        }
+        if (chatModeBtn) {
+            chatModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
+            chatModeBtn.style.color = '#ccc';
+        }
 
-        chatMessages.style.display = 'none';
-        writingArea.style.display = 'flex';
-        chatInputContainer.style.display = 'none';
+        if (chatMessages) chatMessages.style.display = 'none';
+        if (writingArea) writingArea.style.display = 'flex';
+        if (chatInputContainer) chatInputContainer.style.display = 'none';
+
+        console.log('✅ 切换到写作模式');
+    }
+}
+
+// 创建AI模式切换按钮
+function createAIModeButtons() {
+    console.log('正在创建AI模式切换按钮...');
+
+    const aiHeader = document.querySelector('.ai-chat-header');
+    if (!aiHeader) {
+        console.log('❌ 找不到AI header');
+        return;
+    }
+
+    // 检查是否已经有按钮容器
+    let buttonContainer = document.getElementById('ai-mode-buttons');
+    if (!buttonContainer) {
+        // 创建按钮容器
+        buttonContainer = document.createElement('div');
+        buttonContainer.id = 'ai-mode-buttons';
+        buttonContainer.style.cssText = 'margin-top: 15px; display: flex; gap: 10px;';
+
+        // 创建聊天模式按钮
+        const chatBtn = document.createElement('button');
+        chatBtn.id = 'chatModeBtn';
+        chatBtn.innerHTML = '💬 智能问答';
+        chatBtn.className = 'ai-mode-btn active';
+        chatBtn.style.cssText = 'background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;';
+        chatBtn.addEventListener('click', () => switchAIMode('chat'));
+
+        // 创建写作模式按钮
+        const writingBtn = document.createElement('button');
+        writingBtn.id = 'writingModeBtn';
+        writingBtn.innerHTML = '✍️ AI 写作';
+        writingBtn.className = 'ai-mode-btn';
+        writingBtn.style.cssText = 'background: rgba(255, 255, 255, 0.1); color: #ccc; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;';
+        writingBtn.addEventListener('click', () => switchAIMode('writing'));
+
+        // 添加按钮到容器
+        buttonContainer.appendChild(chatBtn);
+        buttonContainer.appendChild(writingBtn);
+
+        // 添加容器到header
+        aiHeader.appendChild(buttonContainer);
+
+        console.log('✅ AI模式切换按钮创建完成');
+    } else {
+        console.log('⚠️ 按钮容器已存在');
     }
 }
 

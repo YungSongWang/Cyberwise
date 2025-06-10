@@ -566,16 +566,6 @@
         <div class="ai-chat-header">
           <h1 data-lang="aiTitle">🤖 AI Security Assistant</h1>
           <p data-lang="aiDesc">Ask about cybersecurity questions and get intelligent recommendations</p>
-          
-          <!-- AI 模式切换按钮 -->
-          <div id="ai-mode-buttons" style="margin-top: 15px; display: flex; gap: 10px;">
-            <button id="chatModeBtn" class="ai-mode-btn active" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;">
-              💬 智能问答
-            </button>
-            <button id="writingModeBtn" class="ai-mode-btn" style="background: rgba(255, 255, 255, 0.1); color: #ccc; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 8px 16px; font-size: 12px; cursor: pointer; transition: all 0.2s ease; font-weight: 500;">
-              ✍️ AI 写作
-            </button>
-          </div>
         </div>
         
         <!-- 消息展示区域 -->
@@ -598,65 +588,8 @@
           </div>
         </div>
         
-        <!-- AI写作区域 -->
-        <div class="ai-writing-area" id="aiWritingArea" style="display: none; flex: 1; padding: 20px 24px; overflow-y: auto;">
-          <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="color: #00eaff; margin: 0 0 20px 0; font-size: 24px;">✍️ AI 安全内容生成</h2>
-            <p style="color: #ccc; margin-bottom: 30px;">使用AI生成专业的网络安全文档、分析报告和解决方案。</p>
-            
-            <div class="writing-form">
-              <div class="form-group" style="margin-bottom: 20px;">
-                <label for="writingPrompt" style="display: block; color: #00eaff; margin-bottom: 8px; font-weight: 500;">写作提示：</label>
-                <textarea 
-                  id="writingPrompt" 
-                  placeholder="例如：请分析密码安全的最佳实践，包括密码策略、二次验证等内容..." 
-                  rows="4"
-                  style="width: 100%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 12px; color: white; font-size: 14px; resize: vertical; outline: none; font-family: inherit;"
-                ></textarea>
-              </div>
-              
-              <div class="form-group" style="margin-bottom: 20px;">
-                <label for="writingTitle" style="display: block; color: #00eaff; margin-bottom: 8px; font-weight: 500;">文档标题：</label>
-                <input 
-                  type="text" 
-                  id="writingTitle" 
-                  placeholder="AI将自动生成标题，您也可以自定义..." 
-                  style="width: 100%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 12px; color: white; font-size: 14px; outline: none; font-family: inherit;"
-                />
-              </div>
-              
-              <button onclick="generateContent()" id="generateContentBtn" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; margin-bottom: 20px;">
-                <i class="ri-magic-line" style="margin-right: 8px;"></i>
-                生成内容
-              </button>
-              
-              <div class="form-group" id="generatedContentGroup" style="display: none;">
-                <label for="writingContent" style="display: block; color: #00eaff; margin-bottom: 8px; font-weight: 500;">生成的内容：</label>
-                <textarea 
-                  id="writingContent" 
-                  placeholder="AI生成的内容将在这里显示..." 
-                  rows="15"
-                  readonly
-                  style="width: 100%; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 12px; color: white; font-size: 14px; resize: vertical; outline: none; font-family: inherit;"
-                ></textarea>
-                
-                <div style="margin-top: 15px; display: flex; gap: 10px;">
-                  <button onclick="saveGeneratedContent()" style="background: linear-gradient(45deg, #2ed573, #1dd1a1); color: white; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">
-                    <i class="ri-save-line" style="margin-right: 8px;"></i>
-                    保存到笔记
-                  </button>
-                  <button onclick="copyContent()" style="background: rgba(255, 255, 255, 0.1); color: #ccc; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 10px 20px; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">
-                    <i class="ri-file-copy-line" style="margin-right: 8px;"></i>
-                    复制内容
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <!-- 输入区域 -->
-        <div class="ai-chat-input-container" id="aiChatInputContainer">
+        <div class="ai-chat-input-container">
           <div class="ai-input-wrapper">
             <textarea 
               id="aiChatInput" 
@@ -893,338 +826,6 @@
     
     // === AI 聊天功能 ===
     
-    // 初始化AI界面
-    function initializeAIInterface() {
-      console.log('初始化AI界面...');
-      
-      // 绑定模式切换按钮事件
-      const chatModeBtn = document.getElementById('chatModeBtn');
-      const writingModeBtn = document.getElementById('writingModeBtn');
-      
-      if (chatModeBtn) {
-        chatModeBtn.addEventListener('click', function() {
-          switchAIMode('chat');
-        });
-        console.log('✅ 聊天模式按钮事件已绑定');
-      } else {
-        console.log('❌ 找不到聊天模式按钮');
-      }
-      
-      if (writingModeBtn) {
-        writingModeBtn.addEventListener('click', function() {
-          switchAIMode('writing');
-        });
-        console.log('✅ 写作模式按钮事件已绑定');
-      } else {
-        console.log('❌ 找不到写作模式按钮');
-      }
-      
-      // 确保默认显示聊天模式
-      switchAIMode('chat');
-      
-      console.log('✅ AI界面初始化完成');
-    }
-    
-    // AI 模式切换功能
-    function switchAIMode(mode) {
-      const chatModeBtn = document.getElementById('chatModeBtn');
-      const writingModeBtn = document.getElementById('writingModeBtn');
-      const chatMessages = document.getElementById('aiChatMessages');
-      const writingArea = document.getElementById('aiWritingArea');
-      const chatInputContainer = document.getElementById('aiChatInputContainer');
-
-      if (mode === 'chat') {
-        // 切换到聊天模式
-        if (chatModeBtn) {
-          chatModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-          chatModeBtn.style.color = 'white';
-        }
-        if (writingModeBtn) {
-          writingModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-          writingModeBtn.style.color = '#ccc';
-        }
-
-        if (chatMessages) chatMessages.style.display = 'flex';
-        if (writingArea) writingArea.style.display = 'none';
-        if (chatInputContainer) chatInputContainer.style.display = 'block';
-        
-        console.log('切换到聊天模式');
-      } else if (mode === 'writing') {
-        // 切换到写作模式
-        if (writingModeBtn) {
-          writingModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-          writingModeBtn.style.color = 'white';
-        }
-        if (chatModeBtn) {
-          chatModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-          chatModeBtn.style.color = '#ccc';
-        }
-
-        if (chatMessages) chatMessages.style.display = 'none';
-        if (writingArea) writingArea.style.display = 'flex';
-        if (chatInputContainer) chatInputContainer.style.display = 'none';
-        
-        console.log('切换到写作模式');
-      }
-    }
-    
-    // AI内容生成功能
-    async function generateContent() {
-      const promptField = document.getElementById('writingPrompt');
-      const titleField = document.getElementById('writingTitle');
-      const contentField = document.getElementById('writingContent');
-      const generateBtn = document.getElementById('generateContentBtn');
-      const contentGroup = document.getElementById('generatedContentGroup');
-
-      const prompt = promptField ? promptField.value.trim() : '';
-
-      if (!prompt) {
-        alert('请输入写作提示');
-        return;
-      }
-
-      // 显示加载状态
-      if (generateBtn) {
-        generateBtn.innerHTML = '<i class="ri-loader-4-line" style="margin-right: 8px; animation: spin 1s linear infinite;"></i>正在生成...';
-        generateBtn.disabled = true;
-      }
-
-      try {
-        // 调用后端API生成内容
-        const response = await fetch('http://localhost:5000/api/generate-content', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ prompt: prompt })
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || '生成内容失败');
-        }
-
-        const result = await response.json();
-
-        // 填充生成的内容
-        if (titleField) titleField.value = result.title || generateAutoTitle(prompt);
-        if (contentField) contentField.value = result.content;
-
-        // 显示生成的内容区域
-        if (contentGroup) contentGroup.style.display = 'block';
-
-        console.log('AI content generated successfully');
-
-      } catch (error) {
-        console.error('Content generation error:', error);
-
-        // 如果后端服务不可用，使用本地模拟生成
-        console.log('使用本地模拟生成作为备用方案');
-        const mockContent = generateMockAIContent(prompt);
-        const autoTitle = generateAutoTitle(prompt);
-
-        if (titleField) titleField.value = autoTitle;
-        if (contentField) contentField.value = mockContent;
-        if (contentGroup) contentGroup.style.display = 'block';
-
-        // 显示警告信息
-        alert('注意：当前使用本地模拟生成。如需使用完整AI功能，请确保后端服务正在运行。');
-      } finally {
-        // 恢复按钮状态
-        if (generateBtn) {
-          generateBtn.innerHTML = '<i class="ri-magic-line" style="margin-right: 8px;"></i>生成内容';
-          generateBtn.disabled = false;
-        }
-      }
-    }
-
-    // 保存生成的内容
-    function saveGeneratedContent() {
-      const title = document.getElementById('writingTitle');
-      const content = document.getElementById('writingContent');
-
-      const titleValue = title ? title.value.trim() : '';
-      const contentValue = content ? content.value.trim() : '';
-
-      if (!titleValue) {
-        alert('请输入文档标题');
-        return;
-      }
-
-      if (!contentValue) {
-        alert('没有内容可保存');
-        return;
-      }
-
-      // 创建笔记 (使用全局函数)
-      if (typeof createNote === 'function') {
-        createNote(titleValue, contentValue);
-        alert('内容已保存到笔记！');
-        
-        // 清空表单
-        if (document.getElementById('writingPrompt')) document.getElementById('writingPrompt').value = '';
-        if (title) title.value = '';
-        if (content) content.value = '';
-        if (document.getElementById('generatedContentGroup')) document.getElementById('generatedContentGroup').style.display = 'none';
-      } else {
-        alert('保存功能暂时不可用，请稍后重试。');
-      }
-    }
-
-    // 复制内容到剪贴板
-    function copyContent() {
-      const contentField = document.getElementById('writingContent');
-
-      if (!contentField || !contentField.value.trim()) {
-        alert('没有内容可复制');
-        return;
-      }
-
-      // 选择并复制内容
-      contentField.select();
-      document.execCommand('copy');
-
-      // 显示复制成功提示
-      alert('内容已复制到剪贴板！');
-    }
-
-    // 生成模拟AI内容
-    function generateMockAIContent(prompt) {
-      const categoryNames = {
-        'malware': '恶意软件防护',
-        'password': '密码安全',
-        'phishing': '钓鱼攻击防护',
-        'network': '网络安全',
-        'privacy': '隐私保护',
-        'system': '系统安全',
-        'general': '综合安全'
-      };
-
-      // 分析问题类别
-      const category = classifySecurityQuestion(prompt);
-      const categoryName = categoryNames[category] || '网络安全';
-
-      return `# ${categoryName}分析报告
-
-## 概述
-基于您的询问"${prompt}"，本报告将从多个角度进行分析。
-
-## 核心问题分析
-1. **问题类别**: ${categoryName}
-2. **风险级别**: 根据问题性质评估
-3. **影响范围**: 分析可能影响的系统和数据
-
-## 详细分析
-
-### 技术背景
-${categoryName}是网络安全领域的重要组成部分，涉及以下关键方面：
-- 威胁识别与评估
-- 防护措施制定
-- 应急响应流程
-- 持续监控机制
-
-### 常见威胁
-在${categoryName}领域，常见的威胁包括：
-1. 外部攻击威胁
-2. 内部安全风险
-3. 系统漏洞利用
-4. 社会工程学攻击
-
-### 防护建议
-针对${categoryName}，建议采取以下防护措施：
-
-#### 预防措施
-- 建立完善的安全策略
-- 实施多层防护机制
-- 定期进行安全培训
-- 保持系统及时更新
-
-#### 监控措施
-- 部署安全监控系统
-- 建立日志分析机制
-- 设置异常告警规则
-- 定期进行安全审计
-
-#### 应急响应
-- 制定应急响应预案
-- 建立事件处理流程
-- 组建应急响应团队
-- 定期进行演练测试
-
-## 最佳实践
-
-### 技术层面
-1. **访问控制**: 实施严格的身份认证和授权机制
-2. **数据保护**: 采用加密技术保护敏感数据
-3. **网络安全**: 部署防火墙和入侵检测系统
-4. **系统加固**: 及时安装安全补丁和更新
-
-### 管理层面
-1. **安全政策**: 制定明确的安全管理制度
-2. **人员培训**: 提高员工安全意识
-3. **风险评估**: 定期进行安全风险评估
-4. **持续改进**: 根据威胁变化调整安全策略
-
-## 实施建议
-
-### 短期目标 (1-3个月)
-- 评估当前安全状况
-- 识别关键安全风险
-- 实施基础防护措施
-- 建立监控机制
-
-### 中期目标 (3-12个月)
-- 完善安全管理体系
-- 加强技术防护能力
-- 提升人员安全意识
-- 建立应急响应机制
-
-### 长期目标 (1年以上)
-- 构建全面安全防护体系
-- 实现安全运营自动化
-- 建立持续改进机制
-- 达到行业领先水平
-
-## 总结
-${categoryName}是一个持续发展的领域，需要综合考虑技术、管理和人员等多个因素。通过系统性的方法和持续的努力，可以有效提升安全防护能力，降低安全风险。
-
-建议定期回顾和更新安全策略，确保其与最新的威胁环境和业务需求保持一致。
-
----
-*本报告基于AI分析生成，建议结合实际情况进行调整和完善。*`;
-    }
-
-    // 生成自动标题
-    function generateAutoTitle(prompt) {
-      const keywords = {
-        '密码': '密码安全管理指南',
-        '网络': '网络安全防护策略',
-        '恶意软件': '恶意软件防护方案',
-        '钓鱼': '钓鱼攻击防范指南',
-        '漏洞': '系统漏洞管理办法',
-        '防火墙': '防火墙配置与管理',
-        '加密': '数据加密技术应用',
-        '备份': '数据备份与恢复策略',
-        '监控': '安全监控系统建设',
-        '培训': '网络安全培训方案'
-      };
-
-      // 检查是否包含特定关键词
-      for (const [keyword, title] of Object.entries(keywords)) {
-        if (prompt.includes(keyword)) {
-          return title;
-        }
-      }
-
-      // 默认标题生成
-      const words = prompt.split(/[\s，。！？、]+/).filter(word => word.length > 1).slice(0, 3);
-      if (words.length > 0) {
-        return `${words.join('')}安全分析报告`;
-      }
-
-      return '网络安全分析报告';
-    }
-    
     // 发送消息
     function sendMessage() {
       const input = document.getElementById('aiChatInput');
@@ -1301,35 +902,161 @@ ${categoryName}是一个持续发展的领域，需要综合考虑技术、管�
       return messageElement;
     }
     
-    // 处理AI响应
+    // 处理AI响应 - 集成text_analyzer.py API
     async function processAIResponse(userMessage) {
       // 显示加载状态
       const typingMessage = addAIMessage('', true);
       
       try {
-        // 模拟AI处理延迟
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        console.log('正在调用text_analyzer API...', userMessage);
         
-        // 分析问题类型
-        const category = classifySecurityQuestion(userMessage);
+        // 调用Netlify函数 text_analyzer API
+        const response = await fetch('/.netlify/functions/analyze-text', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            text: userMessage
+          })
+        });
         
-        // 匹配相似问题
-        const matchedQuestions = findSimilarQuestions(userMessage, category);
+        if (!response.ok) {
+          throw new Error(`API请求失败: ${response.status}`);
+        }
         
-        // 生成AI回复
-        const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
+        const analysisResult = await response.json();
+        console.log('API分析结果:', analysisResult);
         
         // 移除加载状态
         typingMessage.remove();
         
-        // 添加AI回复
+        // 格式化并显示分析结果
+        const aiResponse = formatAnalysisResult(userMessage, analysisResult);
         addAIMessage(aiResponse);
         
       } catch (error) {
         console.error('AI处理出错:', error);
         typingMessage.remove();
-        addAIMessage('<p>❌ 抱歉，处理您的问题时出现了错误，请稍后重试。</p>');
+        
+        // 如果API调用失败，fallback到原始的模拟分析
+        console.log('API调用失败，使用fallback方案');
+        try {
+          const category = classifySecurityQuestion(userMessage);
+          const matchedQuestions = findSimilarQuestions(userMessage, category);
+          const fallbackResponse = generateAIResponse(userMessage, category, matchedQuestions);
+          addAIMessage(fallbackResponse);
+        } catch (fallbackError) {
+          console.error('Fallback也失败了:', fallbackError);
+          addAIMessage('<p>❌ 抱歉，处理您的问题时出现了错误，请稍后重试。</p>');
+        }
       }
+    }
+    
+    // 格式化text_analyzer.py的分析结果
+    function formatAnalysisResult(userMessage, analysisResult) {
+      let response = `
+        <p>🔍 <strong>智能文本分析完成</strong></p>
+        <p>您的问题：<em>"${escapeHtml(userMessage)}"</em></p>
+      `;
+      
+      // 情感分析结果
+      if (analysisResult.sentiment) {
+        const sentiment = analysisResult.sentiment;
+        const sentimentEmoji = {
+          'positive': '😊',
+          'negative': '😟',
+          'neutral': '😐'
+        };
+        
+        response += `
+          <div style="background: rgba(0, 234, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #00eaff;">
+            <h4 style="color: #00eaff; margin: 0 0 8px 0;">📊 情感分析</h4>
+            <p style="margin: 0;">
+              情感倾向: <strong>${sentimentEmoji[sentiment.sentiment] || '🤔'} ${sentiment.sentiment}</strong><br>
+              情感得分: <strong>${sentiment.compound?.toFixed(3) || 'N/A'}</strong>
+            </p>
+          </div>
+        `;
+      }
+      
+      // 文本分类结果
+      if (analysisResult.classification) {
+        const classification = analysisResult.classification;
+        response += `
+          <div style="background: rgba(161, 0, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #a100ff;">
+            <h4 style="color: #a100ff; margin: 0 0 8px 0;">🎯 问题分类</h4>
+            <p style="margin: 0 0 8px 0;">预测类别: <strong>${classification.predicted}</strong></p>
+            <div style="font-size: 12px;">
+              <strong>类别概率分布:</strong><br>
+        `;
+        
+        if (classification.probabilities && classification.probabilities.length > 0) {
+          classification.probabilities.slice(0, 3).forEach(([category, prob]) => {
+            const percentage = (prob * 100).toFixed(1);
+            response += `
+              <div style="display: flex; justify-content: space-between; margin: 2px 0;">
+                <span>${category}:</span>
+                <span style="color: #00eaff;">${percentage}%</span>
+              </div>
+            `;
+          });
+        }
+        
+        response += `
+            </div>
+          </div>
+        `;
+      }
+      
+      // 相似文本结果
+      if (analysisResult.similar_texts && analysisResult.similar_texts.length > 0) {
+        response += `
+          <div style="background: rgba(46, 213, 115, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #2ed573;">
+            <h4 style="color: #2ed573; margin: 0 0 8px 0;">🔍 相似问题参考</h4>
+        `;
+        
+        analysisResult.similar_texts.slice(0, 3).forEach((item, index) => {
+          const similarity = (item.similarity * 100).toFixed(1);
+          response += `
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 6px; margin: 6px 0; cursor: pointer; transition: all 0.2s ease;" 
+                 onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'" 
+                 onmouseout="this.style.background='rgba(255, 255, 255, 0.05)'"
+                 onclick="viewSimilarText('${escapeHtml(item.text)}')">
+              <div style="font-size: 13px; margin-bottom: 4px;">
+                <strong>${index + 1}. ${escapeHtml(item.text.substring(0, 100))}${item.text.length > 100 ? '...' : ''}</strong>
+              </div>
+              <div style="font-size: 11px; color: #888; display: flex; justify-content: space-between;">
+                <span>点击查看完整内容</span>
+                <span style="background: rgba(46, 213, 115, 0.3); padding: 2px 6px; border-radius: 4px; color: #2ed573;">${similarity}% 相似</span>
+              </div>
+            </div>
+          `;
+        });
+        
+        response += `
+          </div>
+        `;
+      }
+      
+      // 添加操作建议
+      response += `
+        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
+          <p style="font-size: 12px; color: #888;">
+            💡 基于以上分析，建议您：<br>
+            • 查看相似问题的详细解决方案<br>
+            • 访问 <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">知识库</span> 获取更多信息<br>
+            • 如需进一步帮助，请提供更多具体细节
+          </p>
+        </div>
+      `;
+      
+      return response;
+    }
+    
+    // 查看相似文本详情
+    function viewSimilarText(text) {
+      alert(`相似文本详情：\n\n${text}\n\n这个功能将来可以跳转到具体的知识库页面。`);
     }
     
     // 问题分类函数（简化版）
@@ -1509,20 +1236,6 @@ ${categoryName}是一个持续发展的领域，需要综合考虑技术、管�
     window.addEventListener('error', function(e) {
       console.error('JavaScript错误:', e.error);
       console.error('错误位置:', e.filename, '行:', e.lineno);
-    });
-    
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('页面DOM加载完成');
-      
-      // 将初始化函数添加到全局作用域
-      window.initializeAIInterface = initializeAIInterface;
-      
-      // 如果当前在AI页面，立即初始化
-      const aiSection = document.getElementById('ai-section');
-      if (aiSection && aiSection.style.display === 'block') {
-        setTimeout(initializeAIInterface, 500);
-      }
     });
   </script>
 </body>

@@ -893,11 +893,17 @@ async function generateAIContent() {
 
         // API服务器列表（按准确性优先级排序）
         const apiServers = [
-            // 优先使用准确的线上Netlify函数
+            // 优先使用准确的线上Netlify函数 v2.0
             {
-                name: 'Enhanced Netlify Functions (Accurate)',
-                url: '/.netlify/functions/analyze-text',
+                name: 'Enhanced Netlify Functions v2.0 (Accurate)',
+                url: '/.netlify/functions/analyze-text-v2',
                 timeout: 10000
+            },
+            // 备用旧版本
+            {
+                name: 'Enhanced Netlify Functions (Backup)',
+                url: '/.netlify/functions/analyze-text',
+                timeout: 8000
             },
             // 其他云端服务器作为备用
             {

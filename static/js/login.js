@@ -136,7 +136,7 @@ function handleLoginError(error) {
             errorMessage = "网络连接失败。请检查网络连接后重试。";
             break;
         default:
-            errorMessage = `登录失败：${error.message}`;
+            errorMessage = `${error.message}`;
     }
 
     alert("❌ " + errorMessage);

@@ -176,7 +176,7 @@ const languages = {
         menuStart: "开始",
         menuAI: "AI 写作",
         menuNotes: "笔记",
-        menuFavorites: "收藏",
+        menuFavorites: "Favorite",
         menuCommunity: "社区",
         menuQuiz: "测验",
         knowledgeBase: "知识库",

@@ -610,8 +610,16 @@
     </div>
 
     <div id="notes-section" style="display: none;">
-      <h1 data-lang="notesTitle">My Notes</h1>
-      <p data-lang="notesDesc">Manage your personal notes and documents.</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h1 data-lang="notesTitle">My Notes</h1>
+          <p data-lang="notesDesc">Manage your personal notes and documents.</p>
+        </div>
+        <button onclick="createNewDocument()" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 234, 255, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 234, 255, 0.3)'">
+          <i class="ri-add-line"></i>
+          <span data-lang="createNewNote">Create New Document</span>
+        </button>
+      </div>
       <div id="notes-list" style="margin-top: 20px;">
         <!-- Notes will be loaded here -->
       </div>

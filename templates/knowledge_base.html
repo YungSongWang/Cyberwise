@@ -905,9 +905,9 @@
                     <span id="menu-knowledge">Knowledge Base</span>
                 </div>
                 
-                <div class="menu-item" onclick="goToFavorites()">
-                    <i class="ri-star-line"></i>
-                    <span id="menu-favorites">Favorites</span>
+                <div class="menu-item" onclick="goToUserGuide()">
+                    <i class="ri-book-open-line"></i>
+                    <span id="menu-user-guide">User Guide</span>
                 </div>
                 
                 <div class="menu-item" onclick="goToQuiz()">
@@ -1111,7 +1111,7 @@
                 'menu-ai': 'AI Writing',
                 'menu-notes': 'Notes',
                 'menu-knowledge': 'Knowledge Base',
-                'menu-favorites': 'Favorites',
+                'menu-user-guide': 'User Guide',
                 'menu-quiz': 'Quiz',
                 'menu-expand-text': 'Knowledge Base',
                 'logout-text': 'Logout',
@@ -1159,7 +1159,7 @@
                 'menu-ai': 'AI写作',
                 'menu-notes': '笔记',
                 'menu-knowledge': '知识库',
-                'menu-favorites': '收藏',
+                'menu-user-guide': '用户指南',
                 'menu-quiz': 'Quiz',
                 'menu-expand-text': '知识库',
                 'logout-text': '退出登录',
@@ -1353,13 +1353,12 @@
             window.location.href = window.location.origin + '/templates/dashboard.html#notes';
         }
         
-        function goToFavorites() {
-            window.location.href = window.location.origin + '/templates/dashboard.html#favorites';
-        }
-        
-        
         function goToQuiz() {
             window.location.href = window.location.origin + '/templates/quizs.html';
+        }
+
+        function goToUserGuide() {
+            window.location.href = window.location.origin + '/templates/dashboard.html#favorites';
         }
 
         // 初始化页面

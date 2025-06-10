@@ -910,24 +910,33 @@
       try {
         console.log('🔍 Starting AI analysis...', userMessage);
         
-        // API服务器列表（按优先级排序）
+        // API服务器列表（按准确性优先级排序）
         const apiServers = [
+          // 优先使用准确的线上Netlify函数
           {
-            name: 'Local Development Server',
-            url: 'http://localhost:5001/api/analyze-text',
-            timeout: 3000
-          },
-          {
-            name: 'Cloud AI Backend',
-            url: 'https://cyberwise-ai-backend.onrender.com/api/analyze-text',
+            name: 'Enhanced Netlify Functions (Accurate)',
+            url: '/.netlify/functions/analyze-text',
             timeout: 10000
           },
+          // 其他云端服务器作为备用
           {
-            name: 'Netlify Functions',
-            url: '/.netlify/functions/analyze-text',
-            timeout: 8000
+            name: 'Railway AI Backend',
+            url: 'https://cyberwise-production.up.railway.app/api/analyze-text',
+            timeout: 15000
           }
         ];
+        
+        // 只有在明确的开发环境且用户特意要求时才使用本地服务器
+        const isExplicitLocal = window.location.search.includes('use_local=true');
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        
+        if (isLocalhost && isExplicitLocal) {
+          apiServers.unshift({
+            name: 'Local Development Server (Development Only)',
+            url: 'http://localhost:5001/api/analyze-text',
+            timeout: 5000
+          });
+        }
         
         let analysisResult = null;
         let successServer = null;

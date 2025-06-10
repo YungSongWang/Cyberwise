@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Writing Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00eaff;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background: #2a2a2a;
+            color: white;
+            box-sizing: border-box;
+        }
+        button {
+            background: linear-gradient(45deg, #00eaff, #a100ff);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 234, 255, 0.1);
+            border: 1px solid rgba(0, 234, 255, 0.3);
+            border-radius: 8px;
+        }
+        .error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        pre {
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Writing 功能测试</h1>
+    
+    <div class="form-group">
+        <label for="prompt">输入写作提示:</label>
+        <textarea id="prompt" rows="3" placeholder="例如: How to identify phishing emails"></textarea>
+    </div>
+    
+    <button onclick="testAIWriting()" id="testBtn">测试 AI Writing</button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function testAIWriting() {
+            const prompt = document.getElementById('prompt').value.trim();
+            const btn = document.getElementById('testBtn');
+            const resultsDiv = document.getElementById('results');
+            
+            if (!prompt) {
+                alert('请输入写作提示');
+                return;
+            }
+            
+            try {
+                btn.textContent = '正在分析生成...';
+                btn.disabled = true;
+                
+                resultsDiv.innerHTML = '<div class="result">正在调用AI分析API...</div>';
+                
+                // 调用AI分析API
+                console.log('🔍 Starting AI analysis...', prompt);
+                
+                const response = await fetch('/.netlify/functions/analyze-text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: prompt
+                    }),
+                    mode: 'cors'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const analysisResult = await response.json();
+                console.log('✅ AI Analysis Result:', analysisResult);
+                
+                // 基于分析结果生成内容
+                const generatedContent = generateIntelligentContent(prompt, analysisResult);
+                const generatedTitle = generateIntelligentTitle(prompt, analysisResult);
+                
+                // 显示结果
+                resultsDiv.innerHTML = `
+                    <div class="result">
+                        <h3>AI 分析结果:</h3>
+                        <pre>${JSON.stringify(analysisResult, null, 2)}</pre>
+                        
+                        <h3>生成的标题:</h3>
+                        <p><strong>${generatedTitle}</strong></p>
+                        
+                        <h3>生成的内容:</h3>
+                        <pre>${generatedContent}</pre>
+                    </div>
+                `;
+                
+            } catch (error) {
+                console.error('测试失败:', error);
+                resultsDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>错误:</h3>
+                        <p>${error.message}</p>
+                        <p>将使用备用方案生成基础内容</p>
+                        
+                        <h3>备用内容:</h3>
+                        <pre>${generateBasicContent(prompt)}</pre>
+                    </div>
+                `;
+            } finally {
+                btn.textContent = '测试 AI Writing';
+                btn.disabled = false;
+            }
+        }
+        
+        // 基于AI分析结果生成智能内容
+        function generateIntelligentContent(prompt, analysisResult) {
+            const sentiment = analysisResult.sentiment || { sentiment: 'neutral', compound: 0 };
+            const classification = analysisResult.classification || { predicted: 'General Security' };
+            const similarTexts = analysisResult.similar_texts || [];
+            
+            // 根据分类确定安全领域
+            const category = classification.predicted;
+            const isSecurityQuestion = prompt.toLowerCase().includes('how to') || 
+                                      prompt.toLowerCase().includes('什么是') || 
+                                      prompt.toLowerCase().includes('如何');
+            
+            let content = '';
+            
+            if (isSecurityQuestion) {
+                // 安全问题指导内容
+                content = generateSecurityGuidance(prompt, category, similarTexts, sentiment);
+            } else {
+                // 一般性内容
+                content = generateGeneralContent(prompt, category, similarTexts, sentiment);
+            }
+            
+            return content;
+        }
+        
+        // 生成安全指导内容
+        function generateSecurityGuidance(prompt, category, similarTexts, sentiment) {
+            const categoryGuides = {
+                'Phishing Protection': {
+                    title: '钓鱼攻击防护指南',
+                    points: [
+                        '检查发件人地址的真实性',
+                        '注意邮件中的拼写错误和语法问题',
+                        '不要点击可疑链接',
+                        '验证邮件内容的真实性',
+                        '使用邮件安全插件',
+                        '定期更新安全意识'
+                    ]
+                },
+                'Password Security': {
+                    title: '密码安全最佳实践',
+                    points: [
+                        '使用强密码（包含大小写字母、数字、特殊字符）',
+                        '密码长度至少12个字符',
+                        '定期更改密码',
+                        '启用双因素认证',
+                        '不要在多个账户使用相同密码',
+                        '使用密码管理器'
+                    ]
+                },
+                'Malware Protection': {
+                    title: '恶意软件防护策略',
+                    points: [
+                        '安装可靠的杀毒软件',
+                        '定期更新病毒库',
+                        '避免从未知来源下载软件',
+                        '定期进行系统扫描',
+                        '保持操作系统和软件更新',
+                        '谨慎处理邮件附件'
+                    ]
+                },
+                'Network Security': {
+                    title: '网络安全配置指南',
+                    points: [
+                        '配置防火墙规则',
+                        '使用VPN保护远程连接',
+                        '定期审查网络访问权限',
+                        '监控网络流量',
+                        '实施网络分段',
+                        '使用强加密协议'
+                    ]
+                }
+            };
+            
+            const guide = categoryGuides[category] || {
+                title: '通用安全指南',
+                points: ['保持软件更新', '使用强密码', '定期备份数据', '提高安全意识']
+            };
+            
+            let content = `# ${guide.title}\n\n`;
+            content += `## 问题分析\n`;
+            content += `您咨询的问题："${prompt}" 属于 **${category}** 安全领域。\n\n`;
+            
+            content += `## 核心防护措施\n`;
+            guide.points.forEach((point, index) => {
+                content += `${index + 1}. **${point}**\n`;
+            });
+            content += '\n';
+            
+            if (similarTexts && similarTexts.length > 0) {
+                content += `## 相关案例和建议\n`;
+                similarTexts.slice(0, 3).forEach((item, index) => {
+                    content += `### 案例 ${index + 1}\n`;
+                    content += `${item.text}\n`;
+                    content += `*相关度: ${(item.similarity * 100).toFixed(1)}%*\n\n`;
+                });
+            }
+            
+            content += `## 实施建议\n`;
+            content += `1. **立即行动**: 根据上述措施，优先实施最关键的安全配置\n`;
+            content += `2. **定期检查**: 建立定期安全检查和更新机制\n`;
+            content += `3. **持续学习**: 关注最新的安全威胁和防护技术\n`;
+            content += `4. **团队培训**: 如果是团队环境，确保所有成员了解安全最佳实践\n\n`;
+            
+            content += `## 风险评估\n`;
+            if (sentiment.compound < -0.1) {
+                content += `⚠️ **高风险**: 检测到潜在安全威胁，建议立即采取防护措施。\n`;
+            } else if (sentiment.compound > 0.1) {
+                content += `✅ **良好**: 当前查询显示积极的安全意识，继续保持良好的安全习惯。\n`;
+            } else {
+                content += `📊 **中性**: 建议加强安全防护措施，提高整体安全水平。\n`;
+            }
+            
+            return content;
+        }
+        
+        // 生成一般性内容
+        function generateGeneralContent(prompt, category, similarTexts, sentiment) {
+            let content = `# ${prompt} - 智能分析报告\n\n`;
+            
+            content += `## AI分析结果\n`;
+            content += `- **分类**: ${category}\n`;
+            content += `- **情感倾向**: ${sentiment.sentiment} (${sentiment.compound})\n`;
+            content += `- **内容类型**: 信息咨询\n\n`;
+            
+            content += `## 详细分析\n`;
+            content += `基于AI智能分析，您的问题涉及以下方面：\n\n`;
+            
+            if (category.includes('Security')) {
+                content += `🔒 **安全相关**: 这是一个与网络安全相关的重要话题\n`;
+                content += `📊 **专业领域**: ${category}\n`;
+                content += `🎯 **建议关注**: 安全最佳实践和防护措施\n\n`;
+            } else {
+                content += `💡 **主题领域**: ${category}\n`;
+                content += `🔍 **分析方向**: 基于内容特征进行深度分析\n`;
+                content += `📈 **应用价值**: 具有实际指导意义\n\n`;
+            }
+            
+            if (similarTexts && similarTexts.length > 0) {
+                content += `## 相关参考\n`;
+                similarTexts.slice(0, 3).forEach((item, index) => {
+                    content += `### 参考 ${index + 1}\n`;
+                    content += `${item.text.substring(0, 200)}...\n`;
+                    content += `*相关度: ${(item.similarity * 100).toFixed(1)}%*\n\n`;
+                });
+            }
+            
+            content += `## 行动建议\n`;
+            content += `1. **深入研究**: 进一步了解相关理论和实践\n`;
+            content += `2. **实际应用**: 将分析结果应用到具体场景中\n`;
+            content += `3. **持续改进**: 根据反馈不断优化和完善\n`;
+            
+            return content;
+        }
+        
+        // 生成智能标题
+        function generateIntelligentTitle(prompt, analysisResult) {
+            const category = analysisResult.classification?.predicted || 'General';
+            const isSecurityQuestion = prompt.toLowerCase().includes('how to') || 
+                                      prompt.toLowerCase().includes('什么是') || 
+                                      prompt.toLowerCase().includes('如何');
+            
+            if (isSecurityQuestion) {
+                const categoryTitles = {
+                    'Phishing Protection': '钓鱼攻击防护指南',
+                    'Password Security': '密码安全最佳实践',
+                    'Malware Protection': '恶意软件防护策略',
+                    'Network Security': '网络安全配置指南',
+                    'Privacy Protection': '隐私保护实施方案',
+                    'System Security': '系统安全加固指南',
+                    'Data Backup': '数据备份与恢复策略'
+                };
+                
+                return categoryTitles[category] || `${category} - 安全防护指南`;
+            } else {
+                return `${prompt} - AI智能分析报告`;
+            }
+        }
+        
+        // 简化版内容生成（备用方案）
+        function generateBasicContent(prompt) {
+            return `# ${prompt}\n\n## 概述\n这是关于"${prompt}"的基础分析内容。\n\n## 要点\n1. 了解基本概念和定义\n2. 掌握核心原理和方法\n3. 实际应用和案例分析\n4. 最佳实践和建议\n\n## 总结\n建议进一步深入研究和实践应用。`;
+        }
+    </script>
+</body>
+</html> 

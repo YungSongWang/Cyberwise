@@ -51,13 +51,13 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    # 支持云平台的动态端口分配
-    port = int(os.environ.get('PORT', 10000))  # Render默认端口
+    # Railway自动提供PORT环境变量
+    port = int(os.environ.get('PORT', 5000))
     debug_mode = os.environ.get('FLASK_ENV', 'production') == 'development'
     
     logger.info(f'🚀 Starting CyberWise AI Backend on port: {port}')
     logger.info(f'🔧 Debug mode: {debug_mode}')
     logger.info(f'🌍 Environment: {os.environ.get("FLASK_ENV", "production")}')
     
-    # 强制绑定到所有接口
+    # 强制绑定到所有接口，使用Railway提供的端口
     app.run(debug=debug_mode, port=port, host='0.0.0.0', threaded=True) 

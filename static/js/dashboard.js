@@ -869,331 +869,32 @@ function closeAIWritingModal() {
     }
 }
 
-// AI内容生成 v2.0 - Enhanced Classification
-// 更新时间: 2025-06-10 - 使用新版本API
-async function generateAIContent() {
+// AI内容生成
+function generateAIContent() {
     const prompt = document.getElementById('aiPrompt').value.trim();
     const titleField = document.getElementById('aiTitle');
     const contentField = document.getElementById('aiContent');
     const saveBtn = document.getElementById('saveAIBtn');
-    const generateBtn = document.querySelector('button[onclick="generateAIContent()"]');
 
     if (!prompt) {
         alert('请输入写作提示');
         return;
     }
 
-    try {
-        // 显示加载状态
-        generateBtn.textContent = '正在分析生成...';
-        generateBtn.disabled = true;
-        contentField.value = '正在进行AI分析，请稍候...';
+    // 模拟AI生成内容（替换为实际的AI API调用）
+    const generatedContent = generateMockAIContent(prompt);
 
-        // 调用真实的AI分析API - 优先使用准确的线上版本
-        console.log('🔍 Starting AI analysis for content generation...', prompt);
+    // 自动生成标题（基于提示的前几个词）
+    const autoTitle = generateAutoTitle(prompt);
 
-        // API服务器列表（按准确性优先级排序）- 强制v2.0
-        const apiServers = [
-            // 强制优先使用准确的线上Netlify函数 v2.0
-            {
-                name: 'Enhanced Netlify Functions v2.0 (FORCED)',
-                url: '/.netlify/functions/analyze-text-v2?v=' + Date.now(), // 添加时间戳避免缓存
-                timeout: 10000
-            },
-            // 其他云端服务器作为备用
-            {
-                name: 'Railway AI Backend',
-                url: 'https://cyberwise-production.up.railway.app/api/analyze-text',
-                timeout: 15000
-            }
-        ];
+    // 填充生成的内容
+    titleField.value = autoTitle;
+    contentField.value = generatedContent;
 
-        // 只有在明确的开发环境且用户特意要求时才使用本地服务器
-        const isExplicitLocal = window.location.search.includes('use_local=true');
-        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    // 显示保存按钮
+    saveBtn.style.display = 'inline-block';
 
-        if (isLocalhost && isExplicitLocal) {
-            apiServers.unshift({
-                name: 'Local Development Server (Development Only)',
-                url: 'http://localhost:5001/api/analyze-text',
-                timeout: 5000
-            });
-        }
-
-        let analysisResult = null;
-        let successServer = null;
-
-        // 尝试按优先级调用API服务器
-        for (let i = 0; i < apiServers.length; i++) {
-            const server = apiServers[i];
-            try {
-                console.log(`🔄 Trying ${server.name}: ${server.url}`);
-
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), server.timeout);
-
-                const response = await fetch(server.url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        text: prompt
-                    }),
-                    signal: controller.signal,
-                    mode: 'cors'
-                });
-
-                clearTimeout(timeoutId);
-
-                if (response.ok) {
-                    analysisResult = await response.json();
-                    successServer = server.name;
-                    console.log(`✅ Success with ${server.name}:`, analysisResult);
-                    break;
-                } else {
-                    throw new Error(`HTTP ${response.status}`);
-                }
-
-            } catch (error) {
-                console.log(`❌ ${server.name} failed:`, error.message);
-                if (i === apiServers.length - 1) {
-                    throw new Error('All API servers unavailable');
-                }
-            }
-        }
-
-        if (!analysisResult) {
-            throw new Error('No valid response from any API server');
-        }
-
-        // 基于真实AI分析结果生成高质量内容
-        const generatedContent = generateIntelligentContent(prompt, analysisResult);
-        const autoTitle = generateIntelligentTitle(prompt, analysisResult);
-
-        // 填充生成的内容
-        titleField.value = autoTitle;
-        contentField.value = generatedContent;
-
-        // 显示保存按钮
-        saveBtn.style.display = 'inline-block';
-
-        console.log("AI content generated successfully using", successServer);
-
-    } catch (error) {
-        console.error('AI content generation failed:', error);
-
-        // 降级到简化版本
-        const fallbackContent = generateBasicContent(prompt);
-        const fallbackTitle = generateAutoTitle(prompt);
-
-        titleField.value = fallbackTitle;
-        contentField.value = fallbackContent + '\n\n⚠️ 注意：由于AI服务暂时不可用，以上内容为基础模板。请根据需要修改和完善。';
-
-        saveBtn.style.display = 'inline-block';
-    } finally {
-        // 恢复按钮状态
-        generateBtn.textContent = 'Generate Content';
-        generateBtn.disabled = false;
-    }
-}
-
-// 自动生成标题（备用函数）
-function generateAutoTitle(prompt) {
-    const words = prompt.split(' ').slice(0, 3).join(' ');
-    const titles = [
-        `关于${words}的思考`,
-        `${words}详解`,
-        `${words}实用指南`,
-        `${words}深度分析`,
-        `${words}应用研究`
-    ];
-
-    return titles[Math.floor(Math.random() * titles.length)];
-}
-
-// 基于AI分析结果生成智能内容
-function generateIntelligentContent(prompt, analysisResult) {
-    const sentiment = analysisResult.sentiment || { sentiment: 'neutral', compound: 0 };
-    const classification = analysisResult.classification || { predicted: 'General Security' };
-    const similarTexts = analysisResult.similar_texts || [];
-
-    // 根据分类确定安全领域
-    const category = classification.predicted;
-    const isSecurityQuestion = prompt.toLowerCase().includes('how to') ||
-        prompt.toLowerCase().includes('什么是') ||
-        prompt.toLowerCase().includes('如何');
-
-    let content = '';
-
-    if (isSecurityQuestion) {
-        // 安全问题指导内容
-        content = generateSecurityGuidance(prompt, category, similarTexts, sentiment);
-    } else {
-        // 一般性内容
-        content = generateGeneralContent(prompt, category, similarTexts, sentiment);
-    }
-
-    return content;
-}
-
-// 生成安全指导内容
-function generateSecurityGuidance(prompt, category, similarTexts, sentiment) {
-    const categoryGuides = {
-        'Phishing Protection': {
-            title: '钓鱼攻击防护指南',
-            points: [
-                '检查发件人地址的真实性',
-                '注意邮件中的拼写错误和语法问题',
-                '不要点击可疑链接',
-                '验证邮件内容的真实性',
-                '使用邮件安全插件',
-                '定期更新安全意识'
-            ]
-        },
-        'Password Security': {
-            title: '密码安全最佳实践',
-            points: [
-                '使用强密码（包含大小写字母、数字、特殊字符）',
-                '密码长度至少12个字符',
-                '定期更改密码',
-                '启用双因素认证',
-                '不要在多个账户使用相同密码',
-                '使用密码管理器'
-            ]
-        },
-        'Malware Protection': {
-            title: '恶意软件防护策略',
-            points: [
-                '安装可靠的杀毒软件',
-                '定期更新病毒库',
-                '避免从未知来源下载软件',
-                '定期进行系统扫描',
-                '保持操作系统和软件更新',
-                '谨慎处理邮件附件'
-            ]
-        },
-        'Network Security': {
-            title: '网络安全配置指南',
-            points: [
-                '配置防火墙规则',
-                '使用VPN保护远程连接',
-                '定期审查网络访问权限',
-                '监控网络流量',
-                '实施网络分段',
-                '使用强加密协议'
-            ]
-        }
-    };
-
-    const guide = categoryGuides[category] || categoryGuides['General Security'] || {
-        title: '通用安全指南',
-        points: ['保持软件更新', '使用强密码', '定期备份数据', '提高安全意识']
-    };
-
-    let content = `# ${guide.title}\n\n`;
-    content += `## 问题分析\n`;
-    content += `您咨询的问题："${prompt}" 属于 **${category}** 安全领域。\n\n`;
-
-    content += `## 核心防护措施\n`;
-    guide.points.forEach((point, index) => {
-        content += `${index + 1}. **${point}**\n`;
-    });
-    content += '\n';
-
-    if (similarTexts && similarTexts.length > 0) {
-        content += `## 相关案例和建议\n`;
-        similarTexts.slice(0, 3).forEach((item, index) => {
-            content += `### 案例 ${index + 1}\n`;
-            content += `${item.text}\n`;
-            content += `*相关度: ${(item.similarity * 100).toFixed(1)}%*\n\n`;
-        });
-    }
-
-    content += `## 实施建议\n`;
-    content += `1. **立即行动**: 根据上述措施，优先实施最关键的安全配置\n`;
-    content += `2. **定期检查**: 建立定期安全检查和更新机制\n`;
-    content += `3. **持续学习**: 关注最新的安全威胁和防护技术\n`;
-    content += `4. **团队培训**: 如果是团队环境，确保所有成员了解安全最佳实践\n\n`;
-
-    content += `## 风险评估\n`;
-    if (sentiment.compound < -0.1) {
-        content += `⚠️ **高风险**: 检测到潜在安全威胁，建议立即采取防护措施。\n`;
-    } else if (sentiment.compound > 0.1) {
-        content += `✅ **良好**: 当前查询显示积极的安全意识，继续保持良好的安全习惯。\n`;
-    } else {
-        content += `📊 **中性**: 建议加强安全防护措施，提高整体安全水平。\n`;
-    }
-
-    return content;
-}
-
-// 生成一般性内容
-function generateGeneralContent(prompt, category, similarTexts, sentiment) {
-    let content = `# ${prompt} - 智能分析报告\n\n`;
-
-    content += `## AI分析结果\n`;
-    content += `- **分类**: ${category}\n`;
-    content += `- **情感倾向**: ${sentiment.sentiment} (${sentiment.compound})\n`;
-    content += `- **内容类型**: 信息咨询\n\n`;
-
-    content += `## 详细分析\n`;
-    content += `基于AI智能分析，您的问题涉及以下方面：\n\n`;
-
-    if (category.includes('Security')) {
-        content += `🔒 **安全相关**: 这是一个与网络安全相关的重要话题\n`;
-        content += `📊 **专业领域**: ${category}\n`;
-        content += `🎯 **建议关注**: 安全最佳实践和防护措施\n\n`;
-    } else {
-        content += `💡 **主题领域**: ${category}\n`;
-        content += `🔍 **分析方向**: 基于内容特征进行深度分析\n`;
-        content += `📈 **应用价值**: 具有实际指导意义\n\n`;
-    }
-
-    if (similarTexts && similarTexts.length > 0) {
-        content += `## 相关参考\n`;
-        similarTexts.slice(0, 3).forEach((item, index) => {
-            content += `### 参考 ${index + 1}\n`;
-            content += `${item.text.substring(0, 200)}...\n`;
-            content += `*相关度: ${(item.similarity * 100).toFixed(1)}%*\n\n`;
-        });
-    }
-
-    content += `## 行动建议\n`;
-    content += `1. **深入研究**: 进一步了解相关理论和实践\n`;
-    content += `2. **实际应用**: 将分析结果应用到具体场景中\n`;
-    content += `3. **持续改进**: 根据反馈不断优化和完善\n`;
-
-    return content;
-}
-
-// 生成智能标题
-function generateIntelligentTitle(prompt, analysisResult) {
-    const category = analysisResult.classification?.predicted || 'General';
-    const isSecurityQuestion = prompt.toLowerCase().includes('how to') ||
-        prompt.toLowerCase().includes('什么是') ||
-        prompt.toLowerCase().includes('如何');
-
-    if (isSecurityQuestion) {
-        const categoryTitles = {
-            'Phishing Protection': '钓鱼攻击防护指南',
-            'Password Security': '密码安全最佳实践',
-            'Malware Protection': '恶意软件防护策略',
-            'Network Security': '网络安全配置指南',
-            'Privacy Protection': '隐私保护实施方案',
-            'System Security': '系统安全加固指南',
-            'Data Backup': '数据备份与恢复策略'
-        };
-
-        return categoryTitles[category] || `${category} - 安全防护指南`;
-    } else {
-        return `${prompt} - AI智能分析报告`;
-    }
-}
-
-// 简化版内容生成（备用方案）
-function generateBasicContent(prompt) {
-    return `# ${prompt}\n\n## 概述\n这是关于"${prompt}"的基础分析内容。\n\n## 要点\n1. 了解基本概念和定义\n2. 掌握核心原理和方法\n3. 实际应用和案例分析\n4. 最佳实践和建议\n\n## 总结\n建议进一步深入研究和实践应用。`;
+    console.log("AI content generated successfully");
 }
 
 // 保存AI生成的文档
@@ -1236,6 +937,97 @@ function displayAIResult(title, content) {
         </div>
     `;
     resultsContainer.innerHTML = resultHTML;
+}
+
+// 模拟AI内容生成（实际使用时可替换为真实的AI API）
+function generateMockAIContent(prompt) {
+    const templates = {
+        '文章': `# ${prompt}相关文章
+
+这是一篇关于"${prompt}"的详细文章。
+
+## 引言
+在当今快速发展的世界中，${prompt}变得越来越重要。本文将深入探讨这个话题的各个方面。
+
+## 主要内容
+1. **定义与概念**: ${prompt}的基本概念和定义
+2. **重要性**: 为什么${prompt}在现代社会中如此重要
+3. **应用场景**: ${prompt}的实际应用和案例
+4. **未来展望**: ${prompt}的发展趋势和前景
+
+## 结论
+综上所述，${prompt}是一个值得深入研究和关注的重要话题。通过持续学习和实践，我们可以更好地理解和应用相关知识。`,
+
+        '总结': `# ${prompt} - 要点总结
+
+## 核心要点
+- 关键概念：${prompt}的基本定义
+- 主要特征：${prompt}的显著特点
+- 应用价值：${prompt}的实际意义
+
+## 详细分析
+${prompt}作为一个重要概念，具有以下特点：
+1. 实用性强，适用于多种场景
+2. 理论基础扎实，有科学依据
+3. 发展前景广阔，值得深入研究
+
+## 行动建议
+- 深入学习${prompt}的相关理论
+- 实践应用${prompt}的方法技巧
+- 持续关注${prompt}的最新发展`,
+
+        '教程': `# ${prompt} 实用教程
+
+## 准备工作
+在开始学习${prompt}之前，你需要：
+- 基本的理论知识
+- 必要的工具和资源
+- 充足的时间和耐心
+
+## 步骤指南
+
+### 第一步：理解基础
+首先要全面了解${prompt}的基本概念和原理。
+
+### 第二步：实践操作
+通过实际操作来加深对${prompt}的理解。
+
+### 第三步：进阶应用
+掌握${prompt}的高级应用技巧。
+
+## 注意事项
+- 循序渐进，不要急于求成
+- 多加练习，熟能生巧
+- 保持学习，持续改进
+
+## 总结
+通过本教程，你应该已经掌握了${prompt}的基本知识和应用方法。`
+    };
+
+    // 根据提示内容选择合适的模板
+    let selectedTemplate = templates['文章']; // 默认模板
+
+    if (prompt.includes('总结') || prompt.includes('要点') || prompt.includes('概要')) {
+        selectedTemplate = templates['总结'];
+    } else if (prompt.includes('教程') || prompt.includes('如何') || prompt.includes('怎么') || prompt.includes('步骤')) {
+        selectedTemplate = templates['教程'];
+    }
+
+    return selectedTemplate;
+}
+
+// 自动生成标题
+function generateAutoTitle(prompt) {
+    const words = prompt.split(' ').slice(0, 3).join(' ');
+    const titles = [
+        `关于${words}的思考`,
+        `${words}详解`,
+        `${words}实用指南`,
+        `${words}深度分析`,
+        `${words}应用研究`
+    ];
+
+    return titles[Math.floor(Math.random() * titles.length)];
 }
 
 // 登出功能

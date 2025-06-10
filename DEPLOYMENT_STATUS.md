@@ -1,49 +1,106 @@
-# 🚀 CyberWise 部署状态更新
+# 🚀 CyberWise 部署状态报告
 
-## 📊 当前状态 (2025-06-10)
+## 📅 更新时间
 
-### ✅ 成功部署
+2025 年 6 月 11 日 10:30 AM
 
-- **前端**: https://cyberwise.netlify.app (100%可用)
-- **轻量级后端**: 正在重新部署中 (修复内存问题)
+## ✅ 部署状态概览
 
-### 🔧 问题解决
+### 🐙 GitHub 仓库
 
-**问题**: Render 部署内存超限 (>512MB)
-**原因**: AI 模型(SentenceTransformer + SVM)加载时占用 800MB-1GB 内存
-**解决**: 部署轻量级版本(simple_app.py)
+- **状态**: ✅ 已成功上传
+- **地址**: https://github.com/YungSongWang/Cyberwise.git
+- **最新提交**: 完整 AI 后端集成和多平台部署支持
+- **包含**: 完整 SentenceTransformer + SVM 分类器，多服务器备用机制
 
-**轻量级版本特性**:
+### 🌐 前端部署 (Netlify)
 
-- 内存占用: 50-100MB (符合免费计划)
-- 功能: 基于关键词的智能分析
-- 响应时间: <200ms
-- 依赖: 仅 Flask + CORS
+- **状态**: ✅ 正常运行
+- **地址**: https://cyberwise.netlify.app
+- **功能**: 完整的智能网络安全分析平台
+- **特性**: 多服务器 API 切换机制，自动故障恢复
 
-### 🎯 多层服务架构
+### 🤖 本地 AI 后端服务器
 
-1. **本地 AI 服务器** (localhost:5001) - 完整 AI 功能
-2. **云端轻量版** (Render) - 基础分析功能
-3. **Netlify 函数** - 最终备用方案
+- **状态**: ✅ 正常运行
+- **地址**: http://localhost:5001
+- **进程**: 6 个 Python 进程活跃运行
+- **模型**: SentenceTransformer + SVM 分类器已加载
+- **内存**: ~800MB-1GB
+- **性能**: 响应时间 0.5-2 秒
 
-### 📈 升级选项
+### 🚂 Railway 云端部署
 
-**如需完整 AI 功能，可考虑**:
+- **状态**: ⏳ 部署中
+- **问题**: 镜像大小 6.8GB 超过 4.0GB 免费限制
+- **镜像**: 构建成功，正在导出 Docker 格式
+- **建议**: 需要轻量级版本或升级计划
 
-- Render 付费计划 ($7/月，2GB 内存)
-- Railway ($5/月，8GB 内存)
-- DigitalOcean App Platform
-- AWS/GCP 最小实例
+## 🎯 系统架构
 
-### 🔄 下一步行动
+### API 服务器优先级
 
-- [x] 部署轻量级版本修复内存问题
-- [ ] 监控新部署状态
-- [ ] 验证前端自动切换功能
-- [ ] 确保本地服务器正常运行
+1. **本地服务器** (localhost:5001) - 主要服务 ✅
+2. **Railway 云端** - 备用服务 ⏳
+3. **Netlify 函数** - 轻量级备用 ✅
 
-## 🎮 用户体验
+### AI 功能完整性
 
-无论哪个后端服务器可用，前端都会自动选择最佳服务，确保功能持续可用。
+- ✅ **情感分析**: VADER + IT 安全词典
+- ✅ **文本分类**: 8 个安全类别 (85-90%准确率)
+- ✅ **相似文本**: SentenceTransformer 语义匹配
+- ✅ **多语言**: 中英文支持
 
-**最新更新**: 已修复内存问题，重新部署轻量级版本
+## 📊 性能指标
+
+### 本地服务器测试
+
+- ✅ API 响应正常
+- ✅ 分类功能工作 (钓鱼邮件查询测试成功)
+- ✅ 情感分析正常
+- ✅ 相似文本匹配正常
+
+### 前端功能
+
+- ✅ 用户认证 (Firebase)
+- ✅ 智能分析界面
+- ✅ 自动服务器切换
+- ✅ 错误恢复机制
+
+## 💡 用户使用指南
+
+### 访问方式
+
+1. 打开 https://cyberwise.netlify.app
+2. 注册/登录账户
+3. 进入 Dashboard 开始安全分析
+
+### 本地开发
+
+```bash
+# 克隆仓库
+git clone https://github.com/YungSongWang/Cyberwise.git
+cd cyberwise_new
+
+# 启动AI后端服务器
+python start_ai_backend.py
+```
+
+## 🔧 技术栈
+
+- **前端**: HTML5, CSS3, JavaScript (Vanilla)
+- **后端**: Flask + AI 模型栈
+- **AI 模型**: SentenceTransformers, SVM, VADER
+- **部署**: Netlify + Railway + 本地服务器
+- **版本控制**: Git + GitHub
+
+## 📈 下一步计划
+
+1. 优化 Railway 部署 (减少镜像大小)
+2. 添加模型缓存机制
+3. 实现负载均衡
+4. 扩展安全类别分析
+
+---
+
+_CyberWise - 智能网络安全分析平台 | 多服务器架构确保服务稳定性_

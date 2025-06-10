@@ -1,1 +1,1 @@
-web: python run_ai_server.py 
+web: python app.py 

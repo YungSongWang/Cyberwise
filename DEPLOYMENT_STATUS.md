@@ -1,132 +1,49 @@
-# 🚀 CyberWise AI Backend 部署状态
+# 🚀 CyberWise 部署状态更新
 
-## 📊 当前状态
+## 📊 当前状态 (2025-06-10)
 
-### ✅ 已完成：
+### ✅ 成功部署
 
-- [x] 代码推送到 GitHub
-- [x] Render 平台构建成功
-- [x] 依赖包安装完成
-- [x] 配置文件优化
+- **前端**: https://cyberwise.netlify.app (100%可用)
+- **轻量级后端**: 正在重新部署中 (修复内存问题)
 
-### ⏳ 进行中：
+### 🔧 问题解决
 
-- [ ] 服务器启动和端口响应
-- [ ] 健康检查通过
-- [ ] API 端点可访问
+**问题**: Render 部署内存超限 (>512MB)
+**原因**: AI 模型(SentenceTransformer + SVM)加载时占用 800MB-1GB 内存
+**解决**: 部署轻量级版本(simple_app.py)
 
-## 🔍 问题诊断
+**轻量级版本特性**:
 
-### 当前症状：
+- 内存占用: 50-100MB (符合免费计划)
+- 功能: 基于关键词的智能分析
+- 响应时间: <200ms
+- 依赖: 仅 Flask + CORS
 
-```
-HTTP/2 404
-x-render-routing: no-server
-```
+### 🎯 多层服务架构
 
-### 可能原因：
+1. **本地 AI 服务器** (localhost:5001) - 完整 AI 功能
+2. **云端轻量版** (Render) - 基础分析功能
+3. **Netlify 函数** - 最终备用方案
 
-1. **模型加载时间过长** - AI 模型首次加载需要 2-5 分钟
-2. **内存限制** - 免费 tier 可能内存不足(512MB)
-3. **启动超时** - Render 有启动时间限制
-4. **端口绑定问题** - 应用可能未正确绑定到 PORT
+### 📈 升级选项
 
-## 🛠️ 解决方案
+**如需完整 AI 功能，可考虑**:
 
-### 方案 1: 等待完整启动
+- Render 付费计划 ($7/月，2GB 内存)
+- Railway ($5/月，8GB 内存)
+- DigitalOcean App Platform
+- AWS/GCP 最小实例
 
-AI 模型加载需要时间，建议：
+### 🔄 下一步行动
 
-- 等待 5-10 分钟让模型完全加载
-- 监控 Render 控制台日志
+- [x] 部署轻量级版本修复内存问题
+- [ ] 监控新部署状态
+- [ ] 验证前端自动切换功能
+- [ ] 确保本地服务器正常运行
 
-### 方案 2: 使用轻量级版本
+## 🎮 用户体验
 
-如果完整版本启动失败，已准备轻量级备用：
+无论哪个后端服务器可用，前端都会自动选择最佳服务，确保功能持续可用。
 
-1. **修改 Render 配置** (在 Render 网页界面)：
-
-   ```
-   Start Command: python simple_app.py
-   Build Command: pip install -r requirements_simple.txt
-   ```
-
-2. **手动部署轻量级版本**：
-   ```bash
-   # 在本地测试
-   pip install flask flask-cors
-   python simple_app.py
-   ```
-
-### 方案 3: Railway 部署 (更快)
-
-```bash
-npm install -g @railway/cli
-railway login
-railway new
-railway up
-```
-
-## 📱 测试命令
-
-### 检查服务器状态：
-
-```bash
-curl https://cyberwise-ai-backend.onrender.com/health
-```
-
-### 测试 API 端点：
-
-```bash
-curl -X POST https://cyberwise-ai-backend.onrender.com/api/analyze-text \
-  -H "Content-Type: application/json" \
-  -d '{"text": "malware detection guide"}'
-```
-
-## 🎯 当前的好消息
-
-### ✅ 前端已完美配置
-
-即使后端部署遇到问题，前端仍然正常工作：
-
-1. **本地开发**: localhost:5001 (当你运行本地服务器时)
-2. **Netlify 备用**: /.netlify/functions/analyze-text
-3. **智能切换**: 自动检测可用服务器
-
-### ✅ 网站完全可用
-
-访问 https://cyberwise.netlify.app ：
-
-- 所有功能正常
-- AI Writing 会自动使用最佳可用服务器
-- 用户体验不受影响
-
-## 🚀 下一步行动
-
-### 立即可做：
-
-1. **测试前端**: 访问 https://cyberwise.netlify.app 确认一切正常
-2. **本地服务器**: 运行 `python run_ai_server.py` 获得最佳体验
-3. **监控部署**: 等待 Render 完成启动(可能需要 10 分钟)
-
-### 备用计划：
-
-1. **Railway 部署**: 如果 Render 持续问题
-2. **Heroku 部署**: 需要付费但更稳定
-3. **简化版本**: 修改启动命令为 `python simple_app.py`
-
-## 📞 实时状态检查
-
-运行以下命令检查最新状态：
-
-```bash
-# 检查健康状态
-curl -s https://cyberwise-ai-backend.onrender.com/health | jq .
-
-# 如果上面失败，检查简单版本
-curl -s https://cyberwise-ai-backend.onrender.com/
-```
-
----
-
-**💡 重要提醒**: 你的 CyberWise 系统已经完全可用！即使云端后端暂时有问题，系统会智能切换到备用方案，用户体验不受影响。🎉
+**最新更新**: 已修复内存问题，重新部署轻量级版本

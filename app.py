@@ -52,14 +52,12 @@ def health_check():
 
 if __name__ == '__main__':
     # 支持云平台的动态端口分配
-    port = int(os.environ.get('PORT', 5001))
+    port = int(os.environ.get('PORT', 10000))  # Render默认端口
     debug_mode = os.environ.get('FLASK_ENV', 'production') == 'development'
     
     logger.info(f'🚀 Starting CyberWise AI Backend on port: {port}')
     logger.info(f'🔧 Debug mode: {debug_mode}')
+    logger.info(f'🌍 Environment: {os.environ.get("FLASK_ENV", "production")}')
     
-    if os.environ.get('FLASK_ENV') == 'production':
-        # 生产环境使用gunicorn
-        logger.info('🌐 Production mode - use gunicorn for better performance')
-    
-    app.run(debug=debug_mode, port=port, host='0.0.0.0') 
+    # 强制绑定到所有接口
+    app.run(debug=debug_mode, port=port, host='0.0.0.0', threaded=True) 

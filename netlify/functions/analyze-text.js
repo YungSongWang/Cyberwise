@@ -73,20 +73,57 @@ const handler = async (event, context) => {
     }
 };
 
-// 模拟情感分析函数
+// 模拟情感分析函数 - 支持中英文
 function analyzeSentiment(text) {
-    const positiveWords = ['好', '安全', '保护', '强', '优秀', '成功', '有效', '完善', '可靠'];
-    const negativeWords = ['攻击', '病毒', '恶意', '危险', '漏洞', '泄露', '入侵', '破坏', '威胁'];
+    const positiveWords = [
+        // 中文正面词汇
+        '好', '安全', '保护', '强', '优秀', '成功', '有效', '完善', '可靠', '稳定', '强大', '优化',
+        // 英文正面词汇
+        'good', 'safe', 'secure', 'protection', 'strong', 'excellent', 'success', 'effective',
+        'reliable', 'stable', 'robust', 'optimize', 'best', 'better', 'great', 'powerful',
+        'improved', 'enhanced', 'advanced', 'solid', 'trust', 'quality', 'perfect'
+    ];
+
+    const negativeWords = [
+        // 中文负面词汇
+        '攻击', '病毒', '恶意', '危险', '漏洞', '泄露', '入侵', '破坏', '威胁', '错误', '失败', '问题',
+        // 英文负面词汇
+        'attack', 'virus', 'malicious', 'malware', 'dangerous', 'vulnerability', 'breach',
+        'hack', 'threat', 'risk', 'damage', 'compromise', 'exploit', 'phishing', 'trojan',
+        'ransomware', 'spam', 'fraud', 'scam', 'unauthorized', 'suspicious', 'infected',
+        'corrupted', 'exposed', 'leak', 'steal', 'error', 'fail', 'problem', 'issue'
+    ];
 
     let score = 0;
-    const words = text.toLowerCase();
+    const words = text.toLowerCase().split(/\s+/);
 
-    positiveWords.forEach(word => {
-        if (words.includes(word)) score += 0.1;
+    // 更精确的匹配 - 按单词匹配而不是字符串包含
+    words.forEach(word => {
+        // 移除标点符号
+        const cleanWord = word.replace(/[^\w]/g, '');
+
+        if (positiveWords.includes(cleanWord)) {
+            score += 0.15;
+        }
+        if (negativeWords.includes(cleanWord)) {
+            score -= 0.15;
+        }
     });
 
-    negativeWords.forEach(word => {
-        if (words.includes(word)) score -= 0.1;
+    // 特殊关键词加权
+    const highRiskWords = ['breach', 'hack', 'malware', 'ransomware', 'phishing', '攻击', '病毒', '入侵'];
+    const highSecurityWords = ['secure', 'protection', 'safety', 'encryption', '安全', '保护', '加密'];
+
+    highRiskWords.forEach(word => {
+        if (text.toLowerCase().includes(word)) {
+            score -= 0.3;
+        }
+    });
+
+    highSecurityWords.forEach(word => {
+        if (text.toLowerCase().includes(word)) {
+            score += 0.2;
+        }
     });
 
     // 限制在-1到1之间
@@ -102,42 +139,90 @@ function analyzeSentiment(text) {
     }
 
     return {
-        compound: score,
+        compound: parseFloat(score.toFixed(3)),
         sentiment: sentiment
     };
 }
 
-// 模拟文本分类函数
+// 模拟文本分类函数 - 支持中英文
 function classifyText(text) {
     const categories = {
-        '恶意软件防护': ['病毒', '恶意软件', '木马', '勒索软件', '感染', '杀毒'],
-        '密码安全': ['密码', '口令', '登录', '认证', '二次验证', '验证码'],
-        '钓鱼攻击防护': ['钓鱼', '欺诈', '诈骗', '虚假网站', '邮件'],
-        '网络安全': ['网络', '防火墙', 'DDoS', '入侵', '攻击', 'VPN'],
-        '隐私保护': ['隐私', '数据泄露', '个人信息', '信息安全'],
-        '系统安全': ['系统', '漏洞', '补丁', '更新', '安全配置'],
-        '数据备份': ['备份', '恢复', '数据', '存储'],
-        '综合安全': ['安全', '防护', '保护', '管理']
+        'Malware Protection': [
+            // 中文
+            '病毒', '恶意软件', '木马', '勒索软件', '感染', '杀毒',
+            // 英文
+            'malware', 'virus', 'trojan', 'ransomware', 'infection', 'antivirus', 'worm', 'spyware', 'adware'
+        ],
+        'Password Security': [
+            // 中文
+            '密码', '口令', '登录', '认证', '二次验证', '验证码',
+            // 英文
+            'password', 'authentication', 'login', 'credential', '2fa', 'mfa', 'verification', 'passcode'
+        ],
+        'Phishing Protection': [
+            // 中文
+            '钓鱼', '欺诈', '诈骗', '虚假网站', '邮件',
+            // 英文
+            'phishing', 'fraud', 'scam', 'fake', 'spoofing', 'deception', 'email', 'social engineering'
+        ],
+        'Network Security': [
+            // 中文
+            '网络', '防火墙', 'DDoS', '入侵', '攻击', 'VPN',
+            // 英文
+            'network', 'firewall', 'ddos', 'intrusion', 'attack', 'vpn', 'router', 'gateway', 'proxy'
+        ],
+        'Privacy Protection': [
+            // 中文
+            '隐私', '数据泄露', '个人信息', '信息安全',
+            // 英文
+            'privacy', 'data breach', 'personal information', 'leak', 'exposure', 'confidential', 'pii'
+        ],
+        'System Security': [
+            // 中文
+            '系统', '漏洞', '补丁', '更新', '安全配置',
+            // 英文
+            'system', 'vulnerability', 'patch', 'update', 'configuration', 'exploit', 'cve', 'security'
+        ],
+        'Data Backup': [
+            // 中文
+            '备份', '恢复', '数据', '存储',
+            // 英文
+            'backup', 'recovery', 'data', 'storage', 'restore', 'archive', 'sync'
+        ],
+        'General Security': [
+            // 中文
+            '安全', '防护', '保护', '管理',
+            // 英文
+            'security', 'protection', 'defense', 'management', 'policy', 'compliance', 'admin', 'guide'
+        ]
     };
 
     const scores = {};
     let totalMatches = 0;
 
-    // 计算每个类别的匹配得分
+    // 计算每个类别的匹配得分 - 更精确的匹配
+    const textWords = text.toLowerCase().split(/\s+/).map(word => word.replace(/[^\w]/g, ''));
+
     Object.entries(categories).forEach(([category, keywords]) => {
         let matches = 0;
         keywords.forEach(keyword => {
-            if (text.toLowerCase().includes(keyword)) {
-                matches++;
-                totalMatches++;
+            // 完全匹配单词
+            if (textWords.includes(keyword.toLowerCase())) {
+                matches += 2; // 完全匹配权重更高
+                totalMatches += 2;
+            }
+            // 部分匹配（包含关系）
+            else if (text.toLowerCase().includes(keyword.toLowerCase())) {
+                matches += 1;
+                totalMatches += 1;
             }
         });
         scores[category] = matches;
     });
 
-    // 如果没有匹配，默认为综合安全
+    // 如果没有匹配，默认为General Security
     if (totalMatches === 0) {
-        scores['综合安全'] = 1;
+        scores['General Security'] = 1;
         totalMatches = 1;
     }
 

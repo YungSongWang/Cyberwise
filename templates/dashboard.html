@@ -956,8 +956,8 @@
     // 格式化text_analyzer.py的分析结果
     function formatAnalysisResult(userMessage, analysisResult) {
       let response = `
-        <p>🔍 <strong>智能文本分析完成</strong></p>
-        <p>您的问题：<em>"${escapeHtml(userMessage)}"</em></p>
+        <p>🔍 <strong>Intelligent Text Analysis Complete</strong></p>
+        <p>Your question: <em>"${escapeHtml(userMessage)}"</em></p>
       `;
       
       // 情感分析结果
@@ -971,10 +971,10 @@
         
         response += `
           <div style="background: rgba(0, 234, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #00eaff;">
-            <h4 style="color: #00eaff; margin: 0 0 8px 0;">📊 情感分析</h4>
+            <h4 style="color: #00eaff; margin: 0 0 8px 0;">📊 Sentiment Analysis</h4>
             <p style="margin: 0;">
-              情感倾向: <strong>${sentimentEmoji[sentiment.sentiment] || '🤔'} ${sentiment.sentiment}</strong><br>
-              情感得分: <strong>${sentiment.compound?.toFixed(3) || 'N/A'}</strong>
+              Sentiment: <strong>${sentimentEmoji[sentiment.sentiment] || '🤔'} ${sentiment.sentiment}</strong><br>
+              Score: <strong>${sentiment.compound?.toFixed(3) || 'N/A'}</strong>
             </p>
           </div>
         `;
@@ -985,10 +985,10 @@
         const classification = analysisResult.classification;
         response += `
           <div style="background: rgba(161, 0, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #a100ff;">
-            <h4 style="color: #a100ff; margin: 0 0 8px 0;">🎯 问题分类</h4>
-            <p style="margin: 0 0 8px 0;">预测类别: <strong>${classification.predicted}</strong></p>
+            <h4 style="color: #a100ff; margin: 0 0 8px 0;">🎯 Question Classification</h4>
+            <p style="margin: 0 0 8px 0;">Predicted Category: <strong>${classification.predicted}</strong></p>
             <div style="font-size: 12px;">
-              <strong>类别概率分布:</strong><br>
+              <strong>Category Probability Distribution:</strong><br>
         `;
         
         if (classification.probabilities && classification.probabilities.length > 0) {
@@ -1013,7 +1013,7 @@
       if (analysisResult.similar_texts && analysisResult.similar_texts.length > 0) {
         response += `
           <div style="background: rgba(46, 213, 115, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #2ed573;">
-            <h4 style="color: #2ed573; margin: 0 0 8px 0;">🔍 相似问题参考</h4>
+            <h4 style="color: #2ed573; margin: 0 0 8px 0;">🔍 Similar Questions Reference</h4>
         `;
         
         analysisResult.similar_texts.slice(0, 3).forEach((item, index) => {
@@ -1027,8 +1027,8 @@
                 <strong>${index + 1}. ${escapeHtml(item.text.substring(0, 100))}${item.text.length > 100 ? '...' : ''}</strong>
               </div>
               <div style="font-size: 11px; color: #888; display: flex; justify-content: space-between;">
-                <span>点击查看完整内容</span>
-                <span style="background: rgba(46, 213, 115, 0.3); padding: 2px 6px; border-radius: 4px; color: #2ed573;">${similarity}% 相似</span>
+                <span>Click to view complete content</span>
+                <span style="background: rgba(46, 213, 115, 0.3); padding: 2px 6px; border-radius: 4px; color: #2ed573;">${similarity}% similar</span>
               </div>
             </div>
           `;
@@ -1043,10 +1043,10 @@
       response += `
         <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
           <p style="font-size: 12px; color: #888;">
-            💡 基于以上分析，建议您：<br>
-            • 查看相似问题的详细解决方案<br>
-            • 访问 <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">知识库</span> 获取更多信息<br>
-            • 如需进一步帮助，请提供更多具体细节
+            💡 Based on the analysis above, we recommend:<br>
+            • Review detailed solutions for similar questions<br>
+            • Visit <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">Knowledge Base</span> for more information<br>
+            • For further assistance, please provide more specific details
           </p>
         </div>
       `;
@@ -1056,7 +1056,7 @@
     
     // 查看相似文本详情
     function viewSimilarText(text) {
-      alert(`相似文本详情：\n\n${text}\n\n这个功能将来可以跳转到具体的知识库页面。`);
+      alert(`Similar Text Details:\n\n${text}\n\nThis feature will redirect to specific knowledge base pages in the future.`);
     }
     
     // 问题分类函数（简化版）

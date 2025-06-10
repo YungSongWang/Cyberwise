@@ -18,4 +18,9 @@ print('🌐 Frontend will automatically connect to this backend service')
 print('-' * 50)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001, host='0.0.0.0') 
+    # 支持云平台的动态端口分配
+    port = int(os.environ.get('PORT', 5001))
+    debug_mode = os.environ.get('FLASK_ENV', 'development') == 'development'
+    
+    print(f'🌐 Server starting on port: {port}')
+    app.run(debug=debug_mode, port=port, host='0.0.0.0') 

@@ -902,62 +902,115 @@
       return messageElement;
     }
     
-    // 处理AI响应 - 集成text_analyzer.py API
+    // 处理AI响应 - 支持多个API服务器（本地+线上+备用）
     async function processAIResponse(userMessage) {
       // 显示加载状态
       const typingMessage = addAIMessage('', true);
       
       try {
-        console.log('正在调用text_analyzer API...', userMessage);
+        console.log('🔍 Starting AI analysis...', userMessage);
         
-        // 调用本地AI后端服务器 API
-        const response = await fetch('http://localhost:5001/api/analyze-text', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        // API服务器列表（按优先级排序）
+        const apiServers = [
+          {
+            name: 'Local Development Server',
+            url: 'http://localhost:5001/api/analyze-text',
+            timeout: 3000
           },
-          body: JSON.stringify({
-            text: userMessage
-          })
-        });
+          {
+            name: 'Cloud AI Backend',
+            url: 'https://cyberwise-ai-backend.onrender.com/api/analyze-text',
+            timeout: 10000
+          },
+          {
+            name: 'Netlify Functions',
+            url: '/.netlify/functions/analyze-text',
+            timeout: 8000
+          }
+        ];
         
-        if (!response.ok) {
-          throw new Error(`API请求失败: ${response.status}`);
+        let analysisResult = null;
+        let successServer = null;
+        
+        // 尝试按优先级调用API服务器
+        for (let i = 0; i < apiServers.length; i++) {
+          const server = apiServers[i];
+          try {
+            console.log(`🔄 Trying ${server.name} (${i + 1}/${apiServers.length}): ${server.url}`);
+            
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), server.timeout);
+            
+            const response = await fetch(server.url, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                text: userMessage
+              }),
+              signal: controller.signal,
+              mode: server.url.includes('localhost') ? 'cors' : 'cors'
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (response.ok) {
+              analysisResult = await response.json();
+              successServer = server.name;
+              console.log(`✅ Success with ${server.name}:`, analysisResult);
+              break;
+            } else {
+              throw new Error(`HTTP ${response.status}`);
+            }
+            
+          } catch (error) {
+            console.log(`❌ ${server.name} failed:`, error.message);
+            if (i === apiServers.length - 1) {
+              // 所有服务器都失败了
+              throw new Error('All API servers unavailable');
+            }
+            // 继续尝试下一个服务器
+          }
         }
         
-        const analysisResult = await response.json();
-        console.log('API分析结果:', analysisResult);
+        if (!analysisResult) {
+          throw new Error('No valid response from any API server');
+        }
         
         // 移除加载状态
         typingMessage.remove();
         
         // 格式化并显示分析结果
-        const aiResponse = formatAnalysisResult(userMessage, analysisResult);
+        const aiResponse = formatAnalysisResult(userMessage, analysisResult, successServer);
         addAIMessage(aiResponse);
         
       } catch (error) {
-        console.error('AI处理出错:', error);
+        console.error('❌ All API calls failed:', error);
         typingMessage.remove();
         
-        // 如果API调用失败，fallback到原始的模拟分析
-        console.log('API调用失败，使用fallback方案');
+        // 如果所有API都失败，使用本地fallback逻辑
+        console.log('🔄 Using local fallback analysis...');
         try {
           const category = classifySecurityQuestion(userMessage);
           const matchedQuestions = findSimilarQuestions(userMessage, category);
           const fallbackResponse = generateAIResponse(userMessage, category, matchedQuestions);
           addAIMessage(fallbackResponse);
         } catch (fallbackError) {
-          console.error('Fallback也失败了:', fallbackError);
-          addAIMessage('<p>❌ 抱歉，处理您的问题时出现了错误，请稍后重试。</p>');
+          console.error('❌ Fallback also failed:', fallbackError);
+          addAIMessage('<p>❌ Sorry, we encountered an error processing your question. Please try again later.</p>');
         }
       }
     }
     
     // 格式化text_analyzer.py的分析结果
-    function formatAnalysisResult(userMessage, analysisResult) {
+    function formatAnalysisResult(userMessage, analysisResult, serverName = 'AI Server') {
       let response = `
         <p>🔍 <strong>Intelligent Text Analysis Complete</strong></p>
         <p>Your question: <em>"${escapeHtml(userMessage)}"</em></p>
+        <p style="font-size: 11px; color: #888; margin: 8px 0;">
+          📡 Analyzed by: <span style="color: #00eaff;">${serverName}</span>
+        </p>
       `;
       
       // 情感分析结果

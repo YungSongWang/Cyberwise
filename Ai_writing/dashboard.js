@@ -37,20 +37,20 @@ function hideLoadingIndicator() {
                 <!-- 特别突出的User Guide卡片 -->
                 <div style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2)); border: 2px solid rgba(255, 193, 7, 0.5); border-radius: 16px; padding: 25px; margin-bottom: 30px; position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 15px; right: 15px; background: rgba(255, 193, 7, 0.3); color: #ffc107; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;">
-                        🌟 For New Users
+                        🌟 推荐新用户
                     </div>
                     <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
                         <div style="flex: 1; min-width: 300px;">
                             <h2 style="color: #ffc107; margin: 0 0 10px 0; font-size: 24px; display: flex; align-items: center; gap: 10px;">
                                 <i class="ri-book-open-line" style="font-size: 28px;"></i>
-                                <span data-lang="userGuideTitle">📖 User Guide</span>
+                                <span data-lang="userGuideTitle">📖 使用指南</span>
                             </h2>
                             <p style="color: #e0e0e0; margin: 0 0 20px 0; font-size: 16px; line-height: 1.6;" data-lang="userGuideIntro">
-                                New to CyberWise? Don't worry! Our detailed user guide will help you quickly master all features, from AI assistant to knowledge base search, making you a cybersecurity expert!
+                                初次使用CyberWise？别担心！我们的详细使用指南将帮助您快速掌握所有功能，从AI助手到知识库搜索，让您成为网络安全专家！
                             </p>
                             <button onclick="showSection('favorites')" style="background: linear-gradient(45deg, #ffc107, #ff9800); color: #000; border: none; border-radius: 12px; padding: 15px 30px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 193, 7, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 193, 7, 0.3)'">
                                 <i class="ri-guide-line" style="margin-right: 8px;"></i>
-                                <span data-lang="viewUserGuide">View User Guide</span>
+                                <span data-lang="viewUserGuide">查看使用指南</span>
                             </button>
                         </div>
                         <div style="flex: 0 0 auto;">
@@ -62,92 +62,84 @@ function hideLoadingIndicator() {
                 </div>
 
                 <!-- 功能卡片网格 -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; align-items: stretch;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
                     
                     <!-- AI Writing 卡片 -->
-                    <div style="background: rgba(0, 234, 255, 0.1); border: 1px solid rgba(0, 234, 255, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer; height: 280px; display: flex; flex-direction: column; justify-content: space-between;" onclick="showSection('ai')" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0, 234, 255, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <div style="width: 60px; height: 60px; min-width: 60px; min-height: 60px; background: linear-gradient(45deg, #00eaff, #0099cc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
-                                    🤖
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="color: #00eaff; margin: 0 0 5px 0; font-size: 20px;" data-lang="aiWritingFeature">AI Security Assistant</h3>
-                                    <p style="color: #ccc; margin: 0; font-size: 12px;">Intelligent Q&A • Problem Analysis • Solution Recommendations</p>
-                                </div>
+                    <div style="background: rgba(0, 234, 255, 0.1); border: 1px solid rgba(0, 234, 255, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer;" onclick="showSection('ai')" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0, 234, 255, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #00eaff, #0099cc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+                                🤖
                             </div>
-                            <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex: 1;" data-lang="aiWritingDesc">
-                                Intelligent AI assistant can help you analyze cybersecurity issues, automatically match related solutions, and provide professional advice. Supports natural language conversation.
-                            </p>
+                            <div>
+                                <h3 style="color: #00eaff; margin: 0 0 5px 0; font-size: 20px;" data-lang="aiWritingFeature">AI 安全助手</h3>
+                                <p style="color: #ccc; margin: 0; font-size: 12px;">智能问答 • 问题分析 • 解决方案推荐</p>
+                            </div>
                         </div>
+                        <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px;" data-lang="aiWritingDesc">
+                            向AI助手描述您的网络安全问题，获得智能分析和专业解决方案。支持自然语言对话，让安全咨询变得简单高效。
+                        </p>
                         <div style="display: flex; align-items: center; color: #00eaff; font-size: 14px; font-weight: 500;">
-                            <span data-lang="tryAI">Try Now</span>
+                            <span data-lang="tryAI">立即体验</span>
                             <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
                         </div>
                     </div>
 
                     <!-- Knowledge Base 卡片 -->
-                    <div style="background: rgba(161, 0, 255, 0.1); border: 1px solid rgba(161, 0, 255, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer; height: 280px; display: flex; flex-direction: column; justify-content: space-between;" onclick="window.location.href='/templates/knowledge_base.html'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(161, 0, 255, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <div style="width: 60px; height: 60px; min-width: 60px; min-height: 60px; background: linear-gradient(45deg, #a100ff, #7c00d9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
-                                    📚
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="color: #a100ff; margin: 0 0 5px 0; font-size: 20px;" data-lang="knowledgeBaseFeature">Knowledge Base</h3>
-                                    <p style="color: #ccc; margin: 0; font-size: 12px;">Smart Search • Category Filter • 385 Questions</p>
-                                </div>
+                    <div style="background: rgba(161, 0, 255, 0.1); border: 1px solid rgba(161, 0, 255, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer;" onclick="window.location.href='/templates/knowledge_base.html'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(161, 0, 255, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #a100ff, #7c00d9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+                                📚
                             </div>
-                            <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex: 1;" data-lang="knowledgeBaseDesc">
-                                Rich cybersecurity knowledge base containing various security issues and solutions. Supports intelligent search and category filtering to help you quickly find the information you need.
-                            </p>
+                            <div>
+                                <h3 style="color: #a100ff; margin: 0 0 5px 0; font-size: 20px;" data-lang="knowledgeBaseFeature">知识库</h3>
+                                <p style="color: #ccc; margin: 0; font-size: 12px;">智能搜索 • 分类筛选 • 385个问题</p>
+                            </div>
                         </div>
+                        <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px;" data-lang="knowledgeBaseDesc">
+                            丰富的网络安全知识库，包含各类安全问题和解决方案。支持智能搜索、分类筛选，帮您快速找到所需信息。
+                        </p>
                         <div style="display: flex; align-items: center; color: #a100ff; font-size: 14px; font-weight: 500;">
-                            <span data-lang="browseKnowledgeBase">Browse Knowledge Base</span>
+                            <span data-lang="browseKnowledgeBase">浏览知识库</span>
                             <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
                         </div>
                     </div>
 
                     <!-- Quiz 卡片 -->
-                    <div style="background: rgba(46, 213, 115, 0.1); border: 1px solid rgba(46, 213, 115, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer; height: 280px; display: flex; flex-direction: column; justify-content: space-between;" onclick="window.location.href='/templates/quizs.html'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(46, 213, 115, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <div style="width: 60px; height: 60px; min-width: 60px; min-height: 60px; background: linear-gradient(45deg, #2ed573, #1dd1a1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
-                                    📊
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="color: #2ed573; margin: 0 0 5px 0; font-size: 20px;" data-lang="quizFeature">Online Testing</h3>
-                                    <p style="color: #ccc; margin: 0; font-size: 12px;">Single Choice • True/False • Mixed Mode</p>
-                                </div>
+                    <div style="background: rgba(46, 213, 115, 0.1); border: 1px solid rgba(46, 213, 115, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer;" onclick="window.location.href='/templates/quizs.html'" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(46, 213, 115, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #2ed573, #1dd1a1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+                                📊
                             </div>
-                            <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex: 1;" data-lang="quizDesc">
-                                Online testing system with multiple question types including single choice and true/false questions. Real-time statistics help you test your learning effectiveness.
-                            </p>
+                            <div>
+                                <h3 style="color: #2ed573; margin: 0 0 5px 0; font-size: 20px;" data-lang="quizFeature">在线测试</h3>
+                                <p style="color: #ccc; margin: 0; font-size: 12px;">单选题 • 判断题 • 混合模式</p>
+                            </div>
                         </div>
+                        <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px;" data-lang="quizDesc">
+                            多种题型的在线测试系统，包括单选题、判断题等。实时统计答题情况，帮您检验学习效果。
+                        </p>
                         <div style="display: flex; align-items: center; color: #2ed573; font-size: 14px; font-weight: 500;">
-                            <span data-lang="startQuiz">Start Quiz</span>
+                            <span data-lang="startQuiz">开始测试</span>
                             <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
                         </div>
                     </div>
 
                     <!-- Notes 卡片 -->
-                    <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer; height: 280px; display: flex; flex-direction: column; justify-content: space-between;" onclick="showSection('notes')" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 107, 107, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                        <div>
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                                <div style="width: 60px; height: 60px; min-width: 60px; min-height: 60px; background: linear-gradient(45deg, #ff6b6b, #ff5252); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">
-                                    📝
-                                </div>
-                                <div style="flex: 1;">
-                                    <h3 style="color: #ff6b6b; margin: 0 0 5px 0; font-size: 20px;" data-lang="notesFeature">Note Management</h3>
-                                    <p style="color: #ccc; margin: 0; font-size: 12px;">Create • Edit • Favorite • Local Storage</p>
-                                </div>
+                    <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); border-radius: 16px; padding: 25px; transition: all 0.3s ease; cursor: pointer;" onclick="showSection('notes')" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(255, 107, 107, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                            <div style="width: 60px; height: 60px; background: linear-gradient(45deg, #ff6b6b, #ff5252); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
+                                📝
                             </div>
-                            <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px; flex: 1;" data-lang="notesDesc">
-                                Personal note management system that supports creating, editing, and favoriting notes. Local storage ensures data security and supports rich text editing.
-                            </p>
+                            <div>
+                                <h3 style="color: #ff6b6b; margin: 0 0 5px 0; font-size: 20px;" data-lang="notesFeature">笔记管理</h3>
+                                <p style="color: #ccc; margin: 0; font-size: 12px;">创建 • 编辑 • 收藏 • 本地存储</p>
+                            </div>
                         </div>
+                        <p style="color: #e0e0e0; font-size: 14px; line-height: 1.5; margin-bottom: 15px;" data-lang="notesDesc">
+                            个人笔记管理系统，支持创建、编辑、收藏笔记。本地存储确保数据安全，随时记录您的学习心得。
+                        </p>
                         <div style="display: flex; align-items: center; color: #ff6b6b; font-size: 14px; font-weight: 500;">
-                            <span data-lang="manageNotes">Manage Notes</span>
+                            <span data-lang="manageNotes">管理笔记</span>
                             <i class="ri-arrow-right-line" style="margin-left: 8px;"></i>
                         </div>
                     </div>
@@ -158,27 +150,27 @@ function hideLoadingIndicator() {
                 <div style="background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 25px; border: 1px solid rgba(255, 255, 255, 0.1);">
                     <h3 style="color: #00eaff; margin: 0 0 20px 0; font-size: 20px; display: flex; align-items: center; gap: 10px;" data-lang="quickActions">
                         <i class="ri-lightning-line"></i>
-                        Quick Actions
+                        快速操作
                     </h3>
                     <div style="display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
                         <button onclick="createNewDocument()" style="background: linear-gradient(45deg, #00eaff, #0099cc); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-add-line"></i>
-                            <span data-lang="createNewDoc">Create New Document</span>
+                            <span data-lang="createNewDoc">新建文档</span>
                         </button>
                         
                         <button onclick="showSection('notes')" style="background: linear-gradient(45deg, #ff6b6b, #ff5252); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-file-list-line"></i>
-                            <span data-lang="viewNotes">View Notes</span>
+                            <span data-lang="viewNotes">查看笔记</span>
                         </button>
                         
                         <button onclick="showSection('ai')" style="background: linear-gradient(45deg, #a100ff, #7c00d9); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-magic-line"></i>
-                            <span data-lang="askAI">Ask AI</span>
+                            <span data-lang="askAI">咨询AI</span>
                         </button>
                         
                         <button onclick="window.location.href='/templates/quizs.html'" style="background: linear-gradient(45deg, #2ed573, #1dd1a1); color: white; border: none; border-radius: 10px; padding: 12px 20px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                             <i class="ri-questionnaire-line"></i>
-                            <span data-lang="takeQuiz">Take Quiz</span>
+                            <span data-lang="takeQuiz">开始测试</span>
                         </button>
                     </div>
                     
@@ -187,19 +179,19 @@ function hideLoadingIndicator() {
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px;">
                             <div style="text-align: center; background: rgba(0, 234, 255, 0.1); border-radius: 10px; padding: 15px;">
                                 <div style="font-size: 24px; font-weight: bold; color: #00eaff; margin-bottom: 5px;">385</div>
-                                <div style="font-size: 12px; color: #ccc;" data-lang="totalQuestions">Knowledge Base Questions</div>
+                                <div style="font-size: 12px; color: #ccc;" data-lang="totalQuestions">知识库问题</div>
                             </div>
                             <div style="text-align: center; background: rgba(161, 0, 255, 0.1); border-radius: 10px; padding: 15px;">
                                 <div style="font-size: 24px; font-weight: bold; color: #a100ff; margin-bottom: 5px;">8</div>
-                                <div style="font-size: 12px; color: #ccc;" data-lang="mainCategories">Main Categories</div>
+                                <div style="font-size: 12px; color: #ccc;" data-lang="mainCategories">主要分类</div>
                             </div>
                             <div style="text-align: center; background: rgba(46, 213, 115, 0.1); border-radius: 10px; padding: 15px;">
                                 <div style="font-size: 24px; font-weight: bold; color: #2ed573; margin-bottom: 5px;">3</div>
-                                <div style="font-size: 12px; color: #ccc;" data-lang="quizTypes">Quiz Types</div>
+                                <div style="font-size: 12px; color: #ccc;" data-lang="quizTypes">测试类型</div>
                             </div>
                             <div style="text-align: center; background: rgba(255, 107, 107, 0.1); border-radius: 10px; padding: 15px;">
                                 <div style="font-size: 24px; font-weight: bold; color: #ff6b6b; margin-bottom: 5px;">∞</div>
-                                <div style="font-size: 12px; color: #ccc;" data-lang="unlimitedNotes">Unlimited Notes</div>
+                                <div style="font-size: 12px; color: #ccc;" data-lang="unlimitedNotes">无限笔记</div>
                             </div>
                         </div>
                     </div>
@@ -218,7 +210,11 @@ function hideLoadingIndicator() {
                                 <div class="ai-message-content">
                                     <h3 data-lang="aiChatWelcomeTitle">欢迎使用AI安全助手 🤖</h3>
                                     <p data-lang="aiChatWelcome1">👋 您好！我是CyberWise的AI安全助手。</p>
-                                    <p data-lang="aiChatWelcome2">请描述您遇到的网络安全问题，我将自动分析问题类型并为您匹配最相关的解决方案。</p>
+                                    <p data-lang="aiChatWelcome2">您可以：</p>
+                                    <ul>
+                                        <li>描述您遇到的网络安全问题，我将为您分析并提供解决方案</li>
+                                        <li>输入Writing Prompt，我将为您生成相关的安全文档</li>
+                                    </ul>
                                     
                                     <div class="quick-suggestions">
                                         <p data-lang="aiChatSuggestions">💡 您可以试着问我：</p>
@@ -274,84 +270,59 @@ function hideLoadingIndicator() {
                         <h2 style="color: #00eaff; margin: 0 0 15px 0; font-size: 20px;" data-lang="platformOverview">🌟 平台概览</h2>
                         <p style="color: #e0e0e0; line-height: 1.6; margin: 0;" data-lang="platformOverviewDesc">CyberWise 是一个专业的网络安全知识管理和学习平台，集成了AI助手、知识库、笔记管理、在线测试等多项功能，旨在帮助用户提升网络安全意识和技能。</p>
                     </div>
-                    
+
                     <!-- 功能介绍 -->
-                    <div style="margin-bottom: 40px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; grid-auto-rows: 1fr;">
                         
-                        <!-- 所有4个功能卡片在一行 -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                            
-                            <!-- AI Security Assistant -->
-                            <div style="background: rgba(0, 234, 255, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(0, 234, 255, 0.3); text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-                                <div>
-                                    <h3 style="color: #00eaff; margin: 0 0 12px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                        <i class="ri-magic-line"></i>
-                                        <span data-lang="aiWritingFeature">🤖 AI Security Assistant</span>
-                                    </h3>
-                                    <p style="color: #e0e0e0; line-height: 1.5; font-size: 13px; margin: 0; flex: 1;" data-lang="aiWritingDesc">智能AI助手可以帮您分析网络安全问题，自动匹配相关解决方案，并提供专业建议。支持自然语言对话，让安全咨询变得简单高效。</p>
-                                </div>
+                        <!-- AI Writing功能 -->
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; height: 100%;">
+                            <h3 style="color: #00eaff; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                <i class="ri-magic-line"></i>
+                                <span data-lang="aiWritingFeature">🤖 AI 安全助手</span>
+                            </h3>
+                            <p style="color: #ccc; line-height: 1.5; font-size: 14px; margin: 0 0 15px 0;" data-lang="aiWritingDesc">智能AI助手可以帮您分析网络安全问题，自动匹配相关解决方案，并提供专业建议。支持自然语言对话，让安全咨询变得简单高效。</p>
+                            <div style="background: rgba(0, 234, 255, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #00eaff; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                <strong style="color: #00eaff; font-size: 12px;" data-lang="howToUse">使用方法：</strong>
+                                <p style="color: #ccc; font-size: 12px; margin: 5px 0 0 0;" data-lang="aiWritingHowTo">点击侧边栏"AI Writing"，输入您的安全问题，AI将自动分析并提供相关解决方案。</p>
                             </div>
-
-                            <!-- Knowledge Base功能 -->
-                            <div style="background: rgba(161, 0, 255, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(161, 0, 255, 0.3); text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-                                <div>
-                                    <h3 style="color: #a100ff; margin: 0 0 12px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                        <i class="ri-book-open-line"></i>
-                                        <span data-lang="knowledgeBaseFeature">📚 Knowledge Base</span>
-                                    </h3>
-                                    <p style="color: #e0e0e0; line-height: 1.5; font-size: 13px; margin: 0; flex: 1;" data-lang="knowledgeBaseDesc">丰富的网络安全知识库，包含各类安全问题和解决方案。支持智能搜索、分类筛选，帮您快速找到所需信息。</p>
-                                </div>
-                            </div>
-
-                            <!-- Notes功能 -->
-                            <div style="background: rgba(255, 107, 107, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 107, 107, 0.3); text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-                                <div>
-                                    <h3 style="color: #ff6b6b; margin: 0 0 12px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                        <i class="ri-quill-pen-line"></i>
-                                        <span data-lang="notesFeature">📝 Note Management</span>
-                                    </h3>
-                                    <p style="color: #e0e0e0; line-height: 1.5; font-size: 13px; margin: 0; flex: 1;" data-lang="notesDesc">个人笔记管理系统，支持创建、编辑、收藏笔记。本地存储确保数据安全，随时记录您的学习心得。</p>
-                                </div>
-                            </div>
-
-                            <!-- Quiz功能 -->
-                            <div style="background: rgba(46, 213, 115, 0.1); border-radius: 12px; padding: 20px; border: 1px solid rgba(46, 213, 115, 0.3); text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: space-between;">
-                                <div>
-                                    <h3 style="color: #2ed573; margin: 0 0 12px 0; font-size: 18px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                                        <i class="ri-questionnaire-line"></i>
-                                        <span data-lang="quizFeature">📊 Online Testing</span>
-                                    </h3>
-                                    <p style="color: #e0e0e0; line-height: 1.5; font-size: 13px; margin: 0; flex: 1;" data-lang="quizDesc">多种题型的在线测试系统，包括单选题、判断题等。实时统计答题情况，帮您检验学习效果。</p>
-                                </div>
-                            </div>
-
                         </div>
 
-                        <!-- How to Use 统一放在最下面 -->
-                        <div style="background: rgba(0, 234, 255, 0.05); border-radius: 12px; padding: 25px; border: 1px solid rgba(0, 234, 255, 0.1);">
-                            <h2 style="color: #00eaff; margin: 0 0 20px 0; font-size: 20px; text-align: center;" data-lang="howToUse">📖 How to Use</h2>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                                
-                                <div style="background: rgba(0, 234, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #00eaff;">
-                                    <h4 style="color: #00eaff; margin: 0 0 8px 0; font-size: 14px;">🤖 AI Security Assistant</h4>
-                                    <p style="color: #ccc; font-size: 12px; margin: 0;" data-lang="aiWritingHowTo">点击侧边栏"AI Writing"，输入您的安全问题，AI将自动分析并提供相关解决方案。</p>
-                                </div>
-                                
-                                <div style="background: rgba(161, 0, 255, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #a100ff;">
-                                    <h4 style="color: #a100ff; margin: 0 0 8px 0; font-size: 14px;">📚 Knowledge Base</h4>
-                                    <p style="color: #ccc; font-size: 12px; margin: 0;" data-lang="knowledgeBaseHowTo">点击"Knowledge Base"进入知识库，使用搜索框查找相关问题，或通过分类筛选浏览内容。</p>
-                                </div>
-                                
-                                <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #ff6b6b;">
-                                    <h4 style="color: #ff6b6b; margin: 0 0 8px 0; font-size: 14px;">📝 Note Management</h4>
-                                    <p style="color: #ccc; font-size: 12px; margin: 0;" data-lang="notesHowTo">点击"Notes"进入笔记页面，使用"Create New Document"创建新笔记，支持收藏和删除操作。</p>
-                                </div>
-                                
-                                <div style="background: rgba(46, 213, 115, 0.1); padding: 15px; border-radius: 8px; border-left: 3px solid #2ed573;">
-                                    <h4 style="color: #2ed573; margin: 0 0 8px 0; font-size: 14px;">📊 Online Testing</h4>
-                                    <p style="color: #ccc; font-size: 12px; margin: 0;" data-lang="quizHowTo">点击"Quiz"进入测试页面，选择题型开始答题，系统会自动记录您的答题历史和成绩。</p>
-                                </div>
-                                
+                        <!-- Knowledge Base功能 -->
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; height: 100%;">
+                            <h3 style="color: #00eaff; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                <i class="ri-book-open-line"></i>
+                                <span data-lang="knowledgeBaseFeature">📚 知识库</span>
+                            </h3>
+                            <p style="color: #ccc; line-height: 1.5; font-size: 14px; margin: 0 0 15px 0;" data-lang="knowledgeBaseDesc">丰富的网络安全知识库，包含各类安全问题和解决方案。支持智能搜索、分类筛选，帮您快速找到所需信息。</p>
+                            <div style="background: rgba(0, 234, 255, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #00eaff; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                <strong style="color: #00eaff; font-size: 12px;" data-lang="howToUse">使用方法：</strong>
+                                <p style="color: #ccc; font-size: 12px; margin: 5px 0 0 0;" data-lang="knowledgeBaseHowTo">点击"Knowledge Base"进入知识库，使用搜索框查找相关问题，或通过分类筛选浏览内容。</p>
+                            </div>
+                        </div>
+
+                        <!-- Notes功能 -->
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; height: 100%;">
+                            <h3 style="color: #00eaff; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                <i class="ri-quill-pen-line"></i>
+                                <span data-lang="notesFeature">📝 笔记管理</span>
+                            </h3>
+                            <p style="color: #ccc; line-height: 1.5; font-size: 14px; margin: 0 0 15px 0;" data-lang="notesDesc">个人笔记管理系统，支持创建、编辑、收藏笔记。本地存储确保数据安全，随时记录您的学习心得。</p>
+                            <div style="background: rgba(0, 234, 255, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #00eaff; flex: 1; display: flex; flex-direction: column; justify-content: flex-end;">
+                                <strong style="color: #00eaff; font-size: 12px;" data-lang="howToUse">使用方法：</strong>
+                                <p style="color: #ccc; font-size: 12px; margin: 5px 0 0 0;" data-lang="notesHowTo">点击"Notes"进入笔记页面，使用"Create New Document"创建新笔记，支持收藏和删除操作。</p>
+                            </div>
+                        </div>
+
+                        <!-- Quiz功能 -->
+                        <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.1); display: flex; flex-direction: column; height: 100%;">
+                            <h3 style="color: #00eaff; margin: 0 0 12px 0; display: flex; align-items: center; gap: 8px;">
+                                <i class="ri-questionnaire-line"></i>
+                                <span data-lang="quizFeature">📊 在线测试</span>
+                            </h3>
+                            <p style="color: #ccc; line-height: 1.5; font-size: 14px; margin: 0 0 15px 0;" data-lang="quizDesc">多种题型的在线测试系统，包括单选题、判断题等。实时统计答题情况，帮您检验学习效果。</p>
+                            <div style="background: rgba(0, 234, 255, 0.1); padding: 10px; border-radius: 6px; border-left: 3px solid #00eaff; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                                <strong style="color: #00eaff; font-size: 12px;" data-lang="howToUse">使用方法：</strong>
+                                <p style="color: #ccc; font-size: 12px; margin: 5px 0 0 0;" data-lang="quizHowTo">点击"Quiz"进入测试页面，选择题型开始答题，系统会自动记录您的答题历史和成绩。</p>
                             </div>
                         </div>
 
@@ -494,48 +465,55 @@ async function loadUserData() {
 // 页面切换功能
 function showSection(sectionName) {
     // 隐藏所有section
-    const sections = ['start', 'ai', 'notes', 'favorites', 'community'];
-    sections.forEach(section => {
-        const element = document.getElementById(section + '-section');
-        if (element) {
-            element.style.display = 'none';
-        }
-    });
+    document.getElementById('start-section').style.display = 'none';
+    document.getElementById('ai-section').style.display = 'none';
+    document.getElementById('notes-section').style.display = 'none';
+    document.getElementById('favorites-section').style.display = 'none';
+    document.getElementById('community-section').style.display = 'none';
 
     // 显示选中的section
-    const targetSection = document.getElementById(sectionName + '-section');
-    if (targetSection) {
-        targetSection.style.display = 'block';
-    }
-
-    // 更新菜单项样式
-    document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-    });
-
-    // 控制侧边栏固定状态 - 只有AI Writing页面需要固定侧边栏
-    const body = document.body;
     if (sectionName === 'ai') {
-        body.classList.add('ai-writing-active');
+        document.getElementById('ai-section').style.display = 'block';
+        // 更新AI聊天界面的欢迎消息
+        const aiChatMessages = document.getElementById('aiChatMessages');
+        aiChatMessages.innerHTML = `
+            <div class="welcome-message">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-message-content">
+                        <h3 data-lang="aiChatWelcomeTitle">欢迎使用AI安全助手 🤖</h3>
+                        <p data-lang="aiChatWelcome1">👋 您好！我是CyberWise的AI安全助手。</p>
+                        <p data-lang="aiChatWelcome2">您可以：</p>
+                        <ul>
+                            <li>描述您遇到的网络安全问题，我将为您分析并提供解决方案</li>
+                            <li>输入Writing Prompt，我将为您生成相关的安全文档</li>
+                        </ul>
+                        
+                        <div class="quick-suggestions">
+                            <p data-lang="aiChatSuggestions">💡 您可以试着问我：</p>
+                            <div class="suggestion-buttons">
+                                <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion1Text'))" data-lang="aiChatSuggestion1">🦠 恶意软件问题</button>
+                                <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion2Text'))" data-lang="aiChatSuggestion2">🔐 密码安全</button>
+                                <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion3Text'))" data-lang="aiChatSuggestion3">📧 钓鱼攻击</button>
+                                <button class="suggestion-btn" onclick="sendSuggestion(getText('aiChatSuggestion4Text'))" data-lang="aiChatSuggestion4">🛡️ 网络防护</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        updateAIChatLanguage();
+    } else if (sectionName === 'notes') {
+        document.getElementById('notes-section').style.display = 'block';
+        loadNotes();
+    } else if (sectionName === 'favorites') {
+        document.getElementById('favorites-section').style.display = 'block';
+        loadFavorites();
+    } else if (sectionName === 'community') {
+        document.getElementById('community-section').style.display = 'block';
+        loadCommunity();
     } else {
-        body.classList.remove('ai-writing-active');
-    }
-
-    // 根据section加载相应内容
-    switch (sectionName) {
-        case 'notes':
-            loadNotes();
-            break;
-        case 'ai':
-            // AI功能初始化 - 更新聊天界面语言
-            updateAIChatLanguage();
-            break;
-        case 'favorites':
-            loadFavorites();
-            break;
-        case 'community':
-            loadCommunity();
-            break;
+        document.getElementById('start-section').style.display = 'block';
     }
 }
 
@@ -737,7 +715,7 @@ async function loadNotes() {
             <span style="color: #888; font-size: 12px;">${getText('lastUpdated')} ${date}</span>
             <div style="display: flex; gap: 10px;">
               <button onclick="event.stopPropagation(); toggleFavorite('${note.id}', ${note.isFavorite}, true)" style="background: ${note.isFavorite ? '#ffd700' : 'rgba(255,255,255,0.1)'}; color: ${note.isFavorite ? '#000' : '#fff'}; padding: 6px 12px; font-size: 12px; width: auto; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">
-                ${note.isFavorite ? '★ Favorited' : '☆ Favorite'}
+                ${note.isFavorite ? '★ 已收藏' : '☆ 收藏'}
               </button>
               <button onclick="event.stopPropagation(); deleteNote('${note.id}', true)" style="background: #ff6b6b; color: white; padding: 6px 12px; font-size: 12px; width: auto; border: none; border-radius: 6px; cursor: pointer; transition: all 0.3s ease;">${getText('deleteBtn')}</button>
             </div>
@@ -841,85 +819,6 @@ async function loadFavorites() {
 async function loadCommunity() {
     // 实现社区内容加载逻辑
     console.log("Loading community...");
-}
-
-// 显示AI写作模态框
-function showAIWritingModal() {
-    const modal = document.getElementById('aiWritingModal');
-    if (modal) {
-        modal.style.display = 'block';
-        // 清空输入框
-        document.getElementById('aiPrompt').value = '';
-        document.getElementById('aiTitle').value = '';
-        document.getElementById('aiContent').value = '';
-        // 隐藏保存按钮
-        document.getElementById('saveAIBtn').style.display = 'none';
-        // 聚焦到提示输入框
-        setTimeout(() => {
-            document.getElementById('aiPrompt').focus();
-        }, 100);
-    }
-}
-
-// 关闭AI写作模态框
-function closeAIWritingModal() {
-    const modal = document.getElementById('aiWritingModal');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
-// AI内容生成
-function generateAIContent() {
-    const prompt = document.getElementById('aiPrompt').value.trim();
-    const titleField = document.getElementById('aiTitle');
-    const contentField = document.getElementById('aiContent');
-    const saveBtn = document.getElementById('saveAIBtn');
-
-    if (!prompt) {
-        alert('请输入写作提示');
-        return;
-    }
-
-    // 模拟AI生成内容（替换为实际的AI API调用）
-    const generatedContent = generateMockAIContent(prompt);
-
-    // 自动生成标题（基于提示的前几个词）
-    const autoTitle = generateAutoTitle(prompt);
-
-    // 填充生成的内容
-    titleField.value = autoTitle;
-    contentField.value = generatedContent;
-
-    // 显示保存按钮
-    saveBtn.style.display = 'inline-block';
-
-    console.log("AI content generated successfully");
-}
-
-// 保存AI生成的文档
-function saveAIDocument() {
-    const title = document.getElementById('aiTitle').value.trim();
-    const content = document.getElementById('aiContent').value.trim();
-
-    if (!title) {
-        alert('请输入文档标题');
-        return;
-    }
-
-    if (!content) {
-        alert('没有内容可保存');
-        return;
-    }
-
-    // 关闭模态框
-    closeAIWritingModal();
-
-    // 创建笔记
-    createNote(title, content);
-
-    // 显示在AI结果区域
-    displayAIResult(title, content);
 }
 
 // 显示AI生成结果
@@ -1439,32 +1338,33 @@ function addAIMessage(content, isTyping = false) {
 
 // 处理AI响应
 async function processAIResponse(userMessage) {
-    // 显示加载状态
-    const typingMessage = addAIMessage('', true);
+    // 检查是否是Writing Prompt
+    if (userMessage.toLowerCase().includes('writing prompt') || userMessage.toLowerCase().includes('generate content')) {
+        try {
+            const response = await fetch('/api/generate-content', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: userMessage })
+            });
 
-    try {
-        // 模拟AI处理延迟
-        await new Promise(resolve => setTimeout(resolve, 1500));
+            if (!response.ok) {
+                throw new Error('Failed to generate content');
+            }
 
-        // 分析问题类型
+            const data = await response.json();
+            addAIMessage(data.content);
+        } catch (error) {
+            console.error('Error generating content:', error);
+            addAIMessage('抱歉，生成内容时出现错误。请稍后重试。');
+        }
+    } else {
+        // 处理普通的安全问题
         const category = classifySecurityQuestion(userMessage);
-
-        // 匹配相似问题
-        const matchedQuestions = findSimilarQuestions(userMessage, category);
-
-        // 生成AI回复
-        const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
-
-        // 移除加载状态
-        typingMessage.remove();
-
-        // 添加AI回复
-        addAIMessage(aiResponse);
-
-    } catch (error) {
-        console.error('AI处理出错:', error);
-        typingMessage.remove();
-        addAIMessage(`<p>${getText('aiChatError')}</p>`);
+        const matchedQuestions = await findSimilarQuestions(userMessage, category);
+        const response = generateAIResponse(userMessage, category, matchedQuestions);
+        addAIMessage(response);
     }
 }
 
@@ -1678,55 +1578,70 @@ function closeModal(modalId) {
     }
 }
 
-// AI 模式切换功能
-function switchAIMode(mode) {
-    const chatModeBtn = document.getElementById('chatModeBtn');
-    const writingModeBtn = document.getElementById('writingModeBtn');
-    const chatMessages = document.getElementById('aiChatMessages');
-    const writingArea = document.getElementById('aiWritingArea');
-    const chatInputContainer = document.getElementById('aiChatInputContainer');
-
-    if (mode === 'chat') {
-        // 切换到聊天模式
-        chatModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-        chatModeBtn.style.color = 'white';
-        writingModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-        writingModeBtn.style.color = '#ccc';
-
-        chatMessages.style.display = 'flex';
-        writingArea.style.display = 'none';
-        chatInputContainer.style.display = 'block';
-    } else if (mode === 'writing') {
-        // 切换到写作模式
-        writingModeBtn.style.background = 'linear-gradient(45deg, #00eaff, #0099cc)';
-        writingModeBtn.style.color = 'white';
-        chatModeBtn.style.background = 'rgba(255, 255, 255, 0.1)';
-        chatModeBtn.style.color = '#ccc';
-
-        chatMessages.style.display = 'none';
-        writingArea.style.display = 'flex';
-        chatInputContainer.style.display = 'none';
+// 显示AI写作模态框
+function showAIWritingModal() {
+    console.log('Showing AI Writing modal...');
+    const modal = document.getElementById('aiWritingModal');
+    if (!modal) {
+        console.error('AI Writing modal not found!');
+        return;
+    }
+    
+    // 重置表单
+    document.getElementById('aiPrompt').value = '';
+    document.getElementById('aiTitle').value = '';
+    document.getElementById('aiContent').value = '';
+    document.getElementById('saveAIBtn').style.display = 'none';
+    
+    // 显示模态框
+    modal.style.display = 'block';
+    console.log('AI Writing modal displayed');
+    
+    // 添加调试信息
+    const generateBtn = document.getElementById('generateBtn');
+    if (generateBtn) {
+        console.log('Generate button found in modal');
+        // 移除旧的事件监听器
+        generateBtn.removeEventListener('click', generateAIContent);
+        // 添加新的事件监听器
+        generateBtn.addEventListener('click', function() {
+            console.log('Generate button clicked in modal');
+            generateAIContent();
+        });
+        console.log('Generate button event listener added');
+    } else {
+        console.error('Generate button not found in modal!');
     }
 }
 
-// AI内容生成功能 (新版本，调用后端API)
-async function generateContent() {
-    const promptField = document.getElementById('writingPrompt');
-    const titleField = document.getElementById('writingTitle');
-    const contentField = document.getElementById('writingContent');
-    const generateBtn = document.getElementById('generateContentBtn');
-    const contentGroup = document.getElementById('generatedContentGroup');
+// 关闭AI写作模态框
+function closeAIWritingModal() {
+    const modal = document.getElementById('aiWritingModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
 
-    const prompt = promptField.value.trim();
+// AI内容生成
+async function generateAIContent() {
+    console.log('Starting AI content generation...');
+    
+    const prompt = document.getElementById('aiPrompt').value.trim();
+    const titleField = document.getElementById('aiTitle');
+    const contentField = document.getElementById('aiContent');
+    const saveBtn = document.getElementById('saveAIBtn');
+
+    console.log('Prompt:', prompt);
 
     if (!prompt) {
+        console.warn('Empty prompt');
         alert('请输入写作提示');
         return;
     }
 
     // 显示加载状态
-    generateBtn.innerHTML = '<i class="ri-loader-4-line" style="margin-right: 8px; animation: spin 1s linear infinite;"></i>正在生成...';
-    generateBtn.disabled = true;
+    contentField.value = '正在生成内容...';
+    console.log('Content field updated with loading message');
 
     try {
         // 调用后端API生成内容
@@ -1740,45 +1655,34 @@ async function generateContent() {
 
         if (!response.ok) {
             const errorData = await response.json();
+            console.error('API Error:', errorData);
             throw new Error(errorData.error || '生成内容失败');
         }
 
         const result = await response.json();
+        console.log('Generated content:', result);
 
         // 填充生成的内容
         titleField.value = result.title || generateAutoTitle(prompt);
         contentField.value = result.content;
+        console.log('Content and title fields updated');
 
-        // 显示生成的内容区域
-        contentGroup.style.display = 'block';
+        // 显示保存按钮
+        saveBtn.style.display = 'inline-block';
+        console.log('Save button displayed');
 
-        console.log('AI content generated successfully');
-
+        console.log("AI content generation completed successfully");
     } catch (error) {
         console.error('Content generation error:', error);
-
-        // 如果后端服务不可用，使用本地模拟生成
-        console.log('使用本地模拟生成作为备用方案');
-        const mockContent = generateMockAIContent(prompt);
-        const autoTitle = generateAutoTitle(prompt);
-
-        titleField.value = autoTitle;
-        contentField.value = mockContent;
-        contentGroup.style.display = 'block';
-
-        // 显示警告信息
-        alert('注意：当前使用本地模拟生成。如需使用完整AI功能，请确保后端服务正在运行。');
-    } finally {
-        // 恢复按钮状态
-        generateBtn.innerHTML = '<i class="ri-magic-line" style="margin-right: 8px;"></i>生成内容';
-        generateBtn.disabled = false;
+        console.error('Error stack:', error.stack);
+        contentField.value = '生成内容时出现错误：' + error.message + '\n\n请确保后端服务正在运行。';
     }
 }
 
-// 保存生成的内容
-function saveGeneratedContent() {
-    const title = document.getElementById('writingTitle').value.trim();
-    const content = document.getElementById('writingContent').value.trim();
+// 保存AI生成的文档
+function saveAIDocument() {
+    const title = document.getElementById('aiTitle').value.trim();
+    const content = document.getElementById('aiContent').value.trim();
 
     if (!title) {
         alert('请输入文档标题');
@@ -1790,170 +1694,33 @@ function saveGeneratedContent() {
         return;
     }
 
+    // 关闭模态框
+    closeAIWritingModal();
+
     // 创建笔记
     createNote(title, content);
 
-    // 显示成功信息
-    alert('内容已保存到笔记！');
-
-    // 清空表单
-    document.getElementById('writingPrompt').value = '';
-    document.getElementById('writingTitle').value = '';
-    document.getElementById('writingContent').value = '';
-    document.getElementById('generatedContentGroup').style.display = 'none';
+    // 显示在AI结果区域
+    displayAIResult(title, content);
 }
 
-// 复制内容到剪贴板
-function copyContent() {
-    const contentField = document.getElementById('writingContent');
-
-    if (!contentField.value.trim()) {
-        alert('没有内容可复制');
-        return;
-    }
-
-    // 选择并复制内容
-    contentField.select();
-    document.execCommand('copy');
-
-    // 显示复制成功提示
-    alert('内容已复制到剪贴板！');
-}
-
-// 改进的模拟AI内容生成 (用作备用)
-function generateMockAIContent(prompt) {
-    const analysisCategories = {
-        'malware': '恶意软件防护',
-        'password': '密码安全',
-        'phishing': '钓鱼攻击防护',
-        'network': '网络安全',
-        'privacy': '隐私保护',
-        'system': '系统安全',
-        'general': '综合安全'
-    };
-
-    // 分析问题类别
-    const category = classifySecurityQuestion(prompt);
-    const categoryName = analysisCategories[category] || '网络安全';
-
-    return `# ${categoryName}分析报告
-
-## 概述
-基于您的询问"${prompt}"，本报告将从多个角度进行分析。
-
-## 核心问题分析
-1. **问题类别**: ${categoryName}
-2. **风险级别**: 根据问题性质评估
-3. **影响范围**: 分析可能影响的系统和数据
-
-## 详细分析
-
-### 技术背景
-${categoryName}是网络安全领域的重要组成部分，涉及以下关键方面：
-- 威胁识别与评估
-- 防护措施制定
-- 应急响应流程
-- 持续监控机制
-
-### 常见威胁
-在${categoryName}领域，常见的威胁包括：
-1. 外部攻击威胁
-2. 内部安全风险
-3. 系统漏洞利用
-4. 社会工程学攻击
-
-### 防护建议
-针对${categoryName}，建议采取以下防护措施：
-
-#### 预防措施
-- 建立完善的安全策略
-- 实施多层防护机制
-- 定期进行安全培训
-- 保持系统及时更新
-
-#### 监控措施
-- 部署安全监控系统
-- 建立日志分析机制
-- 设置异常告警规则
-- 定期进行安全审计
-
-#### 应急响应
-- 制定应急响应预案
-- 建立事件处理流程
-- 组建应急响应团队
-- 定期进行演练测试
-
-## 最佳实践
-
-### 技术层面
-1. **访问控制**: 实施严格的身份认证和授权机制
-2. **数据保护**: 采用加密技术保护敏感数据
-3. **网络安全**: 部署防火墙和入侵检测系统
-4. **系统加固**: 及时安装安全补丁和更新
-
-### 管理层面
-1. **安全政策**: 制定明确的安全管理制度
-2. **人员培训**: 提高员工安全意识
-3. **风险评估**: 定期进行安全风险评估
-4. **持续改进**: 根据威胁变化调整安全策略
-
-## 实施建议
-
-### 短期目标 (1-3个月)
-- 评估当前安全状况
-- 识别关键安全风险
-- 实施基础防护措施
-- 建立监控机制
-
-### 中期目标 (3-12个月)
-- 完善安全管理体系
-- 加强技术防护能力
-- 提升人员安全意识
-- 建立应急响应机制
-
-### 长期目标 (1年以上)
-- 构建全面安全防护体系
-- 实现安全运营自动化
-- 建立持续改进机制
-- 达到行业领先水平
-
-## 总结
-${categoryName}是一个持续发展的领域，需要综合考虑技术、管理和人员等多个因素。通过系统性的方法和持续的努力，可以有效提升安全防护能力，降低安全风险。
-
-建议定期回顾和更新安全策略，确保其与最新的威胁环境和业务需求保持一致。
-
----
-*本报告基于AI分析生成，建议结合实际情况进行调整和完善。*`;
-}
-
-// 改进的自动标题生成
+// 生成自动标题
 function generateAutoTitle(prompt) {
-    // 根据关键词生成更智能的标题
-    const keywords = {
-        '密码': '密码安全管理指南',
-        '网络': '网络安全防护策略',
-        '恶意软件': '恶意软件防护方案',
-        '钓鱼': '钓鱼攻击防范指南',
-        '漏洞': '系统漏洞管理办法',
-        '防火墙': '防火墙配置与管理',
-        '加密': '数据加密技术应用',
-        '备份': '数据备份与恢复策略',
-        '监控': '安全监控系统建设',
-        '培训': '网络安全培训方案'
-    };
-
-    // 检查是否包含特定关键词
-    for (const [keyword, title] of Object.entries(keywords)) {
-        if (prompt.includes(keyword)) {
-            return title;
-        }
-    }
-
-    // 默认标题生成
-    const words = prompt.split(/[\s，。！？、]+/).filter(word => word.length > 1).slice(0, 3);
-    if (words.length > 0) {
-        return `${words.join('')}安全分析报告`;
-    }
-
-    return '网络安全分析报告';
+    // 简单的标题生成逻辑
+    const words = prompt.split(' ');
+    const title = words.slice(0, 5).join(' ');
+    return title + (words.length > 5 ? '...' : '');
 }
+
+// 显示AI生成结果
+function displayAIResult(title, content) {
+    const aiSection = document.getElementById('ai-section');
+    if (aiSection) {
+        aiSection.innerHTML = `
+            <div class="ai-result">
+                <h2>${escapeHtml(title)}</h2>
+                <div class="ai-content">${content}</div>
+            </div>
+        `;
+    }
+} 

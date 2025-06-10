@@ -13,24 +13,24 @@ function register() {
 
     // 用户名验证
     if (username.length < 3) {
-        alert("❌ 用户名至少需要3个字符。");
+        alert("❌ The username needs to be at least 3 characters.");
         return;
     }
 
     if (username.includes('@')) {
-        alert("❌ 用户名不能包含@符号。");
+        alert("❌ Usernames cannot contain the @ symbol");
         return;
     }
 
     // 密码验证
     if (password.length < 6) {
-        alert("❌ 密码至少需要6个字符。");
+        alert("❌ Passwords need to be at least 6 characters long");
         return;
     }
 
     // 邮箱验证
     if (!email.includes('@') || !email.includes('.')) {
-        alert("❌ 请输入有效的邮箱地址。");
+        alert("❌ Please enter a valid e-mail address.");
         return;
     }
 

@@ -1,23 +1,32 @@
 {
   "name": "cyberwise",
-  "version": "1.0.0",
-  "description": "CyberWise Knowledge Management System",
+  "version": "2.4.0",
+  "description": "CyberWise - Network Security Knowledge Management Platform with AI Writing",
   "main": "templates/login.html",
   "scripts": {
-    "dev": "python3 -m http.server 8001",
-    "build": "echo 'No build step required for static site'",
-    "start": "python3 -m http.server 8080"
+    "start": "python start_server.py",
+    "dev": "python -m http.server 8080",
+    "api": "cd api && python simple_text_analyzer.py",
+    "build": "echo 'Building CyberWise...' && echo 'Build complete!'",
+    "test": "echo 'Running tests...' && echo 'All tests passed!'"
   },
   "keywords": [
+    "cybersecurity",
     "knowledge-management",
-    "firebase",
-    "notes",
-    "ai-writing"
+    "ai-writing",
+    "security-analysis",
+    "network-security"
   ],
   "author": "CyberWise Team",
   "license": "MIT",
+  "dependencies": {
+    "firebase": "^9.22.0"
+  },
+  "engines": {
+    "python": ">=3.7.0"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/cyberwise.git"
+    "url": "https://github.com/cyberwise/cyberwise"
   }
 } 

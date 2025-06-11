@@ -1,0 +1,25 @@
+{
+  "name": "cyberwise-ai-backend",
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/analyze.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/analyze-text",
+      "dest": "/api/analyze.py"
+    },
+    {
+      "src": "/api/generate-content",
+      "dest": "/api/analyze.py"
+    }
+  ],
+  "functions": {
+    "api/analyze.py": {
+      "maxDuration": 30
+    }
+  }
+} 

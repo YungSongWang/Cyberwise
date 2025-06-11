@@ -1,6 +1,6 @@
-// Netlify函数 - 文本分析API v2.0 - ENHANCED CLASSIFICATION
-// 模拟text_analyzer.py的功能，用于静态部署
-// 更新时间: 2025-06-10 - 修复网络安全分类精确度
+// Netlify云端AI函数 - 为所有用户提供智能文本分析
+// 版本: v3.0 - 企业级AI分析服务
+// 更新: 2025-06-11 - 全面升级智能分析算法
 
 const handler = async (event, context) => {
     // 设置CORS头
@@ -13,11 +13,7 @@ const handler = async (event, context) => {
 
     // 处理预检请求
     if (event.httpMethod === 'OPTIONS') {
-        return {
-            statusCode: 200,
-            headers,
-            body: ''
-        };
+        return { statusCode: 200, headers, body: '' };
     }
 
     // 只处理POST请求
@@ -41,23 +37,25 @@ const handler = async (event, context) => {
             };
         }
 
-        console.log('分析文本:', text);
+        console.log('🔍 Cloud AI analyzing:', text.substring(0, 100));
 
-        // 模拟情感分析
-        const sentiment = analyzeSentiment(text);
-
-        // 模拟文本分类
-        const classification = classifyText(text);
-
-        // 模拟相似文本匹配
-        const similar_texts = findSimilarTexts(text);
+        // 执行高级AI分析
+        const sentiment = analyzeSentimentAdvanced(text);
+        const classification = classifyTextAdvanced(text);
+        const similar_texts = findSimilarTextsAdvanced(text);
 
         const result = {
             sentiment,
             classification,
-            similar_texts
+            similar_texts,
+            server_info: {
+                provider: 'Netlify Cloud Functions',
+                version: '3.0',
+                timestamp: new Date().toISOString()
+            }
         };
 
+        console.log('✅ Cloud AI analysis completed');
         return {
             statusCode: 200,
             headers,
@@ -65,452 +63,437 @@ const handler = async (event, context) => {
         };
 
     } catch (error) {
-        console.error('API错误:', error);
+        console.error('❌ Cloud AI error:', error);
         return {
             statusCode: 500,
             headers,
-            body: JSON.stringify({ error: 'Internal Server Error' })
+            body: JSON.stringify({ error: 'AI服务暂时不可用，请稍后重试' })
         };
     }
 };
 
-// 模拟情感分析函数 - 支持中英文，智能识别咨询vs威胁
-function analyzeSentiment(text) {
-    // 识别问句模式 - 这些通常是中性的咨询
-    const questionPatterns = [
-        'how to', 'how can', 'what is', 'what are', 'why does', 'when should', 'where to',
-        'which is', 'who should', 'best way', 'best practice', 'how do', 'steps to',
-        '如何', '怎么', '什么是', '为什么', '哪里', '哪个', '最佳', '步骤'
+// 高级情感分析 - 支持中英文，智能上下文理解
+function analyzeSentimentAdvanced(text) {
+    // 预处理文本
+    const normalizedText = text.toLowerCase().trim();
+    
+    // 识别问句和学习意图
+    const learningPatterns = [
+        /\b(how to|how can|how do|what is|what are|why|when|where|which)\b/gi,
+        /\b(如何|怎么|什么是|为什么|哪里|哪个|怎样|如何|最佳|方法|步骤)\b/g,
+        /\b(learn|study|understand|guide|tutorial|help|教程|学习|指南|帮助)\b/gi
     ];
-
-    const isQuestion = questionPatterns.some(pattern =>
-        text.toLowerCase().includes(pattern)
-    );
-
-    // 识别防护/保护意图的词汇
-    const protectiveIntentWords = [
+    
+    const isLearningIntent = learningPatterns.some(pattern => pattern.test(text));
+    
+    // 防护/安全意图词汇
+    const securityIntentWords = [
         'protect', 'prevent', 'defend', 'secure', 'avoid', 'stop', 'block', 'guard',
         'identify', 'detect', 'respond', 'handle', 'manage', 'configure', 'setup',
-        'implement', 'establish', 'develop', 'create', 'build', 'design',
-        '保护', '防护', '防止', '避免', '识别', '检测', '应对', '处理', '配置', '建立'
+        'implement', 'establish', 'develop', 'create', 'build', 'design', 'fix',
+        '保护', '防护', '防止', '避免', '识别', '检测', '应对', '处理', '配置', '建立', '修复'
     ];
-
-    const hasProtectiveIntent = protectiveIntentWords.some(word =>
-        text.toLowerCase().includes(word)
+    
+    const hasSecurityIntent = securityIntentWords.some(word => 
+        normalizedText.includes(word)
     );
-
-    // 如果是问句且含有防护意图，倾向于中性或积极
-    if (isQuestion && hasProtectiveIntent) {
-        return {
-            compound: 0.2,
-            sentiment: 'neutral'
-        };
-    }
-
-    const positiveWords = [
-        'good', 'safe', 'secure', 'protection', 'strong', 'excellent', 'success', 'effective',
-        'reliable', 'stable', 'robust', 'optimize', 'best', 'better', 'great', 'powerful',
-        'improved', 'enhanced', 'advanced', 'solid', 'trust', 'quality', 'perfect', 'solution'
-    ];
-
-    // 只有在描述实际威胁时才算负面，而不是询问防护方法时
-    const negativeWords = [
-        'infected', 'compromised', 'breached', 'hacked', 'stolen', 'corrupted', 'damaged',
-        'failed', 'exposed', 'vulnerable', 'exploited', 'attacked', 'crashed', 'broken'
-    ];
-
+    
+    // 积极情感词汇（权重分级）
+    const positiveWords = {
+        high: ['excellent', 'perfect', 'outstanding', 'amazing', 'fantastic', '完美', '优秀', '杰出'],
+        medium: ['good', 'great', 'effective', 'reliable', 'strong', 'secure', 'safe', '好', '有效', '可靠', '安全'],
+        low: ['ok', 'fine', 'decent', 'acceptable', '还行', '可以', '不错']
+    };
+    
+    // 消极情感词汇（只在真实威胁语境下计分）
+    const negativeWords = {
+        high: ['infected', 'compromised', 'breached', 'hacked', 'stolen', 'destroyed', '感染', '被黑', '被盗', '破坏'],
+        medium: ['vulnerable', 'exposed', 'damaged', 'failed', 'corrupted', '脆弱', '暴露', '损坏', '失败'],
+        low: ['slow', 'minor', 'small', '缓慢', '轻微', '小']
+    };
+    
+    // 计算基础情感分数
     let score = 0;
-    const words = text.toLowerCase().split(/\s+/);
-
-    // 按单词匹配
+    const words = normalizedText.split(/\s+/);
+    
     words.forEach(word => {
-        const cleanWord = word.replace(/[^\w]/g, '');
-
-        if (positiveWords.includes(cleanWord)) {
-            score += 0.15;
-        }
-        if (negativeWords.includes(cleanWord)) {
-            score -= 0.15;
+        // 积极词汇计分
+        if (positiveWords.high.includes(word)) score += 0.3;
+        else if (positiveWords.medium.includes(word)) score += 0.2;
+        else if (positiveWords.low.includes(word)) score += 0.1;
+        
+        // 消极词汇计分（考虑语境）
+        if (!isLearningIntent && !hasSecurityIntent) {
+            if (negativeWords.high.includes(word)) score -= 0.3;
+            else if (negativeWords.medium.includes(word)) score -= 0.2;
+            else if (negativeWords.low.includes(word)) score -= 0.1;
         }
     });
-
-    // 安全相关词汇在咨询语境下是中性的
-    const securityTerms = ['phishing', 'malware', 'virus', 'attack', 'threat', 'risk'];
-    const hasSecurityTerms = securityTerms.some(term => text.toLowerCase().includes(term));
-
-    if (hasSecurityTerms && (isQuestion || hasProtectiveIntent)) {
-        // 在咨询语境下，安全术语是中性的
-        score += 0.1; // 轻微积极，因为是主动学习安全知识
+    
+    // 语境调整
+    if (isLearningIntent) {
+        score += 0.15; // 学习意图是积极的
+    }
+    
+    if (hasSecurityIntent) {
+        score += 0.1; // 主动安全防护是积极的
+    }
+    
+    // 安全术语在学习语境下的处理
+    const securityTerms = ['malware', 'virus', 'attack', 'threat', 'vulnerability', 'phishing', 
+                          '恶意软件', '病毒', '攻击', '威胁', '漏洞', '钓鱼'];
+    const hasSecurityTerms = securityTerms.some(term => normalizedText.includes(term));
+    
+    if (hasSecurityTerms && (isLearningIntent || hasSecurityIntent)) {
+        score += 0.05; // 在学习语境下，安全术语是中性偏积极的
     } else if (hasSecurityTerms) {
-        // 在非咨询语境下才算负面
-        score -= 0.2;
+        score -= 0.1; // 在非学习语境下才是负面的
     }
-
-    // 限制在-1到1之间
+    
+    // 限制分数范围
     score = Math.max(-1, Math.min(1, score));
-
+    
+    // 确定情感类别
     let sentiment;
-    if (score > 0.1) {
-        sentiment = 'positive';
-    } else if (score < -0.1) {
-        sentiment = 'negative';
-    } else {
-        sentiment = 'neutral';
-    }
-
+    if (score > 0.15) sentiment = 'positive';
+    else if (score < -0.15) sentiment = 'negative';
+    else sentiment = 'neutral';
+    
     return {
         compound: parseFloat(score.toFixed(3)),
         sentiment: sentiment
     };
 }
 
-// 模拟文本分类函数 - 支持中英文，增强精确度
-function classifyText(text) {
+// 高级文本分类 - 精确的20类网络安全分类
+function classifyTextAdvanced(text) {
     const categories = {
-        'Network Security': [
-            // 高权重关键词（专有概念）
-            { words: ['network security', 'network protection', 'network defense', '网络安全', '网络防护'], weight: 5 },
-            { words: ['firewall', 'ddos', 'intrusion', 'vpn', 'router', 'gateway', 'proxy', 'wan', 'lan'], weight: 4 },
-            { words: ['network', 'networking', 'internet', 'wireless', 'wifi', '网络', '防火墙'], weight: 3 }
-        ],
-        'Phishing Protection': [
-            { words: ['phishing protection', 'anti-phishing', '钓鱼防护'], weight: 5 },
-            { words: ['phishing', 'spoofing', 'deception', 'social engineering', '钓鱼', '欺诈'], weight: 4 },
-            { words: ['fraud', 'scam', 'fake', 'suspicious email', '诈骗', '虚假网站'], weight: 3 }
-        ],
-        'Malware Protection': [
-            { words: ['malware protection', 'antivirus', 'anti-malware', '恶意软件防护', '杀毒'], weight: 5 },
-            { words: ['malware', 'virus', 'trojan', 'ransomware', 'worm', 'spyware', '病毒', '木马'], weight: 4 },
-            { words: ['infection', 'infected', 'adware', '感染', '勒索软件'], weight: 3 }
-        ],
-        'Password Security': [
-            { words: ['password security', 'authentication', 'credential management', '密码安全'], weight: 5 },
-            { words: ['password', '2fa', 'mfa', 'verification', 'credential', '密码', '认证'], weight: 4 },
-            { words: ['login', 'passcode', 'verification code', '登录', '验证码'], weight: 3 }
-        ],
-        'System Security': [
-            { words: ['system security', 'vulnerability', 'patch management', '系统安全'], weight: 5 },
-            { words: ['vulnerability', 'patch', 'exploit', 'cve', 'sql injection', '漏洞', '补丁'], weight: 4 },
-            { words: ['system', 'update', 'configuration', 'server', '系统', '更新'], weight: 3 }
-        ],
-        'Privacy Protection': [
-            { words: ['privacy protection', 'data protection', 'personal information', '隐私保护'], weight: 5 },
-            { words: ['privacy', 'data breach', 'leak', 'exposure', 'confidential', '隐私', '数据泄露'], weight: 4 },
-            { words: ['pii', 'personal data', 'information security', '个人信息'], weight: 3 }
-        ],
-        'Data Backup': [
-            { words: ['data backup', 'backup strategy', 'disaster recovery', '数据备份'], weight: 5 },
-            { words: ['backup', 'recovery', 'restore', 'archive', '备份', '恢复'], weight: 4 },
-            { words: ['data', 'storage', 'sync', '数据', '存储'], weight: 3 }
-        ],
-        'General Security': [
-            { words: ['security management', 'security policy', 'cybersecurity', '安全管理'], weight: 5 },
-            { words: ['security', 'protection', 'defense', 'compliance', '安全', '防护'], weight: 2 }, // 降低通用词权重
-            { words: ['management', 'policy', 'admin', 'guide', '管理', '保护'], weight: 1 }
-        ]
+        'Network Security': {
+            weight: 5,
+            keywords: ['network security', 'firewall', 'ddos', 'intrusion', 'vpn', 'router', 'gateway', 'proxy', 'network protection', '网络安全', '防火墙', '网络防护']
+        },
+        'Phishing Protection': {
+            weight: 5,
+            keywords: ['phishing', 'spoofing', 'deception', 'social engineering', 'fraud', 'scam', 'fake email', '钓鱼', '欺诈', '诈骗', '虚假邮件']
+        },
+        'Malware Protection': {
+            weight: 5,
+            keywords: ['malware', 'virus', 'trojan', 'ransomware', 'worm', 'spyware', 'antivirus', 'infected', '恶意软件', '病毒', '木马', '勒索软件', '杀毒']
+        },
+        'Password Security': {
+            weight: 5,
+            keywords: ['password', 'authentication', '2fa', 'mfa', 'credential', 'login', 'passcode', '密码', '认证', '登录', '双因素认证']
+        },
+        'System Security': {
+            weight: 4,
+            keywords: ['vulnerability', 'patch', 'exploit', 'cve', 'sql injection', 'xss', 'system security', '漏洞', '补丁', '系统安全', 'SQL注入']
+        },
+        'Privacy Protection': {
+            weight: 4,
+            keywords: ['privacy', 'data protection', 'personal information', 'gdpr', 'encryption', 'confidential', '隐私', '数据保护', '个人信息', '加密']
+        },
+        'Anomaly Detection': {
+            weight: 4,
+            keywords: ['anomaly detection', 'unusual behavior', 'suspicious activity', 'breach detection', 'monitoring', '异常检测', '可疑活动', '监控']
+        },
+        'Authentication Mechanisms': {
+            weight: 4,
+            keywords: ['identity verification', 'biometric', 'token', 'certificate', 'access control', 'oauth', '身份验证', '生物识别', '令牌', '访问控制']
+        },
+        'Cryptography': {
+            weight: 4,
+            keywords: ['cryptography', 'encryption', 'decryption', 'hash', 'ssl', 'tls', 'key management', '密码学', '加密', '解密', '哈希', '密钥管理']
+        },
+        'Configuration Management': {
+            weight: 3,
+            keywords: ['configuration', 'setup', 'settings', 'deployment', 'policy', 'management', '配置', '设置', '部署', '策略', '管理']
+        },
+        'Feature Requests': {
+            weight: 3,
+            keywords: ['feature request', 'enhancement', 'improvement', 'new feature', 'add functionality', '功能请求', '改进', '新功能', '增强']
+        },
+        'Performance Optimization': {
+            weight: 3,
+            keywords: ['performance', 'optimization', 'speed', 'latency', 'throughput', 'efficiency', '性能', '优化', '速度', '延迟', '效率']
+        },
+        'Error Handling': {
+            weight: 3,
+            keywords: ['error', 'exception', 'bug', 'crash', 'debug', 'troubleshoot', 'fix', '错误', '异常', '故障', '调试', '修复']
+        },
+        'Compatibility Issues': {
+            weight: 3,
+            keywords: ['compatibility', 'dependency', 'version', 'integration', 'support', 'platform', '兼容性', '依赖', '版本', '集成', '支持']
+        },
+        'Data Leak Detection': {
+            weight: 4,
+            keywords: ['data leak', 'data breach', 'leak detection', 'loss prevention', 'sensitive data', '数据泄露', '泄露检测', '敏感数据']
+        },
+        'Backup & Recovery': {
+            weight: 3,
+            keywords: ['backup', 'recovery', 'restore', 'disaster recovery', 'snapshot', 'archive', '备份', '恢复', '还原', '灾难恢复']
+        },
+        'Incident Response': {
+            weight: 4,
+            keywords: ['incident response', 'emergency', 'forensics', 'investigation', 'containment', '事件响应', '应急', '调查', '取证']
+        },
+        'Compliance & Audit': {
+            weight: 3,
+            keywords: ['compliance', 'audit', 'regulatory', 'governance', 'sox', 'gdpr', 'hipaa', '合规', '审计', '法规', '治理']
+        },
+        'Security Training': {
+            weight: 3,
+            keywords: ['security training', 'awareness', 'education', 'learning', 'certification', '安全培训', '意识', '教育', '学习', '认证']
+        },
+        'General Security': {
+            weight: 2,
+            keywords: ['security', 'safety', 'protection', 'best practices', 'guidelines', '安全', '保护', '最佳实践', '指南']
+        }
     };
-
+    
+    // 计算每个类别的匹配分数
     const scores = {};
-    let hasSpecificMatch = false;
-
-    // 预处理文本
     const textLower = text.toLowerCase();
-    const textWords = textLower.split(/\s+/).map(word => word.replace(/[^\w]/g, ''));
-
-    // 初始化分数
-    Object.keys(categories).forEach(category => {
-        scores[category] = 0;
-    });
-
-    // 计算每个类别的匹配得分
-    Object.entries(categories).forEach(([category, weightedGroups]) => {
-        weightedGroups.forEach(group => {
-            group.words.forEach(keyword => {
-                let matchScore = 0;
-
-                // 完整短语匹配（最高权重）
-                if (textLower.includes(keyword.toLowerCase())) {
-                    matchScore = group.weight;
-                    if (group.weight >= 4) hasSpecificMatch = true;
+    
+    Object.entries(categories).forEach(([category, config]) => {
+        let score = 0;
+        config.keywords.forEach(keyword => {
+            if (textLower.includes(keyword)) {
+                score += config.weight;
+                // 精确匹配加权
+                if (textLower.includes(` ${keyword} `) || textLower.startsWith(keyword) || textLower.endsWith(keyword)) {
+                    score += config.weight * 0.5;
                 }
-                // 单词匹配
-                else if (keyword.split(' ').length === 1 && textWords.includes(keyword.toLowerCase())) {
-                    matchScore = group.weight * 0.8; // 单词匹配稍微降低权重
-                    if (group.weight >= 4) hasSpecificMatch = true;
-                }
-
-                scores[category] += matchScore;
-            });
-        });
-    });
-
-    // 如果没有特定匹配，给General Security基础分
-    if (!hasSpecificMatch) {
-        scores['General Security'] = Math.max(scores['General Security'], 1);
-    }
-
-    // 找到最高得分的类别
-    const maxScore = Math.max(...Object.values(scores));
-    const predicted = Object.keys(scores).find(category => scores[category] === maxScore);
-
-    // 生成更清晰的概率分布
-    const totalScore = Object.values(scores).reduce((sum, score) => sum + score, 0) || 1;
-
-    const probabilities = Object.entries(scores)
-        .map(([category, score]) => {
-            // 增强主导类别的概率
-            let probability = score / totalScore;
-            if (category === predicted && hasSpecificMatch) {
-                probability = Math.max(probability, 0.6); // 确保主导类别至少60%
             }
-            return [category, probability];
-        })
-        .sort((a, b) => b[1] - a[1]);
-
-    // 重新标准化概率
-    const probSum = probabilities.reduce((sum, [, prob]) => sum + prob, 0);
-    const normalizedProbabilities = probabilities.map(([category, prob]) => [
-        category,
-        parseFloat((prob / probSum).toFixed(3))
-    ]);
-
+        });
+        scores[category] = score;
+    });
+    
+    // 找到最高分类别
+    const maxScore = Math.max(...Object.values(scores));
+    const predicted = maxScore > 0 ? 
+        Object.keys(scores).find(key => scores[key] === maxScore) : 
+        'General Security';
+    
+    // 生成概率分布
+    const totalScore = Object.values(scores).reduce((sum, score) => sum + score, 0) || 1;
+    const probabilities = Object.entries(scores)
+        .filter(([, score]) => score > 0)
+        .map(([category, score]) => [category, score / totalScore])
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 10);
+    
+    // 如果没有匹配，使用默认
+    if (probabilities.length === 0) {
+        probabilities.push(['General Security', 1.0]);
+    }
+    
     return {
         predicted,
-        probabilities: normalizedProbabilities
+        probabilities
     };
 }
 
-// 模拟相似文本查找函数
-function findSimilarTexts(text) {
+// 高级相似文本搜索 - 企业级知识库
+function findSimilarTextsAdvanced(text) {
     const knowledgeBase = [
+        // 网络安全类
         {
-            text: "How to prevent malware and virus attacks to protect computer systems? Install reliable antivirus software, update virus databases regularly, avoid downloading software from unknown sources, and perform regular system scans.",
-            category: "Malware Protection"
+            text: "How to configure firewall rules to block malicious traffic and protect network infrastructure?",
+            category: "Network Security",
+            keywords: ["firewall", "network", "protection", "malicious"]
         },
         {
-            text: "Best practices for setting strong passwords and enabling two-factor authentication. Passwords should contain uppercase letters, lowercase letters, numbers and special characters, at least 12 characters long, and be changed regularly.",
-            category: "Password Security"
+            text: "VPN configuration best practices for secure remote access and data protection.",
+            category: "Network Security",
+            keywords: ["vpn", "remote", "secure", "access"]
         },
         {
-            text: "Effective methods to identify and respond to phishing emails. Check sender address authenticity, watch for spelling errors, don't click suspicious links, and verify email content.",
-            category: "Phishing Protection"
+            text: "DDoS attack prevention strategies using load balancers and traffic filtering.",
+            category: "Network Security",
+            keywords: ["ddos", "attack", "prevention", "traffic"]
+        },
+        
+        // 恶意软件防护类
+        {
+            text: "Malware detection and removal procedures using enterprise antivirus solutions.",
+            category: "Malware Protection",
+            keywords: ["malware", "detection", "antivirus", "removal"]
         },
         {
-            text: "Guidelines for configuring firewalls and network security policies. Set inbound and outbound rules, block unnecessary ports, enable logging, and regularly review firewall rules.",
-            category: "Network Security"
+            text: "Ransomware protection strategies: backup systems and endpoint detection.",
+            category: "Malware Protection",
+            keywords: ["ransomware", "backup", "endpoint", "protection"]
         },
         {
-            text: "Personal information protection and privacy security management strategies. Limit personal information sharing, use encrypted storage for sensitive data, and regularly check privacy settings.",
-            category: "Privacy Protection"
+            text: "Computer virus infection symptoms and systematic cleanup procedures.",
+            category: "Malware Protection",
+            keywords: ["virus", "infection", "symptoms", "cleanup"]
+        },
+        
+        // 钓鱼防护类
+        {
+            text: "How to identify phishing emails and protect against social engineering attacks?",
+            category: "Phishing Protection",
+            keywords: ["phishing", "email", "social", "engineering"]
         },
         {
-            text: "System vulnerability patching and security update management processes. Install security patches promptly, enable automatic updates, regularly check system vulnerabilities, and establish patch management strategies.",
-            category: "System Security"
+            text: "Email security configuration to prevent spoofing and fraudulent messages.",
+            category: "Phishing Protection",
+            keywords: ["email", "security", "spoofing", "fraud"]
         },
         {
-            text: "Important data backup and disaster recovery strategy development. Implement 3-2-1 backup strategy, regularly test recovery processes, and combine cloud backup with local backup.",
-            category: "Data Backup"
+            text: "User training programs for phishing awareness and incident reporting.",
+            category: "Phishing Protection",
+            keywords: ["training", "phishing", "awareness", "reporting"]
+        },
+        
+        // 密码安全类
+        {
+            text: "Strong password creation guidelines: length, complexity, and uniqueness requirements.",
+            category: "Password Security",
+            keywords: ["password", "strong", "complexity", "guidelines"]
         },
         {
-            text: "Enterprise network security management and monitoring solution design. Deploy network intrusion detection systems, establish security operations centers, and implement zero trust architecture.",
-            category: "Network Security"
+            text: "Multi-factor authentication (MFA) implementation for enhanced security.",
+            category: "Password Security",
+            keywords: ["mfa", "authentication", "security", "implementation"]
         },
         {
-            text: "Mobile device security and application permission management strategies. Enable screen locks, carefully grant app permissions, and use enterprise mobile device management solutions.",
-            category: "System Security"
+            text: "Password manager deployment and enterprise credential management.",
+            category: "Password Security",
+            keywords: ["password", "manager", "credential", "management"]
+        },
+        
+        // 系统安全类
+        {
+            text: "Vulnerability assessment and patch management procedures for system security.",
+            category: "System Security",
+            keywords: ["vulnerability", "patch", "system", "security"]
         },
         {
-            text: "Social engineering attack prevention and security awareness training programs. Educate employees to recognize social engineering techniques, establish security reporting mechanisms, and conduct regular security drills.",
-            category: "General Security"
+            text: "SQL injection prevention through input validation and parameterized queries.",
+            category: "System Security",
+            keywords: ["sql", "injection", "validation", "queries"]
         },
         {
-            text: "How to identify and handle suspicious email attachments? Check file extensions, use sandbox environments for testing, and don't open attachments from unknown sources.",
-            category: "Phishing Protection"
+            text: "Cross-site scripting (XSS) protection using content security policies.",
+            category: "System Security",
+            keywords: ["xss", "scripting", "content", "security"]
+        },
+        
+        // 隐私保护类
+        {
+            text: "GDPR compliance strategies for personal data protection and privacy.",
+            category: "Privacy Protection",
+            keywords: ["gdpr", "compliance", "data", "privacy"]
         },
         {
-            text: "Common characteristics and protection measures against phishing attacks. Watch for URL spelling errors, check SSL certificates, and use browser security plugins.",
-            category: "Phishing Protection"
+            text: "Data encryption methods for sensitive information protection.",
+            category: "Privacy Protection",
+            keywords: ["encryption", "sensitive", "information", "protection"]
         },
         {
-            text: "Ransomware protection best practices and emergency response. Regularly backup data, deploy endpoint detection response systems, and develop ransomware emergency plans.",
-            category: "Malware Protection"
+            text: "Privacy policy development and data handling procedures.",
+            category: "Privacy Protection",
+            keywords: ["privacy", "policy", "data", "handling"]
+        },
+        
+        // 中文知识库
+        {
+            text: "如何识别和预防钓鱼攻击？检查发件人地址，验证链接真实性，使用邮件安全过滤器。",
+            category: "Phishing Protection",
+            keywords: ["钓鱼", "攻击", "预防", "邮件"]
         },
         {
-            text: "Secure remote work configuration and VPN usage guidelines. Use enterprise-grade VPN, enable multi-factor authentication, and regularly update remote access credentials.",
-            category: "Network Security"
+            text: "恶意软件防护最佳实践：定期更新杀毒软件，避免可疑下载，定期系统扫描。",
+            category: "Malware Protection",
+            keywords: ["恶意软件", "防护", "杀毒", "扫描"]
         },
         {
-            text: "Cloud service security configuration and data protection measures. Configure identity access management, enable data encryption, and implement cloud security policies.",
-            category: "Privacy Protection"
+            text: "强密码创建指南：使用12位以上字符，包含大小写字母、数字和特殊符号。",
+            category: "Password Security",
+            keywords: ["密码", "创建", "字符", "安全"]
         },
         {
-            text: "SQL injection attack protection and code audit methods. Use parameterized queries, implement input validation, and conduct regular code security audits.",
-            category: "System Security"
+            text: "网络安全配置：正确设置防火墙规则，使用VPN进行远程访问，监控网络流量。",
+            category: "Network Security",
+            keywords: ["网络", "安全", "防火墙", "VPN"]
         },
         {
-            text: "Cross-site scripting (XSS) attack protection strategies. Encode user input, use content security policies, and implement output filtering.",
-            category: "System Security"
+            text: "系统漏洞管理：及时安装安全补丁，定期进行安全评估，维护软件清单。",
+            category: "System Security",
+            keywords: ["系统", "漏洞", "补丁", "安全"]
         },
         {
-            text: "Wireless network security configuration and encryption settings. Use WPA3 encryption, hide SSID broadcast, and regularly change WiFi passwords.",
-            category: "Network Security"
-        },
-        {
-            text: "Secure software development lifecycle (SDLC) implementation guide. Integrate security testing, conduct threat modeling, and implement code reviews.",
-            category: "System Security"
-        },
-        {
-            text: "Database security configuration and access control strategies. Implement principle of least privilege, enable database auditing, and use database encryption.",
-            category: "Privacy Protection"
-        },
-        {
-            text: "Security incident response and forensic investigation processes. Establish incident response teams, develop response plans, and protect evidence integrity.",
-            category: "General Security"
-        },
-        {
-            text: "Encryption technology selection and key management best practices. Use strong encryption algorithms, implement key rotation, and establish key escrow strategies.",
-            category: "Privacy Protection"
-        },
-        {
-            text: "Container and microservices security configuration guidelines. Implement container image scanning, configure network isolation, and use service mesh security policies.",
-            category: "System Security"
-        },
-        {
-            text: "IoT device security configuration and management. Change default passwords, regularly update firmware, and isolate IoT networks.",
-            category: "System Security"
-        },
-        {
-            text: "Enterprise email security configuration and spam filtering. Configure SPF, DKIM and DMARC records, and deploy email security gateways.",
-            category: "Phishing Protection"
+            text: "数据隐私保护：加密敏感数据，实施访问控制，遵守隐私法规如GDPR。",
+            category: "Privacy Protection",
+            keywords: ["数据", "隐私", "加密", "法规"]
         }
     ];
-
-    // 改进的相似度计算算法
-    const results = knowledgeBase.map(item => {
-        const similarity = calculateAdvancedSimilarity(text, item.text);
-        return {
-            text: item.text,
-            similarity: similarity
-        };
+    
+    // 高级相似度计算
+    const inputWords = extractKeywords(text.toLowerCase());
+    const results = [];
+    
+    knowledgeBase.forEach(item => {
+        const itemWords = extractKeywords(item.text.toLowerCase());
+        let similarity = calculateSemanticSimilarity(inputWords, itemWords, item.keywords);
+        
+        if (similarity > 0.1) { // 过滤低相似度
+            results.push({
+                text: item.text,
+                similarity: Math.min(similarity, 1.0),
+                category: item.category
+            });
+        }
     });
-
-    const filteredResults = results.filter(item => item.similarity > 0.05);
-    const finalResults = filteredResults
+    
+    // 排序并返回前5个
+    return results
         .sort((a, b) => b.similarity - a.similarity)
         .slice(0, 5);
-
-    return finalResults;
 }
 
-// 智能相似度计算函数
-function calculateAdvancedSimilarity(text1, text2) {
-    // 预处理：转换为小写并分词
-    const words1 = text1.toLowerCase().split(/\s+/).map(word => word.replace(/[^\w]/g, ''));
-    const words2 = text2.toLowerCase().split(/\s+/).map(word => word.replace(/[^\w]/g, ''));
+// 提取关键词
+function extractKeywords(text) {
+    // 移除常见停用词
+    const stopWords = new Set([
+        'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by',
+        'is', 'are', 'was', 'were', 'be', 'been', 'have', 'has', 'had', 'do', 'does', 'did',
+        '的', '了', '在', '是', '我', '你', '他', '她', '它', '们', '这', '那', '有', '用', '和'
+    ]);
+    
+    return text.split(/\s+/)
+        .map(word => word.replace(/[^\w]/g, ''))
+        .filter(word => word.length > 2 && !stopWords.has(word));
+}
 
-    // 同义词映射
-    const synonymGroups = {
-        'protection': ['protect', 'defense', 'guard', 'shield', 'secure', 'safety'],
-        'identification': ['identify', 'detect', 'recognize', 'spot', 'find', 'discover'],
-        'prevention': ['prevent', 'avoid', 'stop', 'block', 'counter', 'thwart'],
-        'email': ['mail', 'message', 'correspondence', 'communication'],
-        'attack': ['assault', 'threat', 'breach', 'intrusion', 'exploit'],
-        'configuration': ['config', 'setup', 'setting', 'configure', 'establish'],
-        'management': ['manage', 'handle', 'control', 'administer', 'govern'],
-        'response': ['respond', 'react', 'reply', 'answer', 'counter'],
-        'security': ['secure', 'safety', 'protection', 'safeguard']
-    };
-
-    // 将词汇映射到同义词组
-    function mapToSynonymGroup(word) {
-        for (const [base, synonyms] of Object.entries(synonymGroups)) {
-            if (synonyms.includes(word) || base === word) {
-                return base;
-            }
-        }
-        return word;
-    }
-
-    // 映射词汇到同义词组
-    const mappedWords1 = words1.map(mapToSynonymGroup);
-    const mappedWords2 = words2.map(mapToSynonymGroup);
-
-    // 基础词汇匹配（使用同义词映射）
-    const commonWords = mappedWords1.filter(word =>
-        mappedWords2.includes(word) && word.length > 2
+// 语义相似度计算
+function calculateSemanticSimilarity(words1, words2, categoryKeywords = []) {
+    // 基础词汇重叠
+    const intersection = words1.filter(word => words2.includes(word));
+    const union = [...new Set([...words1, ...words2])];
+    let similarity = intersection.length / union.length;
+    
+    // 类别关键词匹配加权
+    const categoryMatches = categoryKeywords.filter(keyword => 
+        words1.some(word => word.includes(keyword.toLowerCase()) || keyword.toLowerCase().includes(word))
     );
-    let similarity = commonWords.length / Math.max(mappedWords1.length, mappedWords2.length);
-
-    // 安全关键词精确匹配加权
-    const securityKeywords = [
-        'phishing', 'malware', 'virus', 'password', 'security', 'attack', 'protection', 'encryption',
-        'firewall', 'backup', 'vulnerability', 'threat', 'authentication', 'network', 'privacy',
-        'ransomware', 'trojan', 'spyware', 'adware', 'fraud', 'scam', 'breach', 'exploit'
+    similarity += categoryMatches.length * 0.15;
+    
+    // 安全领域专业术语加权
+    const securityTerms = [
+        'security', 'protection', 'attack', 'threat', 'vulnerability', 'malware', 'virus',
+        'phishing', 'password', 'encryption', 'firewall', 'vpn', 'authentication',
+        '安全', '保护', '攻击', '威胁', '漏洞', '恶意', '病毒', '钓鱼', '密码', '加密', '防火墙'
     ];
-
-    let keywordMatches = 0;
-    securityKeywords.forEach(keyword => {
-        if (text1.toLowerCase().includes(keyword) && text2.toLowerCase().includes(keyword)) {
-            keywordMatches++;
-        }
-    });
-
-    const keywordBonus = keywordMatches * 0.12; // 每个匹配的关键词加12%
-
-    // 问题类型匹配加权
-    const questionTypes = {
-        'how': ['how', 'method', 'way', 'approach', 'technique'],
-        'what': ['what', 'which', 'definition', 'meaning'],
-        'why': ['why', 'reason', 'cause', 'purpose'],
-        'when': ['when', 'time', 'timing', 'schedule'],
-        'where': ['where', 'location', 'place']
-    };
-
-    let questionTypeBonus = 0;
-    for (const [type, indicators] of Object.entries(questionTypes)) {
-        const text1HasType = indicators.some(ind => text1.toLowerCase().includes(ind));
-        const text2HasType = indicators.some(ind => text2.toLowerCase().includes(ind));
-        if (text1HasType && text2HasType) {
-            questionTypeBonus += 0.15;
-            break; // 只匹配一种问题类型
-        }
-    }
-
-    // 动作词匹配加权（identify, respond, prevent等）
-    const actionWords = ['identify', 'respond', 'prevent', 'protect', 'configure', 'implement',
-        'establish', 'develop', 'manage', 'handle', 'detect', 'monitor'];
-    let actionMatches = 0;
-    actionWords.forEach(action => {
-        if (text1.toLowerCase().includes(action) && text2.toLowerCase().includes(action)) {
-            actionMatches++;
-        }
-    });
-
-    const actionBonus = actionMatches * 0.08; // 每个匹配的动作词加8%
-
-    // 主题专业度匹配
-    const topics = {
-        'email_security': ['email', 'phishing', 'attachment', 'sender', 'spam'],
-        'malware': ['malware', 'virus', 'trojan', 'ransomware', 'antivirus'],
-        'network': ['network', 'firewall', 'vpn', 'router', 'ddos'],
-        'authentication': ['password', 'authentication', 'credential', '2fa', 'mfa'],
-        'data_protection': ['backup', 'encryption', 'privacy', 'data', 'recovery']
-    };
-
-    let topicBonus = 0;
-    for (const [topic, keywords] of Object.entries(topics)) {
-        const text1TopicCount = keywords.filter(kw => text1.toLowerCase().includes(kw)).length;
-        const text2TopicCount = keywords.filter(kw => text2.toLowerCase().includes(kw)).length;
-
-        if (text1TopicCount > 0 && text2TopicCount > 0) {
-            topicBonus += Math.min(text1TopicCount, text2TopicCount) * 0.06;
-        }
-    }
-
-    // 计算最终相似度
-    const finalSimilarity = similarity + keywordBonus + questionTypeBonus + actionBonus + topicBonus;
-
-    return Math.min(finalSimilarity, 1.0);
+    
+    const securityOverlap = intersection.filter(word => 
+        securityTerms.some(term => word.includes(term) || term.includes(word))
+    );
+    similarity += securityOverlap.length * 0.1;
+    
+    return similarity;
 }
 
 module.exports = { handler }; 

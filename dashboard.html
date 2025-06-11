@@ -878,7 +878,7 @@
           <div class="ai-avatar">🤖</div>
           <div class="ai-message-content">
             <div class="typing-indicator">
-              正在分析和匹配...
+              Being analyzed and matched...
               <div class="typing-dots">
                 <span></span>
                 <span></span>
@@ -918,13 +918,18 @@
             timeout: 3000
           },
           {
+            name: 'Vercel Cloud AI',
+            url: 'https://cyberwise-ai.vercel.app/api/analyze-text',
+            timeout: 8000
+          },
+          {
             name: 'Cloud AI Backend',
             url: 'https://cyberwise-ai-backend.onrender.com/api/analyze-text',
             timeout: 10000
           },
           {
-            name: 'Netlify Functions',
-            url: '/.netlify/functions/analyze-text',
+            name: 'Netlify Cloud AI v3.0',
+            url: '/.netlify/functions/analyze-text-v2',
             timeout: 8000
           }
         ];

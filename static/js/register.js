@@ -40,59 +40,59 @@ function register() {
 
 async function registerUser(username, email, password, retries = 3) {
     try {
-        console.log("Starting registration process...");
+        console.log("开始注册流程...");
 
-        // Create user account
-        console.log("Creating Firebase user account...");
+        // 创建用户账户
+        console.log("正在创建Firebase用户账户...");
         const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
         const user = userCredential.user;
-        console.log("Firebase user created successfully:", user.uid);
+        console.log("Firebase用户创建成功:", user.uid);
 
-        // Update user display name
-        console.log("Updating user display name...");
+        // 更新用户显示名称
+        console.log("正在更新用户显示名称...");
         await user.updateProfile({ displayName: username });
-        console.log("User display name updated successfully");
+        console.log("用户显示名称更新成功");
 
-        // Save user data to Firestore
-        console.log("Saving user data to Firestore...");
+        // 保存用户数据到Firestore
+        console.log("正在保存用户数据到Firestore...");
 
         try {
-            // Save username to email mapping
-            console.log("Saving username mapping...");
+            // 保存用户名到邮箱的映射
+            console.log("保存用户名映射...");
             await db.collection("usernames").doc(username).set({
                 email: email,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 userId: user.uid
             });
-            console.log("Username mapping saved successfully");
+            console.log("用户名映射保存成功");
 
-            // Create user document
-            console.log("Creating user document...");
+            // 创建用户文档
+            console.log("创建用户文档...");
             await db.collection("users").doc(user.uid).set({
                 username: username,
                 email: email,
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                 notesCount: 0
             });
-            console.log("User document created successfully");
+            console.log("用户文档创建成功");
 
-            console.log("All user data saved successfully");
+            console.log("所有用户数据保存完成");
         } catch (firestoreError) {
-            console.error("Firestore save failed:", firestoreError);
-            alert("⚠️ User account created, but data save failed. Please contact administrator. Error: " + firestoreError.message);
-            // Even if Firestore save fails, user account is created, still consider registration successful
+            console.error("Firestore保存失败:", firestoreError);
+            alert("⚠️ 用户账户已创建，但数据保存失败。请联系管理员。错误：" + firestoreError.message);
+            // 即使Firestore保存失败，用户账户已创建，仍然算注册成功
         }
 
         alert("✅ " + getText('registrationSuccessful'));
-        console.log("Registration process completed, preparing to redirect to dashboard");
+        console.log("注册流程完成，准备跳转到dashboard");
         window.location.href = window.location.origin + "/templates/dashboard.html";
 
     } catch (error) {
-        console.error("Registration error:", error);
+        console.error("注册错误:", error);
 
-        // If network issue and retries remaining, retry
+        // 如果是网络问题且还有重试次数，则重试
         if (retries > 0 && (error.code === 'unavailable' || error.message.includes('offline'))) {
-            console.log(`Retrying registration... ${retries} attempts remaining`);
+            console.log(`重试注册... 剩余${retries}次尝试`);
             setTimeout(() => registerUser(username, email, password, retries - 1), 2000);
             return;
         }
@@ -100,37 +100,37 @@ async function registerUser(username, email, password, retries = 3) {
         let errorMessage = "";
         switch (error.code) {
             case 'auth/email-already-in-use':
-                errorMessage = "This email is already registered. Please use a different email or try logging in.";
+                errorMessage = "此邮箱已被注册。请使用其他邮箱或尝试登录。";
                 break;
             case 'auth/invalid-email':
-                errorMessage = "Invalid email format. Please enter a valid email address.";
+                errorMessage = "邮箱格式无效。请输入正确的邮箱地址。";
                 break;
             case 'auth/operation-not-allowed':
-                errorMessage = "Email registration is not enabled. Please contact administrator.";
+                errorMessage = "邮箱注册功能未启用。请联系管理员。";
                 break;
             case 'auth/weak-password':
-                errorMessage = "Password is too weak. Please use at least 6 characters.";
+                errorMessage = "密码强度不够。请使用至少6个字符的密码。";
                 break;
             case 'unavailable':
-                errorMessage = "Service temporarily unavailable. Please try again later.";
+                errorMessage = "服务暂时不可用。请稍后重试。";
                 break;
             default:
-                errorMessage = `Registration failed: ${error.message}`;
+                errorMessage = `注册失败：${error.message}`;
         }
         alert("❌ " + errorMessage);
     }
 }
 
-// Check if user is already logged in
+// 检查用户是否已登录
 firebase.auth().onAuthStateChanged(user => {
     if (user) {
-        console.log("User already logged in, redirecting to dashboard:", user);
-        // User already logged in, redirect to dashboard
+        console.log("用户已登录，重定向到dashboard:", user);
+        // 用户已登录，重定向到dashboard
         window.location.href = window.location.origin + "/templates/dashboard.html";
     }
 });
 
-// Add debug information
+// 添加调试信息
 console.log("Register script loaded");
 console.log("Firebase app:", firebase.app());
 console.log("Firestore:", db); 

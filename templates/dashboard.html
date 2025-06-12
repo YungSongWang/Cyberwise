@@ -878,7 +878,7 @@
           <div class="ai-avatar">🤖</div>
           <div class="ai-message-content">
             <div class="typing-indicator">
-              Being analyzed and matched...
+              正在分析和匹配...
               <div class="typing-dots">
                 <span></span>
                 <span></span>
@@ -902,214 +902,35 @@
       return messageElement;
     }
     
-    // 处理AI响应 - 支持多个API服务器（本地+线上+备用）
+    // 处理AI响应
     async function processAIResponse(userMessage) {
       // 显示加载状态
       const typingMessage = addAIMessage('', true);
       
       try {
-        console.log('🔍 Starting AI analysis...', userMessage);
+        // 模拟AI处理延迟
+        await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // API服务器列表（按优先级排序）
-        const apiServers = [
-          {
-            name: 'Local Development Server',
-            url: 'http://localhost:5001/api/analyze-text',
-            timeout: 3000
-          },
-          {
-            name: 'Cloud AI Backend',
-            url: 'https://cyberwise-ai-backend.onrender.com/api/analyze-text',
-            timeout: 10000
-          },
-          {
-            name: 'Netlify Functions',
-            url: '/.netlify/functions/analyze-text',
-            timeout: 8000
-          }
-        ];
+        // 分析问题类型
+        const category = classifySecurityQuestion(userMessage);
         
-        let analysisResult = null;
-        let successServer = null;
+        // 匹配相似问题
+        const matchedQuestions = findSimilarQuestions(userMessage, category);
         
-        // 尝试按优先级调用API服务器
-        for (let i = 0; i < apiServers.length; i++) {
-          const server = apiServers[i];
-          try {
-            console.log(`🔄 Trying ${server.name} (${i + 1}/${apiServers.length}): ${server.url}`);
-            
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), server.timeout);
-            
-            const response = await fetch(server.url, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                text: userMessage
-              }),
-              signal: controller.signal,
-              mode: server.url.includes('localhost') ? 'cors' : 'cors'
-            });
-            
-            clearTimeout(timeoutId);
-            
-            if (response.ok) {
-              analysisResult = await response.json();
-              successServer = server.name;
-              console.log(`✅ Success with ${server.name}:`, analysisResult);
-              break;
-            } else {
-              throw new Error(`HTTP ${response.status}`);
-            }
-            
-          } catch (error) {
-            console.log(`❌ ${server.name} failed:`, error.message);
-            if (i === apiServers.length - 1) {
-              // 所有服务器都失败了
-              throw new Error('All API servers unavailable');
-            }
-            // 继续尝试下一个服务器
-          }
-        }
-        
-        if (!analysisResult) {
-          throw new Error('No valid response from any API server');
-        }
+        // 生成AI回复
+        const aiResponse = generateAIResponse(userMessage, category, matchedQuestions);
         
         // 移除加载状态
         typingMessage.remove();
         
-        // 格式化并显示分析结果
-        const aiResponse = formatAnalysisResult(userMessage, analysisResult, successServer);
+        // 添加AI回复
         addAIMessage(aiResponse);
         
       } catch (error) {
-        console.error('❌ All API calls failed:', error);
+        console.error('AI处理出错:', error);
         typingMessage.remove();
-        
-        // 如果所有API都失败，使用本地fallback逻辑
-        console.log('🔄 Using local fallback analysis...');
-        try {
-          const category = classifySecurityQuestion(userMessage);
-          const matchedQuestions = findSimilarQuestions(userMessage, category);
-          const fallbackResponse = generateAIResponse(userMessage, category, matchedQuestions);
-          addAIMessage(fallbackResponse);
-        } catch (fallbackError) {
-          console.error('❌ Fallback also failed:', fallbackError);
-          addAIMessage('<p>❌ Sorry, we encountered an error processing your question. Please try again later.</p>');
-        }
+        addAIMessage('<p>❌ 抱歉，处理您的问题时出现了错误，请稍后重试。</p>');
       }
-    }
-    
-    // 格式化text_analyzer.py的分析结果
-    function formatAnalysisResult(userMessage, analysisResult, serverName = 'AI Server') {
-      let response = `
-        <p>🔍 <strong>Intelligent Text Analysis Complete</strong></p>
-        <p>Your question: <em>"${escapeHtml(userMessage)}"</em></p>
-        <p style="font-size: 11px; color: #888; margin: 8px 0;">
-          📡 Analyzed by: <span style="color: #00eaff;">${serverName}</span>
-        </p>
-      `;
-      
-      // 情感分析结果
-      if (analysisResult.sentiment) {
-        const sentiment = analysisResult.sentiment;
-        const sentimentEmoji = {
-          'positive': '😊',
-          'negative': '😟',
-          'neutral': '😐'
-        };
-        
-        response += `
-          <div style="background: rgba(0, 234, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #00eaff;">
-            <h4 style="color: #00eaff; margin: 0 0 8px 0;">📊 Sentiment Analysis</h4>
-            <p style="margin: 0;">
-              Sentiment: <strong>${sentimentEmoji[sentiment.sentiment] || '🤔'} ${sentiment.sentiment}</strong><br>
-              Score: <strong>${sentiment.compound?.toFixed(3) || 'N/A'}</strong>
-            </p>
-          </div>
-        `;
-      }
-      
-      // 文本分类结果
-      if (analysisResult.classification) {
-        const classification = analysisResult.classification;
-        response += `
-          <div style="background: rgba(161, 0, 255, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #a100ff;">
-            <h4 style="color: #a100ff; margin: 0 0 8px 0;">🎯 Question Classification</h4>
-            <p style="margin: 0 0 8px 0;">Predicted Category: <strong>${classification.predicted}</strong></p>
-            <div style="font-size: 12px;">
-              <strong>Category Probability Distribution:</strong><br>
-        `;
-        
-        if (classification.probabilities && classification.probabilities.length > 0) {
-          classification.probabilities.slice(0, 3).forEach(([category, prob]) => {
-            const percentage = (prob * 100).toFixed(1);
-            response += `
-              <div style="display: flex; justify-content: space-between; margin: 2px 0;">
-                <span>${category}:</span>
-                <span style="color: #00eaff;">${percentage}%</span>
-              </div>
-            `;
-          });
-        }
-        
-        response += `
-            </div>
-          </div>
-        `;
-      }
-      
-      // 相似文本结果
-      if (analysisResult.similar_texts && analysisResult.similar_texts.length > 0) {
-        response += `
-          <div style="background: rgba(46, 213, 115, 0.1); padding: 12px; border-radius: 8px; margin: 12px 0; border-left: 3px solid #2ed573;">
-            <h4 style="color: #2ed573; margin: 0 0 8px 0;">🔍 Similar Questions Reference</h4>
-        `;
-        
-        analysisResult.similar_texts.slice(0, 3).forEach((item, index) => {
-          const similarity = (item.similarity * 100).toFixed(1);
-          response += `
-            <div style="background: rgba(255, 255, 255, 0.05); padding: 8px; border-radius: 6px; margin: 6px 0; cursor: pointer; transition: all 0.2s ease;" 
-                 onmouseover="this.style.background='rgba(255, 255, 255, 0.1)'" 
-                 onmouseout="this.style.background='rgba(255, 255, 255, 0.05)'"
-                 onclick="viewSimilarText('${escapeHtml(item.text)}')">
-              <div style="font-size: 13px; margin-bottom: 4px;">
-                <strong>${index + 1}. ${escapeHtml(item.text.substring(0, 100))}${item.text.length > 100 ? '...' : ''}</strong>
-              </div>
-              <div style="font-size: 11px; color: #888; display: flex; justify-content: space-between;">
-                <span>Click to view complete content</span>
-                <span style="background: rgba(46, 213, 115, 0.3); padding: 2px 6px; border-radius: 4px; color: #2ed573;">${similarity}% similar</span>
-              </div>
-            </div>
-          `;
-        });
-        
-        response += `
-          </div>
-        `;
-      }
-      
-      // 添加操作建议
-      response += `
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p style="font-size: 12px; color: #888;">
-            💡 Based on the analysis above, we recommend:<br>
-            • Review detailed solutions for similar questions<br>
-            • Visit <span style="color: #00eaff; cursor: pointer;" onclick="goToKnowledgeBase()">Knowledge Base</span> for more information<br>
-            • For further assistance, please provide more specific details
-          </p>
-        </div>
-      `;
-      
-      return response;
-    }
-    
-    // 查看相似文本详情
-    function viewSimilarText(text) {
-      alert(`Similar Text Details:\n\n${text}\n\nThis feature will redirect to specific knowledge base pages in the future.`);
     }
     
     // 问题分类函数（简化版）
